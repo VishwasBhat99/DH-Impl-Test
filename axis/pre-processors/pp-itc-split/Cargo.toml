@@ -1,0 +1,18 @@
+[package]
+name = "pp_itc_split"
+version = "1.0.2715"
+authors = ["NPunyashree <punyashree.n@surya-soft.com>"]
+
+[dependencies]
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+clap = "2.31.2"
+calamine = "0.15.3"
+csv = "1.1.1"
+serde = "1.0.98"
+serde_derive = "1.0.98"
+chrono = "0.4.6"
+protobuf = { version = "2.16.2", features = ["with-bytes"] }

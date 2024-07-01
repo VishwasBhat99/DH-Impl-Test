@@ -1,0 +1,8 @@
+[package]
+name = "sdb_agg_rules"
+version = "0.1.0"
+authors = ["mayurdhaka-suryasoftware <mayur.d@surya-soft.com>"]
+
+[dependencies]
+sdb_dyn_proto_rdr = { path = "../sdb_dyn_proto_rdr" }
+sdb_io = { path = "../sdb_io" }

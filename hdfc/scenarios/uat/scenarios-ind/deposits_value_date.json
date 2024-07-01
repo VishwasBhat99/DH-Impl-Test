@@ -1,0 +1,160 @@
+{
+	"streamName": "TD VALUE DATE",
+	"streamId": "1016",
+	"flows": [
+		{
+			"name": "TDValueDate",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "4",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/TD_Value_Date.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/IND/pp_dep_mth_ed",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/TD_Value_Date.csv",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/R1.xlsx",
+						"--ref-file-2",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--ref-file-3",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/R3.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDValDatOutput.txt",
+						"--concat-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDValDatConcat.txt",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDValDatReconRpt.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/IND/cf_dep",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDValDatOutput.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/TDValDatCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatCFDiagLog.txt",
+						"--day-convention",
+						"ACT/365"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/TDValDatCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/TDValDatCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/TDValDatAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatBALMDiagLog.txt.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--is-consolidated",
+						"true",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/IND/td_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/td_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/IND/td_val_dt_rules.txt",
+						"--default-llg-code",
+						"5431"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/TDValDatCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/TDValDatAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/TDValDatCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/TDValDatCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDValDatAvgBal.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/TDValDatAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/UAT_SH_RULES/IND/td_avg_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/td_metadata.json"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDValDatAvgBal-health-check-report.json"
+				}
+			]
+		}
+	]
+}

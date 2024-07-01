@@ -1,0 +1,132 @@
+{  
+   "streamName":"BulkInserter",
+   "streamId":"1076",
+   "flows":[  
+      {  
+         "name":"BulkInserter",
+         "flowId":"1",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"1",
+         "process":[  
+            {  
+               "processName":"BulkInserter",
+               "processId":"1",
+               "processBinary":"/UAT_SH_SUMMARYDATA/BulkInserter/IND/bulkInsertAll.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      },
+      {  
+         "name":"ExchangeFileLoader",
+         "flowId":"2",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"1",
+         "process":[  
+            {  
+               "processName":"ExchangeFileLoader",
+               "processId":"1",
+               "processBinary":"/home/dbuser/programs/DB-Loader-Exchange-Rate/IND/runLoader.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      },
+      {  
+         "name":"AggConvLoader",
+         "flowId":"3",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"1",
+         "process":[  
+            {  
+               "processName":"AggConvLoader",
+               "processId":"1",
+               "processBinary":"/UAT_SH_SUMMARYDATA/BulkInserter/IND/bulkInsertConvertedAll.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      },
+      {  
+         "name":"Scenarios",
+         "flowId":"4",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"6",
+         "process":[  
+            {  
+               "processName":"Scenarios",
+               "processId":"1",
+               "processBinary":"D:/Batches/BALM/BALM_IND/BALM_IND_Run.bat",
+               "processArguments":[  
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      },
+      {  
+         "name":"IA Loader",
+         "flowId":"5",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"1",
+         "process":[  
+            {  
+               "processName":"IA BulkInserter",
+               "processId":"1",
+               "processBinary":"/UAT_SH_SUMMARYDATA/BulkInserter/IND/IA/bulkInsertAll.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            },
+	     {  
+               "processName":"IA Final Aggregator",
+               "processId":"2",
+               "processBinary":"/UAT_SH_SUMMARYDATA/BulkInserter/IND/IA/IA-Final-Aggregator/main.sh",
+               "processArguments":[  
+
+               ],
+               "processDependencies":[  
+			"1"
+               ],
+               "processReport":""
+            }
+         ]
+      }
+   ]
+}

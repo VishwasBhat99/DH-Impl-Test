@@ -1,0 +1,15 @@
+[package]
+name = "cf_hklmr"
+version = "1.0.1"
+authors = ["harishym <harish.m@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+serde_derive = "1.0.106"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+calamine = "0.24.0"
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+protobuf = { version = "~3.3", features = ["with-bytes"] }

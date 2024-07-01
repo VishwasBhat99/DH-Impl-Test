@@ -1,0 +1,78 @@
+{
+  "fields": [
+    {
+      "name": "security_desc",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "maturity",
+      "typ": "I64",
+      "position": 2
+    },
+    {
+      "name": "face_value",
+      "typ": "I64",
+      "position": 3
+    },
+    {
+      "name": "book_value",
+      "typ": "I64",
+      "position": 4
+    },
+    {
+      "name": "int_rate",
+      "typ": "F64",
+      "position": 5
+    },
+    {
+      "name": "int_freq",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "last_cpn_dt",
+      "typ": "I64",
+      "position": 7
+    },
+    {
+      "name": "nxt_cpn_dt",
+      "typ": "I64",
+      "position": 8
+    },
+    {
+      "name": "no_of_days",
+      "typ": "I64",
+      "position": 9
+    },
+    {
+      "name":"amt",
+      "typ":"F64",
+      "position":10
+
+    },
+    {
+      "name":"as_on_dt",
+      "typ":"I64",
+      "position":11
+
+    },
+    {
+      "name":"ccy",
+      "typ":"String",
+      "position":12
+
+    },
+    {
+      "name":"nxt_rep_dt",
+      "typ":"I64",
+      "position":13
+
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 14
+    }
+  ]
+}

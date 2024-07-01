@@ -1,0 +1,28 @@
+Document - Rules-Extractor
+
+Objective:
+To extract latest version of rules file which is stored in Oracle Database to given output path.
+
+Input Parameters:
+1. CountryID: CountryID from SourceDataFileDef table.
+2. DBConfig file:File storing database configurations.
+3. Output Path: Path where extracted files must be stored.
+
+Output:
+Extracted file(.txt) stored in output path.
+
+Logic Implemented in the Program:
+1. Get the FileID and ExtractFileName for specified CountryId from SourceDataFileDef table as a vector: filedef_vec.
+2. Get the FileID from SH_DHRules table as a vector: sh_filedef_vec.
+3. For each FileID in filedef_vec, check if FileId exists in sh_filedef_vec.
+    1. If FileId exists, log the information, terminate current iteration.
+    2. If FileId does not exist, 
+        1. Extract corresponding RuleFile from DHRules table.
+        2. Store file with .txt extension in output path. 
+
+Error Conditions Handled:
+1. Connecting to database.
+2. Fetching values from database.(Invalid or null values). 
+3. Creating output file and saving to path.
+
+

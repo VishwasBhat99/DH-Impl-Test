@@ -1,0 +1,8 @@
+[package]
+name = "sdb_agg_rules_adj"
+version = "1.0.2350"
+authors = ["Tarun Jaiswal <tarun.j@surya-soft.com>"]
+
+[dependencies]
+sdb_dyn_proto_rdr = { path = "../../../hdfc/libraries/sdb_dyn_proto_rdr" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }

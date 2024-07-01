@@ -1,0 +1,14 @@
+{
+    "files": [
+        {
+            "input_file_path": "",
+            "exrt_file_path": "",
+            "metadata_file_path": "",
+            "req_fields_file_path": "",
+            "amb_file_path": "",
+            "source": "",
+            "is_consolidated": true,
+            "is_cf_req": false
+        }
+    ]
+}

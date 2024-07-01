@@ -1,0 +1,18 @@
+syntax= "proto3";
+
+message Account {
+    string gl_cd=1;
+    string branch_cd=2;
+    double dr_bal=3;
+    double cr_bal=4;
+    double net_bal=5;
+    string cf_type=6;
+    string curr=7;
+    string is_gl=8;
+    string alm_line=9;
+    string code_desc=10;
+    string group_2=11;
+    string group_3=12;
+    string line=13;
+    string prefix=14;
+}

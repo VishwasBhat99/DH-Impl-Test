@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+message Cashflow{
+   double interest_amount = 1;
+   double principal_amount = 2;
+   int64 cfdate = 3;
+}
+
+message AccountWithCashflows {
+ string loan_id = 1;
+ string state = 2;
+ string region = 3;
+ string branch_name = 4;
+ string village = 5;
+ string group = 6;
+ string group_id = 7;
+ string branch_model = 8;
+ string member_name = 9;
+ string member_id = 10;
+ string prod_name = 11;
+ string purpose_of_loan = 12;
+ double rate_of_interest = 13;
+ int64 disb_date = 14;
+ double amt_disbursed = 15;
+ int64 first_od_date = 16;
+ int64 npa_date = 17;
+ double prin_due_on_npa = 18;
+ double int_due_on_npa = 19;
+ double prin_os_on_npa = 20;
+ double prin_collected = 21;
+ double int_collected = 22;
+ int64 dpd_day = 23;
+ string standard = 24;
+ double prin_due_on_reporting = 25;
+ double int_due_on_reporting = 26;
+ double prin_os_on_reporting = 27;
+ double npa_int_accr = 28;
+ double npa_int_during_period = 29;
+ string funder_name = 30;
+ int64 maturity_dt = 31;
+ string currency = 32;
+ repeated Cashflow cashflows = 33;
+}

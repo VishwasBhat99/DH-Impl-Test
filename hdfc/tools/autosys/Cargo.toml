@@ -1,0 +1,10 @@
+[package]
+name = "autosys"
+version = "1.0.4225"
+authors = ["shashank676 <shashank.p@surya-soft.com>"]
+
+[dependencies]
+reqwest = "0.9.19"
+serde = "1.0.97"
+rand = "0.7.3"
+clap = "2.31.2"

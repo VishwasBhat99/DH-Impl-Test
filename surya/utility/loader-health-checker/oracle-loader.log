@@ -1,0 +1,115 @@
+
+SQL*Loader: Release 19.0.0.0.0 - Production on Mon Dec 12 08:42:00 2022
+Version 19.3.0.0.0
+
+Copyright (c) 1982, 2019, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   /home/ALM_USER1/ALM_USER1/scripts/IND/db-extraction-scripts/bulk-insert/bills-out-bulk-insert.ctl
+Data File:      /home/ALM_USER1/ALM_USER1/SH_INPUTDATA//bills-out.csv
+  File processing option string: "STR '
+'"
+  Bad File:     /home/ALM_USER1/ALM_USER1/SH_LOGS/IND//bills-out-bulk-insert-BAD.BAD
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 1
+Errors allowed: 50
+Bind array:     250 rows, maximum of 1048576 bytes
+Continuation:    none specified
+Path used:      Conventional
+Silent options: FEEDBACK
+Table "BILLS_OUTWARD", loaded from every logical record.
+Insert option in effect for this table: REPLACE
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+"PRODCUT_CODE"                      FIRST     *   |       CHARACTER            
+"BRANCH"                             NEXT     *   |       CHARACTER            
+"BRANCH_NAME"                        NEXT     *   |       CHARACTER            
+"PERIOD_CODE"                        NEXT     *   |       CHARACTER            
+"YEAR_CODE"                          NEXT     *   |       CHARACTER            
+"BCREFNO"                            NEXT     *   |       CHARACTER            
+"OUR_LC_REF"                         NEXT     *   |       CHARACTER            
+"LC_STATUS"                          NEXT     *   |       CHARACTER            
+"BILL_STATUS"                        NEXT     *   |       CHARACTER            
+"LC_AMOUNT"                          NEXT     *   |       CHARACTER            
+"BILL_CCY"                           NEXT     *   |       CHARACTER            
+"BILL_AMT_LCY"                       NEXT     *   |       CHARACTER            
+"PUR_OS_AMT"                         NEXT     *   |       CHARACTER            
+"MATURITY_DATE"                      NEXT     *   |       CHARACTER            
+"TXN_DATE"                           NEXT     *   |       CHARACTER            
+"BASE_DATE"                          NEXT     *   |       CHARACTER            
+"TENOR_DAYS"                         NEXT     *   |       CHARACTER            
+"TRANSIT_DAYS"                       NEXT     *   |       CHARACTER            
+"LATEST_BILL_PAYMENT_DATE"           NEXT     *   |       CHARACTER            
+"BILL_CLOSURE_DATE"                  NEXT     *   |       CHARACTER            
+"LIQUIDATE_AMT"                      NEXT     *   |       CHARACTER            
+"APP_CUST_ID"                        NEXT     *   |       CHARACTER            
+"DRAWER_NAME"                        NEXT     *   |       CHARACTER            
+"DRAWER_ACCOUNT"                     NEXT     *   |       CHARACTER            
+"GSTIN_ID"                           NEXT     *   |       CHARACTER            
+"LC_ISSUE_DATE"                      NEXT     *   |       CHARACTER            
+"EVENT_CODE"                         NEXT     *   |       CHARACTER            
+"OPERATION"                          NEXT     *   |       CHARACTER            
+"STAGE"                              NEXT     *   |       CHARACTER            
+"DRAWEE_CUSTID"                      NEXT     *   |       CHARACTER            
+"DRAWEE_NAME"                        NEXT     *   |       CHARACTER            
+"DRAWEE_ADDRESS"                     NEXT     *   |       CHARACTER            
+"ISSUING_COLL_BANKCUSTID"            NEXT     *   |       CHARACTER            
+"ISSUING_COLL_BANK"                  NEXT     *   |       CHARACTER            
+"INTERNAL_REMARKS"                   NEXT     *   |       CHARACTER            
+"DISCREPANCY"                        NEXT     *   |       CHARACTER            
+"ACCEPTANCE_MARKED"                  NEXT     *   |       CHARACTER            
+"ACCEPTANCE_DATE"                    NEXT     *   |       CHARACTER            
+"PURCHASE_AMT"                       NEXT     *   |       CHARACTER            
+"FROM_DATE"                          NEXT     *   |       CHARACTER            
+"TO_DATE"                            NEXT     *   |       CHARACTER            
+"EFFECTIVE_RATE"                     NEXT     *   |       CHARACTER            
+"NUMBER_OF_DAYS"                     NEXT     *   |       CHARACTER            
+"INTEREST_AMOUNT"                    NEXT     *   |       CHARACTER            
+"INT_REFUND"                         NEXT     *   |       CHARACTER            
+"PUR_CR_AC"                          NEXT     *   |       CHARACTER            
+"CR_AMOUNT"                          NEXT     *   |       CHARACTER            
+"PUR_DR_AC"                          NEXT     *   |       CHARACTER            
+"G610000003_AMOUNT"                  NEXT     *   |       CHARACTER            
+"G610000003_DRCR"                    NEXT     *   |       CHARACTER            
+"G510000003_AMOUNT"                  NEXT     *   |       CHARACTER            
+"G510000003_DRCR"                    NEXT     *   |       CHARACTER            
+"BOOKING_TYPE"                       NEXT     *   |       CHARACTER            
+"BOOKING_REMARKS"                    NEXT     *   |       CHARACTER            
+"TOTAL_CHARGE"                       NEXT     *   |       CHARACTER            
+"BILL_FINAL_MAKER"                   NEXT     *   |       CHARACTER            
+"BILL_FINAL_CHECKER"                 NEXT     *   |       CHARACTER            
+"LIQD_MAKER"                         NEXT     *   |       CHARACTER            
+"LIQD_CHECKER"                       NEXT     *   |       CHARACTER            
+"CIF_PAN_NO"                         NEXT     *   |       CHARACTER            
+"UCIC"                               NEXT     *   |       CHARACTER            
+
+value used for ROWS parameter changed from 250 to 66
+SQL*Loader-500: Unable to open file (/home/ALM_USER1/ALM_USER1/SH_INPUTDATA//bills-out.csv)
+SQL*Loader-553: file not found
+SQL*Loader-509: System error: No such file or directory
+SQL*Loader-2026: the load was aborted because SQL Loader cannot continue.
+
+Table "BILLS_OUTWARD":
+  10 Rows successfully loaded.
+  0 Rows not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                1038708 bytes(66 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          10
+Total logical records read:             1000
+Total logical records rejected:         50
+Total logical records discarded:        100
+
+Run began on Mon Dec 12 08:42:00 2022
+Run ended on Mon Dec 12 08:42:00 2022
+
+Elapsed time was:     00:00:00.12
+CPU time was:         00:00:00.03

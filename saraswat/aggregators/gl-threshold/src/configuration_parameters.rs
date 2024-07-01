@@ -1,0 +1,237 @@
+use clap;
+use clap::{App, Arg};
+use slog::Logger;
+
+pub fn get_configuration_parameters(app_name: &str) -> ConfigurationParameters {
+    let matches = get_eligible_arguments_for_app(app_name);
+    ConfigurationParameters::new_from_matches(matches)
+}
+
+pub struct ConfigurationParameters {
+    input_file_path: String,
+    output_file_path: String,
+    product_rpt_file_path: String,
+    currency_conversion_file_path: String,
+    base_ccy: String,
+    calc_type: String,
+    calc_percentage: f64,
+    log_file_path: String,
+    diagnostics_file_path: String,
+    log_level: String,
+    is_perf_diagnostics_enabled: bool,
+}
+
+impl ConfigurationParameters {
+    pub fn log_parameters(&self, logger: &Logger) {
+        info!(logger, "log_file: {}", self.log_file_path());
+        info!(logger, "diagnostics_file: {}", self.diagnostics_file_path());
+        info!(logger, "input_file: {}", self.input_file_path());
+        info!(
+            logger,
+            "Porduct Report File Path: {}",
+            self.product_rpt_file_path()
+        );
+        info!(
+            logger,
+            "currency_conversion_file_path: {}",
+            self.currency_conversion_file_path()
+        );
+        info!(logger, "base_ccy: {}", self.base_ccy());
+        info!(logger, "calc_type: {}", self.calc_type());
+        info!(logger, "calc_percentage: {}", self.calc_percentage());
+        info!(logger, "output_file: {}", self.output_file_path());
+        info!(logger, "log_level: {}", self.log_level());
+    }
+}
+
+impl ConfigurationParameters {
+    fn new_from_matches(matches: clap::ArgMatches) -> ConfigurationParameters {
+        let input_file_path = matches
+            .value_of("input_file")
+            .expect("Error while getting `input file path`.")
+            .to_string();
+        let output_file_path = matches
+            .value_of("output_file")
+            .expect("Error while getting `output file path`.")
+            .to_string();
+        let log_file_path = matches
+            .value_of("log_file")
+            .expect("Error while getting `log file path.")
+            .to_string();
+        let base_ccy = matches
+            .value_of("base_ccy")
+            .expect("Error while getting `base currency.")
+            .to_string();
+        let calc_type = matches
+            .value_of("calc_type")
+            .expect("Error while getting `calculation type.")
+            .to_string();
+        let calc_percentage = matches
+            .value_of("calc_percentage")
+            .expect("Error getting `percentage`.")
+            .parse()
+            .expect("Error while getting `percentage for calculation.");
+        let currency_conversion_file_path = matches
+            .value_of("exchange_rate_file")
+            .expect("Error while getting Exchange Rate file path.")
+            .to_string();
+        let product_rpt_file_path = matches
+            .value_of("product_rpt_file")
+            .expect("Error while getting `product report file`.")
+            .to_string();
+        let log_level = matches
+            .value_of("log_level")
+            .expect("Error while getting `log level`.")
+            .to_string();
+        let diagnostics_file_path = matches
+            .value_of("diagnostics_log_file")
+            .expect("Error while getting `diagnostics file path`.")
+            .to_string();
+        let is_perf_diagnostics_enabled = matches
+            .value_of("perf_diag_flag")
+            .expect("Error while getting `is perfect diagnostics`.")
+            .parse::<bool>()
+            .expect("Error while parsing `is_perf_diagnostics_enabled` as bool.");
+
+        ConfigurationParameters {
+            input_file_path,
+            output_file_path,
+            product_rpt_file_path,
+            currency_conversion_file_path,
+            base_ccy,
+            calc_type,
+            calc_percentage,
+            log_file_path,
+            diagnostics_file_path,
+            log_level,
+            is_perf_diagnostics_enabled,
+        }
+    }
+}
+
+// Public getters so an caller can't mutate properties (they're private).
+// Also, because users of these properties usually borrow.
+impl ConfigurationParameters {
+    pub fn input_file_path(&self) -> &str {
+        &self.input_file_path
+    }
+    pub fn output_file_path(&self) -> &str {
+        &self.output_file_path
+    }
+    pub fn product_rpt_file_path(&self) -> &str {
+        &self.product_rpt_file_path
+    }
+    pub fn log_file_path(&self) -> &str {
+        &self.log_file_path
+    }
+    pub fn base_ccy(&self) -> &str {
+        &self.base_ccy
+    }
+    pub fn calc_type(&self) -> &str {
+        &self.calc_type
+    }
+    pub fn calc_percentage(&self) -> &f64 {
+        &self.calc_percentage
+    }
+    pub fn currency_conversion_file_path(&self) -> &str {
+        &self.currency_conversion_file_path
+    }
+    pub fn diagnostics_file_path(&self) -> &str {
+        &self.diagnostics_file_path
+    }
+    pub fn log_level(&self) -> &str {
+        &self.log_level
+    }
+    pub fn is_perf_diagnostics_enabled(&self) -> bool {
+        self.is_perf_diagnostics_enabled
+    }
+}
+
+fn get_eligible_arguments_for_app(app_name: &str) -> clap::ArgMatches {
+    App::new(app_name)
+        .about("Maturity GL Aggregator Bif!")
+        .arg(
+            Arg::with_name("input_file")
+                .long("input-file")
+                .value_name("Input File")
+                .help("Path to input file.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("output_file")
+                .long("output-file")
+                .value_name("Output File")
+                .help("Path to the output file")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("exchange_rate_file")
+                .long("exchange-rate-file")
+                .value_name("EXCHANGE RATE FILE")
+                .help("The path to the exchange rate file.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("log_file")
+                .long("log-file")
+                .value_name("Log File")
+                .help("Path to write logs.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("base_ccy")
+                .long("base-ccy")
+                .value_name("Base CCY")
+                .help("Value of base currency.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("calc_type")
+                .long("calc-type")
+                .value_name("Calc Type")
+                .possible_values(&["ABSOLUTE","ABSOLUTE-PERCENTAGE","PERCENTAGE"])
+                .help("Value of calculation type.")
+                .default_value("ABSOLUTE")
+                .required(false)
+        ).arg(
+            Arg::with_name("calc_percentage")
+                .long("calc-percentage")
+                .value_name("Calc Percentage")
+                .help("Value of percentage for calculation.")
+                .default_value("1.00")
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("diagnostics_log_file")
+                .long("diagnostics-log-file")
+                .value_name("Diagnostics Log File")
+                .help("Path to write diagnostics logs.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("log_level")
+                .long("log-level")
+                .value_name("LOG LEVEL")
+                .possible_values(&["error", "warn", "info", "debug", "trace", "none"])
+                .help("Level of diagnostics written to the log file.")
+                .default_value("info")
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("perf_diag_flag")
+                .long("diagnostics-flag")
+                .value_name("DIAGNOSTICS FLAG")
+                .possible_values(&["true", "false"])
+                .help("This flag that decides whether performance diagnostics will be written to the diagnostics log file.")
+                .default_value("false")
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("product_rpt_file")
+                .long("product-rpt-file")
+                .value_name("product_rpt_file")
+                .help("Product Report File Path.")
+                .required(true)
+        )
+        .get_matches()
+}

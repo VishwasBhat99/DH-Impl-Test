@@ -1,0 +1,55 @@
+#[derive(Debug, Serialize, Deserialize, Clone, Default)]
+pub struct NPAInput {
+    pub sl_no: String,
+    pub branch_code: String,
+    pub client_id: String,
+    pub branch_name: String,
+    pub zone: String,
+    pub area: String,
+    pub account_no: String,
+    pub name: String,
+    pub pan: String,
+    pub gl_head: String,
+    pub asset_code: String,
+    pub npa_dt: String,
+    pub account_balance: String,
+    pub pwo: String,
+    pub written_off_dt: String,
+    pub ho_balance: String,
+    pub npa_provision: String,
+    pub ho_provision: String,
+    pub suspence_bal: String,
+    pub suspence_writeoff: String,
+    pub ho_suspence: String,
+    pub claim: String,
+    pub primary: String,
+    pub collateral: String,
+    pub total_security: String,
+    pub primary_valuation_dt: String,
+    pub collateral_valuation_dt: String,
+    pub gold_deficit: String,
+    pub fraud: String,
+    pub wilful_default: String,
+    pub subsidy: String,
+    pub priority: String,
+    pub priority_type: String,
+    pub main_sector: String,
+    pub sub_sector: String,
+    pub activity: String,
+    pub industry: String,
+    pub category_of_borrower: String,
+    pub org_gl_head: String,
+}
+
+impl NPAInput {
+    pub fn print(&self) -> String {
+        format!(
+            "{}|{}|{}|{}|{}|",
+            self.account_no,
+            self.asset_code,
+            self.account_balance,
+            self.ho_balance,
+            self.ho_provision,
+        )
+    }
+}

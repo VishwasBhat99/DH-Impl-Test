@@ -1,0 +1,17 @@
+[package]
+name = "copy_script_generator"
+version = "0.1.0"
+authors = ["Tarun Jaiswal <tarun.j@surya-soft.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0.118", features = ["derive"] }
+serde_json = "1.0.60"
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+clap = "2.33.3"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+slog = { version = "2.5.2", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.2"
+slog-async = "2.3.0"

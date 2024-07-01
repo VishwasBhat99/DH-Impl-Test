@@ -1,0 +1,17 @@
+[package]
+name = "cf_lc_availed"
+version = "0.1.0"
+authors = ["Prajwal Dhatwalia <prajwal.dh@surya-soft.com>"]
+
+[dependencies]
+clap = "2.32.0"
+health_report = {path = "../../../hdfc/Libraries/health_report"}
+protobuf = { version = "~2.0", features = ["with-bytes"] }
+rbdate = { path = "../../../hdfc/Libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/Libraries/sdb_io"}
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"

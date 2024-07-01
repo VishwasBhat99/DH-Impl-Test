@@ -1,0 +1,435 @@
+DROP VIEW "CAP_FLOOR_CF_VIEW";
+  CREATE  VIEW "CAP_FLOOR_CF_VIEW" ("TRADE", "FLOW_AMOUNT", "CASHFLOW_DATE", "FLOW_CURRENCY") AS 
+  SELECT
+trade,
+SUM(flowamount) as flowamount,
+cashflowdate,
+flowcurrency
+FROM cashflow_generic
+WHERE
+(
+(NVL(flowtype,'NA')='CAP' 
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'XIT' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'MID' OR NVL(FLOWTYPE2,'NA') <>'ADD')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'ADD')
+) 
+OR
+(
+NVL(flowtype,'NA')='BRK'
+AND (NVL(FLOWTYPE1,'NA')<>'BFEE' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'CIFE' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+)
+OR NVL(flowtype,'NA') NOT IN ('BRK','CAP')
+)
+GROUP BY trade, cashflowdate, flowcurrency;
+
+
+DROP VIEW "VW_CCY_IRS_SWAP_CASHFLOW";
+  CREATE  VIEW "VW_CCY_IRS_SWAP_CASHFLOW" ("TRADE", "CASHFLOWDATE", "FLOWAMOUNT", "FLOWCURRENCY") AS 
+  SELECT 
+TRADE,
+CASHFLOWDATE,
+SUM(FLOWAMOUNT) as FLOWAMOUNT,
+FLOWCURRENCY
+FROM cashflow_generic
+WHERE
+(
+(NVL(flowtype,'NA')='CAP' 
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'XIT' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'MID' OR NVL(FLOWTYPE2,'NA') <>'ADD')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'ADD')
+) 
+OR
+(
+NVL(flowtype,'NA')='BRK'
+AND (NVL(FLOWTYPE1,'NA')<>'BFEE' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'CIFE' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+)
+OR NVL(flowtype,'NA') NOT IN ('BRK','CAP')
+)
+GROUP BY TRADE,CASHFLOWDATE,FLOWCURRENCY;
+
+
+DROP VIEW "VW_FCY_IRS_SWAP_CASHFLOW";
+  CREATE  VIEW "VW_FCY_IRS_SWAP_CASHFLOW" ("TRADE", "CASHFLOWDATE", "FLOWAMOUNT", "FLOWCURRENCY") AS 
+  SELECT 
+TRADE,
+CASHFLOWDATE,
+SUM(FLOWAMOUNT) as FLOWAMOUNT,
+FLOWCURRENCY
+FROM cashflow_generic
+WHERE
+(
+(NVL(flowtype,'NA')='CAP' 
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'XIT' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'MID' OR NVL(FLOWTYPE2,'NA') <>'ADD')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'ADD')
+) 
+OR
+(
+NVL(flowtype,'NA')='BRK'
+AND (NVL(FLOWTYPE1,'NA')<>'BFEE' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'CIFE' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+)
+OR NVL(flowtype,'NA') NOT IN ('BRK','CAP')
+)
+GROUP BY TRADE,CASHFLOWDATE,FLOWCURRENCY;
+
+
+DROP VIEW "VW_INR_IRS_SWAP_CASHFLOW";
+  CREATE  view "VW_INR_IRS_SWAP_CASHFLOW" ("TRADE", "CASHFLOWDATE", "FLOWAMOUNT", "FLOWCURRENCY") AS 
+  SELECT 
+TRADE,
+CASHFLOWDATE,
+SUM(FLOWAMOUNT) as FLOWAMOUNT,
+FLOWCURRENCY
+FROM cashflow_generic
+WHERE
+(
+(NVL(flowtype,'NA')='CAP' 
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'XIT' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'MID' OR NVL(FLOWTYPE2,'NA') <>'ADD')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'ADD')
+) 
+OR
+(
+NVL(flowtype,'NA')='BRK'
+AND (NVL(FLOWTYPE1,'NA')<>'BFEE' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'CIFE' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+)
+OR NVL(flowtype,'NA') NOT IN ('BRK','CAP')
+)GROUP BY TRADE,CASHFLOWDATE,FLOWCURRENCY;
+
+
+DROP VIEW VW_OPTION_CF;
+  CREATE view VW_OPTION_CF ("ENTITY", "TRADEID", "EXTERNALID", "STRUCTUREID", "STRUCTUREIDORLINKID", "COMPONENTTYPOLOGY", "CONTRACTTYPOLOGY", "PACKAGETYPOLOGY", "CONTRACTUSAGE", "DESK", "BOOK", "FOLDER", "TRADINGORBANKING", "COUNTERPARTYGROUPCODE", "COUNTERPARTYPARENTCODE", "COUNTERPARTYCHILDCODE", "COUNTERPARTYNAME", "INTERNALOREXTERNAL", "TRADEDATE", "STARTDATE", "EXPIRYDATE", "DELIVERYDATE", "BUYORSELL", "PUTORCALL", "CALLCURRENCY", "CALLAMOUNT", "PUTCURRENCY", "PUTAMOUNT", "NOTIONAL_INR", "STRIKERATE", "BANKORNONBANK", "CCYPAIR", "CURRENTSPOT", "PREMIUMCURRENCY", "PREMIUMAMOUNT", "SETTLEDPREMIUMAMOUNT", "UNSETTLEDPREMIUMAMOUNT", "PREMIUMSETTLEMENTDATE", "FUTURECASHPROCEEDSCURRENCY", "FUTURECASHPROCEEDS", "FUTURECASHPROCEEDSINR", "MARKETVALUEFINANCED", "MTM_EXCLUDINGPREMIUMIN_INR", "MTM_WITHUNSETTLEDPREMIAIN_INR", "CVA", "DVA", "BCVA", "NETBCVAADJUSTEDGMTMIN_INR", "POSITIONCURRENCY", "FORWARDDELTACCY1AMOUNT", "SPOTDELTACCY1AMOUNT", "PLCURRENCY", "FORWARDDELTACCY2AMOUNT", "SPOTDELTACCY2AMOUNT", "GAMMACCY", "GAMMAAMOUNT", "VEGA_INR", "THETA_INR", "RHO_INR", "UNDERLYNGCCY", "PHI_INR", "VANNA_INR", "VOLGA_INR", "MODIFIEDDURATION", "UNDERLYINGNOTIONAL", "UNDERLYINGORPP", "ORIGINALTENOR", "RESIDUALTENOR", "DEALSTATUS", "INPUTID", "M_H_FWD_RATE", "FLOWTYPE", "FLOWTYPE1", "FLOWTYPE2", "FLOWTYPE3", "FLOWTYPE4", "FORWARDDELTACF", "FLOWAMOUNT", "PREMIUMAMTONDELIVDT", "CCY", "CASHFLOWDATE") AS 
+  select 
+A1.Entity
+,A1.TradeId
+,A1.ExternalID
+,A1.StructureID
+,A1.StructureIdorLinkId
+,A1.ComponentTypology
+,A1.ContractTypology
+,A1.PackageTypology
+,A1.ContractUsage
+,A1.Desk
+,A1.Book
+,A1.Folder
+,A1.TradingorBanking
+,A1.CounterpartyGroupCode
+,A1.CounterpartyParentCode
+,A1.CounterpartyChildCode
+,A1.CounterpartyName
+,A1.InternalorExternal
+,A1.TradeDate
+,A1.StartDate
+,A1.ExpiryDate
+,A1.DeliveryDate
+,A1.BuyorSell
+,A1.PutorCall
+,A1.CallCurrency
+,A1.CallAmount
+,A1.PutCurrency
+,A1.PutAmount
+,A1.Notional_INR
+,A1.StrikeRate
+,A1.BankorNonBank
+,A1.CCYPair
+,A1.CurrentSpot
+,A1.PremiumCurrency
+,A1.PremiumAmount
+,A1.SettledPremiumamount
+,A1.UnsettledPremiumamount
+,A1.PremiumSettlementDate
+,A1.FutureCashProceedsCurrency
+,A1.FutureCashProceeds
+,A1.FutureCashProceedsINR
+,A1.MarketValueFinanced
+,A1.MTM_excludingpremiumin_INR
+,A1.MTM_withunsettledpremiaIn_INR
+,A1.CVA
+,A1.DVA
+,A1.BCVA
+,A1.NetBCVAadjustedGMTMin_INR
+,A1.PositionCurrency
+,A1.ForwarddeltaCCY1Amount
+,A1.SpotdeltaCCY1Amount
+,A1.PLCurrency
+,A1.ForwarddeltaCCY2Amount
+,A1.SpotdeltaCCY2Amount
+,A1.GammaCCY
+,A1.GammaAmount
+,A1.Vega_INR
+,A1.Theta_INR
+,A1.Rho_INR
+,A1.UnderlyngCcy
+,A1.Phi_INR
+,A1.Vanna_INR
+,A1.Volga_INR
+,A1.ModifiedDuration
+,A1.UnderlyingNotional
+,A1.UnderlyingorPP
+,A1.OriginalTenor
+,A1.ResidualTenor
+,A1.DealStatus
+,A1.InputID
+,A1.M_H_FWD_RATE,
+'Delta' as FLOWTYPE,
+'CCY1' as FLOWTYPE1,
+'CCY1' as FLOWTYPE2,
+'CCY1' as FLOWTYPE3,
+'CCY1' as FLOWTYPE4,
+NVL(A1.ForwarddeltaCCY1Amount,0) as ForwarddeltaCF,
+(NVL(A1.ForwarddeltaCCY1Amount,0)-
+(nvl((select sum(flowamount) from cashflow_generic where trade=TRADEID and FLOWTYPE1='IPAY' and flowcurrency=A1.PREMIUMCURRENCY AND A1.PLCURRENCY = A1.PREMIUMCURRENCY and TO_CHAR(cashflowdate, 'DD-MM-YYYY')=replace (A1.DeliveryDate,'/','-')),0))
+)AS FLOWAMOUNT,
+nvl((select sum(NVL(flowamount,0)) from cashflow_generic where trade=TRADEID and FLOWTYPE1='IPAY' and flowcurrency=A1.PREMIUMCURRENCY AND A1.PLCURRENCY = A1.PREMIUMCURRENCY and TO_CHAR(cashflowdate, 'DD-MM-YYYY')=replace (A1.DeliveryDate,'/','-')),0) as PremiumAmtOnDelivDt,
+A1.PLCURRENCY AS CCY,
+replace (A1.DeliveryDate,'/','-') AS CASHFLOWDATE
+--TO_CHAR(A1.DeliveryDate,'DD-MM-')||'20'||substr(to_char(A1.DeliveryDate,'YYYY'),3)
+from OPTION_MASTER A1
+union all
+select 
+A1.Entity
+,A1.TradeId 
+,A1.ExternalID
+,A1.StructureID
+,A1.StructureIdorLinkId
+,A1.ComponentTypology
+,A1.ContractTypology
+,A1.PackageTypology
+,A1.ContractUsage
+,A1.Desk
+,A1.Book
+,A1.Folder
+,A1.TradingorBanking
+,A1.CounterpartyGroupCode
+,A1.CounterpartyParentCode
+,A1.CounterpartyChildCode
+,A1.CounterpartyName
+,A1.InternalorExternal
+,A1.TradeDate
+,A1.StartDate
+,A1.ExpiryDate
+,A1.DeliveryDate
+,A1.BuyorSell
+,A1.PutorCall
+,A1.CallCurrency
+,A1.CallAmount
+,A1.PutCurrency
+,A1.PutAmount
+,A1.Notional_INR
+,A1.StrikeRate
+,A1.BankorNonBank
+,A1.CCYPair
+,A1.CurrentSpot
+,A1.PremiumCurrency
+,A1.PremiumAmount
+,A1.SettledPremiumamount
+,A1.UnsettledPremiumamount
+,A1.PremiumSettlementDate
+,A1.FutureCashProceedsCurrency
+,A1.FutureCashProceeds
+,A1.FutureCashProceedsINR
+,A1.MarketValueFinanced
+,A1.MTM_excludingpremiumin_INR
+,A1.MTM_withunsettledpremiaIn_INR
+,A1.CVA
+,A1.DVA
+,A1.BCVA
+,A1.NetBCVAadjustedGMTMin_INR
+,A1.PositionCurrency
+,A1.ForwarddeltaCCY1Amount
+,A1.SpotdeltaCCY1Amount
+,A1.PLCurrency
+,A1.ForwarddeltaCCY2Amount
+,A1.SpotdeltaCCY2Amount
+,A1.GammaCCY
+,A1.GammaAmount
+,A1.Vega_INR
+,A1.Theta_INR
+,A1.Rho_INR
+,A1.UnderlyngCcy
+,A1.Phi_INR
+,A1.Vanna_INR
+,A1.Volga_INR
+,A1.ModifiedDuration
+,A1.UnderlyingNotional
+,A1.UnderlyingorPP
+,A1.OriginalTenor
+,A1.ResidualTenor
+,A1.DealStatus
+,A1.InputID
+,A1.M_H_FWD_RATE,
+'Delta' as FLOWTYPE,
+'CCY2' as FLOWTYPE1,
+'CCY2' as FLOWTYPE2,
+'CCY2' as FLOWTYPE3,
+'CCY2' as FLOWTYPE4,
+NVL(A1.forwarddeltaccy2amount,0)  as ForwarddeltaCF,
+(NVL(A1.forwarddeltaccy2amount,0) 
+-
+nvl((select sum(NVL(flowamount,0)) from cashflow_generic where trade=TRADEID and FLOWTYPE1='IPAY' and flowcurrency=A1.PREMIUMCURRENCY  AND A1.POSITIONCURRENCY = A1.PREMIUMCURRENCY and TO_CHAR(cashflowdate, 'DD-MM-YYYY')=replace (A1.DeliveryDate,'/','-')),0)
+)
+AS FLOWAMOUNT,
+nvl((select sum(NVL(flowamount,0)) from cashflow_generic where trade=TRADEID and FLOWTYPE1='IPAY' and flowcurrency=A1.PREMIUMCURRENCY  AND A1.POSITIONCURRENCY = A1.PREMIUMCURRENCY and TO_CHAR(cashflowdate, 'DD-MM-YYYY')=replace (A1.DeliveryDate,'/','-')),0) as PremiumAmtOnDelivDt,
+A1.POSITIONCURRENCY AS CCY,
+replace (A1.DeliveryDate,'/','-') AS CASHFLOWDATE
+from OPTION_MASTER A1
+
+UNION ALL
+select 
+ C1.M_TP_ENTITY AS Entity
+,NVL(A1.TradeId,C1.Trade) AS TradeId
+,C1.EXTERNAL_NB AS ExternalID
+,A1.StructureID
+,A1.StructureIdorLinkId
+,A1.ComponentTypology
+,A1.ContractTypology
+,A1.PackageTypology
+,A1.ContractUsage
+,A1.Desk
+,A1.Book
+,A1.Folder
+,A1.TradingorBanking
+,A1.CounterpartyGroupCode
+,A1.CounterpartyParentCode
+,A1.CounterpartyChildCode
+,A1.CounterpartyName,
+CASE WHEN C1.IE='INT' THEN 'I'
+ELSE
+'E'
+END InternalorExternal
+,A1.TradeDate
+,A1.StartDate
+,A1.ExpiryDate
+,A1.DeliveryDate
+,A1.BuyorSell
+,A1.PutorCall
+,A1.CallCurrency
+,A1.CallAmount
+,A1.PutCurrency
+,A1.PutAmount
+,A1.Notional_INR
+,A1.StrikeRate
+,A1.BankorNonBank
+,A1.CCYPair
+,A1.CurrentSpot
+,A1.PremiumCurrency
+,A1.PremiumAmount
+,A1.SettledPremiumamount
+,A1.UnsettledPremiumamount
+,A1.PremiumSettlementDate
+,A1.FutureCashProceedsCurrency
+,A1.FutureCashProceeds
+,A1.FutureCashProceedsINR
+,A1.MarketValueFinanced
+,A1.MTM_excludingpremiumin_INR
+,A1.MTM_withunsettledpremiaIn_INR
+,A1.CVA
+,A1.DVA
+,A1.BCVA
+,A1.NetBCVAadjustedGMTMin_INR
+,A1.PositionCurrency
+,A1.ForwarddeltaCCY1Amount
+,A1.SpotdeltaCCY1Amount
+,A1.PLCurrency
+,A1.ForwarddeltaCCY2Amount
+,A1.SpotdeltaCCY2Amount
+,A1.GammaCCY
+,A1.GammaAmount
+,A1.Vega_INR
+,A1.Theta_INR
+,A1.Rho_INR
+,A1.UnderlyngCcy
+,A1.Phi_INR
+,A1.Vanna_INR
+,A1.Volga_INR
+,A1.ModifiedDuration
+,A1.UnderlyingNotional
+,A1.UnderlyingorPP
+,A1.OriginalTenor
+,A1.ResidualTenor
+,A1.DealStatus
+,A1.InputID
+,A1.M_H_FWD_RATE,
+NVL(C1.FLOWTYPE,'NA'),
+NVL(C1.FLOWTYPE1,'NA'),
+NVL(C1.FLOWTYPE2,'NA'),
+NVL(C1.FLOWTYPE3,'NA'),
+NVL(C1.FLOWTYPE4,'NA'),
+0 as  ForwarddeltaCF,
+NVL(C1.FLOWAMOUNT,0) AS FLOWAMOUNT,
+0 as PremiumAmtOnDelivDt,
+NVL(C1.FLOWCURRENCY,'INR') CCY,
+--C1.CASHFLOWDATE
+TO_CHAR(C1.CASHFLOWDATE,'DD-MM-')||'20'||substr(to_char(C1.CASHFLOWDATE,'YYYY'),3) AS CASHFLOWDATE
+from 
+cashflow_generic C1 LEFT OUTER join 
+OPTION_MASTER A1
+on A1.TradeID=C1.Trade
+where
+NVL(tradegroup,'na')='OPT'
+and (REPLACE (A1.DeliveryDate,'/','-') <>(TO_CHAR(C1.CASHFLOWDATE,'DD-MM-')||'20'||substr(to_char(C1.CASHFLOWDATE,'YYYY'),3))
+or DeliveryDate is null)
+and
+(
+(NVL(flowtype,'NA')='CAP' 
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'XIT' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'MID' OR NVL(FLOWTYPE2,'NA') <>'ADD')
+AND (NVL(FLOWTYPE1,'NA')<>'IPAY' OR NVL(FLOWTYPE4,'NA')  <>'ADD')
+) 
+OR
+(
+NVL(flowtype,'NA')='BRK'
+AND (NVL(FLOWTYPE1,'NA')<>'BFEE' OR NVL(FLOWTYPE4,'NA') <>'INT')
+AND  (NVL(FLOWTYPE1,'NA')<>'CIFE' OR NVL(FLOWTYPE4,'NA')  <>'INT')
+));
+
+
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "VW_SRCGLBAL" ("ASONDATE", "SRCFILE", "GLTYPE", "SRCGLCODE", "GLAMT", "CCY") AS 
+  select asondate, srcfile,gltype, srcglcode, sum(glamt) AS glamt ,ccy
+from SRCGLBAL
+group by asondate, srcfile,gltype, srcglcode,ccy;
+
+
+
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "VW_RECIPROCAL_CF" ("CF_SUBTYPE", "C_PARTY", "CCY", "TYP", "SANC_AMT", "ST_DT", "ED_DT", "COUNTRY", "UTIL_AMT") AS 
+  SELECT 
+  'SANCTION' AS CF_SUBTYPE,
+  crnt_prty_name,
+  CCY,
+  TYP,
+  SANC_AMT,
+  ST_DT,
+  ED_DT,
+  COUNTRY,
+  (SELECT NVL( SUM(DEAL_AMOUNT),0) FROM money_market_master 
+    WHERE branch='INDIA_CE' AND money_market_master.counterparty=C_PARTY) AS UTIL_AMT
+FROM 
+INP_RECIPROCAL_LMT_SANCTION
+UNION ALL
+SELECT 
+  'UTIL' AS CF_SUBTYPE,
+  crnt_prty_name AS C_PARTY,
+  CURRENCY AS  CCY,
+  LENDING_BORROWING_TYPE AS TYP,
+  DEAL_AMOUNT AS SANC_AMT,
+  MATURITY_DT AS ST_DT,
+  (SELECT ED_DT FROM INP_RECIPROCAL_LMT_SANCTION WHERE 
+  COUNTRY='INDIA_CE' AND counterparty=C_PARTY ) AS  ED_DT,
+  BRANCH AS  COUNTRY,
+  TO_NUMBER ('0') AS UTIL_AMT
+FROM 
+money_market_master
+WHERE
+BRANCH='INDIA_CE'
+AND sub_type_borrowing_lending='RECIPROCAL';
+

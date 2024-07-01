@@ -1,0 +1,21 @@
+[package]
+name = "balm_to_basel_cf"
+version = "1.1.4057"
+authors = ["Saurabh Singh <saurabh.s@surya-soft.com>"]
+
+[dependencies]
+clap = "2.32.0"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+health_report = {path = "../../../hdfc/libraries/health_report" }
+sdb_agg_rules_adj = {path = "../../../surya/libraries//sdb_agg_rules_adj" }
+sdb_agg_rules = {path = "../../../surya/libraries//sdb_agg_rules" }
+serde = "1.0"
+serde_json = "1.0"
+chrono = "0.4.27"
+serde_derive = "1.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+sdb_dyn_proto_rdr = { path = "../../../hdfc/libraries/sdb_dyn_proto_rdr" }
+protobuf = { version = "2.15.0", features = ["with-bytes"] }

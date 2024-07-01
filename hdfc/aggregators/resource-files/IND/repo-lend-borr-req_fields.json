@@ -1,0 +1,9 @@
+{
+    "account_number": "deal_no",
+    "concat": "",
+    "cashflows": "cashflows",
+    "institution": "currency",
+    "interest_rate": "",
+    "next_rep_date": "",
+    "exchange_rate" : ""
+  }

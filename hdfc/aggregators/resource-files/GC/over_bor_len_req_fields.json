@@ -1,0 +1,9 @@
+{
+  "account_number": "deal_id",
+  "concat": "alm_line",
+  "cashflows": "cashflows",
+  "institution": "currency",
+  "interest_rate": "roi",
+  "next_rep_date": "",
+  "exchange_rate": ""
+}

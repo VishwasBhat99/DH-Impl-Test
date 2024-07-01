@@ -1,0 +1,214 @@
+{
+	"streamName": "Bullion",
+	"streamId": "1040",
+	"flows": [
+		{
+			"name": "Bullion-Loan",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/Bullion_Loan.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/IND/pp_bullion_loans",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/Bullion_Loan.txt",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/GL_ALM_Mapping.xlsx",
+						"--alm-master-sheet-name",
+						"GL_ALM_Mapping",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BullionOutput.txt",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BullionReconRpt.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionPPDiagLog.txt",
+						"--currency",
+						"XAU"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BullionOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/IND/cf_bullion_loans",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BullionOutput.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/BullionCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/BullionCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/BullionCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/BulLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionBALMDiagLog.txt.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--is-consolidated",
+						"true",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/IND/bul_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/bul_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/IND/bul_rules.txt",
+						"--default-llg-code",
+						"12849"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/BullionCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BulLoansAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/BulLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BulLoansAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/BullionCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-LC-BG",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/BullionCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/BulLoansLCBGAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionLCBGBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionLCBGBALMDiagLog.txt.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--is-consolidated",
+						"true",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/IND/bul_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/bul_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/IND/bul_lc_bg_rules.txt",
+						"--default-llg-code",
+						"12849"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/BullionCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion LC BG",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BulLoansLCBGAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/BulLoansLCBGAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BulLoansLCBGAggConvLog.txt"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/BullionCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "8",
+					"processBinary": "/home/dbuser/programs/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/BullionCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BullionAvgBal.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/BullionAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/UAT_SH_RULES/IND/bul_avg_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/bul_metadata.json"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BullionAvgBal-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

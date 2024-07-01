@@ -1,0 +1,194 @@
+1|1|0|ia_line|EQ|CA - CBD|AND
+1|1|1|is_acct_gl|EQ|N|AND
+1|1|2|cf_type|EQ|C|6501
+2|1|0|ia_line|EQ|CA - RL|AND
+2|1|1|is_acct_gl|EQ|N|AND
+2|1|2|cf_type|EQ|C|6505
+3|1|0|ia_line|EQ|CA - RL|AND
+3|1|1|is_acct_gl|EQ|N|6505
+4|1|0|ia_line|EQ|CA - RA|AND
+4|1|1|is_acct_gl|EQ|N|AND
+4|1|2|cf_type|EQ|C|6510
+5|1|0|ia_line|EQ|CA - RA|AND
+5|1|1|is_acct_gl|EQ|N|6510
+6|1|0|ia_line|EQ|CA - HK|AND
+6|1|1|is_acct_gl|EQ|N|AND
+6|1|2|cf_type|EQ|C|6515
+7|1|0|ia_line|EQ|CA - SE|AND
+7|1|1|is_acct_gl|EQ|N|AND
+7|1|2|cf_type|EQ|C|6520
+8|1|0|ia_line|EQ|CA - SE|AND
+8|1|1|is_acct_gl|EQ|N|6520
+9|1|0|ia_line|EQ|CA - ECG|AND
+9|1|1|is_acct_gl|EQ|N|AND
+9|1|2|cf_type|EQ|C|6525
+10|1|0|ia_line|EQ|CA - ECG|AND
+10|1|1|is_acct_gl|EQ|N|6525
+11|1|0|ia_line|EQ|CA - FIG|AND
+11|1|1|is_acct_gl|EQ|N|AND
+11|1|2|cf_type|EQ|C|6530
+12|1|0|ia_line|EQ|CA - FIG|AND
+12|1|1|is_acct_gl|EQ|N|6530
+13|1|0|ia_line|EQ|CA - FIG - BTI|AND
+13|1|1|is_acct_gl|EQ|N|AND
+13|1|2|cf_type|EQ|C|6535
+14|1|0|ia_line|EQ|CRR Surplus|AND
+14|1|1|is_acct_gl|EQ|N|11001
+15|1|0|ia_line|EQ|Local Nostros|11005
+16|1|0|ia_line|EQ|Cash|AND
+16|1|1|is_acct_gl|EQ|N|11010
+17|1|0|ia_line|EQ|Inv - Shares - Equities&MF|AND
+17|1|1|is_acct_gl|EQ|N|12025
+18|1|0|ia_line|EQ|Inv - Shares - Equities&MF|AND
+18|1|1|is_acct_gl|EQ|N|AND
+18|1|2|cf_type|EQ|C|12025
+19|1|0|ia_line|EQ|OA - Fixed Assets - Baharain|AND
+19|1|1|is_acct_gl|EQ|N|14505
+20|1|0|ia_line|EQ|OA - Fixed Assets - HK|AND
+20|1|1|is_acct_gl|EQ|N|14510
+21|1|0|ia_line|EQ|OA - Internal|AND
+21|1|1|is_acct_gl|EQ|N|AND
+21|1|2|cf_type|EQ|C|14515
+22|1|0|ia_line|EQ|OA - Internal|AND
+22|1|1|is_acct_gl|EQ|N|14515
+23|1|0|ia_line|EQ|OA - Internal - Baharain|AND
+23|1|1|is_acct_gl|EQ|N|14520
+24|1|0|ia_line|EQ|OA - Internal - HK|AND
+24|1|1|is_acct_gl|EQ|N|14525
+25|1|0|ia_line|EQ|Savings|AND
+25|1|1|is_acct_gl|EQ|N|AND
+25|1|2|cf_type|EQ|C|7001
+26|1|0|ia_line|EQ|OL - Other Liabilities (GL)|AND
+26|1|1|is_acct_gl|EQ|N|AND
+26|1|2|cf_type|EQ|C|8001
+27|1|0|ia_line|EQ|OL - Sub Debt|AND
+27|1|1|is_acct_gl|EQ|N|AND
+27|1|2|cf_type|EQ|C|8015
+28|1|0|ia_line|EQ|OL - Sub Debt|AND
+28|1|1|is_acct_gl|EQ|N|8015
+29|1|0|ia_line|EQ|OL - Other Liabilities - Baharain|AND
+29|1|1|is_acct_gl|EQ|N|8005
+30|1|0|ia_line|EQ|OL - Other Liabilities - HK|AND
+30|1|1|is_acct_gl|EQ|N|8010
+31|1|0|ia_line|EQ|Floats|AND
+31|1|1|is_acct_gl|EQ|N|8020
+32|1|0|ia_line|EQ|OA - Fixed Assets (GL)|AND
+32|1|1|is_acct_gl|EQ|N|AND
+32|1|2|cf_type|EQ|A|14501
+33|1|0|ia_line|EQ|OL - Other Liabilities (GL)|AND
+33|1|1|is_acct_gl|EQ|N|AND
+33|1|2|cf_type|EQ|N|8001
+34|1|0|ia_line|EQ|OA - Fixed Assets (GL)|AND
+34|1|1|is_acct_gl|EQ|N|AND
+34|1|2|cf_type|EQ|D|14501
+35|1|0|ia_line|EQ|OA - Fixed Assets (GL)|AND
+35|1|1|is_acct_gl|EQ|N|AND
+35|1|2|cf_type|EQ|N|14501
+36|1|0|ia_line|EQ|OL - Other Liabilities (GL)|AND
+36|1|1|is_acct_gl|EQ|N|AND
+36|1|2|cf_type|EQ|L|8001
+37|1|0|ia_line|EQ|CA - CBD|AND
+37|1|1|is_acct_gl|EQ|N|6501
+38|1|0|ia_line|EQ|Borrowing - FCY|AND
+38|1|1|is_acct_gl|EQ|N|6020
+39|1|0|ia_line|EQ|Lendings - Call|AND
+39|1|1|is_acct_gl|EQ|N|11501
+40|1|0|ia_line|EQ|Lendings - FCY|AND
+40|1|1|is_acct_gl|EQ|N|11505
+41|1|0|ia_line|EQ|Borrowing - Repos|AND
+41|1|1|is_acct_gl|EQ|N|6035
+42|1|0|ia_line|EQ|Borr - Refinance|AND
+42|1|1|is_acct_gl|EQ|N|6015
+43|1|0|ia_line|EQ|TD - RA|AND
+43|1|1|is_acct_gl|EQ|N|7535
+44|1|0|ia_line|EQ|TD - Retail|AND
+44|1|1|is_acct_gl|EQ|N|7525
+45|1|0|ia_line|EQ|Bills - ECG|AND
+45|1|1|is_acct_gl|EQ|N|13015
+46|1|0|ia_line|EQ|Bills - Others|AND
+46|1|1|is_acct_gl|EQ|N|13030
+47|1|0|ia_line|EQ|Bills - BB|AND
+47|1|1|is_acct_gl|EQ|N|13035
+48|1|0|ia_line|EQ|Inv - Deb - CBD - Fixed|AND
+48|1|1|is_acct_gl|EQ|N|12045
+49|1|0|ia_line|EQ|Inv-PREF/CBD|AND
+49|1|1|is_acct_gl|EQ|N|12055
+50|1|0|ia_line|EQ|Inv - RIDF|AND
+50|1|1|is_acct_gl|EQ|N|12060
+51|1|0|ia_line|EQ|OD - RL|AND
+51|1|1|is_acct_gl|EQ|N|AND
+51|1|2|cf_type|EQ|D|14015
+52|1|0|ia_line|EQ|OD - CC|AND
+52|1|1|is_acct_gl|EQ|N|AND
+52|1|2|cf_type|EQ|D|14065
+53|1|0|ia_line|EQ|OD-CFU|AND
+53|1|1|is_acct_gl|EQ|N|AND
+53|1|2|cf_type|EQ|D|14090
+54|1|0|ia_line|EQ|Loans - CBD|AND
+54|1|1|is_acct_gl|EQ|N|12501
+55|1|0|ia_line|EQ|Loans - FIG|AND
+55|1|1|is_acct_gl|EQ|N|12509
+56|1|0|ia_line|EQ|Loans - CFU - Staff|AND
+56|1|1|is_acct_gl|EQ|N|12512
+57|1|0|ia_line|EQ|Loans - Retail Others|AND
+57|1|1|is_acct_gl|EQ|N|12515
+58|1|0|ia_line|EQ|Loans - SE|AND
+58|1|1|is_acct_gl|EQ|N|12518
+59|1|0|ia_line|EQ|Loans - ECG|AND
+59|1|1|is_acct_gl|EQ|N|12521
+60|1|0|ia_line|EQ|Loans - EEG|AND
+60|1|1|is_acct_gl|EQ|N|12539
+61|1|0|ia_line|EQ|Loans - BB - Others|AND
+61|1|1|is_acct_gl|EQ|N|12554
+62|1|0|ia_line|EQ|Loan - GOLD|AND
+62|1|1|is_acct_gl|EQ|N|12569
+63|1|0|ia_line|EQ|EMI Loans - AL|AND
+63|1|1|is_acct_gl|EQ|N|13501
+64|1|0|ia_line|EQ|EMI Loans - UC|AND
+64|1|1|is_acct_gl|EQ|N|13503
+65|1|0|ia_line|EQ|EMI Loans - PL|AND
+65|1|1|is_acct_gl|EQ|N|13506
+66|1|0|ia_line|EQ|EMI Loans - Business|AND
+66|1|1|is_acct_gl|EQ|N|13509
+67|1|0|ia_line|EQ|EMI Loans - SHG|AND
+67|1|1|is_acct_gl|EQ|N|13512
+68|1|0|ia_line|EQ|EMI Loans - TW|AND
+68|1|1|is_acct_gl|EQ|N|13521
+69|1|0|ia_line|EQ|EMI Loans - CV|AND
+69|1|1|is_acct_gl|EQ|N|13527
+70|1|0|ia_line|EQ|EMI Loans - CE|AND
+70|1|1|is_acct_gl|EQ|N|13542
+71|1|0|ia_line|EQ|Loans - Inventory - AL|AND
+71|1|1|is_acct_gl|EQ|N|13554
+72|1|0|ia_line|EQ|Loans - Inventory - TW|AND
+72|1|1|is_acct_gl|EQ|N|13555
+73|1|0|ia_line|EQ|Loans - Inventory - CV|AND
+73|1|1|is_acct_gl|EQ|N|13556
+74|1|0|ia_line|EQ|EMI Loans - HCEQ|AND
+74|1|1|is_acct_gl|EQ|N|13557
+75|1|0|ia_line|EQ|EMI Loans - KGC|AND
+75|1|1|is_acct_gl|EQ|N|13560
+76|1|0|ia_line|EQ|Lendings - Reverse Repos|AND
+76|1|1|is_acct_gl|EQ|N|11520
+77|1|0|ia_line|EQ|OL - Other Liabilities (GL)|AND
+77|1|1|is_acct_gl|EQ|N|8001
+78|1|0|ia_line|EQ|Loans - CFU - Staff|AND
+78|1|1|is_acct_gl|EQ|N|AND
+78|1|2|cf_type|EQ|C|12512
+79|1|0|ia_line|EQ|Loans - Retail Others|AND
+79|1|1|is_acct_gl|EQ|N|AND
+79|1|2|cf_type|EQ|C|12515
+80|1|0|ia_line|EQ|OA - Internal|AND
+80|1|1|is_acct_gl|EQ|N|AND
+80|1|2|cf_type|EQ|A|14515
+81|1|0|ia_line|EQ|Bills - CBD|AND
+81|1|1|is_acct_gl|EQ|N|13016
+82|1|0|ia_line|EQ|OD - EEG|AND
+82|1|1|is_acct_gl|EQ|N|AND
+82|1|2|cf_type|EQ|D|14046
+83|1|0|ia_line|EQ|EMI Loans - LARR/Mortgages|AND
+83|1|1|is_acct_gl|EQ|N|13565
+84|1|0|ia_line|EQ|EMI Loans - RIG|AND
+84|1|1|is_acct_gl|EQ|N|13570
+85|1|0|ia_line|EQ|EMI Loans - TL|AND
+85|1|1|is_acct_gl|EQ|N|13571

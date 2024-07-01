@@ -1,0 +1,131 @@
+{
+    "streamName": "SPECIAL BUCKET MOC",
+    "streamId": "5040",
+    "flows": [
+        {
+            "name": "MOC",
+            "flowId": "1",
+            "flowDependencies": [],
+            "executorID": "5",
+            "process": [
+                {
+                    "processName": "Pre-Flight-Check",
+                    "processId": "1",
+                    "processBinary": "/home/dbuser/programs/SIT/GC/pfcGC.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "/SIT_SH_INPUTDATA/GC/{ddmmyyyy}/MOC_Special_Entry_GC_{ddmmyyyy}.xlsx"
+                    ],
+                    "processDependencies": [],
+                    "processReport": ""
+                },
+                {
+                    "processName": "Pre-Processor",
+                    "processId": "2",
+                    "processBinary": "/home/dbuser/programs/SIT/GC/./moc_test",
+                    "processArguments": [
+                        "--input-file",
+                        "/SIT_SH_INPUTDATA/GC/{ddmmyyyy}/MOC_Special_Entry_GC_{ddmmyyyy}.xlsx",
+                        "--sheet-name",
+                        "Sheet1",
+                        "--output-file",
+                        "/SIT_SH_CFDATA/GC/{ddmmyyyy}/MOCCFOutput",
+                        "--log-file",
+                        "/SIT_SH_LOGS/GC/{ddmmyyyy}/MOCPPLog.txt",
+                        "--diagnostics-log-file",
+                        "/SIT_SH_LOGS/GC/{ddmmyyyy}/MOCPPDiagLog.txt"
+                    ],
+                    "processDependencies": [
+                        "1"
+                    ],
+                    "processReport": ""
+                },
+                {
+                    "processName": "BALM-Aggregator",
+                    "processId": "3",
+                    "processBinary": "/home/dbuser/programs/SIT/GC/./balm",
+                    "processArguments": [
+                        "--input-file",
+                        "/SIT_SH_CFDATA/GC/{ddmmyyyy}/MOCCFOutput.cf",
+                        "--output-file",
+                        "/SIT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated",
+                        "--log-file",
+                        "/SIT_SH_LOGS/GC/{ddmmyyyy}/MOCBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/SIT_SH_LOGS/GC/{ddmmyyyy}/MOCBALMDiagLog.txt",
+                        "--currency",
+                        "USD",
+                        "--is-consolidated",
+                        "false",
+                        "--local-consolidation-currency",
+                        "USL",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/SIT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--req-fields-file",
+                        "/SIT_SH_RULES/GC/moc_req_fields.json",
+                        "--account-metadata-file",
+                        "/SIT_SH_RULES/GC/moc_metadata.json",
+                        "--account-level-exchange-rate",
+                        "false",
+                        "--rules-file-path",
+                        "/SIT_SH_RULES/GC/moc_rules_gc.txt",
+                        "--default-llg-code",
+                        "09999"
+                    ],
+                    "processDependencies": [
+                        "2"
+                    ],
+                    "processReport": "/SIT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated-health-check-report.json"
+                },
+                {
+                    "processName": "Aggregated Conversion",
+                    "processId": "4",
+                    "processBinary": "/home/dbuser/programs/SIT/GC/agg_conv",
+                    "processArguments": [
+                        "--base-currency",
+                        "INR",
+                        "--diagnostics-log-file",
+                        "/SIT_SH_LOGS/GC/{ddmmyyyy}/MOCAggConvDiagLog.txt",
+                        "--exchange-rate-file",
+                        "/SIT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--input-file",
+                        "/SIT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated",
+                        "--log-file",
+                        "/SIT_SH_LOGS/GC/{ddmmyyyy}/MOCAggConvLog.txt"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/SIT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Consolidator",
+                    "processId": "5",
+                    "processBinary": "/home/dbuser/programs/SIT/GC/consolidator",
+                    "processArguments": [
+                        "--input-file",
+                        "/SIT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated",
+                        "--output-file",
+                        "/SIT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated",
+                        "--log-file",
+                        "/SIT_SH_LOGS/GC/{ddmmyyyy}/MOCBALMConsolLog.txt",
+                        "--diagnostics-log-file",
+                        "/SIT_SH_LOGS/GC/{ddmmyyyy}/MOCBALMConsolDiagLog.txt",
+                        "--exchange-rate-file",
+                        "/SIT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--consol-config-file",
+                        "/SIT_SH_RULES/GC/consol-config.txt",
+                        "--is-maturity",
+                        "true"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/SIT_SH_CFDATA/GC/{ddmmyyyy}/MOCCFOutput-health-check-report.json"
+                }
+            ]
+        }
+    ]
+}

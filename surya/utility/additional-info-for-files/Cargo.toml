@@ -1,0 +1,19 @@
+[package]
+name = "additional_report"
+version = "0.1.1948"
+authors = ["Bhargavi052 <bhargavi.n@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+calamine = "0.18.0"
+serde = {version = "1.0", features= ["derive"] }
+serde_json = "1.0"
+serde_derive = "1.0"
+chrono = "0.4"
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../../hdfc/libraries/RBDate" }

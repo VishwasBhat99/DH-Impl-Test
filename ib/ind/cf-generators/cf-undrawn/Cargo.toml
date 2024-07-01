@@ -1,0 +1,15 @@
+[package]
+name = "cf_undrawn"
+version = "1.0.3993"
+authors = ["VishwasBhat99 <vishwas.b@surya-soft.com>"]
+
+[dependencies]
+clap = "2.32.0"
+chrono = "0.4.23"
+rbdate = { path = "../../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../../hdfc/libraries/sdb_io"}
+health_report = { path = "../../../../hdfc/libraries/health_report" }
+protobuf = { version = "2.27.1", features = ["with-bytes"] }
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.9.0"
+slog-async = "2.7.0"

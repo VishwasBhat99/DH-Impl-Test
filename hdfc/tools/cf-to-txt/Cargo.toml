@@ -1,0 +1,13 @@
+[package]
+name = "cf_to_txt"
+version = "0.1.0"
+authors = ["Shashank <shashank.p@surya-soft.com>"]
+
+[dependencies]
+clap = {version = "~2.27.0", features = ["yaml"]}
+sdb_dyn_proto_rdr = { path = "../../libraries/sdb_dyn_proto_rdr" }
+rbdate = { path = "../../libraries/RBDate" }
+sdb_io = { path = "../../libraries/sdb_io" }
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"

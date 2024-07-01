@@ -1,0 +1,14 @@
+[package]
+name = "xml_to_xlsx"
+version = "1.0.2900"
+authors = ["bhargavi052 <bhargavi.n@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+xml-rs = "0.8"
+xlsxwriter = "0.3.5"

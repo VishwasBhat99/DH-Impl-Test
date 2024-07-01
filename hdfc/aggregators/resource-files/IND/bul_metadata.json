@@ -1,0 +1,84 @@
+{
+  "fields": [
+    {
+      "name": "acc_no",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "counter_party",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "ccy",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "gl_no",
+      "typ": "I64",
+      "position": 4
+    },
+    {
+      "name": "amt",
+      "typ": "F64",
+      "position": 5
+    },
+    {
+      "name": "int_rt",
+      "typ": "F64",
+      "position": 6
+    },
+    {
+      "name": "st_dt",
+      "typ": "I64",
+      "position": 7
+    },
+    {
+      "name": "mat_dt",
+      "typ": "I64",
+      "position": 8
+    },
+    {
+      "name": "alm_line",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "div",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "cust_typ",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "as_on_dt",
+      "typ": "I64",
+      "position": 12
+    },
+    {
+      "name": "nxt_rep_dt",
+      "typ": "I64",
+      "position": 13
+    },
+    {
+      "name": "tot_int_amt",
+      "typ": "F64",
+      "position": 14
+    },
+    {
+      "name": "tot_prin_amt",
+      "typ": "F64",
+      "position": 15
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 16
+    }
+  ]
+}

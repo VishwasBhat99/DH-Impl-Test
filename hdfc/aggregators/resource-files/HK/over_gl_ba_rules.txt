@@ -1,0 +1,64 @@
+1|1|0|alm_line|EQ|Cash|AND
+1|1|1|is_acct_gl|EQ|N|11005
+2|1|0|alm_line|EQ|BALANCE WITH BANKS AND MONEY AT CALL & SHORT NOTICE|AND
+2|1|1|is_acct_gl|EQ|N|11125
+3|1|0|alm_line|EQ|OL|AND
+3|1|1|is_acct_gl|EQ|N|7085
+4|1|0|alm_line|EQ|OA-AIR|AND
+4|1|1|is_acct_gl|EQ|N|14020
+5|1|0|alm_line|EQ|Fixed Assets|AND
+5|1|1|is_acct_gl|EQ|N|14105
+6|1|0|alm_line|EQ|CA|AND
+6|1|1|is_acct_gl|EQ|N|AND
+6|1|2|cf_type|EQ|C|5221
+7|1|0|alm_line|EQ|OL-AIP|AND
+7|1|1|is_acct_gl|EQ|N|6015
+8|1|0|alm_line|EQ|Internal Liabilities|AND
+8|1|1|is_acct_gl|EQ|N|7088
+9|1|0|alm_line|EQ|Lendings-Interbranch|AND
+9|1|1|is_acct_gl|EQ|N|11155
+10|1|0|alm_line|EQ|TD|AND
+10|1|1|is_acct_gl|EQ|N|5430
+11|1|0|alm_line|EQ|Borrowings - Term|AND
+11|1|1|is_acct_gl|EQ|N|5646
+12|1|0|alm_line|EQ|Term Loans|AND
+12|1|1|is_acct_gl|EQ|N|12764
+13|1|0|alm_line|EQ|OA|AND
+13|1|1|is_acct_gl|EQ|N|14210
+14|1|0|alm_line|EQ|Nostro|AND
+14|1|1|is_acct_gl|EQ|N|11115
+15|1|0|alm_line|EQ|Capital-Equity Shares|AND
+15|1|1|is_acct_gl|EQ|N|5000
+16|1|0|alm_line|EQ|OD|AND
+16|1|1|is_acct_gl|EQ|N|AND
+16|1|2|cf_type|EQ|D|12787
+17|1|0|alm_line|EQ|RESERVE & SURPLUS|AND
+17|1|1|is_acct_gl|EQ|N|5005
+18|1|0|alm_line|EQ|Other Borrowings|AND
+18|1|1|is_acct_gl|EQ|N|5635
+19|1|0|alm_line|EQ|Bills|AND
+19|1|1|is_acct_gl|EQ|N|13505
+20|1|0|alm_line|EQ|Term|AND
+20|1|1|is_acct_gl|EQ|N|11135
+21|1|0|alm_line|EQ|Investments|AND
+21|1|1|is_acct_gl|EQ|N|12771
+22|1|0|alm_line|EQ|Provision for Loans|AND
+22|1|1|is_acct_gl|EQ|N|13915
+23|1|0|alm_line|EQ|Suspense|AND
+23|1|1|is_acct_gl|EQ|N|7025
+24|1|0|alm_line|EQ|Call|AND
+24|1|1|is_acct_gl|EQ|N|11125
+25|1|0|gl_prefix|EQ|3|5005
+26|1|0|gl_prefix|EQ|4|5005
+27|1|0|alm_line|EQ|LCBG|AND
+27|1|1|cf_type|EQ|C|7221
+28|1|0|alm_line|EQ|OL-AIP ( Borrowing )|AND
+28|1|1|is_acct_gl|EQ|N|5654
+29|1|0|alm_line|EQ|OD|AND
+29|1|1|is_acct_gl|EQ|N|AND
+29|1|2|cf_type|EQ|C|5221
+30|1|0|alm_line|EQ|CA|AND
+30|1|1|is_acct_gl|EQ|N|AND
+30|1|2|cf_type|EQ|D|12787
+31|1|0|alm_line|EQ|LCBG|AND
+31|1|1|cf_type|EQ|D|14222

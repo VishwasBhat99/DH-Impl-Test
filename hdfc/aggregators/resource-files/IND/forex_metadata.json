@@ -1,0 +1,239 @@
+{
+  "fields": [
+    {
+      "name": "entity",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "trade_id",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "contract_typology",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "trade_typology",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "usage",
+      "typ": "String",
+      "position": 5
+    },
+    {
+      "name": "desk",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "book",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "folder",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "trading_banking",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "internal_external",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "inter_entity",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "counterparty_long_name",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "cp_category_level_1",
+      "typ": "String",
+      "position": 13
+    },
+    {
+      "name": "cp_category_level_2",
+      "typ": "String",
+      "position": 14
+    },
+    {
+      "name": "cp_category_level_3",
+      "typ": "String",
+      "position": 15
+    },
+    {
+      "name": "near_leg_far_leg",
+      "typ": "String",
+      "position": 16
+    },
+    {
+      "name": "option_start_date",
+      "typ": "I64",
+      "position": 17
+    },
+    {
+      "name": "option_end_date",
+      "typ": "I64",
+      "position": 18
+    },
+    {
+      "name": "effective_date",
+      "typ": "I64",
+      "position": 19
+    },
+    {
+      "name": "mat_date_of_contract",
+      "typ": "I64",
+      "position": 20
+    },
+    {
+      "name": "ccil_guranteed",
+      "typ": "String",
+      "position": 21
+    },
+    {
+      "name": "buy_currency",
+      "typ": "String",
+      "position": 22
+    },
+    {
+      "name": "buy_current_notional",
+      "typ": "F64",
+      "position": 23
+    },
+    {
+      "name": "sell_currency",
+      "typ": "String",
+      "position": 24
+    },
+    {
+      "name": "sell_current_notional",
+      "typ": "F64",
+      "position": 25
+    },
+    {
+      "name": "forward_rate",
+      "typ": "F64",
+      "position": 26
+    },
+    {
+      "name": "forward_mtm",
+      "typ": "F64",
+      "position": 27
+    },
+    {
+      "name": "mtm_in_inr_forward",
+      "typ": "F64",
+      "position": 28
+    },
+    {
+      "name": "mtm_in_usd_forward",
+      "typ": "F64",
+      "position": 29
+    },
+    {
+      "name": "pv_mtm_in_inr",
+      "typ": "F64",
+      "position": 30
+    },
+    {
+      "name": "pv_mtm_in_usd",
+      "typ": "F64",
+      "position": 31
+    },
+    {
+      "name": "pv01_in_inr",
+      "typ": "F64",
+      "position": 32
+    },
+    {
+      "name": "mduriation_ccy1_inr",
+      "typ": "F64",
+      "position": 33
+    },
+    {
+      "name": "mduriation_ccy2_inr",
+      "typ": "F64",
+      "position": 34
+    },
+    {
+      "name": "contingent_notional_in_inr",
+      "typ": "F64",
+      "position": 35
+    },
+    {
+      "name": "npa",
+      "typ": "String",
+      "position": 36
+    },
+    {
+      "name": "bank_nonbank",
+      "typ": "String",
+      "position": 37
+    },
+    {
+      "name": "original_tenor",
+      "typ": "I64",
+      "position": 38
+    },
+    {
+      "name": "residual_tenor",
+      "typ": "I64",
+      "position": 39
+    },
+    {
+      "name": "currency",
+      "typ": "String",
+      "position": 40
+    },
+    {
+      "name": "cf_type",
+      "typ": "String",
+      "position": 41
+    },
+    {
+      "name": "cntry_resid",
+      "typ": "String",
+      "position": 42
+    },
+    {
+      "name": "cntry_ultim_risk",
+      "typ": "String",
+      "position": 43
+    },
+    {
+      "name": "tot_int_amt",
+      "typ": "F64",
+      "position": 44
+    },
+    {
+      "name": "tot_prin_amt",
+      "typ": "F64",
+      "position": 45
+    },
+    {
+      "name": "counterparty_child_code",
+      "typ": "String",
+      "position": 46
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 47
+    }
+  ]
+}

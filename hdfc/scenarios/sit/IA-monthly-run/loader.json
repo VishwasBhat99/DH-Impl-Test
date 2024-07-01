@@ -1,0 +1,80 @@
+{  
+   "streamName":"BulkInserter",
+   "streamId":"12020",
+   "flows":[  
+      {  
+         "name":"IA Loader",
+         "flowId":"1",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"1",
+         "process":[  
+            {  
+               "processName":"IND BulkInserter",
+               "processId":"1",
+               "processBinary":"/SIT_SH_SUMMARYDATA/BulkInserter/IND/IA/bulkInsertAllIND.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            },
+	     {  
+               "processName":"Bahrain BulkInserter",
+               "processId":"2",
+               "processBinary":"/SIT_SH_SUMMARYDATA/BulkInserter/IND/IA/bulkInsertAllBAH.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+              "processDependencies":[  
+			"1"
+               ],
+               "processReport":""
+            },
+	     {  
+               "processName":"Hong Kong BulkInserter",
+               "processId":"3",
+               "processBinary":"/SIT_SH_SUMMARYDATA/BulkInserter/IND/IA/bulkInsertAllHK.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+              "processDependencies":[  
+			"2"
+               ],
+               "processReport":""
+            },
+	     {  
+               "processName":"Gift City BulkInserter",
+               "processId":"4",
+               "processBinary":"/SIT_SH_SUMMARYDATA/BulkInserter/IND/IA/bulkInsertAllGC.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+			"3"
+               ],
+               "processReport":""
+            },
+	     {  
+               "processName":"IA Final Aggregator",
+               "processId":"5",
+               "processBinary":"/SIT_SH_SUMMARYDATA/BulkInserter/IND/IA/IA-Final-Aggregator/main.sh",
+               "processArguments":[  
+
+               ],
+               "processDependencies":[  
+			"4"
+               ],
+               "processReport":""
+            }
+         ]
+      }
+   ]
+}

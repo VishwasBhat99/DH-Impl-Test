@@ -1,0 +1,65 @@
+{
+    "fields": [
+      {
+        "name": "as_on_dt",
+        "typ": "I64",
+        "position": 1
+      },
+      {
+        "name": "src_file_name",
+        "typ": "String",
+        "position": 2
+      },
+      {
+        "name": "src_gl_cd",
+        "typ": "I64",
+        "position": 3
+      },
+      {
+        "name": "gl_typ",
+        "typ": "String",
+        "position": 4
+      },
+      {
+        "name": "src_ccy",
+        "typ": "String",
+        "position": 5
+      },
+      {
+        "name": "src_gl_bal",
+        "typ": "F64",
+        "position": 6
+      },
+      {
+        "name": "ora_gl_cd",
+        "typ": "I64",
+        "position": 7
+      },
+      {
+        "name": "ora_gl_bal",
+        "typ": "F64",
+        "position": 8
+      },
+      {
+        "name": "ora_ccy",
+        "typ": "String",
+        "position": 9
+      },
+      {
+        "name": "gl_diff_amt",
+        "typ": "F64",
+        "position": 10
+      },
+      {
+        "name": "balm_llg",
+        "typ": "String",
+        "position": 11
+      },
+      {
+        "name": "ia_llg",
+        "typ": "String",
+        "position": 12
+      }
+    ]
+  }
+  

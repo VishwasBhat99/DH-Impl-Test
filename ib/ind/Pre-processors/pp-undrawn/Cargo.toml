@@ -1,0 +1,20 @@
+[package]
+name = "pp_undrawn"
+version = "1.1.3393"
+authors = ["VishwasBhat99 <vishwas.b@surya-soft.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0.81"
+clap = "3.1.18"
+health_report = {path = "../../../../hdfc/libraries/health_report"}
+rbdate = { path = "../../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../../hdfc/libraries/sdb_io"}
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.9.0"
+slog-async = "2.7.0"
+calamine = "0.18.0"
+chrono = "0.4.22"
+cond_utils = "0.1.0"

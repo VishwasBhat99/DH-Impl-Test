@@ -1,0 +1,13 @@
+[package]
+name = "ia_consolidator"
+version = "0.1.0"
+authors = ["sougata-b <sougata.b@surya-soft.com>"]
+
+[dependencies]
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+rbdate = { path = "../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../hdfc/libraries/sdb_io"}
+clap = "2.31.2"
+chrono = "0.4"

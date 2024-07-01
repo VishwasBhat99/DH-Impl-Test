@@ -1,0 +1,59 @@
+{
+    "streamName": "Foreclosure",
+    "streamId": "2096",
+    "flows": [
+        {
+            "name": "Securitisation",
+            "flowId": "1",
+            "flowDependencies": [],
+            "executorID": "5",
+            "process": [
+                {
+                    "processName": "Pre-Flight-Check",
+                    "processId": "1",
+                    "processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/foreclosure.csv"
+                    ],
+                    "processDependencies": [],
+                    "processReport": ""
+                },
+                {
+                    "processName": "Pre-Processor",
+                    "processId": "2",
+                    "processBinary": "/home/dbuser/programs/SIT/IND/pp_foreclosure",
+                    "processArguments": [
+                        "--input-file",
+                        "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/foreclosure.csv",
+                        "--output-file",
+                        "/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/ForeCloseOutput.txt",
+                        "--log-file",
+                        "/SIT_SH_LOGS/IND/{ddmmyyyy}/ForeClosePPLog.txt",
+                        "--diagnostics-log-file",
+                        "/SIT_SH_LOGS/IND/{ddmmyyyy}/ForeClosePPDiagLog.txt",
+                        "--llg-code",
+                        "1007"
+                    ],
+                    "processDependencies": [
+                        "1"
+                    ],
+                    "processReport": "/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/ForeCloseOutput-health-check-report.json"
+                },
+                {
+                    "processName": "Upload",
+                    "processId": "3",
+                    "processBinary": "/SIT_SH_SUMMARYDATA/BulkInserter/IND/BA/foreLoad.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "{AsOnDate}"
+                    ],
+                    "processDependencies": [
+                        "2"
+                    ],
+                    "processReport": "/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/UploadForeClose-health-check-report.json"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+Sep 17 19:22:29.836 INFO log_file: log.txt
+Sep 17 19:22:29.836 INFO diagnostics_file: diag-log.txt
+Sep 17 19:22:29.836 INFO log_level: trace
+Sep 17 19:22:29.836 INFO country_id: IND
+Sep 17 19:22:29.836 INFO db_config_file: dbconfig.json
+Sep 17 19:22:29.836 INFO output_path: /home/surya/codebase/test-db/extracted-files

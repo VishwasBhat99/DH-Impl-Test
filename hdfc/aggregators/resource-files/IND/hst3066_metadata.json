@@ -1,0 +1,60 @@
+{
+  "fields": [
+    {
+      "name": "portfolio_name",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "account_number",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "maturity",
+      "typ": "I64",
+      "position": 3
+    },
+    {
+      "name": "face_value",
+      "typ": "I64",
+      "position": 4
+    },
+    {
+      "name": "book_value",
+      "typ": "I64",
+      "position": 5
+    },
+    {
+      "name": "accr_amt",
+      "typ": "F64",
+      "position": 6
+    },
+    {
+      "name": "inv_type",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "as_on_dt",
+      "typ": "I64",
+      "position": 8
+    },
+    {
+      "name": "ccy",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name":"nxt_rep_dt",
+      "typ":"I64",
+      "position":10
+
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 11
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "account_number": "account_number",
+  "concat": "alm_line",
+  "cashflows": "cashflows",
+  "institution": "curr_code",
+  "interest_rate": "final_int_rate",
+  "npa_status": "npa",
+  "next_rep_date": "next_repricing_date",
+  "exchange_rate": ""
+}

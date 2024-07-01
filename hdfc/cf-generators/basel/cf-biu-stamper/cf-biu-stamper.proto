@@ -1,0 +1,26 @@
+Account {
+    // message fields
+    string acc_no=1;
+    string cust_id=2;
+    string prod_code=3;
+    string currency=4;
+    string mis=5;
+    int64 mat_date=6;
+    double amount=7;
+    double lcy_amount=8;
+    string cust_type=9;
+    int64 res_days=10;
+    string is_nwd=11;
+    string is_nwd_final=12;
+    int64 bkt_id=13;
+    string t1=14;
+    string t2=15;
+    string t3=16;
+    string t4=17;
+    double total_deposits=18;
+    string text_desc=19;
+    string text_desc_flag=20;
+    string nob=21;
+    string div=23;
+    double int_rt=24;
+}

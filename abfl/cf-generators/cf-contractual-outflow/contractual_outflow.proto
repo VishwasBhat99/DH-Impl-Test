@@ -1,0 +1,20 @@
+syntax= "proto3";
+
+message Cashflow {
+    double int_amt= 1;
+    double prin_amt= 2;
+    int64 date= 3;
+}
+
+message AccountWithCashflows{
+    int64 incr_dt= 1;
+    double incr_amt= 2;
+    int64 applicable_dt= 3;
+    double projected_outflow= 4;
+    string lob= 5;
+    string add_field1= 6;
+    string add_field2= 7;
+    string add_field3= 8;
+    string add_field4= 9;
+    repeated Cashflow cashflows= 46; 
+}

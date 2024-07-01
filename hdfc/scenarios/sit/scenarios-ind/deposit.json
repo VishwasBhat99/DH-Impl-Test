@@ -1,0 +1,175 @@
+{
+	"streamName": "TD",
+	"streamId": "1012",
+	"flows": [
+		{
+			"name": "Term-Deposit",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "4",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_TD353_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "UTF-8-Converter",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/converter.sh",
+					"processArguments": [
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_TD353_{ddmmyyyy}.csv",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_TD353_{ddmmyyyy}_utf8.csv"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_dep",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_TD353_{ddmmyyyy}_utf8.csv",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/R1.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--ref-file-3",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/R3.xlsx",
+						"--ref-file-4",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/currency_master.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDOutput.txt",
+						"--concat-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDConcat.txt",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDReconRpt.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_dep",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/TDCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDCFDiagLog.txt",
+						"--day-convention",
+						"ACT/365"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/TDCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/TDCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/TDAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDBALMDiagLog.txt.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--is-consolidated",
+						"true",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/td_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/td_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/td_rules.txt",
+						"--default-llg-code",
+						"5499"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/TDCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/TDAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDAggConvLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/TDCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/TDCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDAvgBal.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/TDAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/td_avg_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/td_metadata.json"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/TDAvgBal-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

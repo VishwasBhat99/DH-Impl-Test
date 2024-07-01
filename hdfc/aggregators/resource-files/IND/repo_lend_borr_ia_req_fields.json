@@ -1,0 +1,13 @@
+{
+    "curr_code": "currency",
+    "rep_freq": "rep_freq",
+    "intt_rate": "",
+    "cashflows": "cashflows",
+    "mat_date":"",
+    "acc_open_date":"acc_open_dt",
+    "bm_id":"",
+    "acc_no":"deal_no",
+    "next_repr_date":"",
+    "npa_flag":""
+}
+

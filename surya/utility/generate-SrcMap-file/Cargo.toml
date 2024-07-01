@@ -1,0 +1,16 @@
+[package]
+name = "generate_src_map"
+version = "0.1.0"
+authors = ["Harish Mudgal <harish.m@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+serde_derive = "1.0.106"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0.52"
+calamine = "0.16.1"
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../../hdfc/libraries/RBDate" }

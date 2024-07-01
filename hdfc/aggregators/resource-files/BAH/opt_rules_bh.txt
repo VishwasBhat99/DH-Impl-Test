@@ -1,0 +1,10 @@
+1|1|0|intrnl_extrnl|EQ|E|AND
+1|1|1|cf_type|EQ|A|AND
+1|1|2|trading_banking|EQ|Trading|14650
+2|1|0|intrnl_extrnl|EQ|E|AND
+2|1|1|cf_type|EQ|A|14750
+3|1|0|intrnl_extrnl|EQ|E|AND
+3|1|1|cf_type|EQ|L|AND
+3|1|2|trading_banking|EQ|Trading|9650
+4|1|0|intrnl_extrnl|EQ|E|AND
+4|1|1|cf_type|EQ|L|9750

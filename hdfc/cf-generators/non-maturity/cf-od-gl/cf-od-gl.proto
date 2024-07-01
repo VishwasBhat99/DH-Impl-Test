@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+message Account {
+  int64 as_on_date = 1;
+  double b1 = 2;
+  double b2 = 3;
+  double b3 = 4;
+}

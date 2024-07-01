@@ -1,0 +1,19 @@
+{
+  "fields": [
+    {
+      "name": "dev_dt",
+      "position": 1,
+      "typ": "I64"
+    },
+    {
+      "name": "ccy",
+      "position": 2,
+      "typ": "String"
+    },
+    {
+      "name": "amt",
+      "position": 3,
+      "typ": "F64"
+    }
+  ]
+}

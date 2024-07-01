@@ -1,0 +1,12 @@
+[package]
+name = "pp_dep"
+version = "0.1.0"
+authors = ["shashank.676 <shashank.p@surya-soft.com>"]
+
+[dependencies]
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+rbdate = { path = "../../../../libraries/RBDate" }
+clap = "2.31.2"
+calamine = "0.15.3"

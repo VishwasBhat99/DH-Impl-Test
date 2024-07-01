@@ -1,0 +1,71 @@
+use super::*;
+use calamine::{open_workbook, Reader, Xlsx};
+use std::cmp::Ordering;
+use std::collections::HashSet;
+use std::path::{Path, PathBuf};
+
+pub fn create_cust_master(config_param: &ConfigurationParameters, log: &Logger) {
+    let mut cust_master_output_line = String::new();
+    let mut cust_writer = match buf_file_wrtr(config_param.cust_master_file_path(), None) {
+        Ok(file) => file,
+        Err(error) => panic!(
+            "Unable to create cust master ouput file: `{}` on location `{}` : {}",
+            config_param.output_file_path_td(),
+            current_dir()
+                .expect("Unable to get current directory path.")
+                .display(),
+            error
+        ),
+    };
+
+    let input_file = match new_buf_rdr(config_param.input_file_path()) {
+        Ok(input_file) => input_file,
+        Err(error) => panic!("{}", error),
+    };
+    let reader = BufReader::new(input_file);
+
+    for line in reader.lines().skip(1)
+    {
+        let acc_info: String = match line {
+            Ok(acc_info) => acc_info,
+            Err(error) => {
+                panic!("Cannot read line from input file: {:?}", error);
+            }
+        };
+        let mut row: Vec<&str> = acc_info.split("|").collect();
+            let cust_no = row[4].to_string();
+            if cust_no.is_empty() {
+                log_error!(log, "no cust number found");
+                continue;
+            }
+            if cust_no.parse::<i64>().is_err() {
+                log_error!(log, "invalid cust_id:{}", cust_no);
+            }
+            let formated_cust_no = get_formatted_cust_no(cust_no.as_str());
+            let cust_category = row[18].to_string();
+            if cust_category.is_empty() {
+                log_error!(log, "cust no:`{}` , category empty", formated_cust_no);
+            }
+            let output_line =
+                get_cust_master_output(formated_cust_no.as_str(), cust_category.as_str());
+
+            cust_master_output_line.push_str(output_line.as_str());
+            cust_master_output_line.push_str("\n");
+        }
+    match cust_writer.write_all(cust_master_output_line.as_bytes()) {
+        Ok(_) => println!("Successfully written cust master file."),
+        Err(error) => panic!(
+            "Unable to write custer master lines to file `{}`: {}.",
+            config_param.cust_master_file_path(),
+            error,
+        ),
+    };
+}
+
+fn get_formatted_cust_no(cust_no: &str) -> String {
+    cust_no.trim_start_matches('0').to_string()
+}
+
+fn get_cust_master_output(cust_no: &str, cust_category: &str) -> String {
+    format!("{}~#~{}", cust_no, cust_category)
+}

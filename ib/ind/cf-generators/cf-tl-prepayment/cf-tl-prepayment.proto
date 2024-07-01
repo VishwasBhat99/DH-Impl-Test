@@ -1,0 +1,26 @@
+syntax = "proto3";
+message AccountWithoutCashflows{
+    // message fields
+string customer_no=1;
+string cust_acct_no=2;
+int64 apprv_date=3;
+int64 lst_fin_date=4;
+int64 actl_mat_date=5;
+double closure_amount=6;
+double int_rate=7;
+string gl_class_code=8;
+string currency_ind=9;
+int64 accnt_live_days=10;
+string preclosure_bkt_id=11;
+int64 actual_days_mat=12;
+string contractual_bkt_id=13;
+string llg_type=14;
+string add_dim1=15;
+string add_dim2=16;
+string add_dim3=17;
+string add_dim4=18;
+string add_dim5=19;
+string add_dim6=20;
+string add_dim7=21;
+string add_dim8=22;
+}

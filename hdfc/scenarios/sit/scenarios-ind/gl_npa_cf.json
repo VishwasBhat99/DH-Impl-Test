@@ -1,0 +1,116 @@
+{
+	"streamName": "GL-NPA-CF",
+	"streamId": "1068",
+	"flows": [
+		{
+			"name": "GL-NPA-CF",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "DB-Loader",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-GL-NPA/ImpExpGLNPA.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [],
+					"processReport": "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/GLCF-health-check-report.json"
+				},
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/GLCF.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_gl_npa",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/GLCF.txt",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLNPAPPOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLNPAPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLNPAPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLNPAPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "GL-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/gl_aggr",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLNPAPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/GLNPAAggregated.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLNPAAGGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLNPAAGGDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/gl_npa_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/gl_npa_metadata.json",
+						"--is-consolidated",
+						"true",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/gl_npa_rules.txt",
+						"--default-llg-code",
+						"7389"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLNPAPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLNPAPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLNPAAvgBal.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLNPAAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLNPAAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/gl_npa_avg_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/gl_npa_metadata.json"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLNPAAvgBal-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

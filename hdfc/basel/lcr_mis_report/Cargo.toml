@@ -1,0 +1,15 @@
+[package]
+name = "lcr_mis_report"
+version = "0.1.2323"
+edition = "2021"
+authors = ["Ravindar Singh<ravindar.sr@surya-soft.com>"]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+slog = "2.7.0"
+chrono = "0.4.19"
+clap = "3.0.14"
+slog-async = "2.7.0"
+slog-term = "2.8.1"
+rbdate = { path = "../../libraries/RBDate" }
+health_report = { path = "../../../hdfc/libraries/health_report" }
+sdb_io = { path = "../../libraries/sdb_io" }

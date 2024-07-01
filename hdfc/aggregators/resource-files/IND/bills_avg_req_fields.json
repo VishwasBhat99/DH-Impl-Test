@@ -1,0 +1,5 @@
+{
+  "account_number": "reference",
+  "amount": "tot_prin_amt",
+  "interest_rate": "int_rt"
+}

@@ -1,0 +1,39 @@
+1|1|0|balm_llg|EQ|KISAN GOLD CARD|12789
+2|1|0|balm_llg|EQ|HEALTH CARE|12789
+3|1|0|balm_llg|EQ|COMMERCIAL VEHICLE LOAN|12789
+4|1|0|balm_llg|EQ|GOLD LOAN|12789
+5|1|0|balm_llg|EQ|TWO WHEELER LOAN|12789
+6|1|0|balm_llg|EQ|TRACTOR LOAN|12789
+7|1|0|balm_llg|EQ|BB LOAN|12789
+8|1|0|balm_llg|EQ|LOANS- KGC|12789
+9|1|0|balm_llg|EQ|EDUCATION LOAN|12789
+10|1|0|balm_llg|EQ|STAFF LOAN|12789
+11|1|0|balm_llg|EQ|COMMERCIAL EQUIPMENT LOAN|12789
+12|1|0|balm_llg|EQ|UTTARAKHAND CLAMITY SUPPORT|12789
+13|1|0|balm_llg|EQ|Other Advances|12789
+14|1|0|balm_llg|EQ|MORTGAGE LOAN|12789
+15|1|0|balm_llg|EQ|RETAIL LOAN|12789
+16|1|0|balm_llg|EQ|HOME LOAN|12789
+17|1|0|balm_llg|EQ|AUTO LOAN|12789
+18|1|0|balm_llg|EQ|PERSONAL LOAN|12789
+19|1|0|balm_llg|EQ|LOAN-SELF HELP GROUP|12789
+20|1|0|balm_llg|EQ|Internal Liabilities|12789
+21|1|0|balm_llg|EQ|BUSINESS LOAN|12789
+22|1|0|balm_llg|EQ|LOAN-LAS TERM LOAN|12789
+23|1|0|balm_llg|EQ|EMERGIN ENTERPRISES GROUP|12789
+24|1|0|balm_llg|EQ|THREE WHEELER LOAN|12789
+25|1|0|balm_llg|EQ|BONDS-HFT BONDS-AFS|11996
+26|1|0|balm_llg|EQ|Term Loan|12786
+27|1|0|balm_llg|EQ|Other Borrowings|5698
+28|1|0|balm_llg|EQ|Internal Liabilities|7097
+29|1|0|balm_llg|EQ|Internal-Assets|14897
+30|1|0|balm_llg|EQ|Lendings-Interbranch|11156
+31|1|0|balm_llg|EQ|TD - Lesser than 1 CR TD - greater than equal to 1 CR|5497
+32|1|0|balm_llg|EQ|RD|5496
+33|1|0|balm_llg|EQ|(Surplus)/Short SLR|11023
+34|1|0|balm_llg|EQ|Demand Loan|12615
+35|1|0|balm_llg|EQ|Bills|13115
+36|1|0|balm_llg|EQ|OD - WS|12517
+37|1|0|balm_llg|EQ|OD - RT|12517
+38|1|1|balm_llg|EQ|TD - FCNRB|5497
+39|1|1|balm_llg|EQ|Securitisation|13217

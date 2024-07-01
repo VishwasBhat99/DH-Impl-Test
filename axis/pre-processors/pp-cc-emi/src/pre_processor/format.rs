@@ -1,0 +1,43 @@
+use rbdate::NaiveDate;
+pub fn get_op_line(
+    input_account: Vec<&str>,
+    cust_id: String,
+    acid: String,
+    user_def_stats: String,
+    component: String,
+    npa_type: String,
+    currency: String,
+    as_on_date: &NaiveDate,
+    overdue_amt: f64,
+    cf_amt: f64,
+    due_date: String,
+    cust_health_code: &String,
+    cust_npa_class: &String,
+    final_npa_class: &String,
+) -> String {
+    format!(
+        "{}|{}|NA|{}|{}|NA|01-01-1970|01-01-1970|{}||{}|{}|{}|{}|{}|{}|{}|0.0|{}|0.0|{}|0.0|0.0|NA|NA|NA|01-01-1970|01-01-1970|NA|NA|{}|{}|{}|{}|NA|NA|01-01-1970|01-01-1970|{}|NA|NA|{}|{}|NA|NA|0.0|NA|{}|0.0|0.0|NA|01-01-1970|01-01-1970|NA|NA\n",
+        cust_id,
+        acid,
+        input_account[7],
+        input_account[2],
+        due_date,
+        user_def_stats,
+        input_account[6],
+        input_account[17],
+        currency,
+        input_account[13].parse::<i64>().unwrap_or(0),
+        component,
+        overdue_amt,
+        cf_amt.abs(),
+        input_account[4],
+        npa_type,
+        cust_health_code,
+        cust_npa_class,
+        final_npa_class,
+        as_on_date.format("%d-%m-%Y"),
+        input_account[5],
+        npa_type,
+        input_account[2]
+    )
+}

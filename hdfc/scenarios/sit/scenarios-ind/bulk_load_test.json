@@ -1,0 +1,97 @@
+{  
+   "streamName":"BulkInserter",
+   "streamId":"1076",
+   "flows":[  
+      {  
+         "name":"BulkInserter",
+         "flowId":"1",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"1",
+         "process":[  
+            {  
+               "processName":"BulkInserter",
+               "processId":"1",
+               "processBinary":"/SIT_SH_SUMMARYDATA/BulkInserter/IND/bulkInsertAll.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      },
+      {  
+         "name":"ExchangeFileLoader",
+         "flowId":"2",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"1",
+         "process":[  
+            {  
+               "processName":"ExchangeFileLoader",
+               "processId":"1",
+               "processBinary":"/home/dbuser/programs/SIT/DB-Loader-Exchange-Rate/IND/runLoader.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      },
+      {  
+         "name":"AggConvLoader",
+         "flowId":"3",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"1",
+         "process":[  
+            {  
+               "processName":"AggConvLoader",
+               "processId":"1",
+               "processBinary":"/SIT_SH_SUMMARYDATA/BulkInserter/IND/bulkInsertConvertedAll.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      },
+      {  
+         "name":"Scenarios",
+         "flowId":"4",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"6",
+         "process":[  
+            {  
+               "processName":"Scenarios",
+               "processId":"1",
+               "processBinary":"D:/Batches/BALM/BALM_IND/BALM_IND_Run.bat",
+               "processArguments":[  
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      }
+   ]
+}

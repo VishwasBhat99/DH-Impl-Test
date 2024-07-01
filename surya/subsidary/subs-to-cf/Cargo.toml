@@ -1,0 +1,17 @@
+[package]
+name = "subs_to_cf"
+version = "1.1.0"
+authors = ["shashank676 <shashank.p@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+chrono = "0.4.11"
+time = "0.2.16"
+protobuf = { version = "2.14.0", features = ["with-bytes"] }
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+calamine = "0.16.1"
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+health_report = { path = "../../../hdfc/libraries/health_report" }

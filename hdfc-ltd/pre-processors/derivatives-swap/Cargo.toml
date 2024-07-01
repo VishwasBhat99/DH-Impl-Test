@@ -1,0 +1,16 @@
+[package]
+name = "pp_derivatives_swap"
+version = "1.0.0"
+authors = ["srinivas-644 <srinivas.r@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+health_report = { path = "../../../hdfc/libraries/health_report" }
+

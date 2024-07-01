@@ -1,0 +1,8 @@
+1|1|0|cf_type|EQ|I|AND
+1|1|1|typ|EQ|BORROW|14401
+2|1|0|cf_type|EQ|O|AND
+2|1|1|typ|EQ|BORROW|7201
+3|1|0|cf_type|EQ|I|AND
+3|1|1|typ|EQ|LEND|14305
+4|1|0|cf_type|EQ|O|AND
+4|1|1|typ|EQ|LEND|7305

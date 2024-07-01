@@ -1,0 +1,1011 @@
+{
+	"streamName": "Murex Derivatives",
+	"streamId": "1052",
+	"flows": [
+		{
+			"name": "Cashflow-Generic",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Cashflow",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/cashflows_overseas.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Cashflow",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-Cashflow/IND/Import/ImportData.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/DB-Loader-Cashflow-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Option-Register",
+			"flowId": "2",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/master_opt.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-Option-Register/IND/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/DB-Loader-Option-Master-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_opt_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/options.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/OptCFOutput",
+						"--sheet-name",
+						"Sheet1",
+						"--entity",
+						"INDIA_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/OptCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/OptCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/OptCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/OptCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/OptAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/OptBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/OptBALMDiagLog.txt.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/opt_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/opt_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/opt_rules_ind.txt",
+						"--default-llg-code",
+						"14399"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/OptCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/OptAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/OptAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/OptAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/OptCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Cap N Floor",
+			"flowId": "3",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/master_cap.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-CAP-FLOOR/IND/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/DB-Loader-Cap-Floor-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_cap_floor_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/cap-floor.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/CapCFOutput",
+						"--entity",
+						"INDIA_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/CapCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CapAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapBALMDiagLog-rec.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/cap_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/cap_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/cap_rules_ind_rec.txt",
+						"--default-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/CapCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CapAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapBALMDiagLog-pay.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/cap_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/cap_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/cap_rules_ind_pay.txt",
+						"--default-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapRecAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CapAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapRecAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapPayAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CapAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CapPayAggConvLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "CCY IRS Register",
+			"flowId": "4",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/master_ccirs.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-CCY-IRS/IND/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/DB-Loader-CCYIRS-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_ccirs_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/ccy-irs.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/CCIRSCFOutput",
+						"--entity",
+						"INDIA_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/CCIRSCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CCIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSBALMDiagLog-rec.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/ccirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/ccirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/ccirs_rules_rec_ind.txt",
+						"--default-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/CCIRSCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CCIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSBALMDiagLog-pay.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/ccirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/ccirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/ccirs_rules_pay_ind.txt",
+						"--default-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSRecAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CCIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSRecAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CCIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/CCIRSPayAggConvLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "FCY IRS Register",
+			"flowId": "5",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/master_fcyirs.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-FCY-IRS/IND/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/DB-Loader-FCYIRS-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_fcyirs_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/fcy-irs.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/FCYIRSCFOutput",
+						"--entity",
+						"INDIA_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/FCYIRSCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FCYIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSBALMDiagLog-rec.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/fcyirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/fcyirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/fcyirs_rules_rec_ind.txt",
+						"--default-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/FCYIRSCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FCYIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSBALMDiagLog-pay.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/fcyirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/fcyirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/fcyirs_rules_pay_ind.txt",
+						"--default-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSRecAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FCYIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSRecAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSPayAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FCYIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FCYIRSPayAggConvLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "INR IRS Register",
+			"flowId": "6",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/master_inrirs.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-INR-IRS/IND/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/DB-Loader-INRIRS-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_inr_irs_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/inr-irs.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/INRIRSCFOutput",
+						"--entity",
+						"INDIA_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/INRIRSCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/INRIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSBALMDiagLog-rec.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/inrirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/inrirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/inrirs_rules_rec_ind.txt",
+						"--default-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/INRIRSCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/INRIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSBALMDiagLog-pay.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/inrirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/inrirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/inrirs_rules_pay_ind.txt",
+						"--default-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSRecAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/INRIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSRecAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSPayAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/INRIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/INRIRSPayAggConvLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Forex Register",
+			"flowId": "7",
+			"flowDependencies": [],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/Forex_outstanding_register_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_forex",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/Forex_outstanding_register_{ddmmyyyy}.csv",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/ForexCFOutput",
+						"--entity",
+						"INDIA_CE",
+						"--sheet-name",
+						"Sheet1",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay-Side",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/ForexCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/ForexPayAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexPayBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexPayBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/forex_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/forex_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/forex_pay_rules.txt",
+						"--default-llg-code",
+						"5555"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec-Side",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/ForexCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/ForexRecAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexRecBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexRecBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/forex_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/forex_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/forex_rec_rules.txt",
+						"--default-llg-code",
+						"4444"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Rec",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexRecAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/ForexRecAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexRecAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Pay",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexPayAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/ForexPayAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/ForexPayAggConvLog.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

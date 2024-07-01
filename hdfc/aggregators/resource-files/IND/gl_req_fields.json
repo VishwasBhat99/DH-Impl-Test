@@ -1,0 +1,8 @@
+{
+    "concat": "alm_line",
+    "amt": "bal_total",
+    "institution": "seg_8",
+    "account_number": "account_no",
+    "pass_through":["seg_1","account_no","seg_5","seg_6","seg_3","seg_8","seg_4","dr_bal","cr_bal","bal_total","concat","alm_line","cf_type","gl_prefix","is_acct_gl"]
+}
+

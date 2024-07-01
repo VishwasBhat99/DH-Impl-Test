@@ -1,0 +1,9 @@
+{
+    "acc_no": "cod_acc_no",
+    "curr": "inst",
+    "int_rt": "int_rt",
+    "prin_amt": "crnt_book_bal",
+    "concat": "alm_line",
+    "country": "country"
+  }
+  

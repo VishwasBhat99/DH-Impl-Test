@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+message Cashflow{
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+} 
+
+message OutputAccount {
+    string account_number = 1;
+    string branch_code = 2;
+    string cust_id = 3;
+    string group_id = 4;
+    string cust_name = 5;
+    string currency = 6;
+    string product_code = 7;
+    string gl_code = 8;
+    int64 acc_open_date = 9;
+    double curr_outstanding_bal = 10;
+    double curr_outstanding_bal_lcy = 11;
+    double interest_rate = 12;
+    double accr_int_amt = 13;
+    string accr_int_gl_code = 14;
+    double init_dep_amount = 15;
+    double init_dep_amount_lcy = 16;
+    int64 mat_date = 17;
+    string int_accrual_basis = 18;
+    string int_comp_type = 19;
+    string int_pay_freq = 20;
+    int64 next_int_pay_date = 21;
+    string comp_freq = 22;
+    int64 next_comp_date = 23;
+    string pledge_against_loan = 24;
+    string loan_acc_no = 25;
+    int64 loan_acc_mat_date = 26;
+    string constitution = 27;
+    string roi_category = 28;
+    string contract_no = 29;
+    double stable_deposit = 30;
+    int64 effective_mat_date = 31;
+    int64 days_till_report =32;
+    string volatility = 33;
+    int64 period_of_deposits = 34;
+    double premature_ratio = 35;
+    double overall_rollover_ratio = 36;
+    double rollover_ratio_non_volatile = 37;
+    double non_rollover_ratio_non_volatile = 38;
+    double non_rollover_ratio_volatile = 39;
+    string financial_client = 40;
+    string lcr_category = 41;
+    string td_overdue_flag = 42;
+    string line_of_credit = 43;
+    string turnover = 44;
+    int64 add_field1 = 45;
+    double add_field2 = 46;
+    string add_field3 = 47;
+    repeated Cashflow cashflows = 48;
+}

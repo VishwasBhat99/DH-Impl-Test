@@ -1,0 +1,1077 @@
+{
+	"streamName": "Murex Derivatives",
+	"streamId": "5024",
+	"flows": [
+		{
+			"name": "Cashflow-Generic",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Cashflow",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/GC/pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/cashflows_overseas.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Cashflow",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Cashflow/GC/Import/ImportData.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/DB-Loader-Cashflow-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Option-Register",
+			"flowId": "2",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/GC/pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/master_opt.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Option-Register/GC/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/DB-Loader-Option-Master-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/GC/cf_opt_reg",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/options.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/OptCFOutput",
+						"--sheet-name",
+						"Sheet1",
+						"--entity",
+						"GIFT_CE",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/OptCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/OptCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/OptCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/OptCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/OptAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/OptBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/OptBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/opt_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/opt_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/opt_rules_gc.txt",
+						"--default-llg-code",
+						"14399",
+						"--default-overdue-llg-code",
+						"1918"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/OptCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/OptAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/OptAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/OptAggregatedConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/OptAggregatedConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/OptCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Cap N Floor",
+			"flowId": "3",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/GC/pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/master_cap.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/DB-Loader-CAP-FLOOR/GC/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/DB-Loader-Cap-Floor-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/GC/cf_cap_floor_reg",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/cap-floor.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/CapCFOutput",
+						"--entity",
+						"GIFT_CE",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/CapCFOutput-rec.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CapAggregated-rec",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapBALMDiagLog-rec.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/cap_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/cap_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/cap_rules_gc_rec.txt",
+						"--default-overdue-llg-code",
+						"4449",
+						"--default-llg-code",
+						"14320"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/CapCFOutput-pay.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CapAggregated-pay",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapBALMDiagLog-pay.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/cap_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/cap_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/cap_rules_gc_pay.txt",
+						"--default-llg-code",
+						"07120",
+						"--default-overdue-llg-code",
+						"7779"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CapAggregated-rec",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CapAggregated-rec",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapAggregated-recConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapAggregated-recConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CapAggregated-pay",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CapAggregated-pay",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapAggregated-payConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CapAggregated-payConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "CCIRS Register",
+			"flowId": "4",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/GC/pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/master_ccirs.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/DB-Loader-CCY-IRS/GC/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/DB-Loader-CCYIRS-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/GC/cf_ccirs_reg",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/ccy-irs.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/CCIRSCFOutput",
+						"--entity",
+						"GIFT_CE",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/CCIRSCFOutput-rec.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CCIRSAggregated-rec",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSBALMDiagLog-rec.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/ccirs_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/ccirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/ccirs_rules_rec_gc.txt",
+						"--default-llg-code",
+						"14398",
+						"--default-overdue-llg-code",
+						"4388"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/CCIRSCFOutput-pay.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CCIRSAggregated-pay",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSBALMDiagLog-pay.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/ccirs_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/ccirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/ccirs_rules_pay_gc.txt",
+						"--default-llg-code",
+						"07199",
+						"--default-overdue-llg-code",
+						"7188"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CCIRSAggregated-rec",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CCIRSAggregated-rec",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSAggregated-recConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSAggregated-recConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CCIRSAggregated-pay",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/CCIRSAggregated-pay",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSAggregated-payConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/CCIRSAggregated-payConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "FCY IRS Register",
+			"flowId": "5",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/GC/pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/master_fcyirs.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/DB-Loader-FCY-IRS/GC/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/DB-Loader-FCYIRS-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/GC/cf_fcyirs_reg",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/fcy-irs.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/FCYIRSCFOutput",
+						"--entity",
+						"GIFT_CE",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/FCYIRSCFOutput-rec.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/FCYIRSAggregated-rec",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSBALMDiagLog-rec.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/fcyirs_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/fcyirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/fcyirs_rules_rec_gc.txt",
+						"--default-llg-code",
+						"14397",
+						"--default-overdue-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/FCYIRSCFOutput-pay.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/FCYIRSAggregated-pay",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSBALMDiagLog-pay.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/fcyirs_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/fcyirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/fcyirs_rules_pay_gc.txt",
+						"--default-llg-code",
+						"07197",
+						"--default-overdue-llg-code",
+						"7779"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/FCYIRSAggregated-rec",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/FCYIRSAggregated-rec",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSAggregated-recConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSAggregated-recConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/FCYIRSAggregated-pay",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/FCYIRSAggregated-pay",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSAggregated-payConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/FCYIRSAggregated-payConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "INR IRS Register",
+			"flowId": "6",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/GC/pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/master_inrirs.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/DB-Loader-INR-IRS/GC/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/DB-Loader-INRIRS-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/GC/cf_inr_irs_reg",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/inr-irs.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/INRIRSCFOutput",
+						"--entity",
+						"GIFT_CE",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/INRIRSCFOutput-rec.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/INRIRSAggregated-rec",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSBALMDiagLog-rec.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/inrirs_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/inrirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/inrirs_rules_rec_gc.txt",
+						"--default-llg-code",
+						"14319",
+						"--default-overdue-llg-code",
+						"1918"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/INRIRSCFOutput-pay.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/INRIRSAggregated-pay",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSBALMDiagLog-pay.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/inrirs_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/inrirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/inrirs_rules_pay_gc.txt",
+						"--default-llg-code",
+						"07119",
+						"--default-overdue-llg-code",
+						"1918"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/INRIRSAggregated-rec",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/INRIRSAggregated-rec",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSAggregated-recConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSAggregated-recConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/INRIRSAggregated-pay",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/INRIRSAggregated-pay",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSAggregated-payConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/INRIRSAggregated-payConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Forex Register",
+			"flowId": "7",
+			"flowDependencies": [],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/GC/pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/Forex_outstanding_register_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/GC/cf_forex",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/Forex_outstanding_register_{ddmmyyyy}.csv",
+						"--output-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/ForexCFOutput",
+						"--entity",
+						"GIFT_CE",
+						"--sheet-name",
+						"Sheet1",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec-Side",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/ForexCFOutput-rec.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/ForexRecAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexRecBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexRecBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/forex_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/forex_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/forex_rules_rec_gc.txt",
+						"--default-llg-code",
+						"4444",
+						"--default-overdue-llg-code",
+						"0"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay-Side",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/GC/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/ForexCFOutput-pay.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/ForexPayAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexPayBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexPayBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/forex_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/forex_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/forex_rules_pay_gc.txt",
+						"--default-llg-code",
+						"5555",
+						"--default-overdue-llg-code",
+						"0"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/ForexRecAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/ForexRecAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexRecAggregatedConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexRecAggregatedConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/ForexPayAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/ForexPayAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexPayAggregatedConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/ForexPayAggregatedConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

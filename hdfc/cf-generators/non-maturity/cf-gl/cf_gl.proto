@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+message OutputAccount{
+    string seg_1= 1;
+    string account_no= 2;
+    string seg_5= 3;
+    string seg_6= 4;
+    string seg_3= 5;
+    string seg_8= 6;
+    string seg_4= 7;
+    double dr_bal= 8;
+    double cr_bal= 9;
+    double bal_total= 10;
+    string concat= 11;
+    string alm_line= 12;
+    double int_rate= 13;
+    string cf_type= 14;
+    string gl_prefix= 15;
+    string is_acct_gl= 16;
+    string ia_line= 17;
+    string nsfr= 18;    
+}

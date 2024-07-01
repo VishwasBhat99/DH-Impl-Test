@@ -1,0 +1,17 @@
+1|1|0|asset_class|EQ|Substandard|AND
+1|1|1|balm_llg|EQ|Bills|13192
+2|1|0|asset_class|EQ|Doubtful I|AND
+2|1|1|balm_llg|EQ|Bills|13193
+3|1|0|asset_class|EQ|Doubtful II|AND
+3|1|1|balm_llg|EQ|Bills|13193
+4|1|0|asset_class|EQ|Doubtful III|AND
+4|1|1|balm_llg|EQ|Bills|13193
+5|1|0|asset_class|EQ|Loss|AND
+5|1|1|balm_llg|EQ|Bills|13194
+6|1|0|asset_class|EQ|Substandard|12791
+7|1|0|asset_class|EQ|Doubtful I|12792
+8|1|0|asset_class|EQ|Doubtful II|12792
+9|1|0|asset_class|EQ|Doubtful III|12792
+10|1|0|asset_class|EQ|Loss|12793
+11|1|0|balm_llg|EQ|Bills|13105
+12|1|0|balm_llg|EQ|Demand Loan|12788

@@ -1,0 +1,5 @@
+{
+    "db_username": "IA4",
+    "db_password": "ia123",
+    "db_servicename": "192.168.66.191:1521/orcl"
+  }

@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows {
+string deal_id = 1 ;
+string branch = 2 ;
+string inst_name = 3 ;
+string lend_borr_typ = 4 ;
+string typology = 5 ;
+string usage = 6 ;
+string sub_typ_borr_lend = 7 ;
+string cntrprty = 8 ;
+int64 crtn_dt = 9 ;
+int64 val_date = 10 ;
+int64 deal_date = 11 ;
+string ccy = 12 ;
+double crnt_deal_amt = 13 ;
+double crnt_conv_rt_lcy = 14 ;
+double crnt_deal_amt_lcy = 15 ;
+double roi = 16 ;
+int64 tenor_days = 17 ;
+int64 mat_dt = 18 ;
+double prin_amt = 19 ;
+double int_amt = 20 ;
+string cf_typ = 21 ;
+string flow_typ = 22 ;
+double mat_amt = 23 ;
+string dealer_name = 24 ;
+string nds_ref_no = 25 ;
+int64 nxt_fix_dt = 26 ;
+int64 residual_tenor = 27 ;
+int64 nxt_put_dt = 28 ;
+int64 nxt_call_dt = 29 ;
+int64 nxt_int_pay_dt = 30 ;
+int64 int_pay_tenor = 31 ;
+double aip_air = 32 ;
+string downgrade_clause = 33 ;
+string avg_monthly_bal = 34 ;
+string glcode = 35 ;
+string cntrprty_ctgry_1 = 36 ;
+string cntrprty_ctgry_2 = 37 ;
+string cntrprty_ctgry_3 = 38 ;
+string cntrprty_ctgry_4 = 39 ;
+string int_pay_rec = 40 ;
+int64 bckt_days = 41 ;
+string cntrprty_ctgry_5 = 42 ;
+string	ind_outside_ind = 43 ;
+string system_gl = 44 ;
+string alm_concat = 45 ;
+string div = 46 ;
+string alm_line = 47 ;
+string ia_line = 48 ;
+double	tot_int_amt = 49 ;
+double	tot_prin_amt = 50 ;
+string sma_flag = 51;
+repeated Cashflow cashflows= 52;
+}

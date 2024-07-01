@@ -1,0 +1,9 @@
+{
+  "account_number": "account_number",
+  "concat": "concat",
+  "cashflows": "cashflows",
+  "institution": "institution",
+  "interest_rate": "int_rate",
+  "next_rep_date": "",
+  "exchange_rate": ""
+}

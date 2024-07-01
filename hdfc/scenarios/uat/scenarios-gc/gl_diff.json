@@ -1,0 +1,110 @@
+{
+	"streamName": "GLDef",
+	"streamId": "5036",
+	"flows": [
+		{
+			"name": "GLDef",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/GC/./pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/ReconRpt.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/GC/./cf_gl_recon",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/ReconRpt.txt",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/GLReconPPOutput",
+						"--alm-master-file",
+						"/UAT_SH_INPUTDATA/GC/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/GLReconPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/GLReconPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/GLReconPPOutput-health-check-report.json"
+				},
+				{
+					"processName": "GL-Aggregator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/GC/./gl_aggr",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/GLReconPPOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/GLReconAggregated-summary.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/GLReconAGGLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/GLReconAGGDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--known-fields-file",
+						"/UAT_SH_RULES/GC/gl_recon_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/gl_recon_metadata.json",
+						"--is-consolidated",
+						"true",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/over_gl_recon_gc_rules.txt",
+						"--default-llg-code",
+						"1099"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/GLReconPPOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/GLReconAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/GLReconAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/GLReconBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/GLReconBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"false"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/GLReconPPOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

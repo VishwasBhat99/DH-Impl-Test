@@ -1,0 +1,131 @@
+{
+    "streamName": "SPECIAL BUCKET MOC",
+    "streamId": "5040",
+    "flows": [
+        {
+            "name": "MOC",
+            "flowId": "1",
+            "flowDependencies": [],
+            "executorID": "5",
+            "process": [
+                {
+                    "processName": "Pre-Flight-Check",
+                    "processId": "1",
+                    "processBinary": "/home/dbuser/programs/GC/./pfcGC.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/MOC_Special_Entry_GC_{ddmmyyyy}.xlsx"
+                    ],
+                    "processDependencies": [],
+                    "processReport": ""
+                },
+                {
+                    "processName": "Pre-Processor",
+                    "processId": "2",
+                    "processBinary": "/home/dbuser/programs/GC/./moc_test",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/MOC_Special_Entry_GC_{ddmmyyyy}.xlsx",
+                        "--sheet-name",
+                        "Sheet1",
+                        "--output-file",
+                        "/UAT_SH_CFDATA/GC/{ddmmyyyy}/MOCCFOutput",
+                        "--log-file",
+                        "/UAT_SH_LOGS/GC/{ddmmyyyy}/MOCPPLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/GC/{ddmmyyyy}/MOCPPDiagLog.txt"
+                    ],
+                    "processDependencies": [
+                        "1"
+                    ],
+                    "processReport": ""
+                },
+                {
+                    "processName": "BALM-Aggregator",
+                    "processId": "3",
+                    "processBinary": "/home/dbuser/programs/GC/./balm",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/GC/{ddmmyyyy}/MOCCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated",
+                        "--log-file",
+                        "/UAT_SH_LOGS/GC/{ddmmyyyy}/MOCBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/GC/{ddmmyyyy}/MOCBALMDiagLog.txt",
+                        "--currency",
+                        "USD",
+                        "--is-consolidated",
+                        "false",
+                        "--local-consolidation-currency",
+                        "USL",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--req-fields-file",
+                        "/UAT_SH_RULES/GC/moc_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/GC/moc_metadata.json",
+                        "--account-level-exchange-rate",
+                        "false",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/GC/moc_rules_gc.txt",
+                        "--default-llg-code",
+                        "09999"
+                    ],
+                    "processDependencies": [
+                        "2"
+                    ],
+                    "processReport": "/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated-health-check-report.json"
+                },
+                {
+                    "processName": "Aggregated Conversion",
+                    "processId": "4",
+                    "processBinary": "/home/dbuser/programs/GC/agg_conv",
+                    "processArguments": [
+                        "--base-currency",
+                        "INR",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/GC/{ddmmyyyy}/MOCAggConvDiagLog.txt",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--input-file",
+                        "/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated",
+                        "--log-file",
+                        "/UAT_SH_LOGS/GC/{ddmmyyyy}/MOCAggConvLog.txt"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Consolidator",
+                    "processId": "5",
+                    "processBinary": "/home/dbuser/programs/GC/consolidator",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/MOCAggregated",
+                        "--log-file",
+                        "/UAT_SH_LOGS/GC/{ddmmyyyy}/MOCBALMConsolLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/GC/{ddmmyyyy}/MOCBALMConsolDiagLog.txt",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--consol-config-file",
+                        "/UAT_SH_RULES/GC/consol-config.txt",
+                        "--is-maturity",
+                        "true"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/MOCCFOutput-health-check-report.json"
+                }
+            ]
+        }
+    ]
+}

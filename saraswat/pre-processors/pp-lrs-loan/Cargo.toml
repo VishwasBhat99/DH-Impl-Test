@@ -1,0 +1,17 @@
+[package]
+name = "pp_lrs_loan"
+version = "1.0.2421"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = "3.1.6"
+chrono = "0.4.19"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+health_report = { path = "../../../hdfc/libraries/health_report" }
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.9.0"
+slog-async = "2.7.0"
+multimap = "0.8.3"

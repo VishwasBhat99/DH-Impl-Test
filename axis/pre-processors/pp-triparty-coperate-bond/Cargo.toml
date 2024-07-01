@@ -1,0 +1,19 @@
+[package]
+name = "pp_triparty_cop"
+version = "1.1.4975"
+authors = ["Tanuj Singh Rathore <tanuj.s@surya-soft.com>"]
+
+[dependencies]
+slog = { version = "2.5.2", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.2"
+slog-async = "2.3.0"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_day_convention = { path = "../../../hdfc/libraries/sdb_day_convention" }
+sdb_dyn_proto_rdr = { path = "../../../hdfc/libraries/sdb_dyn_proto_rdr" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+clap = "2.33.0"
+chrono = "0.4.10"
+health_report = { path = "../../../hdfc/libraries/health_report" }
+serde = "1.0.104"
+serde_json = "1.0.91"
+serde_derive = "1.0.104"

@@ -1,0 +1,57 @@
+syntax= "proto3";
+
+message Cashflow {
+    double int_amt= 1;
+    double prin_amt= 2;
+    int64 date= 3;
+}
+
+message AccountWithCashflows{
+    string cust_no= 1;
+    string reference= 2;
+    string cust_name= 3;
+    string branch_cd= 4;
+    double norm_int_rt= 5;
+    string acurl_freq= 6;
+    int64 book_dt= 7;
+    int64 val_dt= 8;
+    int64 mat_dt= 9;
+    int64 due_dt= 10;
+    string user_def_stats= 11;
+    string prod_cd= 12;
+    int32 gl= 13;
+    string curr= 14;
+    double prin_ost_bal= 15;
+    string component= 16;
+    double amt_due= 17;
+    double amt_setld= 18;
+    double cf_amt= 19;
+    double spread= 20;
+    string bucket_category= 21;
+    string is_secured= 22;
+    string product_type= 23;
+    double comp_perc= 24;
+    string old_rt_typ= 25;
+    string old_benchmark= 26;
+    int64 nxt_call_dt= 27;
+    int64 nxt_put_dt= 28;
+    string rt_flag_new= 29;
+    string rt_cd_new= 30;
+    string ucid= 31;
+    string alm_line= 32;
+    string ia_llg= 33;
+    string balm_llg= 34;
+    string coupon_freq= 35;
+    int64 nxt_repricing_dt= 36;
+    int64 lst_repricing_dt= 37;
+    int64 as_on_dt= 38;
+    string int_basis= 39;
+    string int_calc_typ= 40;
+    string cust_typ= 41;
+    string npa_typ= 42;
+    string bmid= 43;
+    string division= 44;
+    double total_interest_amount= 45;
+    double total_principal_amount= 46;
+    repeated Cashflow cashflows= 47; 
+}

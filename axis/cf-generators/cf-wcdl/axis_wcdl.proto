@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+message AccountWithCashflows{
+	string branchcode = 1;
+	string currency = 2;
+	double currencyconvertionrate = 3;
+	string acct_num = 4;
+	string product_id = 5;
+	string customer_id = 6;
+	string customer_name = 7;
+	string start_date = 8;
+	double sanctioned_amt = 9;
+	double distributed_amt = 10;
+	double int_rate = 11;
+	double inst_prin_amt = 12;
+	double inst_int_amt = 13;
+	int64 acc_end_date = 14;
+	string int_cal_freq = 15;
+	string is_floating_rate = 16;
+	string benchmark_ass = 17;
+	string spread = 18;
+	double min_int_rate = 19;
+	double max_int_rate = 20;
+	int64 early_date = 21;
+	string rep_freq = 22;
+	string cust_ctry_code = 23;
+	string cust_crtd_rt = 24;
+	string cust_sect_code = 25;
+	string cust_indt_code = 26;
+	string custom1 = 27;
+	string custom2 = 28;
+	string npa_classification = 29;
+	string overdue_days = 30;
+	string wcdl_bucket_days = 31;
+	string gl_sub_head_code = 32;
+	string schm_code = 33;
+	string seg_code = 34;
+	string final_seg_code = 35;
+    repeated Cashflow cashflows = 36;
+}

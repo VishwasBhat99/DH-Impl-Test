@@ -1,0 +1,8 @@
+1|1|0|prod_type_desc|EQ|Claims secured by Residential Property|14835
+1|1|0|prod_type_desc|EQ|Loans|14820
+2|1|0|prod_type_desc|EQ|Ind:Guarantees - Others|14835
+3|1|0|prod_type_desc|EQ|Ind:Undrawn committed credit lines|14830
+4|1|0|prod_type_desc|EQ|Ind:Guarantees - Financial - Direct credit substitutes|14835
+1|1|0|prod_type_desc|EQ|Ind:Undrawn committed credit lines|14830
+2|1|0|prod_type_desc|EQ|Loans|14820
+3|1|0|prod_type_desc|EQ|Consumer Credit|14810

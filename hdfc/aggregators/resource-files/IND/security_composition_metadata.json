@@ -1,0 +1,369 @@
+{
+  "fields": [
+    {
+      "name": "deal_no",
+      "position": 1,
+      "typ": "String"
+    },
+    {
+      "name": "short_name",
+      "position": 2,
+      "typ": "String"
+    },
+    {
+      "name": "nxt_rep_dt",
+      "position": 3,
+      "typ": "I64"
+    },
+    {
+      "name": "call_dt",
+      "position": 4,
+      "typ": "I64"
+    },
+    {
+      "name": "put_dt",
+      "position": 5,
+      "typ": "I64"
+    },
+    {
+      "name": "deal_dt",
+      "position": 6,
+      "typ": "I64"
+    },
+    {
+      "name": "portfolio",
+      "position": 7,
+      "typ": "String"
+    },
+    {
+      "name": "deal_rt",
+      "position": 8,
+      "typ": "F64"
+    },
+    {
+      "name": "org_face_val",
+      "position": 9,
+      "typ": "I64"
+    },
+    {
+      "name": "os_face_val",
+      "position": 10,
+      "typ": "I64"
+    },
+    {
+      "name": "org_cst_val",
+      "position": 11,
+      "typ": "F64"
+    },
+    {
+      "name": "acrd_int",
+      "position": 12,
+      "typ": "F64"
+    },
+    {
+      "name": "book_yield",
+      "position": 13,
+      "typ": "F64"
+    },
+    {
+      "name": "int_basis",
+      "position": 14,
+      "typ": "I64"
+    },
+    {
+      "name": "avg_os_vd",
+      "position": 15,
+      "typ": "F64"
+    },
+    {
+      "name": "avg_os_dd",
+      "position": 16,
+      "typ": "F64"
+    },
+    {
+      "name": "prin_amt",
+      "position": 17,
+      "typ": "F64"
+    },
+    {
+      "name": "org_bal",
+      "position": 18,
+      "typ": "F64"
+    },
+    {
+      "name": "coup_rt",
+      "position": 19,
+      "typ": "F64"
+    },
+    {
+      "name": "nxt_coup_dt",
+      "position": 20,
+      "typ": "I64"
+    },
+    {
+      "name": "gl",
+      "position": 21,
+      "typ": "I64"
+    },
+    {
+      "name": "cf_dt",
+      "position": 22,
+      "typ": "I64"
+    },
+    {
+      "name": "secu_desc",
+      "position": 23,
+      "typ": "String"
+    },
+    {
+      "name": "prod_desc",
+      "position": 24,
+      "typ": "String"
+    },
+    {
+      "name": "prod_cd",
+      "position": 25,
+      "typ": "String"
+    },
+    {
+      "name": "lst_coup_dt",
+      "position": 26,
+      "typ": "I64"
+    },
+    {
+      "name": "call_dt1",
+      "position": 27,
+      "typ": "I64"
+    },
+    {
+      "name": "coup_freq",
+      "position": 28,
+      "typ": "String"
+    },
+    {
+      "name": "val_dt",
+      "position": 29,
+      "typ": "I64"
+    },
+    {
+      "name": "acrl_freq",
+      "position": 30,
+      "typ": "String"
+    },
+    {
+      "name": "lst_rep_dt",
+      "position": 31,
+      "typ": "I64"
+    },
+    {
+      "name": "lst_put_dt",
+      "position": 32,
+      "typ": "I64"
+    },
+    {
+      "name": "inst",
+      "position": 33,
+      "typ": "String"
+    },
+    {
+      "name": "org_term",
+      "position": 34,
+      "typ": "I64"
+    },
+    {
+      "name": "acrl_basis",
+      "position": 35,
+      "typ": "String"
+    },
+    {
+      "name": "div",
+      "position": 36,
+      "typ": "String"
+    },
+    {
+      "name": "alm_line",
+      "position": 37,
+      "typ": "String"
+    },
+    {
+      "name": "ia_line",
+      "position": 38,
+      "typ": "String"
+    },
+    {
+      "name": "cmpnd_freq",
+      "position": 39,
+      "typ": "I64"
+    },
+    {
+      "name": "nxt_cmpnd_dt",
+      "position": 40,
+      "typ": "I64"
+    },
+    {
+      "name": "rt_chng_freq",
+      "position": 41,
+      "typ": "I64"
+    },
+    {
+      "name": "rt_flg",
+      "position": 42,
+      "typ": "String"
+    },
+    {
+      "name": "rep_idx",
+      "position": 43,
+      "typ": "String"
+    },
+    {
+      "name": "nxt_pay_dt",
+      "position": 44,
+      "typ": "I64"
+    },
+    {
+      "name": "prev_rep_dt",
+      "position": 45,
+      "typ": "I64"
+    },
+    {
+      "name": "int_pay_freq",
+      "position": 46,
+      "typ": "I64"
+    },
+    {
+      "name": "int_rt",
+      "position": 47,
+      "typ": "F64"
+    },
+    {
+      "name": "port_typ",
+      "position": 48,
+      "typ": "String"
+    },
+    {
+      "name": "sec_grp",
+      "position": 49,
+      "typ": "String"
+    },
+    {
+      "name": "sec_type",
+      "position": 50,
+      "typ": "String"
+    },
+    {
+      "name": "sec_issuer",
+      "position": 51,
+      "typ": "String"
+    },
+    {
+      "name": "sec_guaranteed",
+      "position": 52,
+      "typ": "String"
+    },
+    {
+      "name": "mrkt",
+      "position": 53,
+      "typ": "String"
+    },
+    {
+      "name": "idx_label",
+      "position": 54,
+      "typ": "String"
+    },
+    {
+      "name": "bd_categ",
+      "position": 55,
+      "typ": "String"
+    },
+    {
+      "name": "bd_type",
+      "position": 56,
+      "typ": "String"
+    },
+    {
+      "name": "listed",
+      "position": 57,
+      "typ": "String"
+    },
+    {
+      "name": "npa_class",
+      "position": 58,
+      "typ": "String"
+    },
+    {
+      "name": "entity",
+      "position": 59,
+      "typ": "String"
+    },
+    {
+      "name": "desk",
+      "position": 60,
+      "typ": "String"
+    },
+    {
+      "name": "acc_sec_igaap",
+      "position": 61,
+      "typ": "String"
+    },
+    {
+      "name": "os_cv_before_amort",
+      "position": 62,
+      "typ": "F64"
+    },
+    {
+      "name": "os_cv_after_amort",
+      "position": 63,
+      "typ": "F64"
+    },
+    {
+      "name": "mat_dt",
+      "position": 64,
+      "typ": "I64"
+    },
+    {
+      "name": "int_amt",
+      "position": 65,
+      "typ": "F64"
+    },
+    {
+      "name": "flow_type",
+      "position": 66,
+      "typ": "String"
+    },
+    {
+      "name": "isin",
+      "position": 67,
+      "typ": "String"
+    },
+    {
+      "name": "org_tenor",
+      "position": 68,
+      "typ": "I64"
+    },
+    {
+      "name": "rep_tenor",
+      "position": 69,
+      "typ": "I64"
+    },
+    {
+      "name": "ftp_mat_dt",
+      "position": 70,
+      "typ": "I64"
+    },
+    {
+      "name": "tot_int_amt",
+      "position": 71,
+      "typ": "F64"
+    },
+    {
+      "name": "tot_prin_amt",
+      "position": 72,
+      "typ": "F64"
+    },
+    {
+      "name": "cashflows",
+      "position": 73,
+      "typ": "Cashflows"
+    }
+  ]
+}

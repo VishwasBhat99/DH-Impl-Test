@@ -1,0 +1,6 @@
+[package]
+name = "sdb_util"
+version = "0.1.0"
+authors = ["Prajwal Dhatwalia <prajwal.dh@surya-soft.com>"]
+
+[dependencies]

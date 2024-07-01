@@ -1,0 +1,46 @@
+syntax= "proto3";
+
+message Cashflow {
+    double int_amt= 1;
+    double prin_amt= 2;
+    int64 date= 3;
+}
+
+message AccountWithCashflows{
+    string entity= 1;
+    string trade_id= 2;
+    int64 struct_id= 3;
+    string comp_typology= 4;
+    string cntrct_typology= 5;
+    string desk= 6;
+    string book= 7;
+    string folder= 8;
+    string trading_banking= 9;
+    string cntr_prty_grp_cd= 10;
+    string cntr_prty_prnt_cd= 11;
+    string intrnl_extrnl= 12;
+    int64 trade_dt= 13;
+    int64 del_dt= 14;
+    string buy_sell= 15;
+    string put_call= 16;
+    string call_ccy= 17;
+    string put_ccy= 18;
+    double put_amt= 19;
+    double mtm_excld_prem_inr= 20;
+    string position_ccy= 21;
+    double forward_delta_ccy_1_amt= 22;
+    string pl_ccy= 23;
+    double forward_delta_ccy_2_amt= 24;
+    string inst= 25;
+    string cf_type= 26;
+    string cntrct_usage = 27;
+    string settle_ccy = 28;
+    double fwdmtm_settle_ccy = 29;
+    double tot_int_amt= 30;
+    double tot_prin_amt= 31;
+    string settlement_type= 32;
+    string settlement_Amount= 33;
+    string Delivery_Date= 34;
+    string digital_payout_currency= 35;
+    repeated Cashflow cashflows= 36;
+}

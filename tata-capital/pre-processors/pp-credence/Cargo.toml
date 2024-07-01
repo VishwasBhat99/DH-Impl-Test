@@ -1,0 +1,22 @@
+[package]
+name = "pp_credence"
+version = "1.4.3927"
+authors = ["ravindar-01<ravindar.sr@surya-soft.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0.81"
+clap = "3.1.18"
+health_report = {path = "../../../hdfc/libraries/health_report"}
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io"}
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.9.0"
+slog-async = "2.7.0"
+calamine = "0.18.0"
+ahash = "0.7.6"
+hashbrown = "0.12.1"
+base64 = "0.13.0"
+chrono = "0.4.10"

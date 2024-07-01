@@ -1,0 +1,193 @@
+{
+    "streamName": "UNDRAWN",
+    "streamId": "3042",
+    "flows": [
+        {
+            "name": "Undrawn Classification",
+            "flowId": "1",
+            "flowDependencies": [],
+            "executorID": "2",
+            "process": [
+                {
+                    "processName": "Pre-Flight-Check",
+                    "processId": "1",
+                    "processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/undrawn-over.txt"
+                    ],
+                    "processDependencies": [],
+                    "processReport": ""
+                },
+                {
+                    "processName": "Pre-Processor",
+                    "processId": "2",
+                    "processBinary": "/home/dbuser/programs/BAH/pp_over_undrawn",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/undrawn-over.txt",
+                        "--lcr-cat-path",
+                        "/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/MasterLCRCategory.xlsx",
+                        "--cd-od-path",
+                        "/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/CD-od-WCDL-Line-master.xlsx",
+                        "--funded-path",
+                        "/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Funded_Master.xlsx",
+                        "--common-sheet-name",
+                        "Sheet1",
+                        "--output-file",
+                        "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/undrawn_over.txt",
+                        "--cust-ref-code",
+                        "000",
+                        "--log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/UndrawnInd_PPLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/UndrawnInd_PPDiagLog.txt"
+                    ],
+                    "processDependencies": [
+                        "1"
+                    ],
+                    "processReport": "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/undrawn_over-health-check-report.json"
+                },
+                {
+                    "processName": "Cashflow-Generator",
+                    "processId": "3",
+                    "processBinary": "/home/dbuser/programs/BAH/cf_undrawn_overseas",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/undrawn_over.txt",
+                        "--output-file",
+                        "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/undrawnOverCFOutput",
+                        "--log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverCFLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverCFDiagLog.txt"
+                    ],
+                    "processDependencies": [
+                        "2"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/undrawnOverCFOutput-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Aggregator Liability",
+                    "processId": "4",
+                    "processBinary": "/home/dbuser/programs/BAH/non-mat-alm-agg",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/undrawnOverCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/undrawnOverLiabAggregated-summary",
+                        "--log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverLiabBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverLiabBALMDiagLog.txt",
+                        "--currency",
+                        "USD",
+                        "--local-consolidation-currency",
+                        "USL",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--known-fields-file",
+                        "/UAT_SH_RULES/BAH/undrawn_classification_over_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/BAH/undrawn_classification_over_metadata.json",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/BAH/undrawn_classification_over_liab_rules.txt",
+                        "--default-llg-code",
+                        "11999"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/undrawnOverCFOutput-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Aggregator Asset",
+                    "processId": "5",
+                    "processBinary": "/home/dbuser/programs/BAH/non-mat-alm-agg",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/undrawnOverCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/undrawnOverAssetAggregated-summary",
+                        "--log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverAssetBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverBALMDiagLog.txt",
+                        "--currency",
+                        "USD",
+                        "--local-consolidation-currency",
+                        "USL",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--known-fields-file",
+                        "/UAT_SH_RULES/BAH/undrawn_classification_over_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/BAH/undrawn_classification_over_metadata.json",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/BAH/undrawn_classification_over_asset_rules.txt",
+                        "--default-llg-code",
+                        "4001"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/undrawnOverCFOutput-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Consolidator Liability",
+                    "processId": "6",
+                    "processBinary": "/home/dbuser/programs/BAH/consolidator",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/undrawnOverLiabAggregated",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/undrawnOverLiabAggregated",
+                        "--log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverLiabBALMConsolLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverLiabBALMConsolDiagLog.txt",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--consol-config-file",
+                        "/UAT_SH_RULES/BAH/consol-config.txt",
+                        "--is-maturity",
+                        "false"
+                    ],
+                    "processDependencies": [
+                        "4"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/undrawnOverCFOutput-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Consolidator Asset",
+                    "processId": "7",
+                    "processBinary": "/home/dbuser/programs/BAH/consolidator",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/undrawnOverAssetAggregated",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/undrawnOverAssetAggregated",
+                        "--log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverAssetBALMConsolLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/BAH/{ddmmyyyy}/undrawnOverAssetBALMConsolDiagLog.txt",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--consol-config-file",
+                        "/UAT_SH_RULES/BAH/consol-config.txt",
+                        "--is-maturity",
+                        "false"
+                    ],
+                    "processDependencies": [
+                        "5"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/undrawnOverCFOutput-health-check-report.json"
+                }
+            ]
+        }
+    ]
+}

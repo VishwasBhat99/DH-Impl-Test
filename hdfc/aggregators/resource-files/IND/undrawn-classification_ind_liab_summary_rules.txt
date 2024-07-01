@@ -1,0 +1,5 @@
+1|1|0|final_mapping|EQ|Retail & SME|8041
+2|1|0|final_mapping|EQ|NFC & PSE|8042
+3|1|0|final_mapping|EQ|Others|8045
+4|1|0|final_mapping|EQ|Banks|8044
+5|1|0|final_mapping|EQ|Financial Entity|8043

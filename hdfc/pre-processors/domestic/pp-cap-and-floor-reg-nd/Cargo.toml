@@ -1,0 +1,15 @@
+[package]
+name = "pp_cap_floor_reg_nd"
+version = "1.0.2337"
+authors = ["NPunyashree <punyashree.n@surya-soft.com>"]
+
+[dependencies]
+clap = "3.0.14"
+sdb_dyn_proto_rdr = { path = "../../../libraries/sdb_dyn_proto_rdr" }
+rbdate = { path = "../../../libraries/RBDate" }
+sdb_io = { path = "../../../libraries/sdb_io" }
+slog-term = "2.8.0"
+slog-async = "2.7.0"
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+health_report = { path = "../../../libraries/health_report" }
+calamine = "0.18.0"

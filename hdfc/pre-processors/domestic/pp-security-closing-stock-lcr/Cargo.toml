@@ -1,0 +1,18 @@
+[package]
+name = "pp_sec_close_stock_lcr"
+version = "1.0.3772"
+authors = ["Srinivas Reddy <srinivas.r@surya-soft.com>"]
+
+[dependencies]
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+rbdate = { path = "../../../libraries/RBDate" }
+sdb_io = { path = "../../../libraries/sdb_io"}
+clap = "2.31.2"
+chrono = "0.4.6"
+health_report = { path = "../../../libraries/health_report" }
+csv = "1.1.1"
+serde = "1.0.98"
+serde_derive = "1.0.98"
+calamine = "0.18.0"

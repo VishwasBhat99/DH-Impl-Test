@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+message Cashflow {
+    double int_amt= 1;
+    double prin_amt= 2;
+    int64 date= 3;
+}
+message AccountWithCashflows {
+    int64 date_of_availment=1;
+    string source=2;
+    double amount=3;
+    double roi=4;
+    int64 mat_date=5;
+    string repayment_sch=6;
+    int64 res_mat=7;
+    string frequency=8;
+    int64 pmt_st_dt=9;
+    double remaining_prin=10;
+    string crncy_code=11;
+    double p_installment=12;
+    int64 no_of_installment=13;
+    double total_inst_amt=14;
+    repeated Cashflow cashflows= 15;
+}

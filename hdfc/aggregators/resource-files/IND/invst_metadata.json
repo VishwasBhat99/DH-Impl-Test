@@ -1,0 +1,254 @@
+{
+  "fields": [
+    {
+      "name": "deal_no",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "short_name",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "nxt_rep_dt",
+      "typ": "I64",
+      "position": 3
+    },
+    {
+      "name": "deal_dt",
+      "typ": "I64",
+      "position": 4
+    },
+    {
+      "name": "portfolio",
+      "typ": "String",
+      "position": 5
+    },
+    {
+      "name": "deal_rt",
+      "typ": "F64",
+      "position": 6
+    },
+    {
+      "name": "org_face_val",
+      "typ": "I64",
+      "position": 7
+    },
+    {
+      "name": "os_face_val",
+      "typ": "I64",
+      "position": 8
+    },
+    {
+      "name": "org_cst_val",
+      "typ": "F64",
+      "position": 9
+    },
+    {
+      "name": "acrd_int",
+      "typ": "F64",
+      "position": 10
+    },
+    {
+      "name": "book_yield",
+      "typ": "F64",
+      "position": 11
+    },
+    {
+      "name": "int_basis",
+      "typ": "I64",
+      "position": 12
+    },
+    {
+      "name": "avg_os_vd",
+      "typ": "F64",
+      "position": 13
+    },
+    {
+      "name": "avg_os_dd",
+      "typ": "F64",
+      "position": 14
+    },
+    {
+      "name": "os_cost_val",
+      "typ": "F64",
+      "position": 15
+    },
+    {
+      "name": "org_bal",
+      "typ": "F64",
+      "position": 16
+    },
+    {
+      "name": "coup_rt",
+      "typ": "F64",
+      "position": 17
+    },
+    {
+      "name": "nxt_coup_dt",
+      "typ": "I64",
+      "position": 18
+    },
+    {
+      "name": "gl",
+      "typ": "I64",
+      "position": 19
+    },
+    {
+      "name": "mat_dt",
+      "typ": "I64",
+      "position": 20
+    },
+    {
+      "name": "secu_desc",
+      "typ": "String",
+      "position": 21
+    },
+    {
+      "name": "prod_desc",
+      "typ": "String",
+      "position": 22
+    },
+    {
+      "name": "prod_cd",
+      "typ": "String",
+      "position": 23
+    },
+    {
+      "name": "lst_coup_dt",
+      "typ": "I64",
+      "position": 24
+    },
+    {
+      "name": "call_dt1",
+      "typ": "I64",
+      "position": 25
+    },
+    {
+      "name": "coup_freq",
+      "typ": "String",
+      "position": 26
+    },
+    {
+      "name": "val_dt",
+      "typ": "I64",
+      "position": 27
+    },
+    {
+      "name": "acrl_freq",
+      "typ": "String",
+      "position": 28
+    },
+    {
+      "name": "lst_rep_dt",
+      "typ": "I64",
+      "position": 29
+    },
+    {
+      "name": "lst_put_dt",
+      "typ": "I64",
+      "position": 30
+    },
+    {
+      "name": "inst",
+      "typ": "String",
+      "position": 31
+    },
+    {
+      "name": "org_term",
+      "typ": "I64",
+      "position": 32
+    },
+    {
+      "name": "acrl_basis",
+      "typ": "String",
+      "position": 33
+    },
+    {
+      "name": "div",
+      "typ": "String",
+      "position": 34
+    },
+    {
+      "name": "alm_line",
+      "typ": "String",
+      "position": 35
+    },
+    {
+      "name": "cmpnd_freq",
+      "typ": "I64",
+      "position": 36
+    },
+    {
+      "name": "nxt_cmpnd_dt",
+      "typ": "I64",
+      "position": 37
+    },
+    {
+      "name": "rt_chng_freq",
+      "typ": "I64",
+      "position": 38
+    },
+    {
+      "name": "rt_flg",
+      "typ": "String",
+      "position": 39
+    },
+    {
+      "name": "rep_idx",
+      "typ": "String",
+      "position": 40
+    },
+    {
+      "name": "nxt_pay_dt",
+      "typ": "I64",
+      "position": 41
+    },
+    {
+      "name": "prev_rep_dt",
+      "typ": "I64",
+      "position": 42
+    },
+    {
+      "name": "int_pay_freq",
+      "typ": "I64",
+      "position": 43
+    },
+    {
+      "name": "call_dt",
+      "typ": "I64",
+      "position": 44
+    },
+    {
+      "name": "put_dt",
+      "typ": "I64",
+      "position": 45
+    },
+    {
+      "name": "int_rt",
+      "typ": "F64",
+      "position": 46
+    },
+    {
+      "name": "port_typ",
+      "typ": "String",
+      "position": 47
+    },
+    {
+      "name": "total_interest_amount",
+      "typ": "F64",
+      "position": 48
+    },
+    {
+      "name": "total_principal_amount",
+      "typ": "F64",
+      "position": 49
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 50
+    }
+  ]
+}

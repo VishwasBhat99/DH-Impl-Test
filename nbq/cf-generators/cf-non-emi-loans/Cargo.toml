@@ -1,0 +1,22 @@
+[package]
+name = "cf_non_emi_loans"
+version = "1.0.0"
+authors = ["srinivasr <srinivas.r@surya-soft.com>"]
+
+[dependencies]
+clap = "2.33.0"
+chrono = "0.4"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+health_report = { path = "../../../hdfc/libraries/health_report" }
+sdb_day_convention = { path = "../../../hdfc/libraries/sdb_day_convention" }
+sdb_cf_gen = { path = "../../../surya/libraries/sdb_cf_gen" }
+npa_cfdate_adjusment = { path = "../../../surya/libraries/npa_cfdate_adjusment" }
+protobuf = { version = "2.22.0", features = ["with-bytes"] }
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+slog = { version = "2.5.2", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.2"
+slog-async = "2.3.0"
+libmath = "0.2.1"

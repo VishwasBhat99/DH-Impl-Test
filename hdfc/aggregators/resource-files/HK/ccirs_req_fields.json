@@ -1,0 +1,9 @@
+{
+ "account_number": "trade_id",
+ "concat": "",
+ "cashflows": "cashflows",
+ "institution": "flow_ccy",
+ "interest_rate": "int_rt",
+ "exchange_rate": "",
+ "next_rep_date": ""
+}

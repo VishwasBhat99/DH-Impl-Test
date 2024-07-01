@@ -1,0 +1,1 @@
+DELETE FROM "BASELLLGData" WHERE "AsOnDt"='&1'; 

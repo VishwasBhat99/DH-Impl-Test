@@ -1,0 +1,35 @@
+1|1|0|user_def_stats|EQ|Substandard|AND
+1|1|1|balm_llg|EQ|Bills|12811
+2|1|0|user_def_stats|EQ|Doubtful I|AND
+2|1|1|balm_llg|EQ|Bills|12812
+3|1|0|user_def_stats|EQ|Doubtful II|AND
+3|1|1|balm_llg|EQ|Bills|12812
+4|1|0|user_def_stats|EQ|Doubtful III|AND
+4|1|1|balm_llg|EQ|Bills|12812
+5|1|0|user_def_stats|EQ|Loss|AND
+5|1|1|balm_llg|EQ|Bills|12813
+6|1|0|balm_llg|EQ|Demand Loan|AND
+6|1|1|user_def_stats|EQ|Substandard|12806
+7|1|0|balm_llg|EQ|Demand Loan|AND
+7|1|1|user_def_stats|EQ|Doubtful I|12807
+8|1|0|balm_llg|EQ|Demand Loan|AND
+8|1|1|user_def_stats|EQ|Doubtful II|12807
+9|1|0|balm_llg|EQ|Demand Loan|AND
+9|1|1|user_def_stats|EQ|Doubtful III|12807
+10|1|0|balm_llg|EQ|Demand Loan|AND
+10|1|1|user_def_stats|EQ|Loss|12808
+11|1|0|balm_llg|EQ|Term Loan|AND
+11|1|1|user_def_stats|EQ|Substandard|12822
+12|1|0|balm_llg|EQ|Term Loan|AND
+12|1|1|user_def_stats|EQ|Doubtful I|12823
+13|1|0|balm_llg|EQ|Term Loan|AND
+13|1|1|user_def_stats|EQ|Doubtful II|12823
+14|1|0|balm_llg|EQ|Term Loan|AND
+14|1|1|user_def_stats|EQ|Doubtful III|12823
+15|1|0|balm_llg|EQ|Term Loan|AND
+15|1|1|user_def_stats|EQ|Loss|12824
+16|1|0|balm_llg|EQ|Bills|12810
+17|1|0|balm_llg|EQ|Balance With Bank-FD|12815
+18|1|0|balm_llg|EQ|Securitisation-investments|12820
+19|1|0|balm_llg|EQ|Term Loan|12805
+20|1|0|balm_llg|EQ|Demand Loan|12841

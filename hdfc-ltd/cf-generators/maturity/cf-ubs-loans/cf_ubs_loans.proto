@@ -1,0 +1,58 @@
+syntax= "proto3";
+
+message Cashflow {
+    double int_amt= 1;
+    double prin_amt= 2;
+    int64 date= 3;
+}
+
+message AccountWithCashflows{
+    string cust_no=1;
+    string reference=2;
+    string cust_name=3;
+    string branch_cd=4;
+    double norm_int_rt=5;
+    string acurl_freq=6;
+    int64 book_dt=7;
+    int64 val_dt=8;
+    int64 mat_dt=9;
+    string user_def_stats=10;
+    string prod_cd=11;
+    string gl=12;
+    string curr=13;
+    double prin_ost_bal=14;
+    double spread=15;
+    int64 compmis2=16;
+    string rt_flag_new=17;
+    string rt_cd_new=18;
+    string division=19;
+    string alm_line=20;
+    string ia_llg=21;
+    string balm_llg=22;
+    string repricing_freq=23;
+    int64 lst_repricing_dt=24;
+    int64 nxt_repricing_dt=25;
+    string int_basis=26;
+    string cust_typ=27;
+    string npa_typ=28;
+    string bmid=29;
+    int64 compmis1=30;
+    int64 compmis3=31;
+    int64 org_tenor=32;
+    int64 resid_tenor=33;
+    string def_ftp_flag=34;
+    double total_interest_amount=35;
+    double total_principal_amount=36;
+    string pre_emi_ovd_amt=37;
+    string exc_pre_emi_amt=38;
+    string emi_ovd_amt=39;
+    string exc_emi_amt=40;
+    int32 pre_emi_ovd_gl_cd=41;
+    int32 exc_pre_emi_gl_cd=42;
+    int32 emi_ovd_gl_cd=43;
+    int32 exc_emi_gl_cd=44;
+    string security=45;
+    string ncd_type=46;
+    string holder_type=47;
+    repeated Cashflow cashflows=48; 
+}

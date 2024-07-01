@@ -1,0 +1,44 @@
+syntax = "proto3"; 
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows{ 
+string account_number=1;
+string account_id=2;
+int64 as_on_date=3;
+int64 acc_open_date=4;
+string acc_crncy_code=5;
+double out_bal=6;
+double out_bal_lcy=7;
+int64 maturity_date=8;
+double interest_rate=9;
+int64 next_reprise_date=10;
+int64 last_reprise_date=11;
+string gl_code=12;
+string scheme_code=13;
+string customer_id=14;
+string customer_type=15;
+string cust_const_code=16;
+string customer_name=17;
+double tot_int_amt=18;
+double total_prin_amt=19;
+string acct_type=20;
+double pt_f64_1=21;
+double pt_f64_2=22;
+double pt_f64_3=23;
+double pt_f64_4=24;
+int64 pt_i64_1=25;
+int64 pt_i64_2=26;
+int64 pt_i64_3=27;
+int64 pt_i64_4=28;
+string pt_str_1=29;
+string pt_str_2=30;
+string pt_str_3=31;
+string pt_str_4=32;
+repeated Cashflow cashflows=33;
+}
+

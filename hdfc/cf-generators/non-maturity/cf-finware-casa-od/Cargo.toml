@@ -1,0 +1,19 @@
+[package]
+name = "cf_fin_casa_od"
+version = "1.0.4933"
+authors = ["Saurabh Singh <saurabh.s@surya-soft.com>"]
+
+[dependencies]
+clap = "2.32.0"
+sdb_io = { path = "../../../libraries/sdb_io" }
+rbdate = { path = "../../../libraries/RBDate" }
+health_report = { path = "../../../libraries/health_report" }
+sdb_day_convention = { path = "../../../libraries/sdb_day_convention" }
+chrono = "0.4.24"
+protobuf = { version = "2.25.1", features = ["with-bytes"] }
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"

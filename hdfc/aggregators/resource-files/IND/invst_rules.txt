@@ -1,0 +1,72 @@
+1|1|0|deal_no|EQ|64-105466|12020
+2|1|0|deal_no|EQ|64-108097|12020
+3|1|0|deal_no|EQ|64-109738|12020
+4|1|0|deal_no|EQ|64-109923|12020
+5|1|0|deal_no|EQ|64-193349|12020
+6|1|0|deal_no|EQ|64-226197|12020
+7|1|0|deal_no|EQ|64-378799|12020
+8|1|0|deal_no|EQ|64-391977|12015
+9|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+9|1|1|prod_desc|EQ|GILTS|AND
+9|1|2|port_typ|EQ|Trading|11305
+10|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+10|1|1|prod_desc|EQ|GILTS|AND
+10|1|2|port_typ|EQ|AvailableSell|11306
+11|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+11|1|1|prod_desc|EQ|GILTS|AND
+11|1|2|port_typ|EQ|HeldMaturity|11307
+12|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+12|1|1|prod_desc|EQ|TBILL|AND
+12|1|2|port_typ|EQ|Trading|11310
+13|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+13|1|1|prod_desc|EQ|TBILL|AND
+13|1|2|port_typ|EQ|AvailableSell|11311
+14|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+14|1|1|prod_desc|EQ|TBILL|AND
+14|1|2|port_typ|EQ|HeldMaturity|11312
+15|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+15|1|1|prod_desc|EQ|GSFRB|AND
+15|1|2|port_typ|EQ|Trading|11326
+16|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+16|1|1|prod_desc|EQ|GSFRB|AND
+16|1|2|port_typ|EQ|AvailableSell|11328
+17|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+17|1|1|prod_desc|EQ|GSFRB|AND
+17|1|2|port_typ|EQ|HeldMaturity|11327
+18|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+18|1|1|prod_desc|EQ|State Govt Bond|AND
+18|1|2|port_typ|EQ|Trading|11331
+19|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+19|1|1|prod_desc|EQ|State Govt Bond|AND
+19|1|2|port_typ|EQ|AvailableSell|11333
+20|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+20|1|1|prod_desc|EQ|State Govt Bond|AND
+20|1|2|port_typ|EQ|HeldMaturity|11332
+21|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+21|1|1|port_typ|EQ|Trading|11315
+22|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+22|1|1|port_typ|EQ|AvailableSell|11320
+23|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+23|1|1|port_typ|EQ|HeldMaturity|11325
+24|1|0|alm_line|EQ|INV-BONDS/BSM|AND
+24|1|1|port_typ|EQ|HeldMaturity|11605
+25|1|0|alm_line|EQ|INV-BONDS/BSM|AND
+25|1|1|port_typ|EQ|Trading|11615
+26|1|0|alm_line|EQ|INV-BONDS/BSM|AND
+26|1|1|port_typ|EQ|AvailableSell|11610
+27|1|0|alm_line|EQ|INV-CP/CBD|AND
+27|1|1|port_typ|EQ|AvailableSell|11410
+28|1|0|alm_line|EQ|INV-CP/CBD|AND
+28|1|1|port_typ|EQ|HeldMaturity|11415
+29|1|0|alm_line|EQ|INV-CP/CBD|AND
+29|1|1|port_typ|EQ|Trading|11405
+30|1|0|alm_line|EQ|Inv-PREF/CBD|AND
+30|1|1|port_typ|EQ|Trading|11905
+31|1|0|alm_line|EQ|Inv-PREF/CBD|AND
+31|1|1|port_typ|EQ|HeldMaturity|11906
+32|1|0|alm_line|EQ|Inv-PREF/CBD|AND
+32|1|1|port_typ|EQ|AvailableSell|11907
+33|1|0|portfolio|EQ|SHORT-SELL/PDB-HFT|11997
+34|1|0|alm_line|EQ|SUBDEBT/CFU|5620
+35|1|0|alm_line|EQ| SUBDEBT/CFU|5620
+36|1|0|prod_desc|EQ|PTC|11995

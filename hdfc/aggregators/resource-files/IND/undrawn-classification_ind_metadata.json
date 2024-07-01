@@ -1,0 +1,144 @@
+{
+    "fields": [
+      {
+        "name": "v_src_sys_id",
+        "typ": "String",
+        "position": 1
+      },
+      {
+        "name": "v_exp_id",
+        "typ": "String",
+        "position": 2
+      },
+      {
+        "name": "v_d_cust_ref_code",
+        "typ": "String",
+        "position": 3
+      },
+      {
+        "name": "v_line_code",
+        "typ": "String",
+        "position": 4
+      },
+      {
+        "name": "v_prod_code",
+        "typ": "String",
+        "position": 5
+      },
+      {
+        "name": "v_pp_table",
+        "typ": "String",
+        "position": 6
+      },
+      {
+        "name": "n_ccf_prcnt",
+        "typ": "F64",
+        "position": 7
+      },
+      {
+        "name": "d_exp_strt_dt",
+        "typ": "I64",
+        "position": 8
+      },
+      {
+        "name": "d_exp_end_dt",
+        "typ": "I64",
+        "position": 9
+      },
+      {
+        "name": "n_exp_amt",
+        "typ": "F64",
+        "position": 10
+      },
+      {
+        "name": "n_undrawn_amt",
+        "typ": "F64",
+        "position": 11
+      },
+      {
+        "name": "v_basel_prod_typ_desc_lv1",
+        "typ": "String",
+        "position": 12
+      },
+      {
+        "name": "v_basel_prod_typ_desc",
+        "typ": "String",
+        "position": 13
+      },
+      {
+        "name": "v_basel_asst_class_desc",
+        "typ": "String",
+        "position": 14
+      },
+      {
+        "name": "v_party_typ_desc",
+        "typ": "String",
+        "position": 15
+      },
+      {
+        "name": "gl_code",
+        "typ": "String",
+        "position": 16
+      },
+      {
+        "name": "v_party_name",
+        "typ": "String",
+        "position": 17
+      },
+      {
+        "name": "v_ram_id",
+        "typ": "String",
+        "position": 18
+      },
+      {
+        "name": "v_ccy_code",
+        "typ": "String",
+        "position": 19
+      },
+      {
+        "name": "v_fclty_desc",
+        "typ": "String",
+        "position": 20
+      },
+      {
+        "name": "v_ret_corp_ind",
+        "typ": "String",
+        "position": 21
+      },
+      {
+        "name": "fb_nfb",
+        "typ": "String",
+        "position": 22
+      },
+      {
+        "name": "ccod_flag",
+        "typ": "String",
+        "position": 23
+      },
+      {
+        "name": "lcr_cat",
+        "typ": "String",
+        "position": 24
+      },
+      {
+        "name": "asst_class_desc",
+        "typ": "String",
+        "position": 25
+      },
+      {
+        "name": "final_map_lcr",
+        "typ": "String",
+        "position": 26
+      },
+      {
+        "name": "slr_amt",
+        "typ": "F64",
+        "position": 27
+      },
+      {
+        "name": "lcr_amt",
+        "typ": "F64",
+        "position": 28
+      }
+    ]
+  }

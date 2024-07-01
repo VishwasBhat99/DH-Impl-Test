@@ -1,0 +1,526 @@
+{
+	"streamName": "BAHRAIN",
+	"streamId": "12008",
+	"flows": [
+		{
+			"name": "UBS BILLS",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BillsCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BillsCFOutput.cf",	
+						"--ref-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Bills_Spread.xlsx",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/BillsIAAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BillsIALog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BillsIADiagLog.txt",
+						"--tenor-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Bills_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/bills_ia_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/bills_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/bills_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"3099",
+						"--npa-flag-values",
+						"Doubtful I,Doubtful II,Doubtful III,Loss,Substand",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"true"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BillsCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "TD",
+			"flowId": "2",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/TDCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/TDCFOutput.cf",	
+						"--ref-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/TD_Spread.xlsx",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/TDIAAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/TDIALog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/TDIADiagLog.txt",
+						"--tenor-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/TD_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/td_ia_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/td_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/td_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"7599",
+						"--npa-flag-values",
+						"",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"true"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/TDCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "GLMOC",
+			"flowId": "3",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLPPOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/ia-aggr-non-matt",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLPPOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/GLIAAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/GLIALog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/GLIADiagLog.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/over_gl_ia_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/over_gl_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/over_gl_bh_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"1099",
+						"--is-consolidated",
+						"false"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLPPOutput-heath-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "GLDiff",
+			"flowId": "4",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLReconPPOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/ia-aggr-non-matt",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLReconPPOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/GLReconIAAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/GLReconIALog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/GLReconIADiagLog.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/gl_recon_ia_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/gl_recon_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/gl_recon_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"1098",
+						"--is-consolidated",
+						"false"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLReconPPOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Murex Borrowings-Lendings",
+			"flowId": "5",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BorrCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/LendCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					 "processName": "Borr IA Aggregator",
+					 "processId": "3",
+			    		 "processBinary": "/home/dbuser/programs/BAH/ia-aggregator",
+					 "processArguments": [
+		 				"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BorrCFOutput.cf",	
+						"--ref-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/MurBorr_Spread.xlsx",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/MurBorrIAAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/MurBorrIALog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/MurBorrIADiagLog.txt",
+						"--tenor-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/MurBorr_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/mur_bor_len_ia_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/over_bor_len_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/mur_bor_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"6099",
+						"--npa-flag-values",
+						"",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"true"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Lend IA Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/BAH/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/LendCFOutput.cf",	
+						"--ref-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/MurLend_Spread.xlsx",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/MurLendIAAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/MurLendIALog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/MurLendIADiagLog.txt",
+						"--tenor-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/MurLend_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/mur_bor_len_ia_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/over_bor_len_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/mur_len_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"1599",
+						"--npa-flag-values",
+						"",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"false"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Security Closing Stock",
+			"flowId": "6",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/CloseStockCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/CloseStockCFOutput.cf",	
+						"--ref-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/CloseStock_Spread.xlsx",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CloseStockIAAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockIALog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockIADiagLog.txt",
+						"--tenor-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/CloseStock_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/closing-stock_ia_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/closing-stock-metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/closing-stock_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"2198",
+						"--npa-flag-values",
+						"",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"false"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/CloseStockCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "UBS LOANS",
+			"flowId": "7",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/UBSCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/UBSCFOutput.cf",	
+						"--ref-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/UBS_Spread.xlsx",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/UBSIAAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSIALog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSIADiagLog.txt",
+						"--tenor-file",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/UBS_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/ubs_loans_ia_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/ubs_loans_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/ubs_loans_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"2599",
+						"--npa-flag-values",
+						"Doubtful I, Doubtful II, Doubtful III, Loss, Substandard",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"true"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

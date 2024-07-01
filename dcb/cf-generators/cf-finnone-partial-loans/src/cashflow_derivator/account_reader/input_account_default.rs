@@ -1,0 +1,86 @@
+use cashflow_derivator::account_reader::InputAccount;
+use rbdate::date_from_timestamp;
+use statics::*;
+
+impl InputAccount {
+    pub fn new() -> InputAccount {
+        ::std::default::Default::default()
+    }
+}
+
+impl Default for InputAccount {
+    fn default() -> InputAccount {
+        InputAccount {
+            account_number: String::default(),
+            accrual_basis: String::default(),
+            accrued_interest: DEFAULT_FLOAT,
+            branch: String::default(),
+            curr_code: String::default(),
+            current_bal: DEFAULT_FLOAT,
+            due_date: None,
+            interest_pay_freq: String::default(),
+            intt_rate: DEFAULT_FLOAT,
+            product_code: String::default(),
+            mat_date: None,
+            original_balance: DEFAULT_FLOAT,
+            orig_term: DEFAULT_INT,
+            org_date: None,
+            emi: DEFAULT_FLOAT,
+            payment_freq: String::default(),
+            payment_type: DEFAULT_INT,
+            rate_flag: String::default(),
+            repricing_index: String::default(),
+            dpd: DEFAULT_FLOAT,
+            customer_name: String::default(),
+            scheme_id: String::default(),
+            psl: String::default(),
+            npa: String::default(),
+            inst_st_dt: None,
+            weaker: String::default(),
+            current_book_balance: DEFAULT_FLOAT,
+            first_inst_date: None,
+            inst_num: DEFAULT_INT,
+            num_inst_paid: DEFAULT_INT,
+            last_inst_date: None,
+            indv_corp_flag: String::default(),
+            customer_type: String::default(),
+            gr_dr: DEFAULT_FLOAT,
+            gr_cr: DEFAULT_FLOAT,
+            re_dr: DEFAULT_FLOAT,
+            re_cr: DEFAULT_FLOAT,
+            is_dr: DEFAULT_FLOAT,
+            is_cr: DEFAULT_FLOAT,
+            ui_dr: DEFAULT_FLOAT,
+            ui_cr: DEFAULT_FLOAT,
+            asset_class_id: String::default(),
+            customer_id: String::default(),
+            prod_type: String::default(),
+            is_ofs_gl: String::default(),
+            gr_ofs_gl: String::default(),
+            re_ofs_gl: String::default(),
+            ui_ofs_gl: String::default(),
+            int_amt: DEFAULT_FLOAT,
+            prin_amt: DEFAULT_FLOAT,
+            cf_dt: None,
+            as_on_date: None,
+            final_int_rate: DEFAULT_FLOAT,
+            cost_centre: DEFAULT_INT,
+            alm_line: String::default(),
+            coa: String::default(),
+            division: String::default(),
+            rep_freq: String::default(),
+            next_repricing_date: None,
+            last_repricing_date: None,
+            asset_class: String::default(),
+            al_line: String::default(),
+            balm_l2: String::default(),
+            bmid: String::default(),
+            ia_line: String::default(),
+            weaker_code: String::default(),
+            der_int_rate: DEFAULT_FLOAT,
+            bnchmrk_rate: DEFAULT_FLOAT,
+            spread: DEFAULT_FLOAT,
+            fully_floating_flg: String::default(),
+        }
+    }
+}

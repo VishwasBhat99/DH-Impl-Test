@@ -1,0 +1,60 @@
+{
+  "fields": [
+    {
+      "name": "gl_number",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "gl_desc",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "pd",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "prod_type",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "i",
+      "typ": "String",
+      "position": 5
+    },
+    {
+      "name": "total_pd_sum",
+      "typ": "F64",
+      "position": 6
+    },
+    {
+      "name": "total_pd_count",
+      "typ": "I64",
+      "position": 7
+    },
+    {
+      "name": "as_on_dt",
+      "typ": "I64",
+      "position": 8
+    },
+    {
+      "name": "nxt_rep_dt",
+      "typ": "I64",
+      "position": 9
+    },
+    {
+      "name":"ccy",
+      "typ":"String",
+      "position":10
+
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 11
+    }
+  ]
+}

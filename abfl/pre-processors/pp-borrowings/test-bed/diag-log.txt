@@ -1,0 +1,505 @@
+"2023-08-21T14:45:40.159117867+05:30" DEBG Floating Data FloatMap { isin: "INE831R07318", reset_date: "45047", amt: 500000000.0, description: "OIS" } written for isin: "INE831R07318"  with amt: 500000000.0
+"2023-08-21T14:45:40.159548007+05:30" DEBG The BENPOS Data of isin: "INE831R14CR7"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CR7", name1: "JM FINANCIAL MUTUAL FUND-JM LIQUID FUND", pangir1: "AAATJ2314G", position: 500.0, nfacevn: 500000.0, cmdate: "27-JUN-2023" }
+"2023-08-21T14:45:40.159637993+05:30" DEBG The BENPOS Mapping for pangir1: "AAATJ2314G" -> BenposMap { pangir1: "AAATJ2314G", short_name: "JM FINANCIAL MUTUAL FUND-JM LIQUID FUND", name1: "JM FINANCIAL MUTUAL FUND", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.159727995+05:30" DEBG The BENPOS Data of isin: "INE831R14CR7"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CR7", name1: "FRANKLIN INDIA LIQUID FUND", pangir1: "AAATT4931H", position: 1500.0, nfacevn: 500000.0, cmdate: "27-JUN-2023" }
+"2023-08-21T14:45:40.159803535+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT4931H" -> BenposMap { pangir1: "AAATT4931H", short_name: "FRANKLIN INDIA LIQUID FUND", name1: "Franklin Templeton Mutual Fund", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.159892680+05:30" DEBG The BENPOS Data of isin: "INE831R14CR7"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CR7", name1: "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA LIQUID FUND", pangir1: "AAATR0090B", position: 3000.0, nfacevn: 500000.0, cmdate: "27-JUN-2023" }
+"2023-08-21T14:45:40.159972044+05:30" DEBG The BENPOS Mapping for pangir1: "AAATR0090B" -> BenposMap { pangir1: "AAATR0090B", short_name: "NIPPON LIFE INDIA TRUSTEE LTD-A/C NIPPON INDIA LIQUID FUND", name1: "Nippon India Mutual Fund", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.160166587+05:30" DEBG Floating Data FloatMap { isin: "INE831R07292", reset_date: "45095", amt: 0.0, description: "Floating" } written for isin: "INE831R07292"  with amt: 0.0
+"2023-08-21T14:45:40.160416618+05:30" DEBG The BENPOS Data of isin: "INE831R14CM8"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CM8", name1: "HSBC LIQUID FUND", pangir1: "AAATH2467G", position: 2000.0, nfacevn: 500000.0, cmdate: "12-JUN-2023" }
+"2023-08-21T14:45:40.160498018+05:30" DEBG The BENPOS Mapping for pangir1: "AAATH2467G" -> BenposMap { pangir1: "AAATH2467G", short_name: "HSBC LIQUID FUND", name1: "HSBC MF", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.160682437+05:30" DEBG The BENPOS Data of isin: "INE831R07284"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07284", name1: "STATE BANK OF INDIA", pangir1: "AAACS8577K", position: 500.0, nfacevn: 1000000.0, cmdate: "08-SEP-2023" }
+"2023-08-21T14:45:40.160764353+05:30" DEBG The BENPOS Mapping for pangir1: "AAACS8577K" -> BenposMap { pangir1: "AAACS8577K", short_name: "STATE BANK OF INDIA", name1: "State Bank of India", category: "Banks" }
+
+"2023-08-21T14:45:40.160972860+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "RELIANCE GENERAL INSURANCE COMPANY LIMITED", pangir1: "AABCR6747B", position: 5000.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.161056098+05:30" DEBG The BENPOS Mapping for pangir1: "AABCR6747B" -> BenposMap { pangir1: "AABCR6747B", short_name: "RELIANCE GENERAL INSURANCE COMPANY LIMITED", name1: "RELIANCE GENERAL INSURANCE COMPANY LIMITED", category: "Insurance" }
+
+"2023-08-21T14:45:40.161143215+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "AMIRTHALINGAM  CHANDAR", pangir1: "AALPC7698D", position: 9.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.161218584+05:30" DEBG The BENPOS Mapping for pangir1: "AALPC7698D" -> BenposMap { pangir1: "AALPC7698D", short_name: "AMIRTHALINGAM  CHANDAR", name1: "AMIRTHALINGAM  CHANDAR", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.161304344+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "ITI GILTS LIMITED", pangir1: "AAGCC3271N", position: 2000.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.161396443+05:30" DEBG The BENPOS Mapping for pangir1: "AAGCC3271N" -> BenposMap { pangir1: "AAGCC3271N", short_name: "ITI GILTS LIMITED", name1: "ITI GILTS LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.161484702+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "PNB GILTS LTD", pangir1: "AAACP7685B", position: 500.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.161558478+05:30" DEBG The BENPOS Mapping for pangir1: "AAACP7685B" -> BenposMap { pangir1: "AAACP7685B", short_name: "PNB GILTS LTD", name1: "PNB GILTS LTD", category: "Corporate" }
+
+"2023-08-21T14:45:40.161642678+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "PUNJAB NATIONAL BANK", pangir1: "AAACP0165G", position: 15000.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.161716280+05:30" DEBG The BENPOS Mapping for pangir1: "AAACP0165G" -> BenposMap { pangir1: "AAACP0165G", short_name: "PUNJAB NATIONAL BANK", name1: "PUNJAB NATIONAL BANK", category: "Banks" }
+
+"2023-08-21T14:45:40.161798776+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "SITARAM JINDAL FOUNDATION", pangir1: "AAATS3638N", position: 200.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.161872470+05:30" DEBG The BENPOS Mapping for pangir1: "AAATS3638N" -> BenposMap { pangir1: "AAATS3638N", short_name: "SITARAM JINDAL FOUNDATION", name1: "SITARAM JINDAL FOUNDATION", category: "Corporate" }
+
+"2023-08-21T14:45:40.161956173+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "A K CAPITAL FINANCE LIMITED", pangir1: "AACCG5929R", position: 1977.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.162029982+05:30" DEBG The BENPOS Mapping for pangir1: "AACCG5929R" -> BenposMap { pangir1: "AACCG5929R", short_name: "A K CAPITAL FINANCE LIMITED", name1: "A K CAPITAL FINANCE LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.162134568+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "SUNRISE GILTS & SECURITIES PRIVATE LIMITED", pangir1: "AATCS8262J", position: 200.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.162210841+05:30" DEBG The BENPOS Mapping for pangir1: "AATCS8262J" -> BenposMap { pangir1: "AATCS8262J", short_name: "SUNRISE GILTS & SECURITIES PRIVATE LIMITED", name1: "SUNRISE GILTS & SECURITIES PRIVATE LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.162295430+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "GENEV CAPITAL PRIVATE LIMITED", pangir1: "AAHCG2869H", position: 1300.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.162369522+05:30" DEBG The BENPOS Mapping for pangir1: "AAHCG2869H" -> BenposMap { pangir1: "AAHCG2869H", short_name: "GENEV CAPITAL PRIVATE LIMITED", name1: "GENEV CAPITAL PRIVATE LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.162453115+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "S K FINANCE LIMITED", pangir1: "AAACE5115F", position: 2500.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.162527017+05:30" DEBG The BENPOS Mapping for pangir1: "AAACE5115F" -> BenposMap { pangir1: "AAACE5115F", short_name: "S K FINANCE LIMITED", name1: "S K FINANCE LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.162610327+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "TIPSONS FINANCIAL SERVICES PVT LTD", pangir1: "AAACW1883C", position: 1000.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.162689280+05:30" DEBG The BENPOS Mapping for pangir1: "AAACW1883C" -> BenposMap { pangir1: "AAACW1883C", short_name: "TIPSONS FINANCIAL SERVICES PVT LTD", name1: "TIPSONS FINANCIAL SERVICES PVT LTD", category: "Corporate" }
+
+"2023-08-21T14:45:40.162773485+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "NESCO LIMITED", pangir1: "AAACN1222E", position: 300.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.162846770+05:30" DEBG The BENPOS Mapping for pangir1: "AAACN1222E" -> BenposMap { pangir1: "AAACN1222E", short_name: "NESCO LIMITED", name1: "NESCO LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.162930218+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "JM FINANCIAL PRODUCTS LTD", pangir1: "AAACJ1236G", position: 1000.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.163003587+05:30" DEBG The BENPOS Mapping for pangir1: "AAACJ1236G" -> BenposMap { pangir1: "AAACJ1236G", short_name: "JM FINANCIAL PRODUCTS LTD", name1: "JM FINANCIAL PRODUCTS LTD", category: "Corporate" }
+
+"2023-08-21T14:45:40.163086312+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "PARAG M SHAH HUF", pangir1: "AASHP2502C", position: 10.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.163160481+05:30" DEBG The BENPOS Mapping for pangir1: "AASHP2502C" -> BenposMap { pangir1: "AASHP2502C", short_name: "PARAG M SHAH HUF", name1: "PARAG M SHAH HUF", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.163243825+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "RAJIV KUMAR JHA", pangir1: "AGTPJ9446J", position: 2.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.163329771+05:30" DEBG The BENPOS Mapping for pangir1: "AGTPJ9446J" -> BenposMap { pangir1: "AGTPJ9446J", short_name: "RAJIV KUMAR JHA", name1: "RAJIV KUMAR JHA", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.163389918+05:30" DEBG The BENPOS Data of isin: "INE831R07359"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07359", name1: "DILIP SACHANAND SHAMDASANI", pangir1: "AEEPS5546P", position: 2.0, nfacevn: 100000.0, cmdate: "" }
+"2023-08-21T14:45:40.163405311+05:30" DEBG The BENPOS Mapping for pangir1: "AEEPS5546P" -> BenposMap { pangir1: "AEEPS5546P", short_name: "DILIP SACHANAND SHAMDASANI", name1: "DILIP SACHANAND SHAMDASANI", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.163549248+05:30" DEBG Floating Data FloatMap { isin: "INE831R07300", reset_date: "45123", amt: 0.0, description: "Floating" } written for isin: "INE831R07300"  with amt: 0.0
+"2023-08-21T14:45:40.163567953+05:30" DEBG Floating Data FloatMap { isin: "INE831R07300", reset_date: "45123", amt: 0.0, description: "Floating" } written for isin: "INE831R07300"  with amt: 0.0
+"2023-08-21T14:45:40.163589831+05:30" DEBG Floating Data FloatMap { isin: "INE831R07300", reset_date: "45123", amt: 0.0, description: "Floating" } written for isin: "INE831R07300"  with amt: 0.0
+"2023-08-21T14:45:40.163610514+05:30" DEBG Floating Data FloatMap { isin: "INE831R07300", reset_date: "45123", amt: 0.0, description: "Floating" } written for isin: "INE831R07300"  with amt: 0.0
+"2023-08-21T14:45:40.163631218+05:30" DEBG Floating Data FloatMap { isin: "INE831R07300", reset_date: "45123", amt: 0.0, description: "Floating" } written for isin: "INE831R07300"  with amt: 0.0
+"2023-08-21T14:45:40.163887034+05:30" DEBG The BENPOS Data of isin: "INE831R14CN6"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CN6", name1: "HSBC LIQUID FUND", pangir1: "AAATH2467G", position: 2000.0, nfacevn: 500000.0, cmdate: "20-JUN-2023" }
+"2023-08-21T14:45:40.163913719+05:30" DEBG The BENPOS Mapping for pangir1: "AAATH2467G" -> BenposMap { pangir1: "AAATH2467G", short_name: "HSBC LIQUID FUND", name1: "HSBC MF", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.164002404+05:30" DEBG The BENPOS Data of isin: "INE831R07342"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07342", name1: "STATE BANK OF INDIA", pangir1: "AAACS8577K", position: 2500.0, nfacevn: 1000000.0, cmdate: "28-NOV-2025" }
+"2023-08-21T14:45:40.164023306+05:30" DEBG The BENPOS Mapping for pangir1: "AAACS8577K" -> BenposMap { pangir1: "AAACS8577K", short_name: "STATE BANK OF INDIA", name1: "State Bank of India", category: "Banks" }
+
+"2023-08-21T14:45:40.164174294+05:30" DEBG The BENPOS Data of isin: "INE831R08027"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08027", name1: "BPCL EMPLOYEES POST RETIREMENT MEDICAL BENEFITS TRUST", pangir1: "AABTB8372K", position: 100.0, nfacevn: 1000000.0, cmdate: "07-JUL-2026" }
+"2023-08-21T14:45:40.164190866+05:30" DEBG The BENPOS Mapping for pangir1: "AABTB8372K" -> BenposMap { pangir1: "AABTB8372K", short_name: "BPCL EMPLOYEES POST RETIREMENT MEDICAL BENEFITS TRUST", name1: "BPCL Employees Post Retirement Medical Benefits Trust", category: "PF" }
+
+"2023-08-21T14:45:40.164357487+05:30" DEBG The BENPOS Data of isin: "INE831R08043"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08043", name1: "UNITED INDIA INSURANCE COMPANY LIMITED", pangir1: "AAACU5552C", position: 250.0, nfacevn: 1000000.0, cmdate: "24-JUL-2026" }
+"2023-08-21T14:45:40.164372886+05:30" DEBG The BENPOS Mapping for pangir1: "AAACU5552C" -> BenposMap { pangir1: "AAACU5552C", short_name: "UNITED INDIA INSURANCE COMPANY LIMITED", name1: "United India Insurance Company Limited", category: "Insurance" }
+
+"2023-08-21T14:45:40.164546642+05:30" DEBG The BENPOS Data of isin: "INE831R08019"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08019", name1: "BIRLA INDUSTRIES PROVIDENT FUND", pangir1: "AAATB2775M", position: 20.0, nfacevn: 1000000.0, cmdate: "03-JUL-2026" }
+"2023-08-21T14:45:40.164562138+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB2775M" -> BenposMap { pangir1: "AAATB2775M", short_name: "BIRLA INDUSTRIES PROVIDENT FUND", name1: "Birla Industries Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.164576052+05:30" DEBG The BENPOS Data of isin: "INE831R08019"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08019", name1: "Bochasanwasi Shriaksharpurushottam Swaminarayan Sanstha", pangir1: "AAATB1429J", position: 100.0, nfacevn: 1000000.0, cmdate: "03-JUL-2026" }
+"2023-08-21T14:45:40.164590783+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB1429J" -> BenposMap { pangir1: "AAATB1429J", short_name: "Bochasanwasi Shriaksharpurushottam Swaminarayan Sanstha", name1: "BOCHASANWASI SHRIAKSHARPURUSHOTTAM SWAMINARAYAN SANSTHA", category: "PF" }
+
+"2023-08-21T14:45:40.164604948+05:30" DEBG The BENPOS Data of isin: "INE831R08019"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08019", name1: "HIMACHAL PRADESH STATE ELECTRICITY BOARD LIMITED GENERAL PROVIDENT FUND", pangir1: "AABTH8216Q", position: 30.0, nfacevn: 1000000.0, cmdate: "03-JUL-2026" }
+"2023-08-21T14:45:40.164619126+05:30" DEBG The BENPOS Mapping for pangir1: "AABTH8216Q" -> BenposMap { pangir1: "AABTH8216Q", short_name: "HIMACHAL PRADESH STATE ELECTRICITY BOARD LIMITED GENERAL PROVIDENT FUND", name1: "Himachal Pradesh State Electricity Board Limited General Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.164795699+05:30" DEBG The BENPOS Data of isin: "INE831R08050"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08050", name1: "ADITYA BIRLA SUN LIFE INSURANCE COMPANY LIMITED", pangir1: "AABCB4623J", position: 100.0, nfacevn: 1000000.0, cmdate: "14-MAY-2027" }
+"2023-08-21T14:45:40.164811609+05:30" DEBG The BENPOS Mapping for pangir1: "AABCB4623J" -> BenposMap { pangir1: "AABCB4623J", short_name: "ADITYA BIRLA SUN LIFE INSURANCE COMPANY LIMITED", name1: "Aditya Birla Sun Life Insurance Company Limited", category: "Insurance" }
+
+"2023-08-21T14:45:40.164828675+05:30" DEBG The BENPOS Data of isin: "INE831R08050"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08050", name1: "UNITED INDIA INSURANCE COMPANY LIMITED", pangir1: "AAACU5552C", position: 250.0, nfacevn: 1000000.0, cmdate: "14-MAY-2027" }
+"2023-08-21T14:45:40.164842665+05:30" DEBG The BENPOS Mapping for pangir1: "AAACU5552C" -> BenposMap { pangir1: "AAACU5552C", short_name: "UNITED INDIA INSURANCE COMPANY LIMITED", name1: "United India Insurance Company Limited", category: "Insurance" }
+
+"2023-08-21T14:45:40.164855931+05:30" DEBG The BENPOS Data of isin: "INE831R08050"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08050", name1: "UNITED INDIA INSURANCE COMPANY LIMITED EMPLOYEES PROVIDENT FUND", pangir1: "AAATU0085D", position: 150.0, nfacevn: 1000000.0, cmdate: "14-MAY-2027" }
+"2023-08-21T14:45:40.164868957+05:30" DEBG The BENPOS Mapping for pangir1: "AAATU0085D" -> BenposMap { pangir1: "AAATU0085D", short_name: "UNITED INDIA INSURANCE COMPANY LIMITED EMPLOYEES PROVIDENT FUND", name1: "United India Insurance Company Limited PF", category: "PF" }
+
+"2023-08-21T14:45:40.164882314+05:30" DEBG The BENPOS Data of isin: "INE831R08050"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08050", name1: "UNITED INDIA INSURANCE COMPANY (EMPLOYEES) PENSION FUND", pangir1: "AAATU0145Q", position: 100.0, nfacevn: 1000000.0, cmdate: "14-MAY-2027" }
+"2023-08-21T14:45:40.164895473+05:30" DEBG The BENPOS Mapping for pangir1: "AAATU0145Q" -> BenposMap { pangir1: "AAATU0145Q", short_name: "UNITED INDIA INSURANCE COMPANY (EMPLOYEES) PENSION FUND", name1: "United India Insurance Company Limited PF", category: "PF" }
+
+"2023-08-21T14:45:40.165059477+05:30" DEBG Floating Data FloatMap { isin: "INE831R07326", reset_date: "45098", amt: 0.0, description: "Floating" } written for isin: "INE831R07326"  with amt: 0.0
+"2023-08-21T14:45:40.165079461+05:30" DEBG Floating Data FloatMap { isin: "INE831R07326", reset_date: "45098", amt: 0.0, description: "Floating" } written for isin: "INE831R07326"  with amt: 0.0
+"2023-08-21T14:45:40.165099800+05:30" DEBG Floating Data FloatMap { isin: "INE831R07326", reset_date: "45098", amt: 0.0, description: "Floating" } written for isin: "INE831R07326"  with amt: 0.0
+"2023-08-21T14:45:40.165342293+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "L AND T CHIYODA STAFF PROVIDENT FUND", pangir1: "AAATL0344G", position: 10.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165382715+05:30" DEBG The BENPOS Mapping for pangir1: "AAATL0344G" -> BenposMap { pangir1: "AAATL0344G", short_name: "L AND T CHIYODA STAFF PROVIDENT FUND", name1: "L And T Chiyoda Staff Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.165459644+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "RESINS AND PLASTICS PROVIDENT FUND", pangir1: "AAATR3234R", position: 2.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165561013+05:30" DEBG The BENPOS Mapping for pangir1: "AAATR3234R" -> BenposMap { pangir1: "AAATR3234R", short_name: "RESINS AND PLASTICS PROVIDENT FUND", name1: "Resins And Plastics Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.165646733+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "BREACH CANDY HOSPITAL TRUST STAFF PROVIDENT FUND", pangir1: "AAATB9160E", position: 1.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165663050+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB9160E" -> BenposMap { pangir1: "AAATB9160E", short_name: "BREACH CANDY HOSPITAL TRUST STAFF PROVIDENT FUND", name1: "Breach Candy Hospital Trust Staff Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.165685542+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "ASHOK HALL GIRLS HIGH SCHOOL AND ALLIED INSTITUTIONS EMPLOYEES PROVIDENT FUND", pangir1: "AABTA5089J", position: 4.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165702338+05:30" DEBG The BENPOS Mapping for pangir1: "AABTA5089J" -> BenposMap { pangir1: "AABTA5089J", short_name: "ASHOK HALL GIRLS HIGH SCHOOL AND ALLIED INSTITUTIONS EMPLOYEES PROVIDENT FUND", name1: "Ashok Hall Girls High School And Allied Institutions Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.165718175+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "IECS LTD EMPLOYEES PROVIDENT FUND COVERED UNDER FAMILY PENSION SCHEME", pangir1: "AAATI5611D", position: 3.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165734324+05:30" DEBG The BENPOS Mapping for pangir1: "AAATI5611D" -> BenposMap { pangir1: "AAATI5611D", short_name: "IECS LTD EMPLOYEES PROVIDENT FUND COVERED UNDER FAMILY PENSION SCHEME", name1: "Iecs Ltd Employees Provident Fund Covered Under Family Pension Scheme", category: "PF" }
+
+"2023-08-21T14:45:40.165750998+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "A P S F C EMPLOYEES PROVIDENT FUND", pangir1: "AAFCA9021P", position: 10.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165767096+05:30" DEBG The BENPOS Mapping for pangir1: "AAFCA9021P" -> BenposMap { pangir1: "AAFCA9021P", short_name: "A P S F C EMPLOYEES PROVIDENT FUND", name1: "A P S F C Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.165783085+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "JK LAKSHMI CEMENT LIMITED COMPULSORY EMPLOYEES PROVIDENT FUND", pangir1: "AAATJ2880M", position: 3.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165799073+05:30" DEBG The BENPOS Mapping for pangir1: "AAATJ2880M" -> BenposMap { pangir1: "AAATJ2880M", short_name: "JK LAKSHMI CEMENT LIMITED COMPULSORY EMPLOYEES PROVIDENT FUND", name1: "Jk Lakshmi Cement Limited Compulsory Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.165815361+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "BIRLA EDUCATION TRUST EMPLOYEES PROVIDENT FUND", pangir1: "AAAAB0561G", position: 11.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165831755+05:30" DEBG The BENPOS Mapping for pangir1: "AAAAB0561G" -> BenposMap { pangir1: "AAAAB0561G", short_name: "BIRLA EDUCATION TRUST EMPLOYEES PROVIDENT FUND", name1: "Birla Education Trust Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.165847379+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "FRANCO INDIAN PHARMACEUTICALS PVT LTD STAFF PROVIDENT FUND", pangir1: "AAATF0568J", position: 7.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165863354+05:30" DEBG The BENPOS Mapping for pangir1: "AAATF0568J" -> BenposMap { pangir1: "AAATF0568J", short_name: "FRANCO INDIAN PHARMACEUTICALS PVT LTD STAFF PROVIDENT FUND", name1: "Franco Indian Pharmaceuticals Pvt Ltd Staff Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.165879643+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "JK TYRE & INDUSTRIES LTD EMPLOYEES PROVIDENT FUND OPTIONAL SCHEME", pangir1: "AAATJ1614M", position: 7.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165896958+05:30" DEBG The BENPOS Mapping for pangir1: "AAATJ1614M" -> BenposMap { pangir1: "AAATJ1614M", short_name: "JK TYRE & INDUSTRIES LTD EMPLOYEES PROVIDENT FUND OPTIONAL SCHEME", name1: "JK Tyre & Industries Limited PF", category: "PF" }
+
+"2023-08-21T14:45:40.165917321+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "MOTILAL PADAMPAT SUGAR MILLS EMPLOYEES PROVIDENT FUND", pangir1: "AAATM5809R", position: 3.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165933979+05:30" DEBG The BENPOS Mapping for pangir1: "AAATM5809R" -> BenposMap { pangir1: "AAATM5809R", short_name: "MOTILAL PADAMPAT SUGAR MILLS EMPLOYEES PROVIDENT FUND", name1: "Motilal Padampat Sugar Mills Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.165949836+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "ALSTOM T&D INDIA LIMITED EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AABTA3343H", position: 22.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165965847+05:30" DEBG The BENPOS Mapping for pangir1: "AABTA3343H" -> BenposMap { pangir1: "AABTA3343H", short_name: "ALSTOM T&D INDIA LIMITED EMPLOYEES PROVIDENT FUND TRUST", name1: "Alstom T&D India Limited Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.165981676+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "AGI EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AAATA7670E", position: 1.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.165997488+05:30" DEBG The BENPOS Mapping for pangir1: "AAATA7670E" -> BenposMap { pangir1: "AAATA7670E", short_name: "AGI EMPLOYEES PROVIDENT FUND TRUST", name1: "Agi Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.166013334+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "BPCL EMPLOYEES POST RETIREMENT MEDICAL BENEFITS TRUST", pangir1: "AABTB8372K", position: 100.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.166029285+05:30" DEBG The BENPOS Mapping for pangir1: "AABTB8372K" -> BenposMap { pangir1: "AABTB8372K", short_name: "BPCL EMPLOYEES POST RETIREMENT MEDICAL BENEFITS TRUST", name1: "BPCL Employees Post Retirement Medical Benefits Trust", category: "PF" }
+
+"2023-08-21T14:45:40.166045519+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "THE MATHRUBHUMI EMPLOYEES PROVIDENT FUND", pangir1: "AAATT6431A", position: 3.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.166067633+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT6431A" -> BenposMap { pangir1: "AAATT6431A", short_name: "THE MATHRUBHUMI EMPLOYEES PROVIDENT FUND", name1: "The Mathrubhumi Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.166084828+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "LUPIN LTD EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AAATL0248F", position: 20.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.166101821+05:30" DEBG The BENPOS Mapping for pangir1: "AAATL0248F" -> BenposMap { pangir1: "AAATL0248F", short_name: "LUPIN LTD EMPLOYEES PROVIDENT FUND TRUST", name1: "Lupin Ltd Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.166118527+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "HVPNL EMPLOYEES PENSION FUND TRUST", pangir1: "AAATH1917R", position: 265.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.166135338+05:30" DEBG The BENPOS Mapping for pangir1: "AAATH1917R" -> BenposMap { pangir1: "AAATH1917R", short_name: "HVPNL EMPLOYEES PENSION FUND TRUST", name1: "HVPNL Employees Pension Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.166157838+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "HVPNL EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AAATH2001A", position: 23.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.166175106+05:30" DEBG The BENPOS Mapping for pangir1: "AAATH2001A" -> BenposMap { pangir1: "AAATH2001A", short_name: "HVPNL EMPLOYEES PROVIDENT FUND TRUST", name1: "HVPNL Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.166191739+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "HITESH  BHAILALBHAI  PANCHASARA HUF .", pangir1: "AABHH5049H", position: 2.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.166214295+05:30" DEBG The BENPOS Mapping for pangir1: "AABHH5049H" -> BenposMap { pangir1: "AABHH5049H", short_name: "HITESH  BHAILALBHAI  PANCHASARA HUF .", name1: "HITESH  BHAILALBHAI  PANCHASARA HUF .", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.166229707+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "DEVENDRA SINGHAI", pangir1: "ADOPS8989D", position: 2.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.166245468+05:30" DEBG The BENPOS Mapping for pangir1: "ADOPS8989D" -> BenposMap { pangir1: "ADOPS8989D", short_name: "DEVENDRA SINGHAI", name1: "DEVENDRA SINGHAI", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.166260520+05:30" DEBG The BENPOS Data of isin: "INE831R08076"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08076", name1: "VIJAY LAXMI GARG", pangir1: "AEJPG1475L", position: 1.0, nfacevn: 1000000.0, cmdate: "08-JUN-2029" }
+"2023-08-21T14:45:40.166275974+05:30" DEBG The BENPOS Mapping for pangir1: "AEJPG1475L" -> BenposMap { pangir1: "AEJPG1475L", short_name: "VIJAY LAXMI GARG", name1: "VIJAY LAXMI GARG", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.166319768+05:30" DEBG The BENPOS Data of isin: "INE831R07011"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07011", name1: "UNITED INDIA INSURANCE COMPANY LIMITED EMPLOYEES PROVIDENT FUND", pangir1: "AAATU0085D", position: 200.0, nfacevn: 1000000.0, cmdate: "20-MAR-2026" }
+"2023-08-21T14:45:40.166338964+05:30" DEBG The BENPOS Mapping for pangir1: "AAATU0085D" -> BenposMap { pangir1: "AAATU0085D", short_name: "UNITED INDIA INSURANCE COMPANY LIMITED EMPLOYEES PROVIDENT FUND", name1: "United India Insurance Company Limited PF", category: "PF" }
+
+"2023-08-21T14:45:40.166482662+05:30" DEBG The BENPOS Data of isin: "INE831R14CQ9"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CQ9", name1: "INVESCO INDIA LIQUID FUND", pangir1: "AAATL5351M", position: 1000.0, nfacevn: 500000.0, cmdate: "11-JUL-2023" }
+"2023-08-21T14:45:40.166505711+05:30" DEBG The BENPOS Mapping for pangir1: "AAATL5351M" -> BenposMap { pangir1: "AAATL5351M", short_name: "INVESCO INDIA LIQUID FUND", name1: "Invesco Mutual Fund", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.166521771+05:30" DEBG The BENPOS Data of isin: "INE831R14CQ9"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CQ9", name1: "AXIS MUTUAL FUND TRUSTEE LIMITED A/C AXIS MUTUAL FUND A/C AXIS LIQUID FUND A/C", pangir1: "AACTA5925A", position: 4000.0, nfacevn: 500000.0, cmdate: "11-JUL-2023" }
+"2023-08-21T14:45:40.166537780+05:30" DEBG The BENPOS Mapping for pangir1: "AACTA5925A" -> BenposMap { pangir1: "AACTA5925A", short_name: "AXIS MUTUAL FUND TRUSTEE LIMITED A/C AXIS MUTUAL FUND A/C AXIS LIQUID FUND A/C", name1: "AXIS MUTUAL FUND", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.166625285+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "BHEL (BAP UNIT) EMPLOYEES PROVIDENT FUND TRUST RANIPET", pangir1: "AAATB0548G", position: 50.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166650736+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB0548G" -> BenposMap { pangir1: "AAATB0548G", short_name: "BHEL (BAP UNIT) EMPLOYEES PROVIDENT FUND TRUST RANIPET", name1: "BHEL (BAP UNIT) EMPLOYEES PROVIDENT FUND TRUST RANIPET", category: "PF" }
+
+"2023-08-21T14:45:40.166666944+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "IECS LTD EMPLOYEES PROVIDENT FUND COVERED UNDER FAMILY PENSION SCHEME", pangir1: "AAATI5611D", position: 3.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166682105+05:30" DEBG The BENPOS Mapping for pangir1: "AAATI5611D" -> BenposMap { pangir1: "AAATI5611D", short_name: "IECS LTD EMPLOYEES PROVIDENT FUND COVERED UNDER FAMILY PENSION SCHEME", name1: "Iecs Ltd Employees Provident Fund Covered Under Family Pension Scheme", category: "PF" }
+
+"2023-08-21T14:45:40.166696512+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "BOSCH EMPLOYEES (BANGALORE) PROVIDENT FUND TRUST", pangir1: "AAATM2818E", position: 150.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166711327+05:30" DEBG The BENPOS Mapping for pangir1: "AAATM2818E" -> BenposMap { pangir1: "AAATM2818E", short_name: "BOSCH EMPLOYEES (BANGALORE) PROVIDENT FUND TRUST", name1: "BOSCH PF", category: "PF" }
+
+"2023-08-21T14:45:40.166725993+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "BOSCH EMPLOYEES GRATUITY FUND", pangir1: "AAATM2820L", position: 65.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166740796+05:30" DEBG The BENPOS Mapping for pangir1: "AAATM2820L" -> BenposMap { pangir1: "AAATM2820L", short_name: "BOSCH EMPLOYEES GRATUITY FUND", name1: "BOSCH PF", category: "PF" }
+
+"2023-08-21T14:45:40.166754971+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "BOSCH SUPERANNUATION FUND", pangir1: "AAATM2817M", position: 50.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166769457+05:30" DEBG The BENPOS Mapping for pangir1: "AAATM2817M" -> BenposMap { pangir1: "AAATM2817M", short_name: "BOSCH SUPERANNUATION FUND", name1: "BOSCH PF", category: "PF" }
+
+"2023-08-21T14:45:40.166783785+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "BOSCH WORKMENS (NASHIK) PROVIDENT FUND TRUST", pangir1: "AAATM5075D", position: 35.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166798521+05:30" DEBG The BENPOS Mapping for pangir1: "AAATM5075D" -> BenposMap { pangir1: "AAATM5075D", short_name: "BOSCH WORKMENS (NASHIK) PROVIDENT FUND TRUST", name1: "BOSCH PF", category: "PF" }
+
+"2023-08-21T14:45:40.166813132+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "JK LAKSHMI CEMENT LIMITED COMPULSORY EMPLOYEES PROVIDENT FUND", pangir1: "AAATJ2880M", position: 5.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166828336+05:30" DEBG The BENPOS Mapping for pangir1: "AAATJ2880M" -> BenposMap { pangir1: "AAATJ2880M", short_name: "JK LAKSHMI CEMENT LIMITED COMPULSORY EMPLOYEES PROVIDENT FUND", name1: "Jk Lakshmi Cement Limited Compulsory Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.166843060+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "BOWREAH JUTE MILL EMPLOYEES PROVIDENT FUND", pangir1: "AAATB6152G", position: 2.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166857512+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB6152G" -> BenposMap { pangir1: "AAATB6152G", short_name: "BOWREAH JUTE MILL EMPLOYEES PROVIDENT FUND", name1: "BOWREAH JUTE MILL EMPLOYEES PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.166876186+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "ADECCO EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AADTA0608F", position: 100.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166891594+05:30" DEBG The BENPOS Mapping for pangir1: "AADTA0608F" -> BenposMap { pangir1: "AADTA0608F", short_name: "ADECCO EMPLOYEES PROVIDENT FUND TRUST", name1: "ADECCO EMPLOYEES PROVIDENT FUND TRUST", category: "PF" }
+
+"2023-08-21T14:45:40.166905970+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "SITARAM JINDAL FOUNDATION", pangir1: "AAATS3638N", position: 77.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166920644+05:30" DEBG The BENPOS Mapping for pangir1: "AAATS3638N" -> BenposMap { pangir1: "AAATS3638N", short_name: "SITARAM JINDAL FOUNDATION", name1: "SITARAM JINDAL FOUNDATION", category: "Corporate" }
+
+"2023-08-21T14:45:40.166935146+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "THE TATA POWER CONSOLIDATED PROVIDENT FUND", pangir1: "AAATT0325K", position: 40.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166950024+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT0325K" -> BenposMap { pangir1: "AAATT0325K", short_name: "THE TATA POWER CONSOLIDATED PROVIDENT FUND", name1: "THE TATA POWER CONSOLIDATED PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.166964682+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "TRUSTEES HUKUMCHAND JUTE MILLS LTD WORKERS PROVIDENT FUND", pangir1: "AAATH5698B", position: 10.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.166979042+05:30" DEBG The BENPOS Mapping for pangir1: "AAATH5698B" -> BenposMap { pangir1: "AAATH5698B", short_name: "TRUSTEES HUKUMCHAND JUTE MILLS LTD WORKERS PROVIDENT FUND", name1: "TRUSTEES HUKUMCHAND JUTE MILLS LTD WORKERS PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.166993245+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "LIFE INSURANCE CORPORATION OF INDIA", pangir1: "AAACL0582H", position: 5000.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167007640+05:30" DEBG The BENPOS Mapping for pangir1: "AAACL0582H" -> BenposMap { pangir1: "AAACL0582H", short_name: "LIFE INSURANCE CORPORATION OF INDIA", name1: "LIFE INSURANCE CORPORATION OF INDIA", category: "Insurance" }
+
+"2023-08-21T14:45:40.167022169+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "PROVIDENT FUND OF  TATA  STEEL  LIMITED", pangir1: "AAATT0013A", position: 50.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167036728+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT0013A" -> BenposMap { pangir1: "AAATT0013A", short_name: "PROVIDENT FUND OF  TATA  STEEL  LIMITED", name1: "TATA STEEL PF", category: "PF" }
+
+"2023-08-21T14:45:40.167051285+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "TATA  STEEL LIMITED GRATUITY FUND", pangir1: "AAATT3866D", position: 130.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167065540+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT3866D" -> BenposMap { pangir1: "AAATT3866D", short_name: "TATA  STEEL LIMITED GRATUITY FUND", name1: "TATA STEEL PF", category: "PF" }
+
+"2023-08-21T14:45:40.167079982+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "TATA  STEEL  LIMITED EMPLOYEES PENSION SCHEME", pangir1: "AAATT3839J", position: 20.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167099184+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT3839J" -> BenposMap { pangir1: "AAATT3839J", short_name: "TATA  STEEL  LIMITED EMPLOYEES PENSION SCHEME", name1: "TATA STEEL PF", category: "PF" }
+
+"2023-08-21T14:45:40.167114448+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "OTIS ELEVATOR COMPANY (INDIA) LIMITED STAFF PROVIDENT FUND", pangir1: "AAATO0099F", position: 20.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167132862+05:30" DEBG The BENPOS Mapping for pangir1: "AAATO0099F" -> BenposMap { pangir1: "AAATO0099F", short_name: "OTIS ELEVATOR COMPANY (INDIA) LIMITED STAFF PROVIDENT FUND", name1: "OTIS ELEVATOR COMPANY (INDIA) LIMITED STAFF PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.167148676+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "BHEL EMPLOYEES PROVIDENT FUND", pangir1: "AAATB2899Q", position: 15.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167164427+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB2899Q" -> BenposMap { pangir1: "AAATB2899Q", short_name: "BHEL EMPLOYEES PROVIDENT FUND", name1: "BHEL EMPLOYEES PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.167179596+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "NESCO LIMITED", pangir1: "AAACN1222E", position: 150.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167194910+05:30" DEBG The BENPOS Mapping for pangir1: "AAACN1222E" -> BenposMap { pangir1: "AAACN1222E", short_name: "NESCO LIMITED", name1: "NESCO LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.167210453+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "PARAS NATH SHARMA", pangir1: "ALBPS6154M", position: 1.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167225631+05:30" DEBG The BENPOS Mapping for pangir1: "ALBPS6154M" -> BenposMap { pangir1: "ALBPS6154M", short_name: "PARAS NATH SHARMA", name1: "PARAS NATH SHARMA", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.167240962+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "THE DELHI FLOUR MILLS CO LTD PROVIDENT FUND TRUST", pangir1: "AAATT5512E", position: 1.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167256324+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT5512E" -> BenposMap { pangir1: "AAATT5512E", short_name: "THE DELHI FLOUR MILLS CO LTD PROVIDENT FUND TRUST", name1: "THE DELHI FLOUR MILLS CO LTD PROVIDENT FUND TRUST", category: "PF" }
+
+"2023-08-21T14:45:40.167271358+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "LUPIN LTD EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AAATL0248F", position: 10.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167286449+05:30" DEBG The BENPOS Mapping for pangir1: "AAATL0248F" -> BenposMap { pangir1: "AAATL0248F", short_name: "LUPIN LTD EMPLOYEES PROVIDENT FUND TRUST", name1: "Lupin Ltd Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.167302049+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "NDDB STAFF PROVIDENT FUND TRUST", pangir1: "AAATN1757H", position: 15.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167316900+05:30" DEBG The BENPOS Mapping for pangir1: "AAATN1757H" -> BenposMap { pangir1: "AAATN1757H", short_name: "NDDB STAFF PROVIDENT FUND TRUST", name1: "NDDB STAFF PROVIDENT FUND TRUST", category: "PF" }
+
+"2023-08-21T14:45:40.167336996+05:30" DEBG The BENPOS Data of isin: "INE831R07334"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07334", name1: "HARI PRASAD KANORIA", pangir1: "AABTM4185D", position: 1.0, nfacevn: 1000000.0, cmdate: "25-OCT-2032" }
+"2023-08-21T14:45:40.167352883+05:30" DEBG The BENPOS Mapping for pangir1: "AABTM4185D" -> BenposMap { pangir1: "AABTM4185D", short_name: "HARI PRASAD KANORIA", name1: "HARI PRASAD KANORIA", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.167411560+05:30" DEBG The BENPOS Data of isin: "INE831R14CO4"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CO4", name1: "AXIS MUTUAL FUND TRUSTEE LIMITED A/C AXIS MUTUAL FUND A/C AXIS FIXED TERM PLAN -SERIES 114 (83 DAYS)", pangir1: "AACTA5925A", position: 200.0, nfacevn: 500000.0, cmdate: "14-JUN-2023" }
+"2023-08-21T14:45:40.167432431+05:30" DEBG The BENPOS Mapping for pangir1: "AACTA5925A" -> BenposMap { pangir1: "AACTA5925A", short_name: "AXIS MUTUAL FUND TRUSTEE LIMITED A/C AXIS MUTUAL FUND A/C AXIS LIQUID FUND A/C", name1: "AXIS MUTUAL FUND", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.167535238+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "BREACH CANDY HOSPITAL TRUST STAFF PROVIDENT FUND", pangir1: "AAATB9160E", position: 5.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167557496+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB9160E" -> BenposMap { pangir1: "AAATB9160E", short_name: "BREACH CANDY HOSPITAL TRUST STAFF PROVIDENT FUND", name1: "Breach Candy Hospital Trust Staff Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.167573233+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "BHARAT FRITZ WERNER PRIVATE LIMITED PROVIDENTFUND", pangir1: "AAATB1507F", position: 5.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167589330+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB1507F" -> BenposMap { pangir1: "AAATB1507F", short_name: "BHARAT FRITZ WERNER PRIVATE LIMITED PROVIDENTFUND", name1: "Bharat Fritz Werner Private Limited Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.167603981+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "THE CHLORIDE OFFICERS PROVIDENT FUND", pangir1: "AAATT5459L", position: 3.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167618703+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT5459L" -> BenposMap { pangir1: "AAATT5459L", short_name: "THE CHLORIDE OFFICERS PROVIDENT FUND", name1: "THE CHLORIDE OFFICERS PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.167633074+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "NOVOZYMES SOUTH ASIA PVT. LTD. EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AAATN7855N", position: 6.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167648303+05:30" DEBG The BENPOS Mapping for pangir1: "AAATN7855N" -> BenposMap { pangir1: "AAATN7855N", short_name: "NOVOZYMES SOUTH ASIA PVT. LTD. EMPLOYEES PROVIDENT FUND TRUST", name1: "Novozymes South Asia Pvt. Ltd. Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.167663462+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "S J JINDAL MEDICAL RELIEF SOCIETY", pangir1: "AAATS3637D", position: 4.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167678232+05:30" DEBG The BENPOS Mapping for pangir1: "AAATS3637D" -> BenposMap { pangir1: "AAATS3637D", short_name: "S J JINDAL MEDICAL RELIEF SOCIETY", name1: "S J JINDAL MEDICAL RELIEF SOCIETY", category: "Corporate" }
+
+"2023-08-21T14:45:40.167692933+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "NAIR RAMESH NARAYANAN", pangir1: "ADSPN0922D", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167713109+05:30" DEBG The BENPOS Mapping for pangir1: "ADSPN0922D" -> BenposMap { pangir1: "ADSPN0922D", short_name: "NAIR RAMESH NARAYANAN", name1: "NAIR RAMESH NARAYANAN", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.167728289+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "BHARAT ELECTRONICS LTD PROVIDENT FUND I", pangir1: "AAATB2340L", position: 30.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167743034+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB2340L" -> BenposMap { pangir1: "AAATB2340L", short_name: "BHARAT ELECTRONICS LTD PROVIDENT FUND I", name1: "Bharat Electronics Ltd Provident Fund I", category: "PF" }
+
+"2023-08-21T14:45:40.167757742+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "THE WILLINGDON SPORTS CLUB STAFF PROVIDEND FUND", pangir1: "AAATW1285D", position: 4.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167772355+05:30" DEBG The BENPOS Mapping for pangir1: "AAATW1285D" -> BenposMap { pangir1: "AAATW1285D", short_name: "THE WILLINGDON SPORTS CLUB STAFF PROVIDEND FUND", name1: "The Willingdon Sports Club Staff Providend Fund", category: "PF" }
+
+"2023-08-21T14:45:40.167786780+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "BPCL EMPLOYEES POST RETIREMENT MEDICAL BENEFITS TRUST", pangir1: "AABTB8372K", position: 50.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167801222+05:30" DEBG The BENPOS Mapping for pangir1: "AABTB8372K" -> BenposMap { pangir1: "AABTB8372K", short_name: "BPCL EMPLOYEES POST RETIREMENT MEDICAL BENEFITS TRUST", name1: "BPCL Employees Post Retirement Medical Benefits Trust", category: "PF" }
+
+"2023-08-21T14:45:40.167815860+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "GANESH RADHAKRISHNAN", pangir1: "ACNPG2110Q", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167830319+05:30" DEBG The BENPOS Mapping for pangir1: "ACNPG2110Q" -> BenposMap { pangir1: "ACNPG2110Q", short_name: "GANESH RADHAKRISHNAN", name1: "GANESH RADHAKRISHNAN", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.167844738+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "BRAKES INDIA LIMITED STAFF PROVIDENT FUND", pangir1: "AAATB9216H", position: 15.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167859199+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB9216H" -> BenposMap { pangir1: "AAATB9216H", short_name: "BRAKES INDIA LIMITED STAFF PROVIDENT FUND", name1: "Brakes India Limited Staff Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.167873802+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "SET INDIA PVT LTD EMPLOYEES PROVIDENT FUND", pangir1: "AACTS1011K", position: 7.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167888469+05:30" DEBG The BENPOS Mapping for pangir1: "AACTS1011K" -> BenposMap { pangir1: "AACTS1011K", short_name: "SET INDIA PVT LTD EMPLOYEES PROVIDENT FUND", name1: "SET INDIA PVT LTD EMPLOYEES PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.167902863+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "MACHINE TOOLS I PVT LTD STAFF PROVIDENT FUND", pangir1: "AABTM8222H", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167924930+05:30" DEBG The BENPOS Mapping for pangir1: "AABTM8222H" -> BenposMap { pangir1: "AABTM8222H", short_name: "MACHINE TOOLS I PVT LTD STAFF PROVIDENT FUND", name1: "MACHINE TOOLS I PVT LTD STAFF PROVIDENT FUND", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.167940551+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "SIDCO EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AABTT2378M", position: 2.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167955439+05:30" DEBG The BENPOS Mapping for pangir1: "AABTT2378M" -> BenposMap { pangir1: "AABTT2378M", short_name: "SIDCO EMPLOYEES PROVIDENT FUND TRUST", name1: "SIDCO Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.167970149+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "SEVAK PUBLICATIONS PVT LTD", pangir1: "AAKCS3955P", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.167984504+05:30" DEBG The BENPOS Mapping for pangir1: "AAKCS3955P" -> BenposMap { pangir1: "AAKCS3955P", short_name: "SEVAK PUBLICATIONS PVT LTD", name1: "SEVAK PUBLICATIONS PVT LTD", category: "Corporate" }
+
+"2023-08-21T14:45:40.167999240+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "RAJYASHREE  CHAMARIA", pangir1: "ACPPC7582E", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.168013507+05:30" DEBG The BENPOS Mapping for pangir1: "ACPPC7582E" -> BenposMap { pangir1: "ACPPC7582E", short_name: "RAJYASHREE  CHAMARIA", name1: "RAJYASHREE  CHAMARIA", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.168028654+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "SHOBHA SONKAR", pangir1: "AQRPS6610H", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.168044021+05:30" DEBG The BENPOS Mapping for pangir1: "AQRPS6610H" -> BenposMap { pangir1: "AQRPS6610H", short_name: "SHOBHA SONKAR", name1: "SHOBHA SONKAR", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.168063108+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "INDEEVAR IMPEX PVT LTD", pangir1: "AAACI5404M", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.168078637+05:30" DEBG The BENPOS Mapping for pangir1: "AAACI5404M" -> BenposMap { pangir1: "AAACI5404M", short_name: "INDEEVAR IMPEX PVT LTD", name1: "INDEEVAR IMPEX PVT LTD", category: "Corporate" }
+
+"2023-08-21T14:45:40.168093557+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "BHADRISH SHETH (HUF) .", pangir1: "AACHB0152N", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.168109035+05:30" DEBG The BENPOS Mapping for pangir1: "AACHB0152N" -> BenposMap { pangir1: "AACHB0152N", short_name: "BHADRISH SHETH (HUF) .", name1: "BHADRISH SHETH (HUF) .", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.168124216+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "SHEWRATAN COMPANY PRIVATE LIMITED", pangir1: "AAECS0338Q", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.168139229+05:30" DEBG The BENPOS Mapping for pangir1: "AAECS0338Q" -> BenposMap { pangir1: "AAECS0338Q", short_name: "SHEWRATAN COMPANY PRIVATE LIMITED", name1: "SHEWRATAN COMPANY PRIVATE LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.168154397+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "KETAN YASHWANT AVALASKAR", pangir1: "AHTPA4330M", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.168174497+05:30" DEBG The BENPOS Mapping for pangir1: "AHTPA4330M" -> BenposMap { pangir1: "AHTPA4330M", short_name: "KETAN YASHWANT AVALASKAR", name1: "KETAN YASHWANT AVALASKAR", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.168190219+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "EQUIRUS WEALTH PRIVATE LIMITED", pangir1: "AAFCE0297D", position: 8.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.168205917+05:30" DEBG The BENPOS Mapping for pangir1: "AAFCE0297D" -> BenposMap { pangir1: "AAFCE0297D", short_name: "EQUIRUS WEALTH PRIVATE LIMITED", name1: "EQUIRUS WEALTH PRIVATE LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.168220643+05:30" DEBG The BENPOS Data of isin: "INE831R08035"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08035", name1: "ASHWIN .", pangir1: "BSNPA3960P", position: 1.0, nfacevn: 1000000.0, cmdate: "13-JUL-2026" }
+"2023-08-21T14:45:40.168235494+05:30" DEBG The BENPOS Mapping for pangir1: "BSNPA3960P" -> BenposMap { pangir1: "BSNPA3960P", short_name: "ASHWIN .", name1: "ASHWIN .", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.168250259+05:30" DEBG The BENPOS Data of isin: "INE831R14CP1"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CP1", name1: "HSBC LIQUID FUND", pangir1: "AAATH2467G", position: 1000.0, nfacevn: 500000.0, cmdate: "30-JUN-2023" }
+"2023-08-21T14:45:40.168265581+05:30" DEBG The BENPOS Mapping for pangir1: "AAATH2467G" -> BenposMap { pangir1: "AAATH2467G", short_name: "HSBC LIQUID FUND", name1: "HSBC MF", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.168280637+05:30" DEBG The BENPOS Data of isin: "INE831R14CP1"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CP1", name1: "INVESCO INDIA LIQUID FUND", pangir1: "AAATL5351M", position: 1000.0, nfacevn: 500000.0, cmdate: "30-JUN-2023" }
+"2023-08-21T14:45:40.168295623+05:30" DEBG The BENPOS Mapping for pangir1: "AAATL5351M" -> BenposMap { pangir1: "AAATL5351M", short_name: "INVESCO INDIA LIQUID FUND", name1: "Invesco Mutual Fund", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.168310922+05:30" DEBG The BENPOS Data of isin: "INE831R14CP1"  for product-type: "Issue: Commercial Paper" -> BenposData { isin: "INE831R14CP1", name1: "MIRAE ASSET CASH MANAGEMENT FUND", pangir1: "AACTM0203B", position: 1000.0, nfacevn: 500000.0, cmdate: "30-JUN-2023" }
+"2023-08-21T14:45:40.168326064+05:30" DEBG The BENPOS Mapping for pangir1: "AACTM0203B" -> BenposMap { pangir1: "AACTM0203B", short_name: "MIRAE ASSET CASH MANAGEMENT FUND", name1: "MIRAE MUTUAL FUND", category: "Mutual Fund" }
+
+"2023-08-21T14:45:40.168362522+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "L AND T - SARGENT AND LUNDY STAFF SUPERANNUATION SCHEME", pangir1: "AAATL0338E", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168380136+05:30" DEBG The BENPOS Mapping for pangir1: "AAATL0338E" -> BenposMap { pangir1: "AAATL0338E", short_name: "L AND T - SARGENT AND LUNDY STAFF SUPERANNUATION SCHEME", name1: "L And T - Sargent And Lundy Staff Superannuation Scheme", category: "PF" }
+
+"2023-08-21T14:45:40.168395522+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "SETH RUGHNATHDAS LALJI CHARITABLE TRUST", pangir1: "AAETS2957E", position: 5.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168410892+05:30" DEBG The BENPOS Mapping for pangir1: "AAETS2957E" -> BenposMap { pangir1: "AAETS2957E", short_name: "SETH RUGHNATHDAS LALJI CHARITABLE TRUST", name1: "Seth Rughnathdas Lalji Charitable Trust", category: "PF" }
+
+"2023-08-21T14:45:40.168425972+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "UMA JAYANKUMAR PANDYA", pangir1: "ASMPP0353M", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168445939+05:30" DEBG The BENPOS Mapping for pangir1: "ASMPP0353M" -> BenposMap { pangir1: "ASMPP0353M", short_name: "UMA JAYANKUMAR PANDYA", name1: "UMA JAYANKUMAR PANDYA", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.168461249+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "BREACH CANDY HOSPITAL TRUST STAFF PROVIDENT FUND", pangir1: "AAATB9160E", position: 2.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168475781+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB9160E" -> BenposMap { pangir1: "AAATB9160E", short_name: "BREACH CANDY HOSPITAL TRUST STAFF PROVIDENT FUND", name1: "Breach Candy Hospital Trust Staff Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.168490585+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "TRUSTEES PRABARTAK JUTE MILLS LTD EMPLOYEES PROVIDENT FUND", pangir1: "AAATP6254B", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168505183+05:30" DEBG The BENPOS Mapping for pangir1: "AAATP6254B" -> BenposMap { pangir1: "AAATP6254B", short_name: "TRUSTEES PRABARTAK JUTE MILLS LTD EMPLOYEES PROVIDENT FUND", name1: "Trustees Prabartak Jute Mills Ltd Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.168519480+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "TVS MOTOR COMPANY EMPLOYEES PROVIDENT FUND", pangir1: "AABTT3556H", position: 85.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168534213+05:30" DEBG The BENPOS Mapping for pangir1: "AABTT3556H" -> BenposMap { pangir1: "AABTT3556H", short_name: "TVS MOTOR COMPANY EMPLOYEES PROVIDENT FUND", name1: "TVS Motor Company Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.168548623+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "GODFREY PHILLIPS INDIA LTD PROVIDENT FUND", pangir1: "AADFG5143P", position: 15.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168563333+05:30" DEBG The BENPOS Mapping for pangir1: "AADFG5143P" -> BenposMap { pangir1: "AADFG5143P", short_name: "GODFREY PHILLIPS INDIA LTD PROVIDENT FUND", name1: "Godfrey Phillips India Ltd Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.168577676+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "INVEL TRANSMISSIONS LIMITED EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AAATI3684A", position: 6.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168592361+05:30" DEBG The BENPOS Mapping for pangir1: "AAATI3684A" -> BenposMap { pangir1: "AAATI3684A", short_name: "INVEL TRANSMISSIONS LIMITED EMPLOYEES PROVIDENT FUND TRUST", name1: "INVEL TRANSMISSIONS LIMITED EMPLOYEES PROVIDENT FUND TRUST", category: "PF" }
+
+"2023-08-21T14:45:40.168606803+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "S J JINDAL MEDICAL RELIEF SOCIETY", pangir1: "AAATS3637D", position: 50.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168621190+05:30" DEBG The BENPOS Mapping for pangir1: "AAATS3637D" -> BenposMap { pangir1: "AAATS3637D", short_name: "S J JINDAL MEDICAL RELIEF SOCIETY", name1: "S J JINDAL MEDICAL RELIEF SOCIETY", category: "Corporate" }
+
+"2023-08-21T14:45:40.168635659+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "COPPER ROLLERS PVT LTD", pangir1: "AAACC1806B", position: 5.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168654099+05:30" DEBG The BENPOS Mapping for pangir1: "AAACC1806B" -> BenposMap { pangir1: "AAACC1806B", short_name: "COPPER ROLLERS PVT LTD", name1: "COPPER ROLLERS PVT LTD", category: "Corporate" }
+
+"2023-08-21T14:45:40.168669076+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "HINDUSTAN CONSTRUCTION COMPANY EMPLOYEES PROVIDENT FUND", pangir1: "AAATH0449L", position: 4.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168683906+05:30" DEBG The BENPOS Mapping for pangir1: "AAATH0449L" -> BenposMap { pangir1: "AAATH0449L", short_name: "HINDUSTAN CONSTRUCTION COMPANY EMPLOYEES PROVIDENT FUND", name1: "Hindustan Construction Company Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.168698618+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "MTNL - GRATUITY TRUST", pangir1: "AABTM0239N", position: 19.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168713315+05:30" DEBG The BENPOS Mapping for pangir1: "AABTM0239N" -> BenposMap { pangir1: "AABTM0239N", short_name: "MTNL - GRATUITY TRUST", name1: "MTNL - GRATUITY TRUST", category: "PF" }
+
+"2023-08-21T14:45:40.168727755+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "BAI ZAVERBAI PURSHOTTAM NATHU CHARITABLE TRUST", pangir1: "AAAAB0023H", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168742150+05:30" DEBG The BENPOS Mapping for pangir1: "AAAAB0023H" -> BenposMap { pangir1: "AAAAB0023H", short_name: "BAI ZAVERBAI PURSHOTTAM NATHU CHARITABLE TRUST", name1: "Bai Zaverbai Purshottam Nathu Charitable Trust", category: "PF" }
+
+"2023-08-21T14:45:40.168756491+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "THE GREAT EASTERN SHIPPING CO LTD STAFF SUPERANNUATION FUND", pangir1: "AAATT0292P", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168770796+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT0292P" -> BenposMap { pangir1: "AAATT0292P", short_name: "THE GREAT EASTERN SHIPPING CO LTD STAFF SUPERANNUATION FUND", name1: "THE GREAT EASTERN SHIPPING CO LTD STAFF SUPERANNUATION FUND", category: "PF" }
+
+"2023-08-21T14:45:40.168784987+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "THE PROVIDENT FUND OF THE GREAT EASTERN SHIPPING CO LTD", pangir1: "AAATT0291Q", position: 14.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168799424+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT0291Q" -> BenposMap { pangir1: "AAATT0291Q", short_name: "THE PROVIDENT FUND OF THE GREAT EASTERN SHIPPING CO LTD", name1: "THE PROVIDENT FUND OF THE GREAT EASTERN SHIPPING CO LTD", category: "PF" }
+
+"2023-08-21T14:45:40.168813811+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "JK TYRE & INDUSTRIES LIMITED OFFICERS SUPERANNUATION FUND", pangir1: "AAATJ1615L", position: 10.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168828251+05:30" DEBG The BENPOS Mapping for pangir1: "AAATJ1615L" -> BenposMap { pangir1: "AAATJ1615L", short_name: "JK TYRE & INDUSTRIES LIMITED OFFICERS SUPERANNUATION FUND", name1: "JK Tyre & Industries Limited PF", category: "PF" }
+
+"2023-08-21T14:45:40.168842760+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "SITARAM JINDAL FOUNDATION", pangir1: "AAATS3638N", position: 125.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168860743+05:30" DEBG The BENPOS Mapping for pangir1: "AAATS3638N" -> BenposMap { pangir1: "AAATS3638N", short_name: "SITARAM JINDAL FOUNDATION", name1: "SITARAM JINDAL FOUNDATION", category: "Corporate" }
+
+"2023-08-21T14:45:40.168880406+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "TATA CAPITAL LIMITED EMPLOYEES PROVIDENT FUND", pangir1: "AABTT4923A", position: 23.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168895334+05:30" DEBG The BENPOS Mapping for pangir1: "AABTT4923A" -> BenposMap { pangir1: "AABTT4923A", short_name: "TATA CAPITAL LIMITED EMPLOYEES PROVIDENT FUND", name1: "Tata Capital Limited Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.168910072+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "THE TATA POWER CONSOLIDATED PROVIDENT FUND", pangir1: "AAATT0325K", position: 17.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168924427+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT0325K" -> BenposMap { pangir1: "AAATT0325K", short_name: "THE TATA POWER CONSOLIDATED PROVIDENT FUND", name1: "THE TATA POWER CONSOLIDATED PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.168939145+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "TRUSTEES  ORISSA CEMENT EMPLOYEES GRATUITY FUND", pangir1: "AAATO0355J", position: 4.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168953486+05:30" DEBG The BENPOS Mapping for pangir1: "AAATO0355J" -> BenposMap { pangir1: "AAATO0355J", short_name: "TRUSTEES  ORISSA CEMENT EMPLOYEES GRATUITY FUND", name1: "Trustees  Orissa Cement Employees Gratuity Fund", category: "PF" }
+
+"2023-08-21T14:45:40.168967726+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "TRUSTEES  ORISSA CEMENT EXECUTIVES SUPER ANNUATION FUND", pangir1: "AAATO0360R", position: 12.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.168982143+05:30" DEBG The BENPOS Mapping for pangir1: "AAATO0360R" -> BenposMap { pangir1: "AAATO0360R", short_name: "TRUSTEES  ORISSA CEMENT EXECUTIVES SUPER ANNUATION FUND", name1: "Trustees  Orissa Cement Executives Super Annuation Fund", category: "PF" }
+
+"2023-08-21T14:45:40.168996617+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "CENTRAL  WAREHOUSING  CORP EMPLOYEES  P  FUND", pangir1: "AAATC3827H", position: 15.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169011288+05:30" DEBG The BENPOS Mapping for pangir1: "AAATC3827H" -> BenposMap { pangir1: "AAATC3827H", short_name: "CENTRAL  WAREHOUSING  CORP EMPLOYEES  P  FUND", name1: "CENTRAL  WAREHOUSING  CORP EMPLOYEES  P  FUND", category: "PF" }
+
+"2023-08-21T14:45:40.169025725+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "UTTAM VALUE STEELS LIMITED EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AAATL1607J", position: 5.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169049110+05:30" DEBG The BENPOS Mapping for pangir1: "AAATL1607J" -> BenposMap { pangir1: "AAATL1607J", short_name: "UTTAM VALUE STEELS LIMITED EMPLOYEES PROVIDENT FUND TRUST", name1: "Uttam Value Steels Limited Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.169065790+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "INDIAN PROVIDENT FUND OF BHARAT PETROLEUM CORPORATION LIMITED", pangir1: "AAATI0361C", position: 50.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169080794+05:30" DEBG The BENPOS Mapping for pangir1: "AAATI0361C" -> BenposMap { pangir1: "AAATI0361C", short_name: "INDIAN PROVIDENT FUND OF BHARAT PETROLEUM CORPORATION LIMITED", name1: "Indian Provident Fund Of Bharat Petroleum Corporation Limited", category: "PF" }
+
+"2023-08-21T14:45:40.169099767+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "BOARD OF TRUSTEES M .S. R.T.C. CPF", pangir1: "AAATB0453C", position: 32.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169115016+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB0453C" -> BenposMap { pangir1: "AAATB0453C", short_name: "BOARD OF TRUSTEES M .S. R.T.C. CPF", name1: "BOARD OF TRUSTEES M .S. R.T.C. CPF", category: "PF" }
+
+"2023-08-21T14:45:40.169129574+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "MAX FINANCIAL SERVICES LIMITED EPF TRUST", pangir1: "AAATM1511A", position: 15.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169144546+05:30" DEBG The BENPOS Mapping for pangir1: "AAATM1511A" -> BenposMap { pangir1: "AAATM1511A", short_name: "MAX FINANCIAL SERVICES LIMITED EPF TRUST", name1: "Max Financial Services Limited EPF Trust", category: "PF" }
+
+"2023-08-21T14:45:40.169159224+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "SUPREME PETROCHEM LTD EMPLOYEES PROVIDENT FUND", pangir1: "AABTS4343M", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169173685+05:30" DEBG The BENPOS Mapping for pangir1: "AABTS4343M" -> BenposMap { pangir1: "AABTS4343M", short_name: "SUPREME PETROCHEM LTD EMPLOYEES PROVIDENT FUND", name1: "Supreme Petrochem Ltd Employees Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.169188711+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "CENTURY ENKA LTD. EMPLOYEES PROVIDENT FUND", pangir1: "AAATC1827B", position: 5.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169204046+05:30" DEBG The BENPOS Mapping for pangir1: "AAATC1827B" -> BenposMap { pangir1: "AAATC1827B", short_name: "CENTURY ENKA LTD. EMPLOYEES PROVIDENT FUND", name1: "CENTURY ENKA LTD. EMPLOYEES PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.169219398+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "DIC INDIA STAFF PROVIDENT FUND", pangir1: "AAATC4319G", position: 3.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169234656+05:30" DEBG The BENPOS Mapping for pangir1: "AAATC4319G" -> BenposMap { pangir1: "AAATC4319G", short_name: "DIC INDIA STAFF PROVIDENT FUND", name1: "DIC INDIA STAFF PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.169250058+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "BPCL EMPLOYEES POST RETIREMENT MEDICAL BENEFITS TRUST", pangir1: "AABTB8372K", position: 50.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169265404+05:30" DEBG The BENPOS Mapping for pangir1: "AABTB8372K" -> BenposMap { pangir1: "AABTB8372K", short_name: "BPCL EMPLOYEES POST RETIREMENT MEDICAL BENEFITS TRUST", name1: "BPCL Employees Post Retirement Medical Benefits Trust", category: "PF" }
+
+"2023-08-21T14:45:40.169280205+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "NESCO LIMITED", pangir1: "AAACN1222E", position: 50.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169295749+05:30" DEBG The BENPOS Mapping for pangir1: "AAACN1222E" -> BenposMap { pangir1: "AAACN1222E", short_name: "NESCO LIMITED", name1: "NESCO LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.169310482+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "BRAKES INDIA LIMITED STAFF PROVIDENT FUND", pangir1: "AAATB9216H", position: 7.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169330089+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB9216H" -> BenposMap { pangir1: "AAATB9216H", short_name: "BRAKES INDIA LIMITED STAFF PROVIDENT FUND", name1: "Brakes India Limited Staff Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.169346106+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "MANMEET BINDRA", pangir1: "AFYPB2438Q", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169368076+05:30" DEBG The BENPOS Mapping for pangir1: "AFYPB2438Q" -> BenposMap { pangir1: "AFYPB2438Q", short_name: "MANMEET BINDRA", name1: "MANMEET BINDRA", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.169386427+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "NISHA DALMIA", pangir1: "ADDPD7543D", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169400814+05:30" DEBG The BENPOS Mapping for pangir1: "ADDPD7543D" -> BenposMap { pangir1: "ADDPD7543D", short_name: "NISHA DALMIA", name1: "Nisha Dalmia", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.169415576+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "JINDAL EDUCATION SOCIETY", pangir1: "AAATJ1087E", position: 12.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169430145+05:30" DEBG The BENPOS Mapping for pangir1: "AAATJ1087E" -> BenposMap { pangir1: "AAATJ1087E", short_name: "JINDAL EDUCATION SOCIETY", name1: "Jindal Education Society", category: "PF" }
+
+"2023-08-21T14:45:40.169444631+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "TOLANI EDUCATION FOUNDATION", pangir1: "AAATT0396G", position: 70.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169459141+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT0396G" -> BenposMap { pangir1: "AAATT0396G", short_name: "TOLANI EDUCATION FOUNDATION", name1: "Tolani Education Foundation", category: "PF" }
+
+"2023-08-21T14:45:40.169473778+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "LUPIN LTD EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AAATL0248F", position: 30.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169488603+05:30" DEBG The BENPOS Mapping for pangir1: "AAATL0248F" -> BenposMap { pangir1: "AAATL0248F", short_name: "LUPIN LTD EMPLOYEES PROVIDENT FUND TRUST", name1: "Lupin Ltd Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.169502609+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "FORAM MAHENDRA THAKKAR", pangir1: "AAAPT6899G", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169517062+05:30" DEBG The BENPOS Mapping for pangir1: "AAAPT6899G" -> BenposMap { pangir1: "AAAPT6899G", short_name: "FORAM MAHENDRA THAKKAR", name1: "FORAM MAHENDRA THAKKAR", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.169531340+05:30" DEBG The BENPOS Data of isin: "INE831R08068"  for product-type: "Issue: Tier II Debetntures" -> BenposData { isin: "INE831R08068", name1: "IFGL REFRACTORIES WELFARE TRUST", pangir1: "AAATI4023K", position: 1.0, nfacevn: 1000000.0, cmdate: "01-JUN-2027" }
+"2023-08-21T14:45:40.169545542+05:30" DEBG The BENPOS Mapping for pangir1: "AAATI4023K" -> BenposMap { pangir1: "AAATI4023K", short_name: "IFGL REFRACTORIES WELFARE TRUST", name1: "IFGL REFRACTORIES WELFARE TRUST", category: "PF" }
+
+"2023-08-21T14:45:40.169560067+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "BREACH CANDY HOSPITAL TRUST STAFF PROVIDENT FUND", pangir1: "AAATB9160E", position: 3.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169579435+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB9160E" -> BenposMap { pangir1: "AAATB9160E", short_name: "BREACH CANDY HOSPITAL TRUST STAFF PROVIDENT FUND", name1: "Breach Candy Hospital Trust Staff Provident Fund", category: "PF" }
+
+"2023-08-21T14:45:40.169594393+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "GUJARAT GUARDIAN LIMITED EMPLOYEES PROVIDENT FUND", pangir1: "AAATG1157G", position: 1.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169608782+05:30" DEBG The BENPOS Mapping for pangir1: "AAATG1157G" -> BenposMap { pangir1: "AAATG1157G", short_name: "GUJARAT GUARDIAN LIMITED EMPLOYEES PROVIDENT FUND", name1: "GUJARAT GUARDIAN LIMITED EMPLOYEES PROVIDENT FUND", category: "PF" }
+
+"2023-08-21T14:45:40.169623154+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "S J JINDAL MEDICAL RELIEF SOCIETY", pangir1: "AAATS3637D", position: 22.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169637457+05:30" DEBG The BENPOS Mapping for pangir1: "AAATS3637D" -> BenposMap { pangir1: "AAATS3637D", short_name: "S J JINDAL MEDICAL RELIEF SOCIETY", name1: "S J JINDAL MEDICAL RELIEF SOCIETY", category: "Corporate" }
+
+"2023-08-21T14:45:40.169655770+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "THE GREAT EASTERN SHIPPING CO LTD FLOATING STAFF SUPERANNUATION FUND", pangir1: "AAATT0289J", position: 19.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169670673+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT0289J" -> BenposMap { pangir1: "AAATT0289J", short_name: "THE GREAT EASTERN SHIPPING CO LTD FLOATING STAFF SUPERANNUATION FUND", name1: "THE GREAT EASTERN SHIPPING CO LTD FLOATING STAFF SUPERANNUATION FUND", category: "PF" }
+
+"2023-08-21T14:45:40.169685683+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "THE PROVIDENT FUND OF THE GREAT EASTERN SHIPPING CO LTD", pangir1: "AAATT0291Q", position: 12.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169700533+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT0291Q" -> BenposMap { pangir1: "AAATT0291Q", short_name: "THE PROVIDENT FUND OF THE GREAT EASTERN SHIPPING CO LTD", name1: "THE PROVIDENT FUND OF THE GREAT EASTERN SHIPPING CO LTD", category: "PF" }
+
+"2023-08-21T14:45:40.169715183+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "JK TYRE & INDUSTRIES LIMITED OFFICERS SUPERANNUATION FUND", pangir1: "AAATJ1615L", position: 6.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169730131+05:30" DEBG The BENPOS Mapping for pangir1: "AAATJ1615L" -> BenposMap { pangir1: "AAATJ1615L", short_name: "JK TYRE & INDUSTRIES LIMITED OFFICERS SUPERANNUATION FUND", name1: "JK Tyre & Industries Limited PF", category: "PF" }
+
+"2023-08-21T14:45:40.169744882+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "JK TYRE & INDUSTRIES LTD EMPLOYEES PROVIDENT FUND OPTIONAL SCHEME", pangir1: "AAATJ1614M", position: 8.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169760268+05:30" DEBG The BENPOS Mapping for pangir1: "AAATJ1614M" -> BenposMap { pangir1: "AAATJ1614M", short_name: "JK TYRE & INDUSTRIES LTD EMPLOYEES PROVIDENT FUND OPTIONAL SCHEME", name1: "JK Tyre & Industries Limited PF", category: "PF" }
+
+"2023-08-21T14:45:40.169775511+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "SITARAM JINDAL FOUNDATION", pangir1: "AAATS3638N", position: 205.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169795411+05:30" DEBG The BENPOS Mapping for pangir1: "AAATS3638N" -> BenposMap { pangir1: "AAATS3638N", short_name: "SITARAM JINDAL FOUNDATION", name1: "SITARAM JINDAL FOUNDATION", category: "Corporate" }
+
+"2023-08-21T14:45:40.169811784+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "JINDAL NATURECARE LIMITED", pangir1: "AACCP8918M", position: 4.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169827233+05:30" DEBG The BENPOS Mapping for pangir1: "AACCP8918M" -> BenposMap { pangir1: "AACCP8918M", short_name: "JINDAL NATURECARE LIMITED", name1: "JINDAL NATURECARE LIMITED", category: "Corporate" }
+
+"2023-08-21T14:45:40.169843200+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "L&T CONSTRUCTION EQUIPMENT EMPLOYEES' PROVIDENT FUND TRUST", pangir1: "AAATT6777H", position: 4.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169858945+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT6777H" -> BenposMap { pangir1: "AAATT6777H", short_name: "L&T CONSTRUCTION EQUIPMENT EMPLOYEES' PROVIDENT FUND TRUST", name1: "L&T CONSTRUCTION EQUIPMENT EMPLOYEES PROVIDENT FUND TRUST", category: "PF" }
+
+"2023-08-21T14:45:40.169874444+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "HINDUSTAN SUGAR MILLS LIMITED PROVIDENT FUND INSTITUTION", pangir1: "AAATT9069N", position: 10.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169889515+05:30" DEBG The BENPOS Mapping for pangir1: "AAATT9069N" -> BenposMap { pangir1: "AAATT9069N", short_name: "HINDUSTAN SUGAR MILLS LIMITED PROVIDENT FUND INSTITUTION", name1: "HINDUSTAN SUGAR MILLS LIMITED PROVIDENT FUND INSTITUTION", category: "PF" }
+
+"2023-08-21T14:45:40.169905300+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "A G PAVITHRA", pangir1: "CKNPP9849K", position: 1.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169920709+05:30" DEBG The BENPOS Mapping for pangir1: "CKNPP9849K" -> BenposMap { pangir1: "CKNPP9849K", short_name: "A G PAVITHRA", name1: "A G PAVITHRA", category: "Retail & Others" }
+
+"2023-08-21T14:45:40.169935799+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "B K BIRLA GROUP OF COMPANIES PROVIDENT FUND INSTITUTION", pangir1: "AAATB2349D", position: 7.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169951272+05:30" DEBG The BENPOS Mapping for pangir1: "AAATB2349D" -> BenposMap { pangir1: "AAATB2349D", short_name: "B K BIRLA GROUP OF COMPANIES PROVIDENT FUND INSTITUTION", name1: "B K BIRLA GROUP OF COMPANIES PROVIDENT FUND INSTITUTION", category: "PF" }
+
+"2023-08-21T14:45:40.169966700+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "The Provident Fund Trust For The Employees Of Indian Oil Corporation Ltd (MD)", pangir1: "AAAAT9926B", position: 350.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.169981826+05:30" DEBG The BENPOS Mapping for pangir1: "AAAAT9926B" -> BenposMap { pangir1: "AAAAT9926B", short_name: "The Provident Fund Trust For The Employees Of Indian Oil Corporation Ltd (MD)", name1: "The Provident Fund Trust For The Employees Of Indian Oil Corporation Ltd (MD)", category: "PF" }
+
+"2023-08-21T14:45:40.169996772+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "LUPIN LTD EMPLOYEES PROVIDENT FUND TRUST", pangir1: "AAATL0248F", position: 80.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.170016098+05:30" DEBG The BENPOS Mapping for pangir1: "AAATL0248F" -> BenposMap { pangir1: "AAATL0248F", short_name: "LUPIN LTD EMPLOYEES PROVIDENT FUND TRUST", name1: "Lupin Ltd Employees Provident Fund Trust", category: "PF" }
+
+"2023-08-21T14:45:40.170031313+05:30" DEBG The BENPOS Data of isin: "INE831R08084"  for product-type: "Issue: Tier II Debetntures140060" -> BenposData { isin: "INE831R08084", name1: "NDDB STAFF PROVIDENT FUND TRUST", pangir1: "AAATN1757H", position: 18.0, nfacevn: 1000000.0, cmdate: "15-JAN-2031" }
+"2023-08-21T14:45:40.170046479+05:30" DEBG The BENPOS Mapping for pangir1: "AAATN1757H" -> BenposMap { pangir1: "AAATN1757H", short_name: "NDDB STAFF PROVIDENT FUND TRUST", name1: "NDDB STAFF PROVIDENT FUND TRUST", category: "PF" }
+
+"2023-08-21T14:45:40.170061447+05:30" DEBG The BENPOS Data of isin: "INE831R07276"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07276", name1: "CENTRAL BANK OF INDIA", pangir1: "AAACC2498P", position: 1000.0, nfacevn: 1000000.0, cmdate: "17-MAY-2023" }
+"2023-08-21T14:45:40.170076452+05:30" DEBG The BENPOS Mapping for pangir1: "AAACC2498P" -> BenposMap { pangir1: "AAACC2498P", short_name: "CENTRAL BANK OF INDIA", name1: "CENTRAL BANK OF INDIA", category: "Banks" }
+
+"2023-08-21T14:45:40.170091855+05:30" DEBG The BENPOS Data of isin: "INE831R07276"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07276", name1: "BANK OF INDIA", pangir1: "AAACB0472C", position: 1000.0, nfacevn: 1000000.0, cmdate: "17-MAY-2023" }
+"2023-08-21T14:45:40.170105726+05:30" DEBG The BENPOS Mapping for pangir1: "AAACB0472C" -> BenposMap { pangir1: "AAACB0472C", short_name: "BANK OF INDIA", name1: "BANK OF INDIA", category: "Banks" }
+
+"2023-08-21T14:45:40.170119538+05:30" DEBG The BENPOS Data of isin: "INE831R07276"  for product-type: "Issue: Long Term Debentures" -> BenposData { isin: "INE831R07276", name1: "STATE BANK OF INDIA", pangir1: "AAACS8577K", position: 2000.0, nfacevn: 1000000.0, cmdate: "17-MAY-2023" }
+"2023-08-21T14:45:40.170133169+05:30" DEBG The BENPOS Mapping for pangir1: "AAACS8577K" -> BenposMap { pangir1: "AAACS8577K", short_name: "STATE BANK OF INDIA", name1: "State Bank of India", category: "Banks" }
+

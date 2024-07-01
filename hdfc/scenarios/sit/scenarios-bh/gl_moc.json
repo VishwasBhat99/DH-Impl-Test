@@ -1,0 +1,137 @@
+{
+	"streamName": "GLMOC",
+	"streamId": "3032",
+	"flows": [
+		{
+			"name": "GLBalanceMOC",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-Non-MOC-File",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/EDW_ALM_ORACLE_GL_BAH_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Flight-Check-With-MOC-File",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/MOC_Input_File_BAH_{ddmmyyyy}.xlsx"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/over_gl_pp_cf",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/EDW_ALM_ORACLE_GL_BAH_{ddmmyyyy}.csv",
+						"--gl-moc-file",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/MOC_Input_File_BAH_{ddmmyyyy}.xlsx",
+						"--gl-moc-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLPPOutput",
+						"--concat-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLPPConcat.txt",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--special-method-rules-file",
+						"/SIT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Special_Method_Rules_File.xlsx",
+						"--special-method-sheet-name",
+						"Sheet1",
+						"--currency",
+						"USD",
+						"--gl-ex-master",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLExcludeMaster.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/GLPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/GLPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "GL-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/gl_aggr",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/GLAggregated-summary.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/GLAGGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/GLAGGDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/BAH/over_gl_req_fields.json",
+						"--is-consolidated",
+						"true",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/over_gl_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/over_gl_rules.txt",
+						"--default-llg-code",
+						"9876"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/GLAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/GLAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/GLBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/GLBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"false"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/GLPPOutput-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

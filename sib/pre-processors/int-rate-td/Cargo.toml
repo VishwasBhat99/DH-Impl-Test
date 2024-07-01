@@ -1,0 +1,15 @@
+[package]
+name = "int_rate_td"
+version = "1.0.4307"
+authors = ["NPunyashree <punyashree.n@surya-soft.com>"]
+
+[dependencies]
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+rbdate = { path = "../../../../SuperDB-Batch/hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../../SuperDB-Batch/hdfc/libraries/sdb_io" }
+clap = "2.31.2"
+serde = "1.0.98"
+serde_derive = "1.0.98"
+chrono = "0.4.6"

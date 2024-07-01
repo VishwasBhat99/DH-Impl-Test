@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows {
+    string customer_id = 1;
+    string cod_acct_no = 2;
+    string prod_code = 3;
+    string ccy_code = 4;
+    string customer_type = 5;
+    double gl_account_principal = 6;
+    double gl_account_interest = 7;
+    double gl_account_accrued = 8;
+    int64 acct_open_date = 9;
+    int64 first_disb_date = 10;
+    int64 maturity_date = 11;
+    int64 due_date = 12;
+    double eop_balance = 13;
+    int64 as_on_date = 14;
+    double index_rate = 15;
+    double net_rate = 16;
+    string benchmark_name = 17;
+    string rate_type_1 = 18;
+    string npa_status = 19;
+    string npa_final_status=20;
+    string ptc_flag = 21;
+    int64 last_repricing_date = 22;
+    string index_code = 23;
+    string rate_type_2 = 24;
+    int64 next_reset_date = 25;
+    string reset_frequency = 26;
+    int64 derived_reset_date = 27;
+    int64 derived_arrear_date = 28;
+    double arrear_prin = 29;
+    string add_string_1 = 30;
+    string add_string_2 = 31;
+    int64 add_int_1 = 32;
+    int64 add_int_2 = 33;
+    double add_float_1 = 34;
+    double add_float_2 = 35;
+    int64 add_date_1 = 36;
+    int64 add_date_2 = 37;
+    repeated Cashflow cashflows = 38;
+}

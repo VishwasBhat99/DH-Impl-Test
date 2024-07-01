@@ -1,0 +1,170 @@
+{
+	"streamName": "UBS BILLS",
+	"streamId": "3012",
+	"flows": [
+		{
+			"name": "UBS Bills",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/Outstanding_Bills_{ddmmyyyy}.xlsx"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/./pp_over_bills",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/Outstanding_Bills_{ddmmyyyy}.xlsx",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/ORA_PROD.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/SIT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--ref-file-4",
+						"/SIT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/ALM_COA_Master.xlsx",
+						"--ref-file-5",
+						"/SIT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/BillsOutput.txt",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/BillsReconRpt.txt",
+						"--gl-type",
+						"BH-Over-Bills",
+						"--input-file-name",
+						"BH_Outstanding_Bills",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/BillsOutput-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/./cf_bills",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/BillsOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/BillsCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/BillsCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/./balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/BillsCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/BillsAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--is-consolidated",
+						"false",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/bills_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/bills_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/over_bills_bh_rules.txt",
+						"--default-llg-code",
+						"13199",
+						"--default-overdue-llg-code",
+						"3190"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/BillsCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/BillsAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/BillsCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/BillsAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/BillsAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/BillsBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/BillsCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

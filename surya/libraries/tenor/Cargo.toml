@@ -1,0 +1,8 @@
+[package]
+name = "tenor"
+version = "1.1.0"
+authors = ["Tarun Jaiswal <tarun.j@surya-soft.com>"]
+
+[dependencies]
+chrono = "0.4"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }

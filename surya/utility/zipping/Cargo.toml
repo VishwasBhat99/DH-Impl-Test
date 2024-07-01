@@ -1,0 +1,18 @@
+[package]
+name = "zipper"
+version = "0.1.0"
+authors = ["Ankur Gangwar <ankur.g@surya-soft.com>"]
+
+[dependencies]
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+health_report = { path = "../../../hdfc/libraries/health_report" }
+clap = "2.31.2"
+chrono = "*"
+zip = "*"
+walkdir = "*"
+serde_json = "*"
+serde = { version = "1.0", features = ["derive"] }

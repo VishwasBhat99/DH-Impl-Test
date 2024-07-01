@@ -1,0 +1,555 @@
+{
+	"streamName": "MUREX",
+	"streamId": "3020",
+	"flows": [
+		{
+			"name": "Borrowings-Lendings",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/money-market.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/pp_money_market_instruments",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/money-market.txt",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Murex_MM_Master.xlsx",
+						"--ref-file-2",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--ref-file-4",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--sheet-name",
+						"Sheet1",
+						"--output-file-borrowings",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/BorOutput",
+						"--output-file-lendings",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/LendOutput",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/BORR-LEND-ReconRpt.txt",
+						"--entity",
+						"BAHRAIN_CE",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrLendPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrLendPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/BORR-LEND-ReconRpt-health-check-report.json"
+				},
+				{
+					"processName": "Merge Script",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Money-Market/BAH/mergeALL.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Borrowing-Cashflow-Generator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/BAH/cf_borr_and_lend",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/Borrowings.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BorrCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Lending-Cashflow-Generator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/BAH/cf_borr_and_lend",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/Lendings.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/LendCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/LendCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/LendCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Borr-BALM-Aggregator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/BAH/./balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BorrCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/BorrAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/over_bor_len_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/over_bor_len_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/over_bor_bh_rules.txt",
+						"--default-llg-code",
+						"01816",
+						"--default-overdue-llg-code",
+						"1111"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Lend-BALM-Aggregator",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/BAH/./balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/LendCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/LendAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/LendBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/LendBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/over_bor_len_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/over_bor_len_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/over_len_bh_rules.txt",
+						"--default-llg-code",
+						"11817",
+						"--default-overdue-llg-code",
+						"1111"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Borr",
+					"processId": "8",
+					"processBinary": "/home/dbuser/programs/BAH/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/BorrAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrAggConvLog.txt"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Lend",
+					"processId": "9",
+					"processBinary": "/home/dbuser/programs/BAH/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/LendAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/LendAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/LendAggConvLog.txt"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Borr",
+					"processId": "10",
+					"processBinary": "/home/dbuser/programs/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/BorrAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/BorrAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/BorrBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Lend",
+					"processId": "11",
+					"processBinary": "/home/dbuser/programs/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/LendAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/LendAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/LendBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/LendBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Security Closing Stock",
+			"flowId": "2",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/./pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/Sec_Close_Stock.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/./pp_sec_close_stock",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/Sec_Close_Stock.txt",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/Sec_Close_Stock.txt",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/Sec_Close_Stock_ReconRpt.txt",
+						"--entity",
+						"BAHRAIN_CE",
+						"--murex-inv-master",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Murex_Inv_Master.xlsx",
+						"--murex-sheet-name",
+						"Master",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/Sec_Close_Stock-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/BAH/cf_sec_close_stock",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/Sec_Close_Stock.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/CloseStockCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/CloseStockCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/CloseStockCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CloseStockAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/closing-stock-req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/closing-stock-metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/closing-stock-rules-BH.txt",
+						"--default-llg-code",
+						"11817",
+						"--default-overdue-llg-code",
+						"1111"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/CloseStockCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/BAH/agg_conv",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CloseStockAggregated",
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/CloseStockCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CloseStockAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CloseStockAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/CloseStockBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/CloseStockCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Reciprocal Lending",
+			"flowId": "3",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/./pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/rec-lend.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/./cf_rec_lend",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/rec-lend.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/RecLendCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/RecLendCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/RecLendCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/RecLendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/RecLendCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/RecLendAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/RecLendBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/RecLendBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/rec_lend_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/rec_lend_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/rec_lend_rules_bh.txt",
+						"--default-llg-code",
+						"11999"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/RecLendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/BAH/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/RecLendAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/RecLendAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/RecLendAggConvLog.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/RecLendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/RecLendAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/RecLendAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/RecLendBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/RecLendBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/RecLendCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

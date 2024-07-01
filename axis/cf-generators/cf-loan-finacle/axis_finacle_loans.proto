@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows{
+string cashflow_type = 1;
+string type_id = 2;
+string subtype_id = 3;
+double amount = 4;
+string acct_crncy_code = 5;
+double int_rate = 6;
+string repricing_freq = 7;
+int64 early_date = 8;
+int64 maturity_date = 9;
+string foracid = 10;
+int64 next_repricing_date = 11;
+string ir_freq = 12;
+string is_floating = 13;
+string float_rate_benchmark = 14;
+string sol_id = 15;
+string cust_id = 16;
+string cust_name = 17;
+string region_id = 18;
+string schm_type = 19;
+string gl_subhead_code = 20;
+string npa = 21;
+double floor_rate = 22;
+double cap_rate = 23;
+string cust_country_cd = 24;
+string cust_credit_rating = 25;
+string cust_sector_cd = 26;
+string cust_industry_cd = 27;
+double exchange_rt = 28;
+string custom1 = 29;
+string custom2 = 30;
+string npa_classification = 31;
+string floating_type = 32;
+double out_bal_amount = 33;
+string acid = 34;
+string final_npa_class = 35;
+string der_pegged_flg = 36;
+string int_tbl_code = 37;
+repeated Cashflow  cashflows = 38;
+
+}

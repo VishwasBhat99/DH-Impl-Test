@@ -1,0 +1,17 @@
+[package]
+name = "avg_bal_close_aggr"
+version = "1.1.2246"
+authors = ["Tarun Jaiswal <tarun.j@surya-soft.com>"]
+
+[dependencies]
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+rbdate = { path = "../../../libraries/RBDate" }
+sdb_io = { path = "../../../libraries/sdb_io" }
+health_report = { path = "../../../libraries/health_report" }
+clap = "2.31.2"
+csv = "1.1.1"
+serde = "1.0.98"
+serde_derive = "1.0.98"
+chrono = "0.4.9"

@@ -1,0 +1,94 @@
+{
+  "fields": [
+    {
+      "name": "account_number",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "cust_ref_code",
+      "typ": "I64",
+      "position": 2
+    },
+    {
+      "name": "pp_table",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "ccf_percent",
+      "typ": "F64",
+      "position": 4
+    },
+    {
+      "name": "exp_start_date",
+      "typ": "I64",
+      "position": 5
+    },
+    {
+      "name": "exp_end_date",
+      "typ": "I64",
+      "position": 6
+    },
+    {
+      "name": "undrawn_amount",
+      "typ": "F64",
+      "position": 7
+    },
+    {
+      "name": "prod_type_desc",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "party_type_desc",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "undrn_cov_amount",
+      "typ": "F64",
+      "position": 10
+    },
+    {
+      "name": "pre_mitigation_rw_ul",
+      "typ": "F64",
+      "position": 11
+    },
+    {
+      "name": "undrn_rwa",
+      "typ": "F64",
+      "position": 12
+    },
+    {
+      "name": "gl_code",
+      "typ": "I64",
+      "position": 13
+    },
+    {
+      "name": "ccy_code",
+      "typ": "String",
+      "position": 14
+    },
+    {
+      "name": "ret_corporate_ind",
+      "typ": "String",
+      "position": 15
+    },
+    {
+      "name": "as_on_dt",
+      "typ": "I64",
+      "position": 16
+    },
+    {
+      "name": "nxt_rep_dt",
+      "typ": "I64",
+      "position": 17
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 18
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+sqlldr balmusr/HdFcBank13\$\# control=./OPTION_MASTER.ctl LOG=/data/oracle18c/app/product/18c/dbhome/ImportLog/OPTION_MASTER.log BAD=/data/oracle18c/app/product/18c/dbhome/ImportLog/OPTION_MASTER.BAD

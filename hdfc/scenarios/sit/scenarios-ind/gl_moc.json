@@ -1,0 +1,172 @@
+{
+	"streamName": "GLMOC",
+	"streamId": "1060",
+	"flows": [
+		{
+			"name": "GLBalanceMOC",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-Non-MOC-File",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_ORACLE_GL_INR_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Flight-Check-With-MOC-File",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/MOC_Input_File_{ddmmyyyy}.xlsx"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_gl",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_ORACLE_GL_INR_{ddmmyyyy}.csv",
+						"--gl-moc-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/MOC_Input_File_{ddmmyyyy}.xlsx",
+						"--gl-moc-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLPPOutput",
+						"--concat-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLPPConcat.txt",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--special-method-rules-file",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Special_Method_Rules_File.xlsx",
+						"--special-method-sheet-name",
+						"Sheet1",
+						"--currency",
+						"INR",
+						"--gl-ex-master",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLExcludeMaster.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLPPOutput-health-check-report.json"
+				},
+				{
+					"processName": "GL-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/gl_aggr",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/GLAggregated.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLAGGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLAGGDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/gl_req_fields.json",
+						"--is-consolidated",
+						"true",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/gl_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/gl_rules.txt",
+						"--default-llg-code",
+						"9876"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLPPOutput-health-check-report.json"
+				},
+				{
+					"processName": "GL-Aggregator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/gl_aggr",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/GL_LC_BGAggregated.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GL_LC_BGAGGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GL_LC_BGAGGDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/gl_req_fields.json",
+						"--is-consolidated",
+						"true",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/gl_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/gl_lc_bg_rules.txt",
+						"--default-llg-code",
+						"9876"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLPPOutput-health-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLAvgBal.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/gl_avg_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/gl_metadata.json"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLAvgBal-health-check-report.json"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,300 @@
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1001,'21-08-2023','INR','ALL','NA','I',300,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1201,'21-08-2023','INR','ALL','NA','O',150,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1401,'21-08-2023','INR','ALL','NA','I',1200,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1501,'21-08-2023','INR','ALL','NA','O',1403,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2001,'21-08-2023','INR','ALL','NA','I',1480,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2201,'21-08-2023','INR','ALL','NA','O',1411,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2401,'21-08-2023','INR','ALL','NA','I',1480,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2601,'21-08-2023','INR','ALL','NA','O',1419,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (3001,'21-08-2023','INR','ALL','NA','I',1423,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (3101,'21-08-2023','INR','ALL','NA','I',1427,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1001,'29-05-2022','INR','ALL','NA','I',200,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1201,'29-05-2022','INR','ALL','NA','O',150,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1401,'29-05-2022','INR','ALL','NA','I',1000,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1501,'29-05-2022','INR','ALL','NA','O',2000,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2001,'29-05-2022','INR','ALL','NA','I',2001,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2201,'29-05-2022','INR','ALL','NA','O',2002,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2401,'29-05-2022','INR','ALL','NA','I',2003,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2601,'29-05-2022','INR','ALL','NA','O',2004,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (3001,'29-05-2022','INR','ALL','NA','I',2005,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (3101,'29-05-2022','INR','ALL','NA','I',2006,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1001,'29-05-2021','INR','ALL','NA','I',500,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1201,'29-05-2021','INR','ALL','NA','O',150,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1401,'29-05-2021','INR','ALL','NA','I',1200,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (1501,'29-05-2021','INR','ALL','NA','O',1000,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2001,'29-05-2021','INR','ALL','NA','I',1000,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2201,'29-05-2021','INR','ALL','NA','O',1000,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2401,'29-05-2021','INR','ALL','NA','I',1000,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (2601,'29-05-2021','INR','ALL','NA','O',1000,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (3001,'29-05-2021','INR','ALL','NA','I',1000,0)
+  INSERT INTO [dbo].[tblProductTotals]
+           ([SubType_ID]
+           ,[As_On]
+           ,[Currency_ID]
+           ,[SLRorIRS]
+           ,[SchemeID]
+           ,[CashflowType]
+           ,[Amount]
+           ,[InterestRate])
+     VALUES (3101,'29-05-2021','INR','ALL','NA','I',1000,0)

@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+message Cashflow {
+     double int_amt = 1;
+     double prin_amt = 2;
+     int64 date = 3;
+}
+message AccountWithCashflows{
+    string reference = 1;
+    string cust = 2;
+    string curr = 3;
+    int64 val_dt = 4;
+    int64 mat_dt = 5;
+    string npa_stats = 6;
+    int64 gl = 7;
+    double int_rt = 8;
+    string cust_name = 9;
+    int64 comp_mis1 = 10;
+    int64 comp_mis2 = 11;
+    string loan_type = 12;
+    string acurl_basis = 13;
+    string div = 14;
+    string alm_line = 15;
+    string ia_llg = 16;
+    string balm_llg = 17;
+    int64 as_on_dt = 18;
+    int64 nxt_rep_dt = 19;
+    double exchange_rt = 20;
+    string asset_class = 21;
+    int64 org_tenor = 22;
+    double tot_int_amt = 23;
+    double tot_prin_amt = 24;
+    int64 int_st_dt = 25;
+    string def_ftp_flag = 26;
+    double bal_os_amt_lcy = 27;
+    int64 txn_dt = 28;
+    double bill_amt = 29;
+    string concat = 30;
+    string rate_flag = 31;
+    int64 comp_mis3 = 32;
+    string is_acc_weaker = 33;
+    string ews_weaker_value = 34;
+    string sma_flag = 35;
+    repeated Cashflow cashflows = 36;
+}

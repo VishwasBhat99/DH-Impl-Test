@@ -1,0 +1,13 @@
+1|1|0|intrnl_extrnl|EQ|E|AND
+1|1|1|trading_banking|EQ|Trading|AND
+1|1|2|pay_leg_ccy|EQ|INR|9621
+2|1|0|intrnl_extrnl|EQ|E|AND
+2|1|1|trading_banking|EQ|Trading|AND
+2|1|2|rec_leg_ccy|EQ|INR|9621
+3|1|0|intrnl_extrnl|EQ|E|AND
+3|1|1|trading_banking|EQ|Trading|9620
+4|1|0|intrnl_extrnl|EQ|E|AND
+4|1|1|pay_leg_ccy|EQ|INR|9721
+5|1|0|intrnl_extrnl|EQ|E|AND
+5|1|1|rec_leg_ccy|EQ|INR|9721
+6|1|0|intrnl_extrnl|EQ|E|9720

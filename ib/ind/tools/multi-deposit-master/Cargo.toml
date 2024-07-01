@@ -1,0 +1,21 @@
+[package]
+name = "multi_deposit_master_generator"
+version = "1.0.5427"
+authors = ["Saurabh Singh<saurabh.s@surya-soft.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0.81"
+clap = "3.1.18"
+health_report = {path = "../../../../hdfc/libraries/health_report"}
+rbdate = { path = "../../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../../hdfc/libraries/sdb_io"}
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.9.0"
+slog-async = "2.7.0"
+csv = "1.1.1"
+hashbrown = "0.12.3"
+serde = "1.0.104"
+serde_derive = "1.0.104"
+chrono = "0.4.10"

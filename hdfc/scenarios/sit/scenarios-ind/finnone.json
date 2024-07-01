@@ -1,0 +1,156 @@
+{
+	"streamName": "FINNONE",
+	"streamId": "1004",
+	"flows": [
+		{
+			"name": "Finnone",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_EXTRACT_NONMOR_{ddmmyyyy}.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "UTF-8-Converter",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/converter.sh",
+					"processArguments": [
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_EXTRACT_NONMOR_{ddmmyyyy}.txt",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_{ddmmyyyy}_utf8.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_finnone_loan",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_{ddmmyyyy}_utf8.txt",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Finnone_Master.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/costcentre.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--ref-file-3",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Finone_Rate_Code_Master.xlsx",
+						"--ref-file-4",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/INP001_NPA.csv",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput.txt",
+						"--concat-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneConcat.txt",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneReconRpt.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FinnonePPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FinnonePPDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow generator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_loan",
+					"processArguments": [
+						"--batch-size",
+						"500000",
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/FinnoneCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FinnoneCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FinnoneCFDiagLog.txt",
+						"--num-threads",
+						"8",
+						"--day-convention",
+						"30/360"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Aggregator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/FinnoneCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FinLoansAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FinnoneBALMLog.txt",
+						"--is-consolidated",
+						"true",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FinnoneBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/fin_loans_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/fin_loans_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/fin_loans_rules.txt",
+						"--default-llg-code",
+						"12705"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FinLoansAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FinLoansAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FinLoansAggConvLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

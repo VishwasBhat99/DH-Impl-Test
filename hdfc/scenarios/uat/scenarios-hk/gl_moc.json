@@ -1,0 +1,137 @@
+{
+	"streamName": "GLMOC",
+	"streamId": "7032",
+	"flows": [
+		{
+			"name": "GLBalanceMOC",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-Non-MOC-File",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/HK/{ddmmyyyy}/EDW_ALM_ORACLE_GL_HK_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Flight-Check-With-MOC-File",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/HK/{ddmmyyyy}/MOC_Input_File_HK_{ddmmyyyy}.xlsx"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/HK/over_gl_pp_cf",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/HK/{ddmmyyyy}/EDW_ALM_ORACLE_GL_HK_{ddmmyyyy}.csv",
+						"--gl-moc-file",
+						"/UAT_SH_INPUTDATA/HK/{ddmmyyyy}/MOC_Input_File_HK_{ddmmyyyy}.xlsx",
+						"--gl-moc-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLPPOutput",
+						"--concat-file",
+						"/UAT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLPPConcat.txt",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/HK/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--special-method-rules-file",
+						"/UAT_SH_INPUTDATA/HK/OPERATIONAL_FILES/Special_Method_Rules_File.xlsx",
+						"--special-method-sheet-name",
+						"Sheet1",
+						"--currency",
+						"USD",
+						"--gl-ex-master",
+						"/UAT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLExcludeMaster.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/HK/{ddmmyyyy}/GLPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/HK/{ddmmyyyy}/GLPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "GL-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/HK/gl_aggr",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLPPOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/HK/{ddmmyyyy}/GLAggregated-summary.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/HK/{ddmmyyyy}/GLAGGLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/HK/{ddmmyyyy}/GLAGGDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--known-fields-file",
+						"/UAT_SH_RULES/HK/over_gl_req_fields.json",
+						"--is-consolidated",
+						"true",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/HK/over_gl_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/HK/over_gl_rules.txt",
+						"--default-llg-code",
+						"9876"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/HK/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/HK/{ddmmyyyy}/GLAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/HK/{ddmmyyyy}/GLAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/HK/{ddmmyyyy}/GLBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/HK/{ddmmyyyy}/GLBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/HK/consol-config.txt",
+						"--is-maturity",
+						"false"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLPPOutput-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

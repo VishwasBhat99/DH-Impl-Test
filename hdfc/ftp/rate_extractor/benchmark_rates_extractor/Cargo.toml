@@ -1,0 +1,18 @@
+[package]
+name = "benchmark-rates-extractor"
+version = "1.1.0"
+authors = ["Kavya <kavyashree.k@surya-soft.com>"]
+
+[dependencies]
+clap = "2.32.0"
+rbdate = { path = "../../../libraries/RBDate" }
+sdb_io = { path = "../../../libraries/sdb_io" }
+sdb_util = { path = "../../../../surya/libraries/sdb_util"}
+protobuf = { version = "~2.0", features = ["with-bytes"] }
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+chrono = "0.4"

@@ -1,0 +1,28 @@
+1|1|0|deal_type|EQ|RF_LAF|AND
+1|1|1|bank_oper_typ|EQ|BUY|11150
+2|1|0|deal_type|EQ|RF_MSF|AND
+2|1|1|bank_oper_typ|EQ|BUY|11150
+3|1|0|deal_type|EQ|Ready_Forward|AND
+3|1|1|bank_oper_typ|EQ|BUY|11147
+4|1|0|deal_type|EQ|RF_LAF|AND
+4|1|1|bank_oper_typ|EQ|SELL|5630
+5|1|0|deal_type|EQ|RF_MSF|AND
+5|1|1|bank_oper_typ|EQ|SELL|5630
+6|1|0|deal_type|EQ|Ready_Forward|AND
+6|1|1|bank_oper_typ|EQ|SELL|5630
+7|1|0|deal_type|EQ|RTLAF|AND
+7|1|1|bank_oper_typ|EQ|BUY|11150
+8|1|0|deal_type|EQ|RLAF|AND
+8|1|1|bank_oper_typ|EQ|BUY|11150
+9|1|0|deal_type|EQ|Rev Repo|AND
+9|1|1|bank_oper_typ|EQ|BUY|11147
+10|1|0|deal_type|EQ|RTLAF|AND
+10|1|1|bank_oper_typ|EQ|SELL|5630
+11|1|0|deal_type|EQ|RLAF|AND
+11|1|1|bank_oper_typ|EQ|SELL|5630
+12|1|0|deal_type|EQ|Rev Repo|AND
+12|1|1|bank_oper_typ|EQ|SELL|5630
+13|1|0|deal_type|EQ|MSF|AND
+13|1|1|bank_oper_typ|EQ|SELL|5630
+14|1|0|deal_type|EQ|MSF|AND
+14|1|1|bank_oper_typ|EQ|BUY|11150

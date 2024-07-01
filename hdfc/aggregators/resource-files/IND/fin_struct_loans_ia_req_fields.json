@@ -1,0 +1,15 @@
+{
+    "llg_id":"llg_id",
+    "curr_code": "curr_code",
+    "rep_freq": "rep_freq",
+    "intt_rate": "final_int_rate",
+    "cashflows": "cashflows",
+    "mat_date":"mat_date",
+    "acc_open_date":"org_date",
+    "bm_id":"repricing_index",
+    "acc_no":"account_number",
+    "next_repr_date":"next_repricing_date",
+    "spread":"spread",
+    "npa_flag":"asset_class_id"
+}
+

@@ -1,0 +1,9 @@
+{
+ "account_number": "deal_no",
+ "concat": "alm_line",
+ "cashflows": "cashflows",
+ "institution": "currcd",
+ "interest_rate": "couprt",
+ "next_rep_date": "nxt_rep_dt",
+ "exchange_rate": ""
+}

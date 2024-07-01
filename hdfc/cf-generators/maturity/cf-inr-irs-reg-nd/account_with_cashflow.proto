@@ -1,0 +1,55 @@
+syntax= "proto3";
+
+message Cashflow {
+    double interest_amount= 1;
+    double principal_amount= 2;
+    int64 date= 3;
+}
+
+message AccountWithCashflows{
+    string entity=1;
+    string trade_id=2;
+    double contract_id=3;
+    string folder=4;
+    string trading_banking=5;
+    string intrnl_extrnl=6;
+    string cntr_prty_name=7;
+    int64 trade_dt=8;
+    int64 st_dt=9;
+    string deal_ccy=10;
+    double org_notional=11;
+    double pay_int_rt=12;
+    double rec_int_rt=13;
+    double exchng_rt=14;
+    int64 pay_reset_dt=15;
+    int64 rec_reset_dt=16;
+    int64 pay_payment_dt=17;
+    int64 rec_payment_dt=18;
+    string pay_payment_freq=19;
+    string rec_payment_freq=20;
+    string deal_stats=21;
+    string inp_id=22;
+    string trade_bank=23;
+    string m_bank=24;
+    string flow_typ=25;
+    string flow_typ1=26;
+    string flow_typ2=27;
+    string flow_typ3=28;
+    string flow_typ4=29;
+    double flow_amt=30;
+    int64 cf_dt=31;
+    string flow_ccy=32;
+    double hkd_rt=33;
+    double hkd_amt=34;
+    int64 m_h_rep_dt2=35;
+    double inr_amt=36;
+    double inr_rt=37;
+    double int_rt=38;
+    double tot_int_amt=39;
+    double tot_prin_amt=40;
+    string cont_usage=41;
+    string non_idx_fwcurcy=42;
+    double non_idx_fwamt=43;
+    int64 indxn_dt=44;
+    repeated Cashflow cashflows= 45;
+}

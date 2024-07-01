@@ -1,0 +1,154 @@
+{
+  "fields": [
+    {
+      "name": "account_number",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "curr_code",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "intt_rate",
+      "typ": "F64",
+      "position": 3
+    },
+    {
+      "name": "product_code",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "mat_date",
+      "typ": "I64",
+      "position": 5
+    },
+    {
+      "name": "rate_flag",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "repricing_index",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "psl",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "npa",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "indv_corp_flag",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "customer_type",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "asset_class_id",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "customer_id",
+      "typ": "String",
+      "position": 13
+    },
+    {
+      "name": "prod_type",
+      "typ": "String",
+      "position": 14
+    },
+    {
+      "name": "final_int_rate",
+      "typ": "F64",
+      "position": 15
+    },
+    {
+      "name": "cost_centre",
+      "typ": "I64",
+      "position": 16
+    },
+    {
+      "name": "alm_line",
+      "typ": "String",
+      "position": 17
+    },
+    {
+      "name": "coa",
+      "typ": "String",
+      "position": 18
+    },
+    {
+      "name": "division",
+      "typ": "String",
+      "position": 19
+    },
+    {
+      "name": "rep_freq",
+      "typ": "I64",
+      "position": 20
+    },
+    {
+      "name": "next_repricing_date",
+      "typ": "I64",
+      "position": 21
+    },
+    {
+      "name": "last_repricing_date",
+      "typ": "I64",
+      "position": 22
+    },
+    {
+      "name": "asset_class",
+      "typ": "String",
+      "position": 23
+    },
+    {
+      "name": "value_date",
+      "typ": "I64",
+      "position": 24
+    },
+    {
+      "name": "branch",
+      "typ": "I64",
+      "position": 25
+    },
+    {
+      "name": "org_tenor",
+      "typ": "I64",
+      "position": 26
+    },
+    {
+      "name": "rep_tenor",
+      "typ": "I64",
+      "position": 27
+    },
+    {
+      "name": "weaker",
+      "typ": "String",
+      "position": 28
+    },
+    {
+      "name": "current_book_bal",
+      "typ": "F64",
+      "position": 29
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 30
+    }
+  ]
+}

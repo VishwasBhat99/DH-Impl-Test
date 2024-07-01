@@ -1,0 +1,4 @@
+1|1|0|alm_line|EQ|INV-SEC/CB|11910
+2|1|0|alm_line|EQ|INV-SEC/CBD|11910
+3|1|0|alm_line|EQ|INV-SEC/RL|11910
+4|1|0|alm_line|EQ|INV-SE-EQ/BSM|11910

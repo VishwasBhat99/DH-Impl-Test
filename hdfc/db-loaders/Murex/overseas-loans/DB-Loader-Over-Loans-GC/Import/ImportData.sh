@@ -1,0 +1,2 @@
+sqlldr balmusr/HdFcBank13\$\# control=./OVER_LOANS_MASTER_GC.ctl LOG=/data/oracle18c/app/product/18c/dbhome/ImportLog/OVER_LOANS_MASTER_GC.log BAD=/data/oracle18c/app/product/18c/dbhome/ImportLog/OVER_LOANS_MASTER_GC.BAD
+sqlldr balmusr/HdFcBank13\$\# control=./OVER_LOANS_CASHFLOW_GC.ctl LOG=/data/oracle18c/app/product/18c/dbhome/ImportLog/OVER_LOANS_CASHFLOW_GC.log BAD=/data/oracle18c/app/product/18c/dbhome/ImportLog/OVER_LOANS_CASHFLOW_GC.BAD

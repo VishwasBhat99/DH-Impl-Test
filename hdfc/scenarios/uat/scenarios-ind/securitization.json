@@ -1,0 +1,389 @@
+{
+	"streamName": "SECURITIZATION",
+	"streamId": "1032",
+	"flows": [
+		{
+			"name": "SecuritisationInvestments",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/master-inv.csv"
+					],
+					"processDependencies": [
+		
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/cashflows-inv.csv"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Investment/ImpExpSecInvst.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": ["2"],
+					"processReport": "/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/DB-Loader-Sec-Invst-health-check-report.json"
+				},
+				{
+					"processName": "Post-Flight-Check",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/Sec-Invst.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/IND/pp_sec_invst",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/Sec-Invst.txt",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--ref-file-2",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/ORA_PROD.xlsx",
+						"--ref-file-3",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-4",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecInvstPPOutput.txt",
+						"--concat-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecInvstConcat.txt",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecInvstReconRpt.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecInvstPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/IND/cf_sec_invst",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecInvstPPOutput.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecInvstCGOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstCGLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstGDiagLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecInvstCGOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecInvstCGOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/SecInvstAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/IND/sec_invst_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/sec_invst_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/IND/sec_invst_rules.txt",
+						"--default-llg-code",
+						"11919",
+						"--default-overdue-llg-code",
+						"1918"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecInvstCGOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "8",
+					"processBinary": "/home/dbuser/programs/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/SecInvstAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstAggConvLog.txt"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecInvstCGOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "9",
+					"processBinary": "/home/dbuser/programs/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecInvstCGOutput.cf",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecInvstAvgBal.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecInvstAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/UAT_SH_RULES/IND/sec_invst_avg_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/sec_invst_metadata.json"
+					],
+					"processDependencies": [
+						"8"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecInvstAvgBal-heath-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "SecuritisationLoans",
+			"flowId": "2",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/master-loans.csv"
+					],
+					"processDependencies": [
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/cashflows-loans.csv"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Loans/ImpExpSecLoans.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": ["2"],
+					"processReport": "/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/DB-Loader-Sec-Loans-health-check-report.json"
+				},
+				{
+					"processName": "Post-Flight-Check",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/Sec-Loans.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/IND/pp_sec_loans",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/Sec-Loans.txt",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--ref-file-2",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/ORA_PROD.xlsx",
+						"--ref-file-3",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-4",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecLoansPPOutput.txt",
+						"--concat-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecLoansConcat.txt",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecLoansReconRpt.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecLoansPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/IND/cf_sec_loans",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecLoansPPOutput.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecLoansCGOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansCGLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansGDiagLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecLoansCGOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecLoansCGOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/SecLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/IND/sec_loans_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/sec_loans_metadata.json",
+						"--rules-file-path",
+						"/UAT_SH_RULES/IND/sec_loans_rules.txt",
+						"--default-llg-code",
+						"13210",
+						"--default-overdue-llg-code",
+						"3288"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecLoansCGOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "8",
+					"processBinary": "/home/dbuser/programs/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/SecLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansAggConvLog.txt"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecLoansCGOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "9",
+					"processBinary": "/home/dbuser/programs/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/SecLoansCGOutput.cf",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecLoansAvgBal.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/SecLoansAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/UAT_SH_RULES/IND/sec_loans_avg_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/sec_loans_metadata.json"
+					],
+					"processDependencies": [
+						"8"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/SecLoansAvgBal-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

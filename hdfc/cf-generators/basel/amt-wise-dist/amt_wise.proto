@@ -1,0 +1,25 @@
+syntax= "proto3";
+
+message OutputAccount {
+    string as_on_date = 1;
+    int64 custid = 2;
+    int64 classid = 3;
+    string curr = 4;
+    double tot_amt = 5;
+    double tot_nwd_amt = 6;
+    double tot_accs = 7;
+    double tot_nwd_accs = 8;
+    double ca_accs = 9;
+    double sa_accs = 10;
+    double td_accs = 11;
+    double rd_accs = 12;
+    double ca_nwd_accs_op = 13;
+    double ca_nwd_accs_nonop = 14;
+    double sa_nwd_accs = 15;
+    double td_nwd_accs = 16;
+    double rd_nwd_accs = 17;
+    double td_amt = 18;
+    double rd_amt = 19;
+    double sa_amt = 20;
+    double ca_amt = 21;
+}

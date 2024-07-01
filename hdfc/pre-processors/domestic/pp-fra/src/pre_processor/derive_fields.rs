@@ -1,0 +1,38 @@
+pub fn get_op_line(fields: &mut Vec<&str>) -> String {
+    let mut output_line = String::new();
+    output_line.push_str(fields[28]);
+    output_line.push('|');
+    output_line.push_str(fields[25]);
+    output_line.push('|');
+    output_line.push_str(fields[8]);
+    output_line.push('|');
+    output_line.push_str(fields[8]);
+    output_line.push('|');
+    output_line.push_str(fields[17]);
+    output_line.push('|');
+    output_line.push_str(fields[18]);
+    output_line.push_str("|||");
+    output_line.push_str(fields[27]);
+    output_line.push('|');
+    output_line.push_str(fields[23]);
+    output_line.push('|');
+    output_line.push_str(fields[21]);
+    output_line.push('|');
+    output_line.push_str(fields[13]);
+    output_line.push('|');
+    output_line.push_str(fields[14]);
+    output_line.push('|');
+    output_line.push_str(fields[2]);
+    output_line.push('|');
+    output_line.push_str(fields[3]);
+    output_line.push('|');
+    output_line.push_str(fields[7]);
+    output_line.push('|');
+    output_line.push_str(fields[9]);
+    output_line.push_str("||");
+    output_line.push_str(fields[10]);
+    output_line.push('|');
+    output_line.push_str(fields[11]);
+    output_line.push_str("||||||INR|INR|1|1||\n");
+    output_line
+}

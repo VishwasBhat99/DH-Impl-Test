@@ -1,0 +1,250 @@
+{
+  "fields": [
+    {
+      "name": "deal_id",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "branch",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "instrument_name",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "lending_borrowing_type",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "typology",
+      "typ": "String",
+      "position": 5
+    },
+    {
+      "name": "usage",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "sub_type_borrowing_lending",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "counterparty",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "creation_date",
+      "typ": "I64",
+      "position": 9
+    },
+
+    {
+      "name": "val_date",
+      "typ": "I64",
+      "position": 10
+    },
+    {
+      "name": "deal_date",
+      "typ": "I64",
+      "position": 11
+    },
+    {
+      "name": "currency",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "current_deal_amount",
+      "typ": "F64",
+      "position": 13
+    },
+    {
+      "name": "current_conversion_rate_lcy",
+      "typ": "F64",
+      "position": 14
+    },
+    {
+      "name": "current_deal_amount_lcy",
+      "typ": "F64",
+      "position": 15
+    },
+    {
+      "name": "roi",
+      "typ": "F64",
+      "position": 16
+    },
+    {
+      "name": "tenor_days",
+      "typ": "I64",
+      "position": 17
+    },
+    {
+      "name": "maturity_dt",
+      "typ": "I64",
+      "position": 18
+    },
+    {
+      "name": "principal_amount",
+      "typ": "F64",
+      "position": 19
+    },
+    {
+      "name": "interest_amount",
+      "typ": "F64",
+      "position": 20
+    },
+    {
+      "name": "cf_type",
+      "typ": "String",
+      "position": 21
+    },
+    {
+      "name": "flow_type",
+      "typ": "String",
+      "position": 22
+    },
+    {
+      "name": "maturity_amount",
+      "typ": "F64",
+      "position": 23
+    },
+    {
+      "name": "dealer_name",
+      "typ": "String",
+      "position": 24
+    },
+    {
+      "name": "ndsreferenceno",
+      "typ": "String",
+      "position": 25
+    },
+    {
+      "name": "next_fixing_date",
+      "typ": "I64",
+      "position": 26
+    },
+    {
+      "name": "residual_tenor",
+      "typ": "I64",
+      "position": 27
+    },
+    {
+      "name": "next_put_date",
+      "typ": "I64",
+      "position": 28
+    },
+    {
+      "name": "next_call_date",
+      "typ": "I64",
+      "position": 29
+    },
+    {
+      "name": "next_interest_payout_date",
+      "typ": "I64",
+      "position": 30
+    },
+    {
+      "name": "interest_payout_tenor",
+      "typ": "I64",
+      "position": 31
+    },
+    {
+      "name": "aip_air",
+      "typ": "F64",
+      "position": 32
+    },
+    {
+      "name": "downgrade_clause",
+      "typ": "String",
+      "position": 33
+    },
+    {
+      "name": "average_monthly_balance",
+      "typ": "String",
+      "position": 34
+    },
+    {
+      "name": "glcode",
+      "typ": "String",
+      "position": 35
+    },
+    {
+      "name": "counterparty_category_1",
+      "typ": "String",
+      "position": 36
+    },
+    {
+      "name": "counterparty_category_2",
+      "typ": "String",
+      "position": 37
+    },
+    {
+      "name": "counterparty_category_3",
+      "typ": "String",
+      "position": 38
+    },
+    {
+      "name": "counterparty_category_4",
+      "typ": "String",
+      "position": 39
+    },
+    {
+      "name": "interest_payable_receivable_till_the_next_payout_date",
+      "typ": "String",
+      "position": 40
+    },
+    {
+      "name": "bucket_days",
+      "typ": "I64",
+      "position": 41
+    },
+    {
+      "name": "system_gl",
+      "typ": "String",
+      "position": 42
+    },
+    {
+      "name": "alm_concat",
+      "typ": "String",
+      "position": 43
+    },
+    {
+      "name": "division",
+      "typ": "String",
+      "position": 44
+    },
+    {
+      "name": "alm_line",
+      "typ": "String",
+      "position": 45
+    },
+    {
+      "name": "ia_line",
+      "typ":"String",
+      "position":46
+    },
+    {
+      "name": "total_interest_amount",
+      "typ": "F64",
+      "position": 47
+    },
+    {
+      "name": "total_principal_amount",
+      "typ": "F64",
+      "position": 48
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 49
+    }
+  ]
+}

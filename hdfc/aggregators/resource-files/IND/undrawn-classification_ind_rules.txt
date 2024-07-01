@@ -1,0 +1,5 @@
+1|1|0|final_map_lcr|EQ|Retail & SME|8001
+2|1|0|final_map_lcr|EQ|NFC & PSE|8002
+3|1|0|final_map_lcr|EQ|Others|8005
+4|1|0|final_map_lcr|EQ|Banks|8004
+5|1|0|final_map_lcr|EQ|Financial Entity|8003

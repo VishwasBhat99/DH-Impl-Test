@@ -1,0 +1,8 @@
+[package]
+name = "sdb_day_convention"
+version = "1.0.3589"
+authors = ["shashank.676 <shashank.p@surya-soft.com>"]
+
+[dependencies]
+rbdate = { path = "../RBDate" }
+chrono = "0.4"

@@ -1,0 +1,9 @@
+{
+    "acc_no": "account_number",
+    "curr": "curr_code",
+    "int_rt": "final_int_rate",
+    "prin_amt": "total_principal_amount",
+    "concat": "alm_line",
+    "country": ""
+  }
+  

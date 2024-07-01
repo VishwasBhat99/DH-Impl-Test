@@ -1,0 +1,9 @@
+{
+    "acc_no": "cod_acc_no",
+    "curr": "v_ccy_code",
+    "int_rt": "int_rt",
+    "prin_amt": "slr_amt",
+    "concat": "alm_line",
+    "country": "country"
+  }
+  

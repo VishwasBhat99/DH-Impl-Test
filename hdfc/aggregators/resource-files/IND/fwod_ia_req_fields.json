@@ -1,0 +1,12 @@
+{
+    "curr_code": "inst",
+    "rep_freq": "rep_freq",
+    "intt_rate": "int_rt",
+    "cashflows": "cashflows",
+    "mat_date":"mat_dt",
+    "acc_open_date":"val_dt",
+    "bm_id":"bm_id_lookup",
+    "acc_no":"account_number",
+    "next_repr_date":"nxt_rep_dt",
+    "npa_flag":"npa_flg"
+}

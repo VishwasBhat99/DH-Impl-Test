@@ -1,0 +1,199 @@
+{
+  "fields": [
+    {
+      "name": "entity",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "trade_id",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "structure_id_link",
+      "typ": "F64",
+      "position": 3
+    },
+    {
+      "name": "component_typo",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "contract_type",
+      "typ": "String",
+      "position": 5
+    },
+    {
+      "name": "package_typo",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "desk",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "book",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "folder",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "trading_banking",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "internal_external",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "counterparty_group_code",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "counterparty_parent_code",
+      "typ": "String",
+      "position": 13
+    },
+    {
+      "name": "counterparty_child_code",
+      "typ": "String",
+      "position": 14
+    },
+    {
+      "name": "bank_non_bank",
+      "typ": "String",
+      "position": 15
+    },
+    {
+      "name": "trade_date",
+      "typ": "I64",
+      "position": 16
+    },
+    {
+      "name": "maturity_date",
+      "typ": "I64",
+      "position": 17
+    },
+    {
+      "name": "buy_sale",
+      "typ": "String",
+      "position": 18
+    },
+    {
+      "name": "underlying_index",
+      "typ": "String",
+      "position": 19
+    },
+    {
+      "name": "notional_currency",
+      "typ": "String",
+      "position": 20
+    },
+    {
+      "name": "original_notional_amount",
+      "typ": "F64",
+      "position": 21
+    },
+    {
+      "name": "mtm_in_inr",
+      "typ": "F64",
+      "position": 22
+    },
+    {
+      "name": "net_pv01_in_inr",
+      "typ": "F64",
+      "position": 23
+    },
+    {
+      "name": "modified_duration_of_the_deal",
+      "typ": "F64",
+      "position": 24
+    },
+    {
+      "name": "reset_frequency",
+      "typ": "String",
+      "position": 25
+    },
+    {
+      "name": "next_reset_date",
+      "typ": "I64",
+      "position": 26
+    },
+    {
+      "name": "underlying_pp",
+      "typ": "String",
+      "position": 27
+    },
+    {
+      "name": "deal_status",
+      "typ": "String",
+      "position": 28
+    },
+    {
+      "name": "counterparty_category1",
+      "typ": "String",
+      "position": 29
+    },
+    {
+      "name": "counterparty_category2",
+      "typ": "String",
+      "position": 30
+    },
+    {
+      "name": "counterparty_category3",
+      "typ": "String",
+      "position": 31
+    },
+    {
+      "name": "accounting_section",
+      "typ": "String",
+      "position": 32
+    },
+    {
+      "name": "flowtype4",
+      "typ": "String",
+      "position": 33
+    },
+    {
+      "name": "flow_amount",
+      "typ": "F64",
+      "position": 34
+    },
+    {
+      "name": "cashflow_date",
+      "typ": "I64",
+      "position": 35
+    },
+    {
+      "name": "flow_currency",
+      "typ": "String",
+      "position": 36
+    },
+    {
+      "name": "tot_int_amt",
+      "typ": "F64",
+      "position": 37
+    },
+    {
+      "name": "tot_prin_amt",
+      "typ": "F64",
+      "position": 38
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 39
+    }
+  ]
+}

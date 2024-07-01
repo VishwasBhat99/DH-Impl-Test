@@ -1,0 +1,75 @@
+{
+    "fields": [
+      {
+        "name": "v_d_cust_ref_code",
+        "typ": "String",
+        "position": 1
+      },
+      {
+        "name": "v_line_code",
+        "typ": "String",
+        "position": 2
+      },
+      {
+        "name": "n_ccf_prcnt",
+        "typ": "F64",
+        "position": 3
+      },
+      {
+        "name": "n_undrawn_amt",
+        "typ": "F64",
+        "position": 4
+      },
+      {
+        "name": "v_basel_asset_class_desc",
+        "typ": "String",
+        "position": 5
+      },
+      {
+        "name": "v_party_type_desc",
+        "typ": "String",
+        "position": 6
+      },
+      {
+        "name": "gl_code",
+        "typ": "String",
+        "position": 7
+      },
+      {
+        "name": "v_ccy_code",
+        "typ": "String",
+        "position": 8
+      },
+      {
+        "name": "branch_code",
+        "typ": "String",
+        "position": 9
+      },
+      {
+        "name": "country_code",
+        "typ": "String",
+        "position": 10
+      },
+      {
+        "name": "lcr_category",
+        "typ": "String",
+        "position": 11
+      },
+      {
+        "name": "asset_class_desc",
+        "typ": "String",
+        "position": 12
+      },
+      {
+        "name": "ccod_flag",
+        "typ": "String",
+        "position": 13
+      },
+      {
+        "name": "fb_nfb",
+        "typ": "String",
+        "position": 14
+      }
+    ]
+  }
+  

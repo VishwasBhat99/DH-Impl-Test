@@ -1,0 +1,61 @@
+{
+    "streamName": "BA Securitisation",
+    "streamId": "2092",
+    "flows": [
+        {
+            "name": "Securitisation",
+            "flowId": "1",
+            "flowDependencies": [],
+            "executorID": "5",
+            "process": [
+                {
+                    "processName": "Pre-Flight-Check",
+                    "processId": "1",
+                    "processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/ba_sec_final_template.xlsx"
+                    ],
+                    "processDependencies": [],
+                    "processReport": ""
+                },
+                {
+                    "processName": "Pre-Processor",
+                    "processId": "2",
+                    "processBinary": "/home/dbuser/programs/SIT/IND/pp_sec_ba",
+                    "processArguments": [
+                        "--input-file",
+                        "/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/ba_sec_final_template.xlsx",
+                        "--output-file",
+                        "/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/SecBAOutput.txt",
+                        "--sheet-name",
+                        "Sheet1",
+                        "--log-file",
+                        "/SIT_SH_LOGS/IND/{ddmmyyyy}/SecBAPPLog.txt",
+                        "--diagnostics-log-file",
+                        "/SIT_SH_LOGS/IND/{ddmmyyyy}/SecBAPPDiagLog.txt",
+                        "--llg-code",
+                        "1004"
+                    ],
+                    "processDependencies": [
+                        "1"
+                    ],
+                    "processReport": "/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/SecBAOutput-health-check-report.json"
+                },
+                {
+                    "processName": "Upload",
+                    "processId": "3",
+                    "processBinary": "/SIT_SH_SUMMARYDATA/BulkInserter/IND/BA/secLoad.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "{AsOnDate}"
+                    ],
+                    "processDependencies": [
+                        "2"
+                    ],
+                    "processReport": "/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/UploadSecBA-health-check-report.json"
+                }
+            ]
+        }
+    ]
+}

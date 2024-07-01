@@ -1,0 +1,21 @@
+[package]
+name = "pre_flight_file_validator"
+version = "1.0.5304"
+authors = ["NPunyashree <punyashree.n@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+calamine = "0.18.0"
+sdb_dyn_proto_rdr = { path = "../../../hdfc/libraries/sdb_dyn_proto_rdr" }
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+health_report = { path = "../../../surya/libraries/health_report" }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+chrono = "0.4"
+regex = "1.6.0"
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+float-cmp = "0.9.0"

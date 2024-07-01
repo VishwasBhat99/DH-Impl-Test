@@ -1,0 +1,206 @@
+{
+	"streamName": "UBS LOANS",
+	"streamId": "3008",
+	"flows": [
+		{
+			"name": "UBS Loans",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Mater-Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/./pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/master.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Pre-Flight-Check",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/./pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/cashflows.csv"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Over-Loans/BAH/ImpExpOverLoans.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-Over-Loans-health-check-report.json"
+				},
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/BAH/./pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/over-loans-bh.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/BAH/./pp_over_loans",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/over-loans-bh.txt",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/ORA_PROD.xlsx",
+						"--ref-file-2",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--ref-file-4",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/ALM_COA_Master.xlsx",
+						"--ref-file-5",
+						"/UAT_SH_INPUTDATA/BAH/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--gl-type",
+						"BH-Over-Loans",
+						"--input-file-name",
+						"BH_Outstanding_Loans",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/UBSOutput.txt",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/UBSReconRpt.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/UBSOutput-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/BAH/./cf_ubs_loans",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/UBSOutput.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/UBSCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/BAH/./balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/BAH/{ddmmyyyy}/UBSCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/UBSLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--is-consolidated",
+						"false",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/BAH/ubs_loans_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/BAH/ubs_loans_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/BAH/over_loans_bh_rules.txt",
+						"--default-llg-code",
+						"12799",
+						"--default-overdue-llg-code",
+						"2790"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "8",
+					"processBinary": "/home/dbuser/programs/BAH/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSLoansAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/UBSLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSLoansAggConvLog.txt"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "9",
+					"processBinary": "/home/dbuser/programs/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/UBSLoansAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/UBSLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSLoansBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/BAH/{ddmmyyyy}/UBSLoansBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/UAT_SH_CFDATA/BAH/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

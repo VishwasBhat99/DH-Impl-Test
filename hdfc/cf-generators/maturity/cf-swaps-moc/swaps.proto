@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows{
+    string llg_desp = 1;
+    string currency =2;
+    int64 notional = 3;
+    double coupan = 4;
+    double yield = 5;
+    double mod_duration = 6;
+    repeated Cashflow cashflows=7;
+}

@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+message Account {
+    string acc_id = 1;
+    string cust_id = 2;
+    string cust_type = 3;
+    string prod_code = 4;
+    double int_rate = 5;
+    string currency = 6;
+    double rw = 7;
+    string restr_flag = 8;
+    string resi_flag = 9;
+    string cust_basel_val_code = 10;
+    string div = 11;
+    string nat_of_bus = 12;
+    string txt_desc = 13;
+    string sme_class = 14;
+    string pt_str_1 = 15;
+    string encum_flag = 16;
+    string pt_str_2 = 17;
+    string pt_str_3 = 18;
+    string pt_str_4 = 19;
+    string pt_str_5 = 20;
+    int64 pt_int_1 = 21;
+    int64 pt_int_2 = 22;
+    int64 pt_int_3 = 23;
+    int64 pt_int_4 = 24;
+    int64 pt_int_5 = 25;
+    double pt_f64_1 = 26;
+    double pt_f64_2 = 27;
+    double pt_f64_3 = 28;
+    double pt_f64_4 = 29;
+    double pt_f64_5 = 30;
+    double b1 = 31;
+    double b2 = 32;
+    double b3 = 33;
+    double b4 = 34;    
+}

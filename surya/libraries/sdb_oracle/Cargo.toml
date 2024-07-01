@@ -1,0 +1,11 @@
+[package]
+name = "sdb_oracle"
+version = "0.1.0"
+authors = ["shashank676 <shashank.p@surya-soft.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+oracle = { version = "0.2.1", features = ["chrono"] }
+dbpool = { path = "../dbpool" }
+r2d2 = { path = "../r2d2" }

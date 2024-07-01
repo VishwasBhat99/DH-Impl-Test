@@ -1,0 +1,2 @@
+sqlldr balmusr/HdFcBank13\$\# control=./SEC_INVST_MASTER.ctl LOG=/data/oracle18c/app/product/18c/dbhome/ImportLog/SEC_INVST_MASTER.log BAD=/data/oracle18c/app/product/18c/dbhome/ImportLog/SEC_INVST_MASTER.BAD
+sqlldr balmusr/HdFcBank13\$\# control=./SEC_INVST_CASHFLOW.ctl LOG=/data/oracle18c/app/product/18c/dbhome/ImportLog/SEC_INVST_CASHFLOW.log BAD=/data/oracle18c/app/product/18c/dbhome/ImportLog/SEC_INVST_CASHFLOW.BAD

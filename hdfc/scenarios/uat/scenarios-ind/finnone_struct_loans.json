@@ -1,0 +1,197 @@
+{
+	"streamName": "FINNONE STRUCTURED LOANS",
+	"streamId": "1008",
+	"flows": [
+		{
+			"name": "Finnone Structured Loans",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_EXTRACT_MOR_{ddmmyyyy}.txt"
+					],
+					"processDependencies": [
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Flight-Cashflow",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_SCHEDULE_CF_MOR_{ddmmyyyy}.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Finnone-Structured-Loans/ImpExpFinLoans.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": ["2"],
+					"processReport": "/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/DB-Loader-Fin-Struct-Loans-health-check-report.json"
+				},
+				{
+					"processName": "Post-Flight-Check",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/FinLoans.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/IND/pp_fin_struct_loan",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/FinLoans.txt",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Finnone_Master.xlsx",
+						"--ref-file-2",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/costcentre.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--ref-file-3",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Finone_Rate_Code_Master.xlsx",
+						"--ref-file-4",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/INP001_NPA.csv",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansOutput.txt",
+						"--concat-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansConcat.txt",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansReconRpt.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansOutput-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow generator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/IND/cf_fin_struct_loans",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansOutput.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/FinStructLoansCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Aggregator",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/FinStructLoansCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FinStructLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansBALMLog.txt",
+						"--is-consolidated",
+						"true",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/IND/fin_struct_loans_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/fin_struct_loans_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/IND/fin_struct_loans_rules.txt",
+						"--default-llg-code",
+						"12751"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "8",
+					"processBinary": "/home/dbuser/programs/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FinStructLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansAggConvLog.txt"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansOutput-health-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "9",
+					"processBinary": "/home/dbuser/programs/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/FinStructLoansCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansAvgBal.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinStructLoansAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/UAT_SH_RULES/IND/fin_struct_loans_avg_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/fin_struct_loans_metadata.json"
+					],
+					"processDependencies": [
+						"8"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinStructLoansAvgBal-health-check-report.json"
+				}
+			]
+		}
+	]
+}

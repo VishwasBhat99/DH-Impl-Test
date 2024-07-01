@@ -1,0 +1,15 @@
+[package]
+name = "pp_inr_irs_reg_nd"
+version = "0.1.2335"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+slog = "2.7.0"
+chrono = "0.4.19"
+clap = "3.0.14"
+slog-async = "2.7.0"
+slog-term = "2.8.1"
+calamine = "0.18.0"
+rbdate = { path = "../../../libraries/RBDate" }

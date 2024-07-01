@@ -1,0 +1,108 @@
+{
+	"streamName": "GLDiff",
+	"streamId": "1064",
+	"flows": [
+		{
+			"name": "GLDiff",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/ReconRpt.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_gl_recon",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/ReconRpt.txt",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLReconPPOutput",
+						"--alm-master-file",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLReconPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLReconPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLReconPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "GL-Aggregator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/gl_aggr",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLReconPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/GLReconAggregated.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLReconAGGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLReconAGGDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/gl_recon_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/gl_recon_metadata.json",
+						"--is-consolidated",
+						"true",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/gl_recon_rules.txt",
+						"--default-llg-code",
+						"1099"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLReconPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLReconPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLReconAvgBal.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLReconAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GLReconAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/gl_recon_avg_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/gl_recon_metadata.json"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/GLReconAvgBal-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

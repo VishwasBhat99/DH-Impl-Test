@@ -1,0 +1,757 @@
+{
+	"streamName": "ETREASURY",
+	"streamId": "1042",
+	"flows": [
+		{
+			"name": "Etreasury-Investments",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/INP010_HST3073_{ddmmyyyy}.xls"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_invst",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/INP010_HST3073_{ddmmyyyy}.xls",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--ref-file-4",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Etrsry.xlsx",
+						"--ref-file-5",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/HFT-SLR_Defesance.xlsx",
+						"--sheet-name",
+						"Sheet1",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--ref-file-5-sheet-name",
+						"GS SDL",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/EtInvstOutput.txt",
+						"--concat-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/EtInvstConcat.txt",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/INVSTReconRpt.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/EtInvstPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/EtInvstPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/EtInvstOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_invst",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/EtInvstOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/EtInvstCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/EtInvstCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/EtInvstCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/EtInvstOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/EtInvstCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/EtInvstAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/EtInvstBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/EtInvstBALMDiagLog.txt.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/invst_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/invst_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/invst_rules.txt",
+						"--default-llg-code",
+						"11999"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/EtInvstOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/EtInvstCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/EtInvstAvgBal.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/EtInvstAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/EtInvstAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/invst_avg_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/invst_metadata.json"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/EtInvstAvgBal-heath-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Borrowings-Lendings",
+			"flowId": "2",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hmm3020_{ddmmyyyy}.xls"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "FCY-Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_borr_lend_fcy",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hmm3020_{ddmmyyyy}.xls",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Etrsry.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--ref-file-4",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--sheet-name",
+						"Sheet1",
+						"--output-file-borrowings",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FCYBorOutput.txt",
+						"--output-file-lendings",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FCYLendOutput.txt",
+						"--concat-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FCYBorConcat.txt",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BORR-LEND-FCYReconRpt.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/BorrLendFCYPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/BorrLendFCYPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BORR-LEND-FCY-heath-check-report.json"
+				},
+				{
+					"processName": "INR-Pre-Processor",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_borr_lend_inr",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hmm3011_{ddmmyyyy}.xls",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Etrsry.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--ref-file-4",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--sheet-name",
+						"Sheet1",
+						"--output-file-borrowings",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/INRBorOutput.txt",
+						"--output-file-lendings",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/INRLendOutput.txt",
+						"--concat-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/INRLendConcat.txt",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BORR-LEND-INRReconRpt.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/BorrLendINRPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/BorrLendINRPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/BORR-LEND-INR-heath-check-report.json"
+				},
+				{
+					"processName": "Borrowing-Lending-Merger",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/merge.sh",
+					"processArguments": [
+						"IND/{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"2",
+						"3"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Borrowing-Cashflow-Generator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_borr_and_lend",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/borr.txt",
+						"--sub-dept-file",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Borrowings_Call_Put_date.xlsx",
+						"--sub-dept-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/BorrCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/BorrCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/BorrCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Lending-Cashflow-Generator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_borr_and_lend",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/lend.txt",
+						"--sub-dept-file",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Borrowings_Call_Put_date.xlsx",
+						"--sub-dept-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/LendCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/LendCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/LendCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Borr-BALM-Aggregator",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/BorrCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/BorrAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/BorrBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/BorrBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/bor_len_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/bor_len_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/bor_rules.txt",
+						"--default-llg-code",
+						"01816",
+						"--default-overdue-llg-code",
+						"5651"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Lend-BALM-Aggregator",
+					"processId": "8",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/LendCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/LendAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/LendBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/LendBALMDiagLog.txt.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/bor_len_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/bor_len_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/len_rules.txt",
+						"--default-llg-code",
+						"11817"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "RepoLendingAndBorrowingsHST3015",
+			"flowId": "3",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hst3015_{ddmmyyyy}.xls"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_repo_len_brr",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hst3015_{ddmmyyyy}.xls",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HST3015PPOutput.txt",
+						"--sheet-name",
+						"Sheet1",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3015PPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3015PPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HST3015PPOutput-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_repo_len_brr",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HST3015PPOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3015CGOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3015CGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3015GDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3015CGOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3015CGOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/HST3015Aggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3015BALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3015BALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/hst3015_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/hst3015_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/hst3015_rules.txt",
+						"--default-llg-code",
+						"15654"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3015CGOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "EtreasuryBorrowingAccrualHMM3025",
+			"flowId": "4",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hmm3025_{ddmmyyyy}.xls"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_et_borr_hmm3025",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hmm3025_{ddmmyyyy}.xls",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HMM3025PPOutput.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HMM3025PPLog.txt",
+						"--sheet-name",
+						"Sheet1",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HMM3025PPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HMM3025PPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_et_borr_hmm3025",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HMM3025PPOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/HMM3025CGOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HMM3025CGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HMM3025GDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HMM3025PPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/HMM3025CGOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/HMM3025Aggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HMM3025BALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HMM3025BALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/hmm3025_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/hmm3025_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/hmm3025_rules.txt",
+						"--default-llg-code",
+						"6005"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HMM3025PPOutput-heath-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "EtreasuryInvestmentAccrualHST3064",
+			"flowId": "5",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hst3064_{ddmmyyyy}.xls"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_et_inv_hst3064",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hst3064_{ddmmyyyy}.xls",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HST3064PPOutput.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3064PPLog.txt",
+						"--sheet-name",
+						"Sheet1",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3064PPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HST3064PPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_et_inv_hst3064",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HST3064PPOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3064CGOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3064CGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3064GDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3064CGOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3064CGOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/HST3064Aggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3064BALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3064BALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/hst3064_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/hst3064_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/hst3064_rules.txt",
+						"--default-llg-code",
+						"14005"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3064CGOutput-heath-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "EtreasuryInvestmentAccrualHST3066",
+			"flowId": "6",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hst3066_{ddmmyyyy}.xls"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_et_inv_hst3066",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/hst3066_{ddmmyyyy}.xls",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HST3066PPOutput.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3066PPLog.txt",
+						"--sheet-name",
+						"Sheet1",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3066PPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HST3066PPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_et_inv_hst3066",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/HST3066PPOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3066CGOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3066CGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3066GDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3066CGOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3066CGOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/HST3066Aggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3066BALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/HST3066BALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/hst3066_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/hst3066_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/hst3066_rules.txt",
+						"--default-llg-code",
+						"14015"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/HST3066CGOutput-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

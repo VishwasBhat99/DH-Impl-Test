@@ -1,0 +1,19 @@
+[package]
+name = "cf_loan_irrbb_int"
+version = "1.0.5381"
+authors = ["Saurabh Singh <saurabh.s@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+chrono = "0.4"
+rbconcurrency = { path = "../../../libraries/RBConcurrency" }
+rbdate = { path = "../../../libraries/RBDate" }
+sdb_io = { path = "../../../libraries/sdb_io" }
+protobuf = { version = "2.25.1", features = ["with-bytes"] }
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+sdb_day_convention = { path = "../../../libraries/sdb_day_convention"}

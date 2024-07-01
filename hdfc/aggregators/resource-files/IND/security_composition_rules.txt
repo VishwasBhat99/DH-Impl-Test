@@ -1,0 +1,81 @@
+1|1|0|deal_no|EQ|64-105466|12020
+2|1|0|deal_no|EQ|64-108097|12020
+3|1|0|deal_no|EQ|64-109738|12020
+4|1|0|deal_no|EQ|64-109923|12020
+5|1|0|deal_no|EQ|64-193349|12020
+6|1|0|deal_no|EQ|64-226197|12020
+7|1|0|deal_no|EQ|64-378799|12020
+8|1|0|deal_no|EQ|64-391977|12015
+9|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+9|1|1|prod_desc|EQ|GSEC-FRB|AND
+9|1|2|acc_sec_igaap|EQ|HTM|11327
+10|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+10|1|1|prod_desc|EQ|GSEC|AND
+10|1|2|acc_sec_igaap|EQ|HTM|11307
+11|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+11|1|1|prod_desc|EQ|GSEC|AND
+11|1|2|acc_sec_igaap|EQ|HTM|11307
+12|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+12|1|1|acc_sec_igaap|EQ|HTM|11325
+13|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+13|1|1|prod_desc|EQ|GSEC|AND
+13|1|2|acc_sec_igaap|EQ|HFT|11305
+14|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+14|1|1|prod_desc|EQ|GSEC|AND
+14|1|2|acc_sec_igaap|EQ|AFS|11306
+15|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+15|1|1|prod_desc|EQ|GSEC|AND
+15|1|2|acc_sec_igaap|EQ|HTM|11307
+16|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+16|1|1|prod_desc|EQ|TBILL|AND
+16|1|2|acc_sec_igaap|EQ|HFT|11310
+17|1|0|prod_desc|EQ|TBILL|AND
+17|1|1|acc_sec_igaap|EQ|AFS|11311
+18|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+18|1|1|prod_desc|EQ|TBILL|AND
+18|1|2|acc_sec_igaap|EQ|HTM|11312
+19|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+19|1|1|prod_desc|EQ|GSEC-FRB|AND
+19|1|2|acc_sec_igaap|EQ|HFT|11326
+20|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+20|1|1|prod_desc|EQ|GSEC-FRB|AND
+20|1|2|acc_sec_igaap|EQ|AFS|11328
+21|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+21|1|1|prod_desc|EQ|SDL|AND
+21|1|2|acc_sec_igaap|EQ|HFT|11331
+22|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+22|1|1|prod_desc|EQ|SDL|AND
+22|1|2|acc_sec_igaap|EQ|AFS|11333
+23|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+23|1|1|prod_desc|EQ|SDL|AND
+23|1|2|acc_sec_igaap|EQ|HTM|11332
+24|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+24|1|1|acc_sec_igaap|EQ|HFT|11315
+25|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+25|1|1|acc_sec_igaap|EQ|AFS|11320
+26|1|0|alm_line|EQ|INV-MM-SLR (SURPLUS)-SHORT/BSM|AND
+26|1|1|acc_sec_igaap|EQ|HTM|11325
+27|1|0|alm_line|EQ|INV-BONDS/BSM|AND
+27|1|1|acc_sec_igaap|EQ|HTM|11605
+28|1|0|alm_line|EQ|INV-BONDS/BSM|AND
+28|1|1|acc_sec_igaap|EQ|HFT|11615
+29|1|0|alm_line|EQ|INV-BONDS/BSM|AND
+29|1|1|acc_sec_igaap|EQ|AFS|11610
+30|1|0|alm_line|EQ|INV-CP/CBD|AND
+30|1|1|acc_sec_igaap|EQ|AFS|11410
+31|1|0|alm_line|EQ|INV-CP/CBD|AND
+31|1|1|acc_sec_igaap|EQ|HTM|11415
+32|1|0|alm_line|EQ|INV-CP/CBD|AND
+32|1|1|acc_sec_igaap|EQ|HFT|11405
+33|1|0|alm_line|EQ|Inv-PREF/CBD|AND
+33|1|1|acc_sec_igaap|EQ|HFT|11905
+34|1|0|alm_line|EQ|Inv-PREF/CBD|AND
+34|1|1|acc_sec_igaap|EQ|HTM|11906
+35|1|0|alm_line|EQ|Inv-PREF/CBD|AND
+35|1|1|acc_sec_igaap|EQ|AFS|11907
+36|1|0|alm_line|EQ|SUBDEBT/CFU|5620
+37|1|0|alm_line|EQ|SUBDEBT/CFU|5620
+38|1|0|prod_desc|EQ|PTC|11995
+39|1|0|alm_line|EQ|Inv-PREF/CBD|AND
+39|1|1|acc_sec_igaap|EQ|AFS|11907
+40|1|0|acc_sec_igaap|EQ|HFT-SS|12222

@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+message Cashflow {
+	double int_amt = 1;
+	double prin_amt = 2;
+	int64 date = 3;
+}
+
+message AccountWithCashflows {
+	string account_id = 1;
+	string currency = 2;
+	double int_rate = 3;
+	double outstanding_bal = 4;
+	int64 gl = 5;
+	int64 start_date = 6;
+	int64 maturity_date = 7;
+	string customer_id = 8;
+	string customer_type = 9;
+	double lcy_amount = 10;
+	string reference = 11;
+	string npa_flag = 12;
+	string npa_type = 13;
+	string interest_type = 14;
+	int64 int_repayment_frequency = 15;
+	int64 last_repr_date = 16;
+	int64 next_repr_date = 17;
+	int64 cust_constitution_code = 18;
+	string rate_flag = 19;
+	string customer_name = 20;
+	string product_code = 21;
+	string account_type = 22;
+	string branch = 23;
+	string rm = 24;
+	string group_code = 25;
+	string monthly_avg_bal = 26;
+	string aorl= 27;
+	int32 rl1 = 28;
+	int32 rl2 = 29;
+	int32 rl3 = 30;
+	string customer_rating = 31;
+	string p2 = 32;
+	string waiver_flag = 33;
+	string accrued_int_amt = 34;
+	string string1 = 35;
+	string string2 = 36;
+	string string3 = 37;
+	int64 number1 = 38;
+	int64 number2 = 39;
+	int64 number3 = 40;
+	double total_interest_amount = 41;
+	double total_principal_amount = 42;
+	repeated Cashflow cashflows = 43;
+}
