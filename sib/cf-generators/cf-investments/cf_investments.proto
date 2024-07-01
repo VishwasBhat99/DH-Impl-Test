@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+message Cashflow {
+     double int_amt = 1;
+     double prin_amt = 2;
+     int64 date = 3;
+}
+
+message AccountWithCashflows{
+     int64 as_on_date = 1;
+     string deal_number = 2;
+     string portfolio = 3;
+     string instrument_id = 4;
+     string concat_id = 5;
+     string instrument_type = 6;
+     string branch_code = 7;
+     string category = 8;
+     string isin_code = 9;
+     string security_name = 10;
+     double face_value = 11;
+     double book_value = 12;
+     double appreciation_value = 13;
+     double depreciation_value = 14;
+     double wap = 15;
+     double market_value = 16;
+     string currency = 17;
+     double acc_yield = 18;
+     int64 maturity_date = 19;
+     string coupon_classification = 20;
+     double coupon_rate = 21;
+     double face_value_per_unit = 22;
+     double outstanding_quantity = 23;
+     double accrued_interest = 24;
+     string coupon_frequency =25;
+     string coupon_basis = 26;
+     int64 put_date = 27;
+     int64 call_date = 28;
+     int64 last_coupon = 29;
+     int64 next_coupon = 30;
+     int64 issue_date = 31;
+     int64 last_repricing_date = 32;
+     int64 next_repricing_date = 33;
+     string place = 34;
+     string country = 35;
+     string slr_non_slr = 36;
+     string listed_unlisted = 37;
+     string secured_unsecured = 38;
+     int64 issuer_id = 39;
+     string issuer_name = 40;
+     string issuer_type = 41;
+     string sub_issuer_type = 42;
+     string external_rating_agency = 43;
+     string rating = 44;
+     string issuer_guaranteed_by =45;
+     string industry = 46;
+     string sub_industry = 47;
+     string npa_classification = 48;
+     int64 deal_value_date = 49;
+     double duration = 50;
+     double mduration =51;
+     double benchmark_mark=52;
+     double spread_rate=53;
+     double treasury_glcode=54;
+     double avg_mon_balance=55;
+     int64 deal_date=56;
+     string cdr_flg=57;
+     int64 gl_sub_head_code=58;
+     string group=59;
+     string llg=60;
+     string other_llg_classification=61;
+     string cashflow_type=62;
+     double cashflow_amount=63;
+     string cashflow_currency=64;
+     int64 cashflow_date=65;
+     repeated Cashflow cashflows = 66;
+}

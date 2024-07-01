@@ -1,0 +1,45 @@
+1|1|0|ccod_flag|EQ|Yes|AND
+1|1|1|country_code|EQ|BH|AND
+1|1|2|lcr_category|EQ|Retail & SME|8011
+2|1|0|ccod_flag|EQ|Yes|AND
+2|1|1|country_code|EQ|BH|AND
+2|1|2|lcr_category|EQ|NFC & PSE|8012
+3|1|0|ccod_flag|EQ|Yes|AND
+3|1|1|country_code|EQ|BH|AND
+3|1|2|lcr_category|EQ|Others|8015
+4|1|0|ccod_flag|EQ|Yes|AND
+4|1|1|country_code|EQ|BH|AND
+4|1|2|lcr_category|EQ|Banks|8014
+5|1|0|ccod_flag|EQ|Yes|AND
+5|1|1|country_code|EQ|BH|AND
+5|1|2|lcr_category|EQ|Financial Entity|8013
+6|1|0|ccod_flag|EQ|Yes|AND
+6|1|1|country_code|EQ|HK|AND
+6|1|2|lcr_category|EQ|Retail & SME|8021
+7|1|0|ccod_flag|EQ|Yes|AND
+7|1|1|country_code|EQ|HK|AND
+7|1|2|lcr_category|EQ|NFC & PSE|8022
+8|1|0|ccod_flag|EQ|Yes|AND
+8|1|1|country_code|EQ|HK|AND
+8|1|2|lcr_category|EQ|Others|8025
+9|1|0|ccod_flag|EQ|Yes|AND
+9|1|1|country_code|EQ|HK|AND
+9|1|2|lcr_category|EQ|Banks|8024
+10|1|0|ccod_flag|EQ|Yes|AND
+10|1|1|country_code|EQ|HK|AND
+10|1|2|lcr_category|EQ|Financial Entity|8023
+11|1|0|ccod_flag|EQ|Yes|AND
+11|1|1|country_code|EQ|GC|AND
+11|1|2|lcr_category|EQ|Retail & SME|8031
+12|1|0|ccod_flag|EQ|Yes|AND
+12|1|1|country_code|EQ|GC|AND
+12|1|2|lcr_category|EQ|NFC & PSE|8032
+13|1|0|ccod_flag|EQ|Yes|AND
+13|1|1|country_code|EQ|GC|AND
+13|1|2|lcr_category|EQ|Others|8035
+14|1|0|ccod_flag|EQ|Yes|AND
+14|1|1|country_code|EQ|GC|AND
+14|1|2|lcr_category|EQ|Banks|8034
+15|1|0|ccod_flag|EQ|Yes|AND
+15|1|1|country_code|EQ|GC|AND
+15|1|2|lcr_category|EQ|Financial Entity|8033

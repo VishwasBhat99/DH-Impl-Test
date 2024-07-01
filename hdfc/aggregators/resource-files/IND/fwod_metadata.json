@@ -1,0 +1,191 @@
+{
+    "fields": [
+      {
+        "name": "cod_acc_no",
+        "typ": "String",
+        "position": 1
+      },
+      {
+        "name": "cod_cc_brn",
+        "typ": "String",
+        "position": 2
+      },
+      {
+        "name": "cod_prod",
+        "typ": "String",
+        "position": 3
+      },
+      {
+        "name": "bal_book",
+        "typ": "F64",
+        "position": 4
+      },
+      {
+        "name": "bal_book_lcy",
+        "typ": "F64",
+        "position": 5
+      },
+      {
+        "name": "amt_od_lmt",
+        "typ": "F64",
+        "position": 6
+      },
+      {
+        "name": "amt_od_lmt_lcy",
+        "typ": "F64",
+        "position": 7
+      },
+      {
+        "name": "cod_cust",
+        "typ": "I64",
+        "position": 8
+      },
+      {
+        "name": "cod_acc_title",
+        "typ": "String",
+        "position": 9
+      },
+      {
+        "name": "dt_open_acc",
+        "typ": "I64",
+        "position": 10
+      },
+      {
+        "name": "cod_int_accr_bas",
+        "typ": "String",
+        "position": 11
+      },
+      {
+        "name": "freq_int_accr",
+        "typ": "String",
+        "position": 12
+      },
+      {
+        "name": "dt_acc_close",
+        "typ": "I64",
+        "position": 13
+      },
+      {
+        "name": "cod_collat_id",
+        "typ": "String",
+        "position": 14
+      },
+      {
+        "name": "collat_desc",
+        "typ": "String",
+        "position": 15
+      },
+      {
+        "name": "as_of_dt",
+        "typ": "I64",
+        "position": 16
+      },
+      {
+        "name": "cost_cntr",
+        "typ": "String",
+        "position": 17
+      },
+      {
+        "name": "gl_acc_no",
+        "typ": "String",
+        "position": 18
+      },
+      {
+        "name": "rt_flg",
+        "typ": "String",
+        "position": 19
+      },
+      {
+        "name": "inst",
+        "typ": "String",
+        "position": 20
+      },
+      {
+        "name": "crnt_book_bal",
+        "typ": "F64",
+        "position": 21
+      },
+      {
+        "name": "acrl_basis",
+        "typ": "String",
+        "position": 22
+      },
+      {
+        "name": "int_rt",
+        "typ": "F64",
+        "position": 23
+      },
+      {
+        "name": "div",
+        "typ": "String",
+        "position": 24
+      },
+      {
+        "name": "alm_line",
+        "typ": "String",
+        "position": 25
+      },
+      {
+        "name": "ia_llg",
+        "typ": "String",
+        "position": 26
+      },
+      {
+        "name": "balm_llg",
+        "typ": "String",
+        "position": 27
+      },
+      {
+        "name": "mis1",
+        "typ": "I64",
+        "position": 28
+      },
+      {
+        "name": "npa_flg",
+        "typ": "String",
+        "position": 29
+      },
+      {
+        "name": "benchmark",
+        "typ": "String",
+        "position": 30
+      },
+      {
+        "name": "rep_freq",
+        "typ": "String",
+        "position": 31
+      },
+      {
+        "name": "nxt_rep_dt",
+        "typ": "I64",
+        "position": 32
+      },
+      {
+        "name": "lst_rep_dt",
+        "typ": "I64",
+        "position": 33
+      },
+      {
+        "name": "cust_typ",
+        "typ": "String",
+        "position": 34
+      },
+      {
+        "name": "country",
+        "typ": "String",
+        "position": 35
+      },
+      {
+        "name": "bm_id_lookup",
+        "typ": "String",
+        "position": 36
+
+      },
+      {
+        "name": "cashflows",
+        "typ": "Cashflows",
+        "position": 37
+      }
+    ]
+  }
+  

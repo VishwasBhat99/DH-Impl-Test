@@ -1,0 +1,14 @@
+[package]
+name = "nsfr_crr"
+version = "0.1.0"
+authors = ["shashank.676 <shashank.p@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+rbdate = { path = "../../../libraries/RBDate" }
+sdb_io = { path = "../../../libraries/sdb_io" }
+health_report = { path = "../../../libraries/health_report" }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+calamine = "0.15.3"

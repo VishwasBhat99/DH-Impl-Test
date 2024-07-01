@@ -1,0 +1,22 @@
+[package]
+name = "moc_lcr_dep"
+version = "1.0.3265"
+edition = "2021"
+authors = ["harsh8501 <harsh.sk@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+calamine = "0.15.3"
+chrono = "0.4"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+
+# This rbdate library path is relative so this might be needed to change as per config
+health_report = { path = "../../libraries/health_report" }
+rbdate = { path = "../../libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+serde_json = "1.0.81"
+serde_derive = "1.0"
+serde = "1.0"
+sdb_dyn_proto_rdr = { path = "../../libraries/sdb_dyn_proto_rdr" }

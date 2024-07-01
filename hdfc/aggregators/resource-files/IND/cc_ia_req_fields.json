@@ -1,0 +1,15 @@
+{
+    "llg_id":"llg_id",
+    "curr_code": "ccy",
+    "rep_freq": "rep_freq",
+    "intt_rate": "",
+    "cashflows": "cashflows",
+    "mat_date":"mat_dt",
+    "acc_open_date":"account_start_date",
+    "bm_id":"benchmark_id",
+    "acc_no":"pd",
+    "next_repr_date":"nxt_rep_dt",
+    "spread":"spread",
+    "npa_flag":""
+}
+

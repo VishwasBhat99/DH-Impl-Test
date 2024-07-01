@@ -1,0 +1,9 @@
+[package]
+name = "bm_reader"
+version = "1.1.2991"
+authors = ["Srinivas Reddy <srinivas.r@surya-soft.com>"]
+edition = "2018"
+
+[dependencies]
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }

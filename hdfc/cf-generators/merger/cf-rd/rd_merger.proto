@@ -1,0 +1,66 @@
+syntax = "proto3"; 
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows{ 
+string accno = 1;
+string branchcode = 2;
+string custno = 3;
+string uccid = 4;
+string ccy = 5;
+string product = 6;
+int64 acc_date = 7;
+int64 gl_code = 8;
+int64 glcode_compounded_portion = 9;
+int64 glcode_int_accrued = 10;
+int64 deposit_date = 11;
+int64 initial_deposit_amount = 12;
+int64 initial_dep_amtlcy = 13;
+double current_outstanding_bal = 14;
+int64 current_outstandingbal_lcy = 15;
+double cum_interest = 16;
+double cum_interest_amt_lcy = 17;
+int64 maturity_date = 18;
+string interest_type = 19;
+string interst_acrrual_basis = 20;
+double interest_accured_amount = 21;
+string interest_compution_type = 22;
+double interest_rate = 23;
+double interest_payment_freq = 24;
+double next_int_payment_dt = 25;
+int64 compounding_freq = 26;
+int64 next_compounding_dt = 27;
+string floating_rate_benchmark = 28;
+int64 spread = 29;
+int64 next_repricing_dt = 30;
+int64 repricing_frequency = 31;
+string non_withdrawable_flag = 32;
+string noticedays = 33;
+int64 lockin_till_dt = 34;
+string dep_pledged_against_loan_yn = 35;
+string customerconstitutioncode_1 = 36;
+string customerconstitutioncode_2 = 37;
+int64 period_months = 38;
+int64 period_days = 39;
+int64 intrest_craeted_upto = 40;
+int64 interest_accrued_upto = 41;
+string f_15hyear = 42;
+string customer_name = 43;
+double total_principal_balance = 44;
+string alm_line =45;
+string npa_class = 46;
+string common_cust_id = 47;
+int64 derived_next_reprice_date = 48;
+string risk_weight = 49;
+string restructure_flag = 50;
+string resid = 51;
+string ia_line = 52;
+string balm_l2 = 53;
+string ora_concat = 54;
+double tot_balance = 55;
+repeated Cashflow cashflows=56;
+}

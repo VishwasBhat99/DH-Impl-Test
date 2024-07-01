@@ -1,0 +1,555 @@
+{
+	"streamName": "MUREX",
+	"streamId": "7020",
+	"flows": [
+		{
+			"name": "Borrowings-Lendings",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/money-market.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/HK/pp_money_market_instruments",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/money-market.txt",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/Murex_MM_Master.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--ref-file-4",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--sheet-name",
+						"Sheet1",
+						"--output-file-borrowings",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/BorOutput",
+						"--output-file-lendings",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/LendOutput",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/BORR-LEND-ReconRpt.txt",
+						"--entity",
+						"HK_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrLendPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrLendPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/BORR-LEND-ReconRpt-health-check-report.json"
+				},
+				{
+					"processName": "Merge Script",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-Money-Market/HK/mergeALL.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Borrowing-Cashflow-Generator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/HK/cf_borr_and_lend",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/Borrowings.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/BorrCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Lending-Cashflow-Generator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/HK/cf_borr_and_lend",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/Lendings.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/LendCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/LendCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/LendCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Borr-BALM-Aggregator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/BorrCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/BorrAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/over_bor_len_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/over_bor_len_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/over_bor_hk_rules.txt",
+						"--default-llg-code",
+						"01816",
+						"--default-overdue-llg-code",
+						"1111"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Lend-BALM-Aggregator",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/LendCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/LendAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/LendBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/LendBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/over_bor_len_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/over_bor_len_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/over_len_hk_rules.txt",
+						"--default-llg-code",
+						"11817",
+						"--default-overdue-llg-code",
+						"1111"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion Borr",
+					"processId": "8",
+					"processBinary": "/home/dbuser/programs/SIT/HK/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/BorrAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrAggConvLog.txt"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "9",
+					"processBinary": "/home/dbuser/programs/SIT/HK/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/LendAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/LendAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/LendAggConvLog.txt"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Borr",
+					"processId": "10",
+					"processBinary": "/home/dbuser/programs/SIT/HK/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/BorrAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/BorrAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BorrBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/HK/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Lend",
+					"processId": "11",
+					"processBinary": "/home/dbuser/programs/SIT/HK/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/LendAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/LendAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/LendBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/LendBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/HK/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Security Closing Stock",
+			"flowId": "2",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/Sec_Close_Stock.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./pp_sec_close_stock",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/Sec_Close_Stock.txt",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/Sec_Close_Stock.txt",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/Sec_Close_Stock_ReconRpt.txt",
+						"--entity",
+						"HK_CE",
+						"--murex-inv-master",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/Murex_Inv_Master.xlsx",
+						"--murex-sheet-name",
+						"Master",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/Sec_Close_Stock-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/HK/cf_sec_close_stock",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/Sec_Close_Stock.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/CloseStockCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/CloseStockCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/HK/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/CloseStockCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/CloseStockAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/closing-stock-req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/closing-stock-metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/closing-stock-rules-HK.txt",
+						"--default-llg-code",
+						"11817",
+						"--default-overdue-llg-code",
+						"1111"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/CloseStockCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/HK/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/CloseStockAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/HK/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/CloseStockAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/CloseStockAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/HK/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/CloseStockCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Reciprocal Lending",
+			"flowId": "3",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/rec-lend.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./cf_rec_lend",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/rec-lend.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/RecLendCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/RecLendCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/RecLendCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/RecLendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/RecLendCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/RecLendAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/RecLendBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/RecLendBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/rec_lend_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/rec_lend_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/rec_lend_rules_hk.txt",
+						"--default-llg-code",
+						"11999"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/RecLendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/HK/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/RecLendAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/RecLendAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/RecLendAggConvLog.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/RecLendCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/HK/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/RecLendAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/RecLendAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/RecLendBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/RecLendBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/HK/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/RecLendCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

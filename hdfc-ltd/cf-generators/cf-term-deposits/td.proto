@@ -1,0 +1,64 @@
+syntax= "proto3";
+
+message Cashflow {
+    double interest_amount= 1;
+    double principal_amount= 2;
+    int64 date= 3;
+}
+
+message AccountWithCashflows{
+    string	acc_no=1;
+    string	branch_code=2;
+    string	cust_no=3;
+    string	ucc_id=4;
+    string	ccy=5;
+    string	product=6;
+    int64	acc_date=7;
+    int32	gl_code=8;
+    string	glcode_compounded_portion=9;
+    string	glcode_int_accrued=10;
+    int64	deposit_date=11;
+    double	initial_deposit_amount=12;
+    double	initial_dep_amtlcy=13;
+    double	current_outstanding_bal=14;
+    double	current_outstandingbal_lcy=15;
+    double	cum_interest=16;
+    double	cum_interest_amt_lcy=17;
+    int64	maturity_date=18;
+    string	interest_type=19;
+    string	interst_acrrual_basis=20;
+    double	interest_accured_amount=21;
+    string	interest_compution_type=22;
+    double	interest_rate=23;
+    int64	interest_payment_freq=24;
+    int64	next_int_payment_dt=25;
+    int64	compounding_freq=26;
+    int64	next_compounding_dt=27;
+    double	floating_rate_benchmark=28;
+    double	spread=29;
+    int64	next_repricing_dt=30;
+    double	repricing_frequency=31;
+    string	non_withdrawable_flag=32;
+    int64	noticedays=33;
+    int64	lockin_till_dt=34;
+    string	dep_pledged_against_loan_yn=35;
+    string	customerconstitutioncode_1=36;
+    string	customerconstitutioncode_2=37;
+    string	customerconstitutioncode_3=38;
+    string	customerconstitutioncode_4=39;
+    string	customerconstitutioncode_5=40;
+    int64	period_months=41;
+    int64	period_days=42;
+    int64	intrest_craeted_upto=43;
+    int64	interest_accrued_upto=44;
+    string	f_15hyear=45;
+    double	tds_rate=46;
+    string	app1=47;
+    string	app2=48;
+    string	app3=49;
+    string	app4=50;
+    string	app5=51;
+    string	app6=52;
+    string	app7=53;
+    repeated Cashflow cashflows=54;
+}

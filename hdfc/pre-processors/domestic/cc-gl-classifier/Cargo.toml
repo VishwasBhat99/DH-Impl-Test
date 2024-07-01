@@ -1,0 +1,17 @@
+[package]
+name = "cc_gl_classifier"
+version = "1.0.3704"
+edition = "2021"
+authors = ["Ravindar Singh<ravindar.sr@surya-soft.com>"]
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+clap = "3.0.12"
+slog = "2.7.0"
+chrono = "0.4.19"
+slog-async = "2.7.0"
+slog-term = "2.8.0"
+rbdate = { path = "../../../libraries/RBDate" }
+health_report = { path = "../../../../hdfc/libraries/health_report" }
+sdb_io = { path = "../../../../hdfc/libraries/sdb_io" }
+calamine = "0.20.0"
+

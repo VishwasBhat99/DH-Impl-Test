@@ -1,0 +1,109 @@
+{
+  "fields": [
+    {
+      "name": "deal_no",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "int_basis",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "couprt",
+      "typ": "F64",
+      "position": 3
+    },
+    {
+      "name": "val_dt",
+      "typ": "I64",
+      "position": 4
+    },
+    {
+      "name": "mat_dt",
+      "typ": "I64",
+      "position": 5
+    },
+    {
+      "name": "currcd",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "orgballcy",
+      "typ": "F64",
+      "position": 7
+    },
+    {
+      "name": "int_amt",
+      "typ": "F64",
+      "position": 8
+    },
+    {
+      "name": "counterpartyname",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "as_of_date",
+      "typ": "I64",
+      "position": 10
+    },
+    {
+      "name": "paymenttype",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "rt_flag",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "reprice_index",
+      "typ": "String",
+      "position": 13
+    },
+    {
+      "name": "reprice_spread",
+      "typ": "I64",
+      "position": 14
+    },
+    {
+      "name": "alm_line",
+      "typ": "String",
+      "position": 15
+    },
+    {
+      "name": "int_freq",
+      "typ": "I64",
+      "position": 16
+    },
+    {
+      "name": "is_float",
+      "typ": "String",
+      "position": 17
+    },
+    {
+      "name": "nxt_rep_dt",
+      "typ": "I64",
+      "position": 18
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 19
+    },
+    {
+      "name": "total_interest_amount",
+      "typ": "F64",
+      "position": 20
+    },
+    {
+      "name": "total_principal_amount",
+      "typ": "F64",
+      "position": 21
+    }
+  ]
+}

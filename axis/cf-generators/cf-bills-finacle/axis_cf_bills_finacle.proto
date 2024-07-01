@@ -1,0 +1,61 @@
+syntax= "proto3"; 
+
+message Cashflow {
+    double interest_amount= 1;
+    double principal_amount= 2;
+    int64 date= 3;
+}
+
+message OutputAccount{
+string account_number = 1;
+string acid = 2;
+string foracid = 3;
+string bacid = 4;
+string solid = 5;
+string cust_id = 6;
+string schm_code = 7;
+string schm_type = 8;
+string bill_param_type = 9;
+string bill_b2k_id = 10;
+string bill_id = 11;
+double bill_amt = 12;
+double bill_amt_inr = 13;
+string bill_crncy_code = 14;
+int64 due_date = 15;
+string bp_acid = 16;
+string del_flg = 17;
+string cls_flg = 18;
+string reg_type = 19;
+string reg_sub_type = 20;
+double bp_liab = 21;
+string bp_liab_crncy = 22;
+double bill_liab_inr = 23;
+string bill_stat = 24;
+string bill_func_code = 25;
+double bill_liab = 26;
+double bill_liab_hc_eq = 27;
+string bill_liab_crncy = 28;
+string bill_liab_crncy_der = 29;
+double clr_bal_amt = 30;
+double un_clr_bal_amt = 31;
+double out_bal_amt = 32;
+int64 acct_opn_date = 33;
+string acct_crncy_code = 34;
+string cust_name = 35;
+string gl_sub_head_code = 36;
+string npa_classification = 37;
+string cust_hlth_code = 38;
+string cust_npa_class = 39;
+string final_npa_class = 40;
+double int_rate = 41;
+double acct_exch_rt = 42;
+string cust_grp_id = 43;
+string ucif_cust_const = 44;
+string exch_rt = 45;
+string out_bal_amt_con = 46;
+string segment_code = 47;
+string nfs = 48;
+string overdue_flg = 49;
+repeated Cashflow cashflows= 50;
+}
+

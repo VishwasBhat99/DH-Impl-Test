@@ -1,0 +1,24 @@
+{
+	"streamName": "Recon",
+	"streamId": "7028",
+	"flows": [
+		{
+			"name": "Recon",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Recon",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/DataRecon/HK/RunReconAll.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				}
+			]
+		}
+	]
+}

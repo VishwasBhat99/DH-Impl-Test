@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows{
+string flow_flag = 1;
+string group_id = 2;
+string sub_group_id = 3;
+double amount = 4;
+string ccy = 5;
+double intr_rate = 6;
+string repricing_freq = 7;
+int64 early_dt = 8;
+int64 maturity_dt = 9;
+string deal_number = 10;
+int64 start_dt = 11;
+string intr_computation_freq = 12;
+string is_floating_rt = 13;
+string floating_rt_benchmark = 14;
+string biz_uid = 15;
+string cust_id = 16;
+string cust_name = 17;
+double spread = 18;
+string schm_code = 19;
+double min_intr_rt = 20;
+double max_intr_rt = 21;
+double deposit_amt = 22;
+double maturity_amt = 23;
+double currency_conversion_rate = 24;
+string cust_ctry_code = 25;
+string cust_crdt_rtng = 26;
+string cust_sect_code = 27;
+string cust_indt_code = 28;
+string custom1 = 29;
+string custom2 = 30;
+string gl_sub_head_code = 31;
+string cust_hlth_code = 32;
+string schm_type = 33;
+repeated Cashflow cashflows=34;
+}

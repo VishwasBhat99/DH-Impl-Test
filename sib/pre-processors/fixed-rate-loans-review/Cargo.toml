@@ -1,0 +1,20 @@
+[package]
+name = "fixed_rate_loans_aggr"
+version = "1.0.4803"
+edition = "2021"
+authors = ["NPunyashree <punyashree.n@surya-soft.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = "1.0.104"
+serde_derive = "1.0.104"
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+health_report = { path = "../../../hdfc/libraries/health_report" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }

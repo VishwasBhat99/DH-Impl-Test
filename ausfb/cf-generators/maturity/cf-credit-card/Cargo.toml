@@ -1,0 +1,23 @@
+[package]
+name = "cf_credit_card"
+version = "1.0.3181"
+authors = ["Saurabh Singh <saurabh.s@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../../../hdfc/libraries/RBDate" }
+serde_derive = "1.0"
+serde = "1.0"
+serde_json = "1.0"
+chrono = "0.4"
+rbconcurrency = { path = "../../../../hdfc/libraries/RBConcurrency" }
+sdb_dyn_proto_rdr = { path = "../../../../hdfc/libraries/sdb_dyn_proto_rdr" }
+sdb_io = { path = "../../../../hdfc/libraries/sdb_io" }
+protobuf = { version = "2.15.0", features = ["with-bytes"] }
+sdb_agg_rules = { path = "../../../../hdfc/libraries/sdb_agg_rules" }
+health_report = { path = "../../../../hdfc/libraries/health_report" }
+sdb_day_convention = { path = "../../../../hdfc/libraries/sdb_day_convention"}

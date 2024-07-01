@@ -1,0 +1,17 @@
+[package]
+name = "excel_to_excel"
+version = "1.0.0"
+authors = ["VishwasBhat99 <vishwas.b@surya-soft.com>"]
+
+[dependencies]
+clap = "3.1.15"
+slog-term = "2.9.0"
+slog-async = "2.7.0"
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+calamine = "0.18.0"
+xlsxwriter = "0.3.5"
+
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../libraries/RBDate" }
+sdb_io = { path = "../libraries/sdb_io" }
+health_report = { path = "../libraries/health_report" }

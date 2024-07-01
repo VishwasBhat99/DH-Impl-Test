@@ -1,0 +1,21 @@
+[package]
+name = "care_classifier_2"
+version = "1.0.4868"
+authors = ["shashank.676 <shashank.p@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_dyn_proto_rdr = { path = "../../../hdfc/libraries/sdb_dyn_proto_rdr" }
+sdb_agg_rules = { path = "../../libraries/sdb_agg_rules" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+integer-encoding = "1.1.5"
+health_report = { path = "../../../hdfc/libraries/health_report" }

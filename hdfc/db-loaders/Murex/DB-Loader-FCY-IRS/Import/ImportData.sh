@@ -1,0 +1,2 @@
+sqlldr balmusr/HdFcBank13\$\# control=./FCY_IRS_MASTER.ctl LOG=/data/oracle18c/app/product/18c/dbhome/ImportLog/FCY_IRS_MASTER.log BAD=/data/oracle18c/app/product/18c/dbhome/ImportLog/FCY_IRS_MASTER.BAD
+sqlldr balmusr/HdFcBank13\$\# control=./FCY_IRS_CASHFLOW.ctl LOG=/data/oracle18c/app/product/18c/dbhome/ImportLog/FCY_IRS_CASHFLOW.log BAD=/data/oracle18c/app/product/18c/dbhome/ImportLog/FCY_IRS_CASHFLOW.BAD

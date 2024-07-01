@@ -1,0 +1,57 @@
+syntax="proto3";
+
+message Cashflow {
+    double int_amt=1;
+    double prin_amt=2;
+    int64 date=3;
+}
+
+message AccountWithCashflows {
+    string entity=1;
+    string trade_id=2;
+    int64 cntrct_id=3;
+    int64 struct_id=4;
+    string comp_typology=5;
+    string pkg_typology=6;
+    string cntrct_typology=7;
+    string cntrct_usage=8;
+    string desk=9;
+    string trading_banking=10;
+    string cntr_prty_grp_cd=11;
+    string cntr_prty_prnt_cd=12;
+    string cntr_prty_child_cd=13;
+    string cntr_prty_name=14;
+    string intrnl_extrnl=15;
+    int64 trade_dt=16;
+    int64 fixing_dt=17;
+    int64 settlement_dt=18;
+    int64 maturity_dt=19;
+    string deal_ccy=20;
+    string sec_cd=21;
+    string undrlying_sec=22;
+    int64 undrlying_sec_maturity=23;
+    int64 notional_amt=24;
+    int64 org_notional_in_inr=25;
+    double ost_notional_in_inr=26;
+    int64 cont_notional=27;
+    string buy_sell=28;
+    string fut_cash_proceeds_ccy=29;
+    int64 fut_cash_proceeds=30;
+    double fut_cash_proceeds_in_inr=31;
+    double mtm=32;
+    double mtm_in_inr=33;
+    double fwdmtm_in_inr=34;
+    double net_bcva_adj_gmtm_in_inr=35;
+    double cva=36;
+    double dva=37;
+    double bcva=38;
+    double netpv01=39;
+    string bank_or_nonbank=40;
+    int64 org_tenor=41;
+    int64 res_tenor=42;
+    string udrlying=43;
+    string deal_status=44;
+    double tot_int_amt=45;
+    double tot_prin_amt=46;
+    repeated Cashflow cashflows=47;
+}

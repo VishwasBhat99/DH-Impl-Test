@@ -1,0 +1,9 @@
+{
+    "account_number": "acc_id",
+    "concat": "cust_name",
+    "cashflows": "cashflows",
+    "institution": "ccy",
+    "interest_rate": "int_rt",
+    "next_rep_date":"nxt_rep_dt",
+    "exchange_rate":""
+}

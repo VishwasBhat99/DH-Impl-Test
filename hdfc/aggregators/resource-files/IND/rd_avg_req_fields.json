@@ -1,0 +1,5 @@
+{
+  "account_number": "acc_no",
+  "amount": "int_rt",
+  "interest_rate": "amt"
+}

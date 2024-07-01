@@ -1,0 +1,14 @@
+[package]
+name = "rate_extractor"
+version = "0.1.0"
+authors = ["Harish Mudgal <harish.m@surya-soft.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+[dependencies]
+clap = "2.27.0"
+slog = { version = "2.5.2", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.2"
+slog-async = "2.3.0"
+chrono = "0.4.10"
+rbdate = { path = "../../../libraries/RBDate" }
+sdb_io = { path = "../../../libraries/sdb_io"}

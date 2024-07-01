@@ -1,0 +1,92 @@
+set termout off
+set linesize 2000 trims on  pagesize 0 feedback off;
+SPOOL /data/oracle18c/app/product/18c/dbhome/ExportLog/options.txt;
+select A1.Entity
+||'|'||A1.TradeId
+||'|'||A1.ExternalID
+||'|'||A1.StructureID
+||'|'||A1.StructureIdorLinkId
+||'|'||A1.ComponentTypology
+||'|'||A1.ContractTypology
+||'|'||A1.PackageTypology
+||'|'||A1.ContractUsage
+||'|'||A1.Desk
+||'|'||A1.Book
+||'|'||A1.Folder
+||'|'||A1.TradingorBanking
+||'|'||A1.CounterpartyGroupCode
+||'|'||A1.CounterpartyParentCode
+||'|'||A1.CounterpartyChildCode
+||'|'||A1.CounterpartyName
+||'|'||A1.InternalorExternal
+||'|'||A1.TradeDate
+||'|'||A1.StartDate
+||'|'||A1.ExpiryDate
+||'|'||A1.DeliveryDate
+||'|'||A1.BuyorSell
+||'|'||A1.PutorCall
+||'|'||A1.CallCurrency
+||'|'||A1.CallAmount
+||'|'||A1.PutCurrency
+||'|'||A1.PutAmount
+||'|'||A1.Notional_INR
+||'|'||A1.StrikeRate
+||'|'||A1.BankorNonBank
+||'|'||A1.CCYPair
+||'|'||A1.CurrentSpot
+||'|'||A1.PremiumCurrency
+||'|'||A1.PremiumAmount
+||'|'||A1.SettledPremiumamount
+||'|'||A1.UnsettledPremiumamount
+||'|'||A1.PremiumSettlementDate
+||'|'||A1.FutureCashProceedsCurrency
+||'|'||A1.FutureCashProceeds
+||'|'||A1.FutureCashProceedsINR
+||'|'||A1.MarketValueFinanced
+||'|'||A1.MTM_excludingpremiumin_INR
+||'|'||A1.MTM_withunsettledpremiaIn_INR
+||'|'||A1.CVA
+||'|'||A1.DVA
+||'|'||A1.BCVA
+||'|'||A1.NetBCVAadjustedGMTMin_INR
+||'|'||A1.PositionCurrency
+||'|'||A1.ForwarddeltaCCY1Amount
+||'|'||A1.SpotdeltaCCY1Amount
+||'|'||A1.PLCurrency
+||'|'||A1.ForwarddeltaCCY2Amount
+||'|'||A1.SpotdeltaCCY2Amount
+||'|'||A1.GammaCCY
+||'|'||A1.GammaAmount
+||'|'||A1.Vega_INR
+||'|'||A1.Theta_INR
+||'|'||A1.Rho_INR
+||'|'||A1.UnderlyngCcy
+||'|'||A1.Phi_INR
+||'|'||A1.Vanna_INR
+||'|'||A1.Volga_INR
+||'|'||A1.ModifiedDuration
+||'|'||A1.UnderlyingNotional
+||'|'||A1.UnderlyingorPP
+||'|'||A1.OriginalTenor
+||'|'||A1.ResidualTenor
+||'|'||A1.DealStatus
+||'|'||A1.InputID
+||'|'||A1.Comment
+||'|'||A1.M_H_FWD_RATE
+||'|'||C1.FLOWTYPE
+||'|'||C1.FLOWTYPE1
+||'|'||C1.FLOWTYPE2
+||'|'||C1.FLOWTYPE3
+||'|'||C1.FLOWTYPE4
+||'|'||C1.FLOWAMOUNT
+||'|'||TO_CHAR(C1.CASHFLOWDATE,'DD-MM-')||'20'||substr(to_char(C1.CASHFLOWDATE,'YYYY'),3)
+||'|'||C1.FLOWCURRENCY
+||'|'||C1.HKDRATE
+||'|'||C1.HKDAMOUNT
+||'|'||TO_CHAR(C1.M_H_REP_DT2,'DD-MM-')||'20'||substr(to_char(C1.M_H_REP_DT2,'YYYY'),3)
+||'|'||C1.INRAMOUNT
+||'|'||C1.INRRATE
+from OPTION_MASTER A1 INNER JOIN CASHFLOW_GENERIC C1
+ON A1.TradeID=C1.Trade
+ORDER BY C1.M_TP_ENTITY;
+set termout on

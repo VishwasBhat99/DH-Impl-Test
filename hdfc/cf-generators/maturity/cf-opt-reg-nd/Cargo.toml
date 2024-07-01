@@ -1,0 +1,19 @@
+[package]
+name = "cf_opt_reg_nd"
+version = "1.1.2889"
+authors = ["VishwasBhat99 <vishwas.b@surya-soft.com>"]
+
+[dependencies]
+clap = "3.0.14"
+chrono = "0.4.19"
+rbdate = { path = "../../../libraries/RBDate" }
+sdb_io = { path = "../../../libraries/sdb_io"}
+sdb_dyn_proto_rdr = { path = "../../../libraries/sdb_dyn_proto_rdr" }
+health_report = { path = "../../../libraries/health_report" }
+protobuf = { version = "2.27.1", features = ["with-bytes"] }
+serde_derive = "1.0.136"
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.8.1"
+slog-async = "2.7.0"
+serde_json = "*"
+serde = { version = "1.0", features = ["derive"] }

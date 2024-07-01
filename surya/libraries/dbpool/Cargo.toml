@@ -1,0 +1,8 @@
+[package]
+name = "dbpool"
+version = "0.1.0"
+authors = ["shashank676 <shashank.p@surya-soft.com>"]
+
+[dependencies]
+r2d2 = { path = "../r2d2" }
+oracle = { path = "../oracle", features = ["chrono"] }

@@ -1,0 +1,7 @@
+1|1|0|alm_line|EQ|OA-INTERNAL/CFU|14232
+2|1|0|alm_line|EQ|OL-INTERNAL/CFU|7057
+3|1|0|asset_class|EQ|Substandard|12752
+4|1|0|asset_class|EQ|Doubtful I|12753
+5|1|0|asset_class|EQ|Doubtful II|12753
+6|1|0|asset_class|EQ|Doubtful III|12753
+7|1|0|asset_class|EQ|Loss|12754

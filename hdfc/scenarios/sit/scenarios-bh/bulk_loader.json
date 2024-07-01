@@ -1,0 +1,88 @@
+{
+	"streamName": "BulkInserter",
+	"streamId": "3044",
+	"flows": [
+		{
+			"name": "BulkInserter",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "1",
+			"process": [
+				{
+					"processName": "BulkInserter",
+					"processId": "1",
+					"processBinary": "/SIT_SH_SUMMARYDATA/BulkInserter/BAH/bulkInsertAll.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"{AsOnDate}"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				}
+			]
+		},
+		{
+			"name": "AggrBulkInserter",
+			"flowId": "2",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "1",
+			"process": [
+				{
+					"processName": "AggrBulkInserter",
+					"processId": "1",
+					"processBinary": "/SIT_SH_SUMMARYDATA/BulkInserter/BAH/bulkInsertConvertedAll.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"{AsOnDate}"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				}
+			]
+		},
+		{
+			"name": "ExchangeRateLoader",
+			"flowId": "3",
+			"flowDependencies": [
+				"2"
+			],
+			"executorID": "1",
+			"process": [
+				{
+					"processName": "ExchangeRateLoader",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-Exchange-Rate/BAH/runLoader.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"{AsOnDate}"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				}
+			]
+		},
+		{
+			"name": "Consolidator",
+			"flowId": "4",
+			"flowDependencies": [
+				"3"
+			],
+			"executorID": "1",
+			"process": [
+				{
+					"processName": "Consolidator",
+					"processId": "1",
+					"processBinary": "/SIT_SH_SUMMARYDATA/BulkInserter/BAH/bulkInsertConsolAll.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"{AsOnDate}"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				}
+			]
+		}
+	]
+}

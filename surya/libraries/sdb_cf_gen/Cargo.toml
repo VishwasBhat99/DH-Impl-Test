@@ -1,0 +1,9 @@
+[package]
+name = "sdb_cf_gen"
+version = "1.0.0"
+authors = ["Tarun Jaiswal <tarun.j@surya-soft.com>"]
+
+[dependencies]
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_day_convention = { path = "../../../hdfc/libraries/sdb_day_convention"}
+libmath = "0.2.1"

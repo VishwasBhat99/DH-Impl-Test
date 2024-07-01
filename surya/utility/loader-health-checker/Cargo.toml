@@ -1,0 +1,9 @@
+[package]
+name = "loader_hc_report_gen"
+version = "1.0.3094"
+authors = ["Ravindar Singh<ravindar.sr@surya-soft.com>"]
+
+[dependencies]
+health_report = { path = "../../../hdfc/libraries/health_report" }
+clap = "2.33.0"
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }

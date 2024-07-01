@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+message Account {
+    string date = 1;
+    string isin = 2;
+    string sec_dep = 3;
+    double book_val = 4;
+    string mat_dt = 5;
+    double mtm_in_usd = 6;
+    string class_1 = 7;
+    string class_2 = 8;
+    string class_3 = 9;
+    string tenure_class = 10;
+    string sys_identifier = 11;
+    double mtm_amt = 12;
+    int64 tenor = 13;
+    string ccy = 14;
+    string rating_identifier = 15;     
+}

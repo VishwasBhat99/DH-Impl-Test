@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+message Cashflow {
+    double int_amt = 1;
+    double prin_amt = 2;
+    int64 date = 3;
+}
+
+message cap_floor{
+	string entity = 1;
+	string trade_id = 2;
+	double structure_id_link = 3;
+	string component_typo = 4;
+	string contract_type = 5;
+	string package_typo = 6;
+	string desk = 7;
+	string book = 8;
+	string folder = 9;
+	string trading_banking = 10;
+	string internal_external = 11;
+	string counterparty_group_code = 12;
+	string counterparty_parent_code = 13;
+	string counterparty_child_code = 14;
+	string bank_non_bank = 15;
+	int64 trade_date = 16;
+	int64 maturity_date = 17;
+	string buy_sale = 18;
+	string underlying_index = 19;
+	string notional_currency = 20;
+	double original_notional_amount = 21;
+	double mtm_in_inr = 22;
+	double net_pv01_in_inr = 23;
+	double modified_duration_of_the_deal = 24;
+	string reset_frequency = 25;
+	int64 next_reset_date = 26;
+	string underlying_pp = 27;
+	string deal_status = 28;
+	string counterparty_category1 = 29;
+	string counterparty_category2 = 30;
+	string counterparty_category3 = 31;
+	string accounting_section = 32;
+	string flowtype4 = 33;
+	double flow_amount = 34;
+	int64 cashflow_date = 35;
+	string flow_currency = 36;
+	string cntrct_usage= 37;
+        string non_idx_flw_curr= 38;
+        double non_idx_cf_amt= 39;
+        int64 indexation_dt= 40;
+	double tot_int_amt = 41;
+	double tot_prin_amt = 42;	
+	repeated Cashflow cashflows = 43;	
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount= 1;
+    double principal_amount= 2;
+    int64 date= 3;
+}
+
+message Account {
+    string coa = 1;
+    string acc_id = 2;
+    int64 acc_open_date = 3;
+    string tenor = 4;
+    string payout_freq = 5;
+    string int_pay_freq = 6;
+    int64 maturity_date = 7;
+    double os_amount = 8;
+    string currency = 9;
+    string cf_type = 10;
+    string int_basis = 11;
+    double int_rate = 12;
+    string bm = 13;
+    string bm_freq = 14;
+    int32 bm_res_days = 15;
+    int64 next_rep_date = 16;
+    double bm_rate = 17;
+    repeated Cashflow cashflows= 18;
+}

@@ -1,0 +1,5 @@
+{
+  "account_number": "account_number",
+  "amount": "current_book_balance",
+  "interest_rate": "int_rate"
+}

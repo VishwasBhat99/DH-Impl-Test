@@ -1,0 +1,14 @@
+{
+    "llg_id":"ia_llg",
+    "curr_code": "ccy",
+    "rep_freq": "repricing_freq",
+    "intt_rate": "int_rt",
+    "cashflows": "cashflows",
+    "mat_date":"cf_dt",
+    "acc_open_date":"st_dt",
+    "bm_id":"br_id",
+    "acc_no":"acc_id",
+    "next_repr_date":"nxt_pay_dt",
+    "spread":"spread",
+    "npa_flag":""
+}

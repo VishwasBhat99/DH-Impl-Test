@@ -1,0 +1,174 @@
+{
+	"streamName": "TD",
+	"streamId": "5004",
+	"flows": [
+		{
+			"name": "Term-Deposit",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "4",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/GC/./pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/Regulatory_CASA_Listing_Finance_{ddmmyyyy}.xlsx"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/GC/./pp_over_depo",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/GC/{ddmmyyyy}/Regulatory_CASA_Listing_Finance_{ddmmyyyy}.xlsx",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/GC/OPERATIONAL_FILES/ORA_PROD.xlsx",
+						"--ref-file-2",
+						"/UAT_SH_INPUTDATA/GC/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/UAT_SH_INPUTDATA/GC/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--ref-file-4",
+						"/UAT_SH_INPUTDATA/GC/OPERATIONAL_FILES/ALM_COA_Master.xlsx",
+						"--ref-file-5",
+						"/UAT_SH_INPUTDATA/GC/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--sheet-name",
+						"Sheet1",
+						"--output-file-td",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/TDOutput.txt",
+						"--output-file-casa",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/CASAOutput.txt",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/TDReconRpt",
+						"--gl-type",
+						"GC-Over-TD-CASA",
+						"--input-file-name",
+						"GCRegulatory-CASA_Listing_Finance",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/TDOutput-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/GC/./cf_dep",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/TDOutput.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/TDCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDCFDiagLog.txt",
+						"--day-convention",
+						"ACT/365"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/TDCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/GC/./balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/GC/{ddmmyyyy}/TDCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/TDAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/GC/td_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/GC/td_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--is-consolidated",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/GC/over_dep_gc_rules.txt",
+						"--default-llg-code",
+						"05499",
+						"--default-overdue-llg-code",
+						"5498"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/TDCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/GC/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/TDAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/TDCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/GC/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/TDAggregated",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/GC/{ddmmyyyy}/TDAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/GC/{ddmmyyyy}/TDBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/UAT_SH_RULES/GC/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_CFDATA/GC/{ddmmyyyy}/TDCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,149 @@
+{
+  "fields": [
+    {
+      "name": "acc_id",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "cust_name",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "pout_bal",
+      "typ": "F64",
+      "position": 3
+    },
+    {
+      "name": "acc_int",
+      "typ": "F64",
+      "position": 4
+    },
+    {
+      "name": "st_dt",
+      "typ": "I64",
+      "position": 5
+    },
+    {
+      "name": "c_dt",
+      "typ": "I64",
+      "position": 6
+    },
+    {
+      "name": "gl_cd",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "int_rt",
+      "typ": "F64",
+      "position": 8
+    },
+    {
+      "name": "int_typ",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "int_bmark",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "rt_flag",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "prod_cd",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "nxt_pay_dt",
+      "typ": "I64",
+      "position": 13
+    },
+    {
+      "name": "mis2",
+      "typ": "I64",
+      "position": 14
+    },
+    {
+      "name": "ccy",
+      "typ": "String",
+      "position": 15
+    },
+    {
+      "name": "ratings",
+      "typ": "String",
+      "position": 16
+    },
+    {
+      "name": "rating_agency",
+      "typ": "String",
+      "position": 17
+    },
+    {
+      "name": "asset_class",
+      "typ": "String",
+      "position": 18
+    },
+    {
+      "name": "div",
+      "typ": "String",
+      "position": 19
+    },
+    {
+      "name": "typ",
+      "typ": "String",
+      "position": 20
+    },
+    {
+      "name": "originator",
+      "typ": "String",
+      "position": 21
+    },
+    {
+      "name": "as_on_dt",
+      "typ": "I64",
+      "position": 22
+    },
+    {
+      "name": "rep_freq",
+      "typ": "String",
+      "position": 23
+    },
+    {
+      "name": "nxt_rep_dt",
+      "typ": "I64",
+      "position": 24
+    },
+    {
+      "name": "portfolio",
+      "typ": "String",
+      "position": 25
+    },
+    {
+      "name": "alm_line",
+      "typ": "String",
+      "position": 26
+    },
+    {
+      "name": "total_interest_amount",
+      "typ": "F64",
+      "position": 27
+    },
+    {
+      "name": "total_principal_amount",
+      "typ": "F64",
+      "position": 28
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 29
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows {
+    string customer_id = 1;
+    string account_id = 2;
+    string prod_type = 3;
+    string scheme_type = 4;
+    string prod_code = 5;
+    string currency = 6;
+    string customer_type = 7;
+    string gl_account_principal = 8;
+    int64 open_date = 9;
+    int64 value_date = 10;
+    int64 maturity_date = 11;
+    double limit_amt = 12;
+    double curr_bal_amount = 13;
+    string asset_type = 14;
+    string loan_limit_amount = 15;
+    string index_code = 16;
+    double effective_roi = 17;
+    string reset_frequency = 18;
+    int64 next_reset_date = 19;
+    string classification = 20;
+    int64 final_reset_date = 21;
+    string npa_final_status = 22;
+    string add_string_1 = 23;
+    string add_string_2 = 24;
+    double add_float_1 = 25;
+    double add_float_2 = 26;
+    int64 add_int_1 = 27;
+    int64 add_int_2 = 28;
+    int64 add_date_1 = 29;
+    int64 add_date_2 = 30;
+    repeated Cashflow cashflows = 31;
+}

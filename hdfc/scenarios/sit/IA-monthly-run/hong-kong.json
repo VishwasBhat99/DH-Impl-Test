@@ -1,0 +1,526 @@
+{
+	"streamName": "HONG KONG",
+	"streamId": "12012",
+	"flows": [
+		{
+			"name": "UBS BILLS",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/BillsCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/HK/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/BillsCFOutput.cf",	
+						"--ref-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/Bills_Spread.xlsx",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/BillsIAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BillsIALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/BillsIADiagLog.txt",
+						"--tenor-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/Bills_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/bills_ia_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/bills_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/bills_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"3099",
+						"--npa-flag-values",
+						"Doubtful I,Doubtful II,Doubtful III,Loss,Substand",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"true"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/BillsCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "TD",
+			"flowId": "2",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/TDCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/HK/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/TDCFOutput.cf",	
+						"--ref-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/TD_Spread.xlsx",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/TDIAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/TDIALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/TDIADiagLog.txt",
+						"--tenor-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/TD_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/td_ia_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/td_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/td_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"7599",
+						"--npa-flag-values",
+						"",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"true"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/TDCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "GLMOC",
+			"flowId": "3",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLPPOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/HK/ia-aggr-non-matt",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/GLIAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/GLIALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/GLIADiagLog.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/gl_ia_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/over_gl_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/gl_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"1099",
+						"--is-consolidated",
+						"false"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLPPOutput-heath-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "GLDiff",
+			"flowId": "4",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLReconPPOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/HK/ia-aggr-non-matt",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLReconPPOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/GLReconIAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/GLReconIALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/GLReconIADiagLog.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/gl_recon_ia_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/gl_recon_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/gl_recon_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"1098",
+						"--is-consolidated",
+						"false"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/GLReconPPOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Murex Borrowings-Lendings",
+			"flowId": "5",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/BorrCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/LendCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					 "processName": "Borr IA Aggregator",
+					 "processId": "3",
+			    		 "processBinary": "/home/dbuser/programs/HK/ia-aggregator",
+					 "processArguments": [
+		 				"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/BorrCFOutput.cf",	
+						"--ref-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/MurBorr_Spread.xlsx",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/BorrIAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/MurBorrIALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/MurBorrIADiagLog.txt",
+						"--tenor-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/MurBorr_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/mur_bor_len_ia_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/over_bor_len_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/mur_bor_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"6099",
+						"--npa-flag-values",
+						"",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"true"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/BorrCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Lend IA Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/HK/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/LendCFOutput.cf",	
+						"--ref-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/MurLend_Spread.xlsx",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/MurLendIAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/MurLendIALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/MurLendIADiagLog.txt",
+						"--tenor-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/MurLend_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/mur_bor_len_ia_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/over_bor_len_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/mur_len_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"1599",
+						"--npa-flag-values",
+						"",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"false"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/LendCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Security Closing Stock",
+			"flowId": "6",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/CloseStockCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/HK/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/CloseStockCFOutput.cf",	
+						"--ref-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/CloseStock_Spread.xlsx",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/CloseStockIAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockIALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/CloseStockIADiagLog.txt",
+						"--tenor-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/CloseStock_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/closing-stock_ia_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/closing-stock-metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/closing-stock_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"2198",
+						"--npa-flag-values",
+						"",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"false"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/CloseStockCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "UBS LOANS",
+			"flowId": "7",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/UBSCFOutput.cf"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "IA Aggregator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/HK/ia-aggregator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/UBSCFOutput.cf",	
+						"--ref-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/UBS_Spread.xlsx",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/UBSIAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSIALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSIADiagLog.txt",
+						"--tenor-file",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/UBS_Tenor.txt",
+						"--src-local-ccy", 
+						"USD",
+						"--display-local-ccy", 
+						"USL",
+						"--consol-ccy", 
+						"USD",
+						"--foreign-consol-ccy", 
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt", 
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/ubs_loans_ia_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/ubs_loans_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/ubs_loans_ia_rules.txt",
+						"--account-level-exchange-rate", 
+						"false",
+						"--default-llg-code", 
+						"2599",
+						"--npa-flag-values",
+						"Doubtful I, Doubtful II, Doubtful III, Loss, Substandard",
+						"--is-consolidated",
+						"false", 
+						"--tenor-flag",
+						"true"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

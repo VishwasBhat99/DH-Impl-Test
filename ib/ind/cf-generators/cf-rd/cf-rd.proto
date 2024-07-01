@@ -1,0 +1,65 @@
+message Cashflow {
+    double prin_amt = 1;
+    double int_amt = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows{
+string key_1=1;
+string branch_no=2;
+string curr_status=3;
+string acct_type=4;
+string int_cat=5;
+string inv_type=6;
+string currency=7;
+string customer_no=8;
+double cr_limit=9;
+double curr_bal=10;
+string wdl_flag=11;
+double int_available=12;
+double int_proj=13;
+int64 acct_open_dt=14;
+int64 int_frm_dt=15;
+int64 int_to_dt=16;
+double no_dues=17;
+double var_int_rate=18;
+double rval_ind=19;
+int64 mat_dt=20;
+double mat_amt=21;
+int64 lst_rollover_dt=22;
+int64 lst_ovr_limit_date=23;
+double cr_store_rate=24;
+double dr_store_rate=25;
+string gl_class_code=26;
+string mop_type=27;
+int64 instl_due_day=28;
+string term_int_comp_freq=29;
+int64 trm_int_cmp_sop_dt=30;
+int64 trm_int_cmp_eop_dt=31;
+int64 term_int_comp_amt=32;
+string lending_status=33;
+int64 int_repay_freq=34;
+string name=35;
+string cust_acct_no=36;
+string prim_acct=37;
+string segment_code=38;
+string industry_code=39;
+string grup_code=40;
+string bus_sector_code=41;
+string tier_cust_type=42;
+string a1=43;
+string a2=44;
+string a3=45;
+string a4=46;
+string a5=47;
+string a6=48;
+string a7=49;
+string a8=50;
+string a9=51;
+string a10=52;
+string glcode=53;
+double int_rate=54;
+string curr_bal_lcy=55;
+int64 ason date=56;
+repeated Cashflow cashflows=57;
+}

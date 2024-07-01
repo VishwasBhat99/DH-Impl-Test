@@ -1,0 +1,13 @@
+
+[package]
+name = "pp_cust_master"
+version = "0.1.0"
+authors = ["Harish Mudgal <harish.m@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+

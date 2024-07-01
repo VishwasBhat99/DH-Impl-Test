@@ -1,0 +1,6 @@
+{
+  "prin_amt": "cf_amount",
+  "curr": "currency",
+  "acc_no": "account_id",
+  "int_rt": "cf_amount"
+}

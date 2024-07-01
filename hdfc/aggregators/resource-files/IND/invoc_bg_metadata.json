@@ -1,0 +1,24 @@
+{
+  "fields": [
+    {
+      "name": "account_id",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "cf_date",
+      "typ": "I64",
+      "position": 2
+    },
+    {
+      "name": "cf_amount",
+      "typ": "F64",
+      "position": 3
+    },
+    {
+      "name": "currency",
+      "typ": "String",
+      "position": 4
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "Fields":{
+    "Date": 1,
+    "Symbol": 1,
+    "Series":1,
+    "Open Price":2,
+    "High Price":3,
+    "Low Price":4,
+    "Last Traded Price": 5,
+    "Close Price": 5
+  },
+  "Std_dev":{
+    "use_sample":true,
+    "_comment":" true -> (N-1), false -> (N)"
+  },
+  "Symbol Name": "hdfc bank data",
+  "Series Name": "ADR",
+  "Filter on Symbol": false,
+  "delimiter": ","
+}

@@ -1,0 +1,18 @@
+[package]
+name = "cf_borrowings"
+version = "1.0.3129"
+authors = ["VishwasBhat99 <vishwas.b@surya-soft.com>"]
+
+[dependencies]
+clap = "3.0.14"
+chrono = "0.4.19"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io"}
+health_report = { path = "../../../hdfc/libraries/health_report" }
+protobuf = { version = "2.27.1", features = ["with-bytes"] }
+serde = "1.0.136"
+serde_json = "1.0.79"
+serde_derive = "1.0.136"
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.8.1"
+slog-async = "2.7.0"

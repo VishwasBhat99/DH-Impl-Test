@@ -1,0 +1,52 @@
+{
+	"streamName": "Exchange Rate",
+	"streamId": "1000",
+	"flows": [
+		{
+			"name": "ExchangeRate",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "1",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_EXCHANGE_RATES_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/IND/pp_ex_rt",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_EXCHANGE_RATES_{ddmmyyyy}.csv",
+						"--ex-rt-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--ccy",
+						"INR",
+						"--lcy",
+						"RUP",
+						"--fcy",
+						"FCY",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/ExchangeRates.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/ExchangeRatesPPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/ExchangeRatesPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/ExchangeRates-health-check-report.json"
+				}
+			]
+		}
+	]
+}

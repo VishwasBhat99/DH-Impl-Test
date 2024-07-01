@@ -1,0 +1,4 @@
+2|1|1|curr|LT|RUP|4321
+1|0|0|concat|EQ|Hello|AND
+2|1|0|concat|EQ|World|OR
+1|0|1|curr|LT|INR|1234

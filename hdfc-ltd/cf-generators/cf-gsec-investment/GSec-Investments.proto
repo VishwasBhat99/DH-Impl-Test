@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount=1;
+    double principal_amount=2;
+    int64 date=3;
+}
+
+message AccountWithCashflows{
+    string holding_deal_id=1;
+    string portfolio=2;
+    string instrument_type=3;
+    string isdiscounted=4;
+    string slr_non_slr=5;
+    string isin=6;
+    string issuer_id=7;
+    string issuer_name=8;
+    string security_id=9;
+    string security_name=10;
+    int64 deal_value_date=11;
+    int64 issue_date=12;
+    int64 maturity_date=13;
+    double coupon_rate=14;
+    string interest_calculation_basis=15;
+    double face_value_per_units=16;
+    int64 quantity=17;
+    double face_value=18;
+    string currency=19;
+    double book_value=20;
+    double market_value=21;
+    int64 mtm=22;
+    double market_yield=23;
+    int64 interest_accruad_days=24;
+    double accrued_interest=25;
+    int64 coupon_pay_day=26;
+    string coupon_type=27;
+    string spread=28;
+    string benchmark=29;
+    string coupon_frequency=30;
+    int64 last_coupon_date=31;
+    int64 next_coupon_date=32;
+    int64 last_repricing_date=33;
+    int64 next_repricing_date=34;
+    int64 put_date=35;
+    int64 call_date=36;
+    string is_listed=37;
+    string issuer_country=38;
+    string issuer_type=39;
+    string isuser_classification_1=40;
+    string isuser_classification_2=41;
+    string isuser_classification_3=42;
+    string gurantor_type=43;
+    string rating_agency=44;
+    string external_rating=45;
+    string asset_type=46;
+    string asset_category=47;
+    int64 treaury_gl_code=48;
+    string m_npaclassification=49;
+    string internal_rating=50;
+    string customer_constitution_code=51;
+    string risk_weight=52;
+    string crar_basel_classification=53;
+    string app1=54;
+    string app2=55;
+    string app3=56;
+    string app4=57;
+    repeated Cashflow cashflows=58;
+}

@@ -1,0 +1,52 @@
+{
+	"streamName": "Exchange Rate",
+	"streamId": "7000",
+	"flows": [
+		{
+			"name": "ExchangeRate",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "1",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/EDW_ALM_EXCHANGE_RATES_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./pp_over_ex_rt",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/EDW_ALM_EXCHANGE_RATES_{ddmmyyyy}.csv",
+						"--ex-rt-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--ccy",
+						"USD",
+						"--lcy",
+						"USL",
+						"--fcy",
+						"FCY",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/ExchangeRates.txt",
+						"--log-file",
+						"/home/dbuser/logs/HK/{ddmmyyyy}/ExchangeRatesPPLog.txt",
+						"--diagnostics-log-file",
+						"/home/dbuser/logs/HK/{ddmmyyyy}/ExchangeRatesPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				}
+			]
+		}
+	]
+}

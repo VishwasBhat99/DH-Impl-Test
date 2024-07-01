@@ -1,0 +1,9 @@
+{
+  "account_number": "cod_acc_no",
+  "concat": "alm_line",
+  "cashflows": "cashflows",
+  "institution": "inst",
+  "interest_rate": "int_rt",
+  "next_rep_date": "nxt_rep_dt",
+  "exchange_rate": ""
+}

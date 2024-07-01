@@ -1,0 +1,113 @@
+{
+	"streamName": "LC",
+	"streamId": "2088",
+	"flows": [
+		{
+			"name": "LC",
+			"flowId": "2",
+			"flowDependencies": [],
+			"executorID": "1",
+			"process": [
+				{
+					"processName": "Pre-Flight",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/LC_Devolved.xlsx"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_lc_devolve",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/LC_Devolved.xlsx",
+						"--input-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/InvocLCPPOut.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocLCPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocLCPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/InvocLCPPOut-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_invo_lc",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/InvocLCPPOut.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/InvocLCCFOut",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocLCCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocLCCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/InvocLCCFOut-health-check-report.json"
+				},
+				{
+					"processName": "BA-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/non_mat_ba2_agg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/InvocLCCFOut.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/InvocLCBAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocLCBADiagLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocLCBADiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/invoc_lc_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/invoc_lc_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/invoc_lc_rules.txt",
+						"--default-llg-code",
+						"5702"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/InvocLCCFOut-health-check-report.json"
+				},
+				{
+					"processName": "Upload",
+					"processId": "5",
+					"processBinary": "/SIT_SH_SUMMARYDATA/BulkInserter/IND/BA/lcLoad.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"{AsOnDate}"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/UploadLC-health-check-report.json"
+				}
+			]
+		}
+	]
+}

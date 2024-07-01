@@ -1,0 +1,8 @@
+[package]
+name = "sdb_agg_rules"
+version = "0.2.2"
+authors = ["mayurdhaka-suryasoftware <mayur.d@surya-soft.com>", "shashank.676 <shashank.p@surya-soft.com>"]
+
+[dependencies]
+sdb_dyn_proto_rdr = { path = "../../../hdfc/libraries/sdb_dyn_proto_rdr" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }

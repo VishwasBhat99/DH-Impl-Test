@@ -1,0 +1,9 @@
+{
+    "account_number": "reference",
+    "concat": "alm_line",
+    "cashflows": "cashflows",
+    "institution": "curr",
+    "interest_rate": "int_rt",
+    "next_rep_date":"nxt_rep_dt",
+    "exchange_rate":"exchange_rt"
+  }

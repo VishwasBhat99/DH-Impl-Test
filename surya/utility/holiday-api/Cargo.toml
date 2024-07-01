@@ -1,0 +1,8 @@
+[package]
+name = "holiday_api"
+version = "0.1.0"
+authors = ["shashank676 <shashank.p@surya-soft.com>"]
+
+[dependencies]
+reqwest = "0.9.19"
+serde = "1.0.97"

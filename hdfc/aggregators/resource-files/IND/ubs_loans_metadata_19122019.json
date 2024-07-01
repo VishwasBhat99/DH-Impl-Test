@@ -1,0 +1,169 @@
+{
+  "fields": [
+    {
+      "name": "cust_no",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "reference",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "cust_name",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "branch_cd",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "norm_int_rt",
+      "typ": "F64",
+      "position": 5
+    },
+    {
+      "name": "acurl_freq",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "book_dt",
+      "typ": "I64",
+      "position": 7
+    },
+    {
+      "name": "val_dt",
+      "typ": "I64",
+      "position": 8
+    },
+    {
+      "name": "mat_dt",
+      "typ": "I64",
+      "position": 9
+    },
+    {
+      "name": "user_def_stats",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "prod_cd",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "gl",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "curr",
+      "typ": "String",
+      "position": 13
+    },
+    {
+      "name": "prin_ost_bal",
+      "typ": "F64",
+      "position": 14
+    },
+    {
+      "name": "spread",
+      "typ": "F64",
+      "position": 15
+    },
+    {
+      "name": "compmis2",
+      "typ": "I64",
+      "position": 16
+    },
+    {
+      "name": "rt_flag_new",
+      "typ": "String",
+      "position": 17
+    },
+    {
+      "name": "rt_cd_new",
+      "typ": "String",
+      "position": 18
+    },
+    {
+      "name": "division",
+      "typ": "String",
+      "position": 19
+    },
+    {
+      "name": "alm_line",
+      "typ": "String",
+      "position": 20
+    },
+    {
+      "name": "ia_llg",
+      "typ": "String",
+      "position": 21
+    },
+    {
+      "name": "balm_llg",
+      "typ": "String",
+      "position": 22
+    },
+    {
+      "name": "repricing_freq",
+      "typ": "String",
+      "position": 23
+    },
+    {
+      "name": "lst_repricing_dt",
+      "typ": "I64",
+      "position": 24
+    },
+    {
+      "name": "nxt_repricing_dt",
+      "typ": "I64",
+      "position": 25
+    },
+    {
+      "name": "int_basis",
+      "typ": "String",
+      "position": 26
+    },
+    {
+      "name": "cust_typ",
+      "typ": "String",
+      "position": 27
+    },
+    {
+      "name": "npa_typ",
+      "typ": "String",
+      "position": 28
+    },
+    {
+      "name": "bmid",
+      "typ": "String",
+      "position": 29
+    },
+    {
+      "name": "new_rep_freq",
+      "typ": "I64",
+      "position": 30
+    },
+    {
+      "name": "total_interest_amount",
+      "typ": "F64",
+      "position": 31
+    },
+    {
+      "name": "total_principal_amount",
+      "typ": "F64",
+      "position": 32
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 33
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+    "streamName": "SPECIAL BUCKET MOC",
+    "streamId": "1072",
+    "flows": [
+        {
+            "name": "SPECIAL BUCKET MOC",
+            "flowId": "1",
+            "flowDependencies": [],
+            "executorID": "5",
+            "process": [
+                {
+                    "processName": "Pre-Flight-Check",
+                    "processId": "1",
+                    "processBinary": "/home/dbuser/programs/IND/pfc.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/MOC_Special_Entry_{ddmmyyyy}.xlsx"
+                    ],
+                    "processDependencies": [],
+                    "processReport": ""
+                },
+                {
+                    "processName": "Pre-Processor",
+                    "processId": "2",
+                    "processBinary": "/home/dbuser/programs/IND/cf_moc_test",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/MOC_Special_Entry_{ddmmyyyy}.xlsx",
+                        "--sheet-name",
+                        "Sheet1",
+                        "--output-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/MOCCFOutput",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/MOCPPLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/MOCPPDiagLog.txt"
+                    ],
+                    "processDependencies": [
+                        "1"
+                    ],
+                    "processReport": "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/MOCCFOutput-heath-check-report.json"
+                },
+                {
+                    "processName": "BALM-Aggregator",
+                    "processId": "3",
+                    "processBinary": "/home/dbuser/programs/IND/balm",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/MOCCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/MOCAggregated",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/MOCBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/MOCBALMDiagLog.txt.txt",
+                        "--currency",
+                        "INR",
+                        "--is-consolidated",
+                        "false",
+                        "--local-consolidation-currency",
+                        "RUP",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--req-fields-file",
+                        "/UAT_SH_RULES/IND/moc_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/IND/moc_metadata.json",
+                        "--account-level-exchange-rate",
+                        "false",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/IND/moc_rules.txt",
+                        "--default-llg-code",
+                        "09999"
+                    ],
+                    "processDependencies": [
+                        "2"
+                    ],
+                    "processReport": "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/MOCCFOutput-heath-check-report.json"
+                },
+                {
+                    "processName": "Aggregated Conversion",
+                    "processId": "4",
+                    "processBinary": "/home/dbuser/programs/IND/agg_conv",
+                    "processArguments": [
+                        "--base-currency",
+                        "INR",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/MOCAggConvDiagLog.txt",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--input-file",
+                        "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/MOCAggregated",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/MOCAggConvLog.txt"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/MOCCFOutput-heath-check-report.json"
+                }
+            ]
+        }
+    ]
+}

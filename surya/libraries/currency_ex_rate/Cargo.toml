@@ -1,0 +1,11 @@
+[package]
+name = "currency_ex_rate"
+version = "0.1.0"
+authors = ["VishwasBhat99 <vishwas.b@surya-soft.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+sdb_io = { path = "../../../../libraries/sdb_io" }
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }

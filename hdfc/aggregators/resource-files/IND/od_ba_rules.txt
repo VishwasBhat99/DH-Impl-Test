@@ -1,0 +1,67 @@
+1|1|0|balm_llg|EQ|Bills|AND
+1|1|1|npa_flg|EQ|Substandard|12590
+2|1|0|balm_llg|EQ|Bills|AND
+2|1|1|npa_flg|EQ|Doubtful I|12591
+3|1|0|balm_llg|EQ|Bills|AND
+3|1|1|npa_flg|EQ|Doubtful III|12591
+4|1|0|balm_llg|EQ|Bills|AND
+4|1|1|npa_flg|EQ|Doubtful II|12591
+5|1|0|balm_llg|EQ|Bills|AND
+5|1|1|npa_flg|EQ|Loss|12593
+6|1|0|balm_llg|EQ|OD - RT|AND
+6|1|1|npa_flg|EQ|Substandard|12594
+7|1|0|balm_llg|EQ|OD - RT|AND
+7|1|1|npa_flg|EQ|Doubtful I|12595
+8|1|0|balm_llg|EQ|OD - RT|AND
+8|1|1|npa_flg|EQ|Doubtful III|12595
+9|1|0|balm_llg|EQ|OD - RT|AND
+9|1|1|npa_flg|EQ|Doubtful II|12595
+10|1|0|balm_llg|EQ|OD - RT|AND
+10|1|1|npa_flg|EQ|Loss|12596
+11|1|0|balm_llg|EQ|OD - WS|AND
+11|1|1|npa_flg|EQ|Substandard|12597
+12|1|0|balm_llg|EQ|OD - WS|AND
+12|1|1|npa_flg|EQ|Doubtful I|12598
+13|1|0|balm_llg|EQ|OD - WS|AND
+13|1|1|npa_flg|EQ|Doubtful III|12598
+14|1|0|balm_llg|EQ|OD - WS|AND
+14|1|1|npa_flg|EQ|Doubtful II|12598
+15|1|0|balm_llg|EQ|OD - WS|AND
+15|1|1|npa_flg|EQ|Loss|12599
+16|1|0|balm_llg|EQ|Term Loan|AND
+16|1|1|npa_flg|EQ|Substandard|12587
+17|1|0|balm_llg|EQ|Term Loan|AND
+17|1|1|npa_flg|EQ|Doubtful I|12588
+18|1|0|balm_llg|EQ|Term Loan|AND
+18|1|1|npa_flg|EQ|Doubtful III|12588
+19|1|0|balm_llg|EQ|Term Loan|AND
+19|1|1|npa_flg|EQ|Doubtful II|12588
+20|1|0|balm_llg|EQ|Term Loan|AND
+20|1|1|npa_flg|EQ|Loss|12589
+21|1|0|balm_llg|EQ|Demand Loan|AND
+21|1|1|npa_flg|EQ|Substandard|12541
+22|1|0|balm_llg|EQ|Demand Loan|AND
+22|1|1|npa_flg|EQ|Doubtful I|12542
+23|1|0|balm_llg|EQ|Demand Loan|AND
+23|1|1|npa_flg|EQ|Doubtful III|12542
+24|1|0|balm_llg|EQ|Demand Loan|AND
+24|1|1|npa_flg|EQ|Doubtful II|12542
+25|1|0|balm_llg|EQ|Demand Loan|AND
+25|1|1|npa_flg|EQ|Loss|12543
+26|1|0|balm_llg|EQ|Nostro|11116
+27|1|0|balm_llg|EQ|Securitisation-investments|12525
+28|1|0|balm_llg|EQ|OD - RT|12510
+29|1|0|balm_llg|EQ|OD - WS|12505
+30|1|0|alm_line|EQ|OA-ROUTING/CFU|12530
+31|1|0|balm_llg|EQ|Term Loan|12520
+32|1|0|balm_llg|EQ|Demand Loan|12540
+33|1|0|balm_llg|EQ|PENDING BOOKING|12525
+34|1|0|balm_llg|EQ|Internal-Assets|12525
+35|1|0|balm_llg|EQ|Cash|11006
+36|1|0|balm_llg|EQ|UTTARAKHAND CLAMITY SUPPORT|12525
+37|1|0|balm_llg|EQ|Pref|12522
+38|1|0|balm_llg|EQ|Bills|13130
+39|1|0|balm_llg|EQ|KISAN GOLD CARD|12525
+40|1|0|balm_llg|EQ|Internal Liabilities|12525
+41|1|0|balm_llg|EQ|Securitisation|12563
+42|1|0|bal_book_lcy|LT|0|12521

@@ -1,0 +1,3 @@
+1|1|0|security_type|EQ|BOND|11901
+2|1|0|security_type|EQ|MTN|05603
+3|1|0|security_type|EQ|OV-SOVEREIGN BOND|11901

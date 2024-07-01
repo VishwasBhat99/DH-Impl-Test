@@ -1,0 +1,366 @@
+use clap::{App, Arg};
+use rbdate::{DateParser, NaiveDate};
+use slog::Logger;
+
+pub fn get_configuration_parameters() -> ConfigurationParameters {
+    let matches = get_eligible_arguments_for_app();
+    ConfigurationParameters::new_from_matches(matches)
+}
+
+pub struct ConfigurationParameters {
+    input_cf_file_path: String,
+    metadata_file_path: String,
+    req_fields_file_path: String,
+    npa_class_file_path: String,
+    common_cust_file_path: String,
+    finnone_master_file_path: String,
+    lacs_master_file_path: String,
+    lacs_master_sheet_name: String,
+    risk_weight_file_path: String,
+    resid_file_path: String,
+    restructure_flag_file_path: String,
+    as_on_date: NaiveDate,
+    output_file_path: String,
+    log_file_path: String,
+    diagnostics_file_path: String,
+    log_level: String,
+    is_perf_diagnostics_enabled: bool,
+}
+
+impl ConfigurationParameters {
+    pub fn log_parameters(&self, logger: &Logger) {
+        info!(logger, "log_file: {}", self.log_file_path());
+        info!(logger, "metadata_file_path: {}", self.metadata_file_path());
+        info!(
+            logger,
+            "req_fields_file_path: {}",
+            self.req_fields_file_path()
+        );
+        info!(
+            logger,
+            "npa_class_file_path: {}",
+            self.npa_class_file_path()
+        );
+        info!(
+            logger,
+            "common_cust_file_path: {}",
+            self.common_cust_file_path()
+        );
+        info!(
+            logger,
+            "finnone_master_file_path: {}",
+            self.finnone_master_file_path()
+        );
+        info!(
+            logger,
+            "lacs_master_file_path: {}",
+            self.lacs_master_file_path()
+        );
+        info!(
+            logger,
+            "lacs_master_sheet_name: {}",
+            self.lacs_master_sheet_name()
+        );
+        info!(
+            logger,
+            "risk_weight_file_path: {}",
+            self.risk_weight_file_path()
+        );
+        info!(logger, "resid_file_path: {}", self.resid_file_path());
+        info!(
+            logger,
+            "restructure_flag_file_path: {}",
+            self.restructure_flag_file_path()
+        );
+        info!(logger, "diagnostics_file: {}", self.diagnostics_file_path());
+        info!(logger, "diagnostics_file: {}", self.diagnostics_file_path());
+        info!(logger, "input_cf_file: {}", self.input_cf_file_path());
+        info!(logger, "as_on_date: {:?}", self.as_on_date());
+        info!(logger, "output_file: {}", self.output_file_path());
+        info!(logger, "log_level: {}", self.log_level());
+    }
+}
+
+impl ConfigurationParameters {
+    fn new_from_matches(matches: clap::ArgMatches) -> ConfigurationParameters {
+        let input_cf_file_path = matches
+            .value_of("input_cf_file_path")
+            .expect("Error getting `input_cf_file_value`.")
+            .to_string();
+        let metadata_file_path = matches
+            .value_of("metadata_file_path")
+            .expect("Error getting `metadata_file_path`.")
+            .to_string();
+        let date_parser = DateParser::new("%d-%m-%Y".to_string(), false);
+        let as_on_date = date_parser.parse(
+            matches
+                .value_of("as_on_date")
+                .expect("Error getting `as_on_date`."),
+        );
+
+        let output_file_path = matches
+            .value_of("output_file")
+            .expect("Error getting `output_file_path`.")
+            .to_string();
+        let log_file_path = matches
+            .value_of("log_file")
+            .expect("Error getting `log_file_path`.")
+            .to_string();
+        let req_fields_file_path = matches
+            .value_of("req_fields_file_path")
+            .expect("Error getting `req_fields_file_path`.")
+            .to_string();
+        let npa_class_file_path = matches
+            .value_of("npa_class_file_path")
+            .expect("Error getting `npa_class_file_path`.")
+            .to_string();
+        let common_cust_file_path = matches
+            .value_of("common_cust_file_path")
+            .expect("Error getting `common_cust_file_path`.")
+            .to_string();
+        let finnone_master_file_path = matches
+            .value_of("finnone_master_file_path")
+            .expect("Error getting `finnone_master_file_path`.")
+            .to_string();
+        let lacs_master_file_path = matches
+            .value_of("lacs_master_file_path")
+            .expect("Error getting `lacs_master_file_path`.")
+            .to_string();
+        let lacs_master_sheet_name = matches
+            .value_of("lacs_master_sheet_name")
+            .expect("Error getting `lacs_master_sheet_name`.")
+            .to_string();
+        let risk_weight_file_path = matches
+            .value_of("risk_weight_file_path")
+            .expect("Error getting `risk_weight_file_path`.")
+            .to_string();
+        let resid_file_path = matches
+            .value_of("resid_file_path")
+            .expect("Error getting `resid_file_path`.")
+            .to_string();
+        let restructure_flag_file_path = matches
+            .value_of("restructure_flag_file_path")
+            .expect("Error getting `restructure_flag_file_path`.")
+            .to_string();
+        let diagnostics_file_path = matches
+            .value_of("diagnostics_log_file")
+            .expect("Error getting `diagnostics_file_path`.")
+            .to_string();
+        let log_level = matches
+            .value_of("log_level")
+            .expect("Error getting `log level`.")
+            .to_string();
+        let is_perf_diagnostics_enabled = matches
+            .value_of("perf_diag_flag")
+            .expect("Error getting `diagnostics flag as enabled/disabled`.")
+            .parse::<bool>()
+            .expect("Cannot parse `perf_diag_flag` as bool.");
+
+        ConfigurationParameters {
+            input_cf_file_path,
+            metadata_file_path,
+            req_fields_file_path,
+            lacs_master_file_path,
+            lacs_master_sheet_name,
+            npa_class_file_path,
+            finnone_master_file_path,
+            common_cust_file_path,
+            risk_weight_file_path,
+            restructure_flag_file_path,
+            resid_file_path,
+            as_on_date,
+            output_file_path,
+            log_file_path,
+            diagnostics_file_path,
+            log_level,
+            is_perf_diagnostics_enabled,
+        }
+    }
+}
+
+// pub lic getters so an caller can't mutate properties (they're private).
+// Also, because users of these properties usually borrow.
+impl ConfigurationParameters {
+    pub fn input_cf_file_path(&self) -> &str {
+        &self.input_cf_file_path
+    }
+    pub fn metadata_file_path(&self) -> &str {
+        &self.metadata_file_path
+    }
+    pub fn req_fields_file_path(&self) -> &str {
+        &self.req_fields_file_path
+    }
+    pub fn lacs_master_file_path(&self) -> &str {
+        &self.lacs_master_file_path
+    }
+    pub fn lacs_master_sheet_name(&self) -> &str {
+        &self.lacs_master_sheet_name
+    }
+    pub fn finnone_master_file_path(&self) -> &str {
+        &self.finnone_master_file_path
+    }
+    pub fn npa_class_file_path(&self) -> &str {
+        &self.npa_class_file_path
+    }
+    pub fn common_cust_file_path(&self) -> &str {
+        &self.common_cust_file_path
+    }
+    pub fn risk_weight_file_path(&self) -> &str {
+        &self.risk_weight_file_path
+    }
+    pub fn restructure_flag_file_path(&self) -> &str {
+        &self.restructure_flag_file_path
+    }
+    pub fn resid_file_path(&self) -> &str {
+        &self.resid_file_path
+    }
+    pub fn as_on_date(&self) -> &NaiveDate {
+        &self.as_on_date
+    }
+    pub fn output_file_path(&self) -> &str {
+        &self.output_file_path
+    }
+    pub fn log_file_path(&self) -> &str {
+        &self.log_file_path
+    }
+    pub fn diagnostics_file_path(&self) -> &str {
+        &self.diagnostics_file_path
+    }
+    pub fn log_level(&self) -> &str {
+        &self.log_level
+    }
+    pub fn is_perf_diagnostics_enabled(&self) -> bool {
+        self.is_perf_diagnostics_enabled
+    }
+}
+
+fn get_eligible_arguments_for_app() -> clap::ArgMatches<'static> {
+    App::new(clap::crate_name!())
+        .about("Cashflow generation for Loans Merger!!")
+        .version(clap::crate_version!())
+        .author(clap::crate_authors!())
+        .arg(
+            Arg::with_name("input_cf_file_path")
+                .long("input-file")
+                .value_name("Input File")
+                .help("Path to the input file.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("metadata_file_path")
+                .long("metadata-file-path")
+                .value_name("Metadata File Path")
+                .help("Path to the metadata file path.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("req_fields_file_path")
+                .long("req-fields-file-path")
+                .value_name("Required Fields File Path")
+                .help("Path to the required fields file path.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("lacs_master_file_path")
+                .long("lacs-master-file-path")
+                .value_name("LACS Master File Path")
+                .help("Path to the lacs master file path.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("lacs_master_sheet_name")
+                .long("lacs-master-sheet-name")
+                .value_name("LACS Master Sheet Name")
+                .help("Path to the lacs master sheet name.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("finnone_master_file_path")
+                .long("finnone-master-file-path")
+                .value_name("Finnone Master File Path")
+                .help("Path to the finnone master file path.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("risk_weight_file_path")
+                .long("risk-weight-file-path")
+                .value_name("Risk Weight File Path")
+                .help("Path to the risk weight file path.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("resid_file_path")
+                .long("resid-file-path")
+                .value_name("Resid File Path")
+                .help("Path to the resid file path.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("restructure_flag_file_path")
+                .long("restructure-flag-file-path")
+                .value_name("Restructure Flag File Path")
+                .help("Path to the restructure flag file path.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("common_cust_file_path")
+                .long("common-cust-file-path")
+                .value_name("Common Cust File Path")
+                .help("Path to the common cust file path.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("npa_class_file_path")
+                .long("npa-class-file-path")
+                .value_name("NPA Class File Path")
+                .help("Path to the npa cust file path.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("output_file")
+                .long("output-file")
+                .value_name("Output File")
+                .help("Path to the output file")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("log_file")
+                .long("log-file")
+                .value_name("Log File")
+                .help("Path to write logs.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("diagnostics_log_file")
+                .long("diagnostics-log-file")
+                .value_name("Diagnostics Log File")
+                .help("Path to write diagnostics logs.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("log_level")
+                .long("log-level")
+                .value_name("LOG LEVEL")
+                .possible_values(&["error", "warn", "info", "debug", "trace", "none"])
+                .help("Level of diagnostics written to the log file.")
+                .default_value("info")
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("perf_diag_flag")
+                .long("diagnostics-flag")
+                .value_name("DIAGNOSTICS FLAG")
+                .possible_values(&["true", "false"])
+                .help("This flag that decides whether performance diagnostics will be written to the diagnostics log file.")
+                .default_value("false")
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("as_on_date")
+                .long("as-on-date")
+                .value_name("DATE")
+                .help("The date for which the program has to run.")
+                .required(true)
+        )
+        .get_matches()
+}

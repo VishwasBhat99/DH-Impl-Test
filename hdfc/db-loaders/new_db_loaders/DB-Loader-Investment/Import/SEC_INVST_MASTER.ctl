@@ -1,0 +1,42 @@
+OPTIONS (SKIP=3, silent=feedback)
+LOAD DATA
+INFILE '*' "STR '\n'"
+TRUNCATE
+INTO TABLE SEC_INVST_MASTER FIELDS TERMINATED BY ','
+ TRAILING NULLCOLS 
+(
+UBSACCOUNTNUMBER,
+Cust_Id,
+FC_UBSACC,
+DEALNAME,
+PRINCIPALOUTSTANDING,	
+DEALSTARTDATE DATE ,
+CFSTARTDATE DATE ,
+CFENDDATE DATE ,
+PAYOUTDATE DATE ,
+Remarks,
+AccruedInterest,
+COMPOUNDINGFREQUENCY,
+DEALVALUE,
+GL,
+System,
+CNIRB,
+Ratings,
+RATINGWHETHERDOWNGRADED,
+RATINGAGENCY,
+AssetClass, 
+Division,
+IType,
+Originator,
+BalanceWAM,
+BalanceDTDMaturity,
+ContractYield,
+CURRENTANNUALSEDYIELD,
+ResetFrequency,
+InterestRateType,
+Structure,
+Expectedrateresetdate,
+CRFCFs,
+Portfolio_Type,
+OldFCUBSACC
+)

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows{
+    string description = 1;
+    int64 due_date =2;
+    double current_balnace_amount = 3;
+    string ccy =4;
+    double int_rate = 5;
+    double outstanding_amt = 6;
+    repeated Cashflow cashflows=7;
+}

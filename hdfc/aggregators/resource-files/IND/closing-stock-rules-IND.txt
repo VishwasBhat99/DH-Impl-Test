@@ -1,0 +1,7 @@
+1|1|0|security_type|EQ|BOND-INFRA|9802
+2|1|0|security_type|EQ|SUB-DEBT TIER I|AND
+2|1|1|bond_issuance|EQ|Yes|9803
+3|1|0|security_type|EQ|SUB-DEBT TIER II|9803
+3|1|1|bond_issuance|EQ|Yes|9803
+4|1|0|security_type|EQ|CD|9804
+5|1|0|security_type|EQ|MASALA BOND|9805

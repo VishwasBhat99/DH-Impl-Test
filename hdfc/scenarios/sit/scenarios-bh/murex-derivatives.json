@@ -1,0 +1,1077 @@
+{
+	"streamName": "Murex Derivatives",
+	"streamId": "3024",
+	"flows": [
+		{
+			"name": "Cashflow-Generic",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Cashflow",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/cashflows_overseas.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Cashflow",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-Cashflow/BAH/Import/ImportData.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-Cashflow-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Option-Register",
+			"flowId": "2",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/master_opt.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-Option-Register/BAH/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-Option-Master-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/cf_opt_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/options.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/OptCFOutput",
+						"--sheet-name",
+						"Sheet1",
+						"--entity",
+						"BAHRAIN_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/OptCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/OptCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/OptCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/OptCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/OptAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/OptBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/OptBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/opt_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/opt_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/opt_rules_bh.txt",
+						"--default-llg-code",
+						"14399",
+						"--default-overdue-llg-code",
+						"1918"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/OptCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/OptAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/OptAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/OptAggregatedConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/OptAggregatedConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/OptCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Cap N Floor",
+			"flowId": "3",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/master_cap.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-CAP-FLOOR/BAH/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-Cap-Floor-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/cf_cap_floor_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/cap-floor.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CapCFOutput",
+						"--entity",
+						"BAHRAIN_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CapCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CapAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapBALMDiagLog-rec.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/cap_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/cap_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/cap_rules_bh_rec.txt",
+						"--default-overdue-llg-code",
+						"4449",
+						"--default-llg-code",
+						"14320"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CapCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CapAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapBALMDiagLog-pay.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/cap_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/cap_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/cap_rules_bh_rec.txt",
+						"--default-llg-code",
+						"07120",
+						"--default-overdue-llg-code",
+						"7779"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CapAggregated-rec",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CapAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapAggregated-recConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapAggregated-recConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CapAggregated-pay",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CapAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapAggregated-payConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CapAggregated-payConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CapCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "CCIRS Register",
+			"flowId": "4",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/master_ccirs.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-CCY-IRS/BAH/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-CCYIRS-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/cf_ccirs_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/ccy-irs.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CCIRSCFOutput",
+						"--entity",
+						"BAHRAIN_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CCIRSCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CCIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSBALMDiagLog-rec.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/ccirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/ccirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/ccirs_rules_rec_bh.txt",
+						"--default-llg-code",
+						"14398",
+						"--default-overdue-llg-code",
+						"4388"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CCIRSCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CCIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSBALMDiagLog-pay.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/ccirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/ccirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/ccirs_rules_pay_bh.txt",
+						"--default-llg-code",
+						"07199",
+						"--default-overdue-llg-code",
+						"7188"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CCIRSAggregated-rec",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CCIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSAggregated-recConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSAggregated-recConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CCIRSAggregated-pay",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/CCIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSAggregated-payConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/CCIRSAggregated-payConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/CCIRSCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "FCY IRS Register",
+			"flowId": "5",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/master_fcyirs.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-FCY-IRS/BAH/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-FCYIRS-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/cf_fcyirs_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/fcy-irs.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/FCYIRSCFOutput",
+						"--entity",
+						"BAHRAIN_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/FCYIRSCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/FCYIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSBALMDiagLog-rec.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/fcyirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/fcyirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/fcyirs_rules_rec_bh.txt",
+						"--default-llg-code",
+						"14397",
+						"--default-overdue-llg-code",
+						"4449"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/FCYIRSCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/FCYIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSBALMDiagLog-pay.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/fcyirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/fcyirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/fcyirs_rules_pay_bh.txt",
+						"--default-llg-code",
+						"07197",
+						"--default-overdue-llg-code",
+						"7779"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/FCYIRSAggregated-rec",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/FCYIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSAggregated-recConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSAggregated-recConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/FCYIRSAggregated-pay",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/FCYIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSAggregated-payConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/FCYIRSAggregated-payConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/FCYIRSCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "INR IRS Register",
+			"flowId": "6",
+			"flowDependencies": [
+				"1"
+			],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/master_inrirs.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader-Master",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-INR-IRS/BAH/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-INRIRS-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/cf_inr_irs_reg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/inr-irs.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/INRIRSCFOutput",
+						"--entity",
+						"BAHRAIN_CE",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/INRIRSCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/INRIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSBALMLog-rec.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSBALMDiagLog-rec.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/inrirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/inrirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/inrirs_rules_rec_bh.txt",
+						"--default-llg-code",
+						"14319",
+						"--default-overdue-llg-code",
+						"1918"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/INRIRSCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/INRIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSBALMLog-pay.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSBALMDiagLog-pay.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/inrirs_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/inrirs_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/inrirs_rules_pay_bh.txt",
+						"--default-llg-code",
+						"07119",
+						"--default-overdue-llg-code",
+						"1918"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/INRIRSAggregated-rec",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/INRIRSAggregated-rec",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSAggregated-recConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSAggregated-recConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/INRIRSAggregated-pay",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/INRIRSAggregated-pay",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSAggregated-payConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/INRIRSAggregated-payConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/INRIRSCFOutput-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Forex Register",
+			"flowId": "7",
+			"flowDependencies": [],
+			"executorID": "2",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/Forex_outstanding_register_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/cf_forex",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/BAH/{ddmmyyyy}/Forex_outstanding_register_{ddmmyyyy}.csv",
+						"--output-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/ForexCFOutput",
+						"--entity",
+						"BAHRAIN_CE",
+						"--sheet-name",
+						"Sheet1",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Rec-Side",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/ForexCFOutput-rec.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/ForexRecAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexRecBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexRecBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/forex_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/forex_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/forex_rules_rec_bh.txt",
+						"--default-llg-code",
+						"4444",
+						"--default-overdue-llg-code",
+						"0"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator-Pay-Side",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/BAH/{ddmmyyyy}/ForexCFOutput-pay.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/ForexPayAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexPayBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexPayBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"false",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/BAH/forex_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/BAH/forex_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/BAH/forex_rules_pay_bh.txt",
+						"--default-llg-code",
+						"5555",
+						"--default-overdue-llg-code",
+						"0"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Rec",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/ForexRecAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/ForexRecAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexRecAggregatedConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexRecAggregatedConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator Pay",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/BAH/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/ForexPayAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/BAH/{ddmmyyyy}/ForexPayAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexPayAggregatedConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/BAH/{ddmmyyyy}/ForexPayAggregatedConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/BAH/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/BAH/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/BAH/{ddmmyyyy}/ForexCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,350 @@
+{
+    "streamName": "UNDRAWN",
+    "streamId": "1053",
+    "flows": [
+        {
+            "name": "Undrawn Classification",
+            "flowId": "1",
+            "flowDependencies": [],
+            "executorID": "2",
+            "process": [
+                {
+                    "processName": "Pre-Flight-Check",
+                    "processId": "1",
+                    "processBinary": "/home/dbuser/programs/IND/pfc.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/undrawn-ind.txt"
+                    ],
+                    "processDependencies": [],
+                    "processReport": ""
+                },
+                {
+                    "processName": "Pre-Processor",
+                    "processId": "2",
+                    "processBinary": "/home/dbuser/programs/IND/pp_undrawn_ind",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/undrawn-ind.txt",
+                        "--asset-class-path",
+                        "/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Asset_Class_Mapping_master.xlsx",
+                        "--line-code-path",
+                        "/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Line_Code_Mapping_Master.xlsx",
+                        "--odfd-path",
+                        "/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/ODFD_Mapping_Master.xlsx",
+                        "--lcr-cat-path",
+                        "/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LCRCategory.xlsx",
+                        "--common-sheet-name",
+                        "Sheet1",
+                        "--output-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/undrawn_ind.txt",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/UndrawnInd_PPLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/UndrawnInd_PPDiagLog.txt"
+                    ],
+                    "processDependencies": [
+                        "1"
+                    ],
+                    "processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/undrawn_ind-health-check-report.json"
+                },
+                {
+                    "processName": "Cashflow-Generator",
+                    "processId": "3",
+                    "processBinary": "/home/dbuser/programs/IND/cf_undrawn_ind",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/undrawn_ind.txt",
+                        "--output-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndCFLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndCFDiagLog.txt"
+                    ],
+                    "processDependencies": [
+                        "2"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Aggregator Liability",
+                    "processId": "4",
+                    "processBinary": "/home/dbuser/programs/IND/non-mat-alm-agg",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/undrawnIndLiabAggregated-summary",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndLiabBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndLiabBALMDiagLog.txt",
+                        "--currency",
+                        "INR",
+                        "--local-consolidation-currency",
+                        "RUP",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--known-fields-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_liab_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_metadata.json",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_liab_rules.txt",
+                        "--default-llg-code",
+                        "11999"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Aggregator Asset",
+                    "processId": "5",
+                    "processBinary": "/home/dbuser/programs/IND/non-mat-alm-agg",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/undrawnIndAssetAggregated-summary",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndAssetBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndAssetBALMDiagLog.txt",
+                        "--currency",
+                        "INR",
+                        "--local-consolidation-currency",
+                        "RUP",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--known-fields-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_asset_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_metadata.json",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_asset_rules.txt",
+                        "--default-llg-code",
+                        "4002"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput-health-check-report.json"
+                },
+		  {
+                    "processName": "BALM Aggregator LCR",
+                    "processId": "6",
+                    "processBinary": "/home/dbuser/programs/IND/non-mat-alm-agg",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/undrawnIndLCRAggregated-summary",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndLCRBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndLCRBALMDiagLog.txt",
+                        "--currency",
+                        "INR",
+                        "--local-consolidation-currency",
+                        "RUP",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--known-fields-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_lcr_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_metadata.json",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_lcr_rules.txt",
+                        "--default-llg-code",
+                        "4002"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput-health-check-report.json"
+                }
+            ]
+        },
+        {
+            "name": "Undrawn Classification Summary",
+            "flowId": "2",
+            "flowDependencies": [],
+            "executorID": "2",
+            "process": [
+                {
+                    "processName": "Pre-Flight-Check",
+                    "processId": "1",
+                    "processBinary": "/home/dbuser/programs/IND/pfc.sh",
+                    "processArguments": [
+                        "{ddmmyyyy}",
+                        "/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/undrawn-ind-smry.txt"
+                    ],
+                    "processDependencies": [],
+                    "processReport": ""
+                },
+                {
+                    "processName": "Pre-Processor",
+                    "processId": "2",
+                    "processBinary": "/home/dbuser/programs/IND/pp_undrawn_summry",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/undrawn-ind-smry.txt",
+                        "--asset-class-path",
+                        "/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Asset_Class_Mapping_master.xlsx",
+                        "--lcr-cat-path",
+                        "/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LCRCategory.xlsx",
+                        "--common-sheet-name",
+                        "Sheet1",
+                        "--output-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/undrawn_smry.txt",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/UndrawnSmry_PPLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/UndrawnSmry_PPDiagLog.txt"
+                    ],
+                    "processDependencies": [
+                        "1"
+                    ],
+                    "processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/undrawn_smry-health-check-report.json"
+                },
+                {
+                    "processName": "Cashflow-Generator",
+                    "processId": "3",
+                    "processBinary": "/home/dbuser/programs/IND/cf_undrawn_summary",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/undrawn_smry.txt",
+                        "--output-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnSmryCFOutput",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnSmryCFLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnSmryCFDiagLog.txt",
+                        "--log-level",
+                        "trace",
+                        "--diagnostics-flag",
+                        "false"
+                    ],
+                    "processDependencies": [
+                        "2"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnSmryCFOutput-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Aggregator Asset Liability",
+                    "processId": "4",
+                    "processBinary": "/home/dbuser/programs/IND/non-mat-alm-agg",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnSmryCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/undrawnSmryLiabAggregated-summary",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnSmryLiabBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnSmryLiabBALMDiagLog.txt",
+                        "--currency",
+                        "INR",
+                        "--local-consolidation-currency",
+                        "RUP",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--known-fields-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_liab_summary_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_summary_metadata.json",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_liab_summary_rules.txt",
+                        "--default-llg-code",
+                        "11999"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnSmryCFOutput-health-check-report.json"
+                },
+                {
+                    "processName": "BALM Aggregator Asset",
+                    "processId": "5",
+                    "processBinary": "/home/dbuser/programs/IND/non-mat-alm-agg",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnSmryCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/undrawnSmryAssetAggregated-summary",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnSmryAssetBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnSmryAssetBALMDiagLog.txt",
+                        "--currency",
+                        "INR",
+                        "--local-consolidation-currency",
+                        "RUP",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--known-fields-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_asset_summary_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_summary_metadata.json",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_asset_summary_rules.txt",
+                        "--default-llg-code",
+                        "4001"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnSmryCFOutput-health-check-report.json"
+                },
+		  {
+                    "processName": "BALM Aggregator LCR",
+                    "processId": "6",
+                    "processBinary": "/home/dbuser/programs/IND/non-mat-alm-agg",
+                    "processArguments": [
+                        "--input-file",
+                        "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput.cf",
+                        "--output-file",
+                        "/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/undrawnSmryLCRAggregated-summary",
+                        "--log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndLCRBALMLog.txt",
+                        "--diagnostics-log-file",
+                        "/UAT_SH_LOGS/IND/{ddmmyyyy}/undrawnIndLCRBALMDiagLog.txt",
+                        "--currency",
+                        "INR",
+                        "--local-consolidation-currency",
+                        "RUP",
+                        "--foreign-consolidation-currency",
+                        "FCY",
+                        "--exchange-rate-file",
+                        "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+                        "--known-fields-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_lcr_req_fields.json",
+                        "--account-metadata-file",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_metadata.json",
+                        "--rules-file-path",
+                        "/UAT_SH_RULES/IND/undrawn-classification_ind_lcr_summary_rules.txt",
+                        "--default-llg-code",
+                        "4002"
+                    ],
+                    "processDependencies": [
+                        "3"
+                    ],
+                    "processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/undrawnIndCFOutput-health-check-report.json"
+                }
+            ]
+        }
+    ]
+}

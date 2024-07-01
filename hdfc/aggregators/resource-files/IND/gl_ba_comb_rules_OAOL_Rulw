@@ -1,0 +1,339 @@
+1|1|0|alm_line|EQ|SECURED LOAN|AND
+1|1|1|is_acct_gl|EQ|N|6667
+2|1|0|alm_line|EQ|Other Borrowings|AND
+2|1|1|is_acct_gl|EQ|N|AND
+2|1|2|cf_type|EQ|A|6665
+3|1|0|alm_line|EQ|Lendings-Interbranch|AND
+3|1|1|is_acct_gl|EQ|N|AND
+3|1|2|cf_type|EQ|A|6664
+4|1|0|alm_line|EQ|Lendings-Interbranch|AND
+4|1|1|is_acct_gl|EQ|N|6663
+5|1|0|alm_line|EQ|Term Loan|AND
+5|1|1|is_acct_gl|EQ|N|6662
+6|1|0|alm_line|EQ|FX_Swap_Adj|AND
+6|1|1|is_acct_gl|EQ|N|AND
+6|1|2|cf_type|EQ|A|4000
+7|1|0|alm_line|EQ|ECG-FLOAT|AND
+7|1|1|is_acct_gl|EQ|N|AND
+7|1|2|cf_type|EQ|D|3335
+8|1|0|alm_line|EQ|Internal-Assets|AND
+8|1|1|is_acct_gl|EQ|N|AND
+8|1|2|cf_type|EQ|A|4000
+9|1|0|alm_line|EQ|Internal Liabilities|AND
+9|1|1|is_acct_gl|EQ|N|AND
+9|1|2|cf_type|EQ|D|4000
+10|1|0|alm_line|EQ|CA - WS|AND
+10|1|1|is_acct_gl|EQ|N|AND
+10|1|2|cf_type|EQ|D|2222
+11|1|0|alm_line|EQ|CA - RT|AND
+11|1|1|is_acct_gl|EQ|N|AND
+11|1|2|cf_type|EQ|D|9999
+12|1|0|alm_line|EQ|Internal Liabilities|AND
+12|1|1|is_acct_gl|EQ|N|AND
+12|1|2|cf_type|EQ|C|6000
+13|1|0|alm_line|EQ|Internal Liabilities|AND
+13|1|1|is_acct_gl|EQ|N|AND
+13|1|2|cf_type|EQ|L|6000
+14|1|0|alm_line|EQ|Internal Liabilities|AND
+14|1|1|is_acct_gl|EQ|N|AND
+14|1|2|cf_type|EQ|N|6000
+15|1|0|alm_line|EQ|Internal-Assets|AND
+15|1|1|is_acct_gl|EQ|N|AND
+15|1|2|cf_type|EQ|C|6000
+16|1|0|alm_line|EQ|Internal-Assets|AND
+16|1|1|is_acct_gl|EQ|N|AND
+16|1|2|cf_type|EQ|L|6000
+17|1|0|alm_line|EQ|CRR Surplus|AND
+17|1|1|is_acct_gl|EQ|N|AND
+17|1|2|cf_type|EQ|C|6000
+18|1|0|alm_line|EQ|ECG-FLOAT|AND
+18|1|1|is_acct_gl|EQ|N|AND
+18|1|2|cf_type|EQ|C|6000
+19|1|0|alm_line|EQ|MF/Custody-FLOAT|AND
+19|1|1|is_acct_gl|EQ|N|AND
+19|1|2|cf_type|EQ|N|6000
+20|1|0|alm_line|EQ|OL-BP|AND
+20|1|1|is_acct_gl|EQ|N|AND
+20|1|2|cf_type|EQ|C|7006
+21|1|0|alm_line|EQ|CA - RT|AND
+21|1|1|is_acct_gl|EQ|N|AND
+21|1|2|cf_type|EQ|C|5250
+22|1|0|alm_line|EQ|CA - WS|AND
+22|1|1|is_acct_gl|EQ|N|AND
+22|1|2|cf_type|EQ|C|5203
+23|1|0|alm_line|EQ|CA-RT|AND
+23|1|1|is_acct_gl|EQ|N|AND
+23|1|2|cf_type|EQ|C|5250
+24|1|0|alm_line|EQ|CA - FIG|AND
+24|1|1|is_acct_gl|EQ|N|AND
+24|1|2|cf_type|EQ|C|5203
+25|1|0|alm_line|EQ|Internal-Assets|AND
+25|1|1|is_acct_gl|EQ|N|AND
+25|1|2|cf_type|EQ|D|4000
+26|1|0|alm_line|EQ|OL-AIP|AND
+26|1|1|is_acct_gl|EQ|N|AND
+26|1|2|cf_type|EQ|D|4000
+27|1|0|alm_line|EQ|Internal Liabilities|AND
+27|1|1|is_acct_gl|EQ|N|AND
+27|1|2|cf_type|EQ|D|6000
+28|1|0|alm_line|EQ|Internal-Assets|AND
+28|1|1|is_acct_gl|EQ|N|AND
+28|1|2|cf_type|EQ|C|6000
+29|1|0|alm_line|EQ|OL-AIP|AND
+29|1|1|is_acct_gl|EQ|N|AND
+29|1|2|cf_type|EQ|C|6000
+30|1|0|alm_line|EQ|Internal Liabilities|AND
+30|1|1|is_acct_gl|EQ|N|AND
+30|1|2|cf_type|EQ|C|6000
+31|1|0|alm_line|EQ|Borrowings|AND
+31|1|1|is_acct_gl|EQ|N|AND
+31|1|2|cf_type|EQ|D|4000
+32|1|0|alm_line|EQ|Nostro|AND
+32|1|1|is_acct_gl|EQ|N|AND
+32|1|2|cf_type|EQ|D|4000
+33|1|0|alm_line|EQ|SECURED LOAN|AND
+33|1|1|is_acct_gl|EQ|N|AND
+33|1|2|cf_type|EQ|D|4000
+34|1|0|alm_line|EQ|CREDIT CARD|AND
+34|1|1|is_acct_gl|EQ|N|AND
+34|1|2|cf_type|EQ|D|4000
+35|1|0|alm_line|EQ|Investments|AND
+35|1|1|is_acct_gl|EQ|N|AND
+35|1|2|cf_type|EQ|D|4000
+36|1|0|alm_line|EQ|OL|AND
+36|1|1|is_acct_gl|EQ|N|AND
+36|1|2|cf_type|EQ|D|4000
+37|1|0|alm_line|EQ|OD - WS|AND
+37|1|1|is_acct_gl|EQ|N|AND
+37|1|2|cf_type|EQ|C|5203
+38|1|0|alm_line|EQ|OD - RT|AND
+38|1|1|is_acct_gl|EQ|N|AND
+38|1|2|cf_type|EQ|C|5250
+39|1|0|alm_line|EQ|SECURED LOAN|AND
+39|1|1|is_acct_gl|EQ|N|AND
+39|1|2|cf_type|EQ|C|6000
+40|1|0|alm_line|EQ|CREDIT CARD|AND
+40|1|1|is_acct_gl|EQ|N|AND
+40|1|2|cf_type|EQ|C|6000
+41|1|0|alm_line|EQ|Investments|AND
+41|1|1|is_acct_gl|EQ|N|AND
+41|1|2|cf_type|EQ|C|6000
+42|1|0|alm_line|EQ|OL|AND
+42|1|1|is_acct_gl|EQ|N|AND
+42|1|2|cf_type|EQ|C|6000
+43|1|0|alm_line|EQ|SB- Non Salary|AND
+43|1|1|is_acct_gl|EQ|N|AND
+43|1|2|cf_type|EQ|D|4000
+44|1|0|alm_line|EQ|SB- SAL|AND
+44|1|1|is_acct_gl|EQ|N|AND
+44|1|2|cf_type|EQ|D|4000
+45|1|0|alm_line|EQ|OD-CC|AND
+45|1|1|is_acct_gl|EQ|N|AND
+45|1|2|cf_type|EQ|D|11001
+46|1|0|alm_line|EQ|OD-CC|AND
+46|1|1|is_acct_gl|EQ|N|AND
+46|1|2|cf_type|EQ|C|5250
+47|1|0|alm_line|EQ|CMS Float|AND
+47|1|1|is_acct_gl|EQ|N|AND
+47|1|2|cf_type|EQ|D|4000
+48|1|0|alm_line|EQ|Other Borrowings|AND
+48|1|1|is_acct_gl|EQ|N|AND
+48|1|2|cf_type|EQ|D|4000
+49|1|0|alm_line|EQ|Term Loan|AND
+49|1|1|is_acct_gl|EQ|N|AND
+49|1|2|cf_type|EQ|D|4000
+50|1|0|alm_line|EQ|Other Borrowings|AND
+50|1|1|is_acct_gl|EQ|N|AND
+50|1|2|cf_type|EQ|C|6000
+51|1|0|alm_line|EQ|Term Loan|AND
+51|1|1|is_acct_gl|EQ|N|AND
+51|1|2|cf_type|EQ|C|6000
+52|1|0|alm_line|EQ|OL-AIP|AND
+52|1|1|is_acct_gl|EQ|N|AND
+52|1|2|cf_type|EQ|D|4000
+53|1|0|alm_line|EQ|OL-AIP|AND
+53|1|1|is_acct_gl|EQ|N|AND
+53|1|2|cf_type|EQ|C|6000
+54|1|0|alm_line|EQ|OL-BP|AND
+54|1|1|is_acct_gl|EQ|N|AND
+54|1|2|cf_type|EQ|D|4000
+55|1|0|alm_line|EQ|Fixed Assets|AND
+55|1|1|is_acct_gl|EQ|N|AND
+55|1|2|cf_type|EQ|D|4000
+56|1|0|alm_line|EQ|OA-AIR|AND
+56|1|1|is_acct_gl|EQ|N|AND
+56|1|2|cf_type|EQ|D|4000
+57|1|0|alm_line|EQ|OL-BP|AND
+57|1|1|is_acct_gl|EQ|N|AND
+57|1|2|cf_type|EQ|C|7006
+58|1|0|alm_line|EQ|Fixed Assets|AND
+58|1|1|is_acct_gl|EQ|N|AND
+58|1|2|cf_type|EQ|C|6000
+59|1|0|alm_line|EQ|OA-AIR|AND
+59|1|1|is_acct_gl|EQ|N|AND
+59|1|2|cf_type|EQ|C|6000
+60|1|0|alm_line|EQ|ECG-FLOAT|AND
+60|1|1|is_acct_gl|EQ|N|AND
+60|1|2|cf_type|EQ|D|4000
+61|1|0|alm_line|EQ|CRR Surplus|AND
+61|1|1|is_acct_gl|EQ|N|AND
+61|1|2|cf_type|EQ|D|4000
+62|1|0|alm_line|EQ|RETAIL LOAN|AND
+62|1|1|is_acct_gl|EQ|N|AND
+62|1|2|cf_type|EQ|D|4000
+63|1|0|alm_line|EQ|STAFF LOAN|AND
+63|1|1|is_acct_gl|EQ|N|AND
+63|1|2|cf_type|EQ|D|4000
+64|1|0|alm_line|EQ|ECG-FLOAT|AND
+64|1|1|is_acct_gl|EQ|N|AND
+64|1|2|cf_type|EQ|C|6000
+65|1|0|alm_line|EQ|CRR Surplus|AND
+65|1|1|is_acct_gl|EQ|N|AND
+65|1|2|cf_type|EQ|C|6000
+66|1|0|alm_line|EQ|RETAIL LOAN|AND
+66|1|1|is_acct_gl|EQ|N|AND
+66|1|2|cf_type|EQ|C|6000
+67|1|0|alm_line|EQ|STAFF LOAN|AND
+67|1|1|is_acct_gl|EQ|N|AND
+67|1|2|cf_type|EQ|C|6000
+68|1|0|alm_line|EQ|BALANCE WITH BANKS AND MONEY AT CALL & SHORT NOTICE|AND
+68|1|1|is_acct_gl|EQ|N|AND
+68|1|2|cf_type|EQ|D|4000
+69|1|0|alm_line|EQ|BALANCE WITH BANKS AND MONEY AT CALL & SHORT NOTICE|AND
+69|1|1|is_acct_gl|EQ|N|AND
+69|1|2|cf_type|EQ|C|6000
+70|1|0|alm_line|EQ|FIG-ATPAR|AND
+70|1|1|is_acct_gl|EQ|N|AND
+70|1|2|cf_type|EQ|C|7006
+71|1|0|alm_line|EQ|Internal Liabilities|AND
+71|1|1|is_acct_gl|EQ|N|AND
+71|1|2|cf_type|EQ|A|4000
+72|1|0|alm_line|EQ|Internal-Assets|AND
+72|1|1|is_acct_gl|EQ|N|AND
+72|1|2|cf_type|EQ|A|4000
+73|1|0|alm_line|EQ|Term Loan|AND
+73|1|1|is_acct_gl|EQ|N|AND
+73|1|2|cf_type|EQ|A|4000
+74|1|0|alm_line|EQ|Lendings-Interbranch|AND
+74|1|1|is_acct_gl|EQ|N|AND
+74|1|2|cf_type|EQ|A|4000
+75|1|0|alm_line|EQ|OD - RT|AND
+75|1|1|is_acct_gl|EQ|N|AND
+75|1|2|cf_type|EQ|A|4000
+76|1|0|alm_line|EQ|Bills|AND
+76|1|1|is_acct_gl|EQ|N|AND
+76|1|2|cf_type|EQ|A|4000
+77|1|0|alm_line|EQ|CA - RT|AND
+77|1|1|is_acct_gl|EQ|N|AND
+77|1|2|cf_type|EQ|A|4000
+78|1|0|alm_line|EQ|Call|AND
+78|1|1|is_acct_gl|EQ|N|AND
+78|1|2|cf_type|EQ|A|4000
+79|1|0|alm_line|EQ|OL|AND
+79|1|1|is_acct_gl|EQ|N|AND
+79|1|2|cf_type|EQ|A|4000
+80|1|0|alm_line|EQ|Other Borrowings|AND
+80|1|1|is_acct_gl|EQ|N|AND
+80|1|2|cf_type|EQ|A|4000
+81|1|0|alm_line|EQ|Internal Liabilities|AND
+81|1|1|is_acct_gl|EQ|N|AND
+81|1|2|cf_type|EQ|L|6000
+82|1|0|alm_line|EQ|Internal-Assets|AND
+82|1|1|is_acct_gl|EQ|N|AND
+82|1|2|cf_type|EQ|L|6000
+83|1|0|alm_line|EQ|Term Loan|AND
+83|1|1|is_acct_gl|EQ|N|AND
+83|1|2|cf_type|EQ|L|6000
+84|1|0|alm_line|EQ|Lendings-Interbranch|AND
+84|1|1|is_acct_gl|EQ|N|AND
+84|1|2|cf_type|EQ|L|6000
+85|1|0|alm_line|EQ|OD - RT|AND
+85|1|1|is_acct_gl|EQ|N|AND
+85|1|2|cf_type|EQ|L|6000
+86|1|0|alm_line|EQ|Bills|AND
+86|1|1|is_acct_gl|EQ|N|AND
+86|1|2|cf_type|EQ|L|6000
+87|1|0|alm_line|EQ|CA - RT|AND
+87|1|1|is_acct_gl|EQ|N|AND
+87|1|2|cf_type|EQ|L|5250
+88|1|0|alm_line|EQ|Call|AND
+88|1|1|is_acct_gl|EQ|N|AND
+88|1|2|cf_type|EQ|L|6000
+89|1|0|alm_line|EQ|OL|AND
+89|1|1|is_acct_gl|EQ|N|AND
+89|1|2|cf_type|EQ|L|6000
+90|1|0|alm_line|EQ|Other Borrowings|AND
+90|1|1|is_acct_gl|EQ|N|AND
+90|1|2|cf_type|EQ|L|6000
+91|1|0|alm_line|EQ|Internal-Assets|AND
+91|1|1|cf_type|EQ|N|AND
+91|1|2|is_acct_gl|EQ|N|4000
+92|1|0|alm_line|EQ|OD-CC|AND
+92|1|1|is_acct_gl|EQ|N|11001
+93|1|0|alm_line|EQ|OL-BP|AND
+93|1|1|is_acct_gl|EQ|N|7006
+94|1|0|alm_line|EQ|FIG-ATPAR|AND
+94|1|1|is_acct_gl|EQ|N|7006
+95|1|0|alm_line|EQ|Provision for Loans|AND
+95|1|1|is_acct_gl|EQ|N|6000
+96|1|0|alm_line|EQ|Provision for Bills|AND
+96|1|1|is_acct_gl|EQ|N|6000
+97|1|0|alm_line|EQ|Provision for CASA / OD|AND
+97|1|1|is_acct_gl|EQ|N|6000
+98|1|0|alm_line|EQ|CA - RT|AND
+98|1|1|is_acct_gl|EQ|N|5250
+99|1|0|alm_line|EQ|CA - WS|AND
+99|1|1|is_acct_gl|EQ|N|5203
+100|1|0|alm_line|EQ|CA - FIG|AND
+100|1|1|is_acct_gl|EQ|N|5203
+101|1|0|alm_line|EQ|CA|AND
+101|1|1|is_acct_gl|EQ|N|5250
+102|1|0|alm_line|EQ|Internal Liabilities|AND
+102|1|1|is_acct_gl|EQ|N|6000
+103|1|0|alm_line|EQ|ECG-FLOAT|AND
+103|1|1|is_acct_gl|EQ|N|6000
+104|1|0|alm_line|EQ|CA-RT|AND
+104|1|1|is_acct_gl|EQ|N|5250
+105|1|0|alm_line|EQ|CREDIT CARD|AND
+105|1|1|is_acct_gl|EQ|N|4000
+106|1|0|alm_line|EQ|GLL|AND
+106|1|1|is_acct_gl|EQ|N|6000
+107|1|0|alm_line|EQ|Reval|AND
+107|1|1|is_acct_gl|EQ|N|AND
+107|1|2|cf_type|EQ|D|4000
+108|1|0|alm_line|EQ|Reval|AND
+108|1|1|is_acct_gl|EQ|N|AND
+108|1|2|cf_type|EQ|C|6000
+109|1|0|alm_line|EQ|Repo Margin|AND
+109|1|1|is_acct_gl|EQ|N|AND
+109|1|2|cf_type|EQ|D|4000
+110|1|0|alm_line|EQ|Repo Margin|AND
+110|1|1|is_acct_gl|EQ|N|AND
+110|1|2|cf_type|EQ|C|6000
+111|1|0|alm_line|EQ|Advance Tax|AND
+111|1|1|is_acct_gl|EQ|N|AND
+111|1|2|cf_type|EQ|N|6000
+112|1|0|alm_line|EQ|Advance Tax|AND
+112|1|1|is_acct_gl|EQ|N|AND
+112|1|2|cf_type|EQ|L|6000
+113|1|0|alm_line|EQ|Inter_Sys_Adj|AND
+113|1|1|is_acct_gl|EQ|N|AND
+113|1|2|cf_type|EQ|A|4000
+114|1|0|alm_line|EQ|Deferred_Adj|AND
+114|1|1|is_acct_gl|EQ|N|AND
+114|1|2|cf_type|EQ|D|4000
+115|1|0|alm_line|EQ|Inter_Sys_Adj|AND
+115|1|1|is_acct_gl|EQ|N|AND
+115|1|2|cf_type|EQ|L|6000
+116|1|0|alm_line|EQ|FX_Swap_Adj|AND
+116|1|1|is_acct_gl|EQ|N|AND
+116|1|2|cf_type|EQ|L|6000
+117|1|0|alm_line|EQ|Deferred_Adj|AND
+117|1|1|is_acct_gl|EQ|N|AND
+117|1|2|cf_type|EQ|C|6000
+118|1|0|gl_prefix|EQ|3|6000
+119|1|0|gl_prefix|EQ|4|6000
+120|1|0|is_acct_gl|EQ|N|AND
+120|1|1|gl_prefix|EQ|1|14000
+121|1|0|is_acct_gl|EQ|N|AND
+121|1|1|gl_prefix|EQ|2|6000

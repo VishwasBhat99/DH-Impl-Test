@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+message Cashflow {
+    double int_amt = 1;
+    double prin_amt = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows {
+string acc_id = 1 ;
+string cust_name = 2 ;
+double pout_bal = 3 ;
+double acc_int = 4 ;
+int64 st_dt = 5 ;
+int64 c_dt = 6 ;
+string gl_cd = 7 ;
+double int_rt = 8 ;
+string int_typ = 9 ;
+string int_bmark = 10 ;
+string rt_flag = 11 ;
+string prod_cd = 12 ;
+int64 nxt_pay_dt = 13 ;
+int64 mis2 = 14 ;
+string ccy = 15 ;
+string ratings = 16 ;
+string rating_agency = 17 ;
+string asset_class = 18 ;
+string div = 19 ;
+string typ = 20 ;
+string originator = 21 ;
+int64 as_on_dt = 22 ;
+string rep_freq = 23 ;
+int64 nxt_rep_dt = 24 ;
+string alm_line = 25 ;
+double yeild = 26 ;
+string deal_name = 27 ;
+int64 org_tenor = 28 ;
+int64 resid_tenor = 29 ;
+double total_interest_amount = 30 ;
+double total_principal_amount = 31 ;
+int64	mis1 = 32 ;
+string ia_line = 33 ;
+string sma_flag = 34;
+repeated Cashflow cashflows= 35;
+}

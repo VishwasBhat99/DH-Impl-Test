@@ -1,0 +1,5 @@
+{
+  "account_number": "deal_id",
+  "amount": "principal_amount",
+  "interest_rate": "roi"
+}

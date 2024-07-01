@@ -1,0 +1,70 @@
+1|1|0|ia_llg|EQ|Borr - Refinance|6015
+2|1|0|ia_llg|EQ|Borrowing - FCY|6020
+3|1|0|ia_llg|EQ|Borrowing - Repos|6035
+4|1|0|ia_llg|EQ|CA - CBD|6501
+5|1|0|ia_llg|EQ|CA - RL|6505
+6|1|0|ia_llg|EQ|CA - RA|6510
+7|1|0|ia_llg|EQ|CA - HK|6515
+8|1|0|ia_llg|EQ|CA - SE|6520
+9|1|0|ia_llg|EQ|CA - ECG|6525
+10|1|0|ia_llg|EQ|CA - FIG|6530
+11|1|0|ia_llg|EQ|CA - FIG - BTI|6535
+12|1|0|ia_llg|EQ|Savings|7001
+13|1|0|ia_llg|EQ|TD - Retail|7525
+14|1|0|ia_llg|EQ|TD - RA|7535
+15|1|0|ia_llg|EQ|OL - Other Liabilities (GL)|8001
+16|1|0|ia_llg|EQ|OL - Other Liabilities - Baharain|8005
+17|1|0|ia_llg|EQ|OL - Other Liabilities - HK|8010
+18|1|0|ia_llg|EQ|OL - Sub Debt|8015
+19|1|0|ia_llg|EQ|Floats|8020
+20|1|0|ia_llg|EQ|CRR Surplus|11001
+21|1|0|ia_llg|EQ|Local Nostros|11005
+22|1|0|ia_llg|EQ|Cash|11010
+23|1|0|ia_llg|EQ|Lendings - Call|11501
+24|1|0|ia_llg|EQ|Lendings - FCY|11505
+25|1|0|ia_llg|EQ|Lendings - Reverse Repos|11520
+26|1|0|ia_llg|EQ|Inv - Shares - Equities&MF|12025
+27|1|0|ia_llg|EQ|Inv - Deb - CBD - Fixed|12045
+28|1|0|ia_llg|EQ|Inv-PREF/CBD|12055
+29|1|0|ia_llg|EQ|Inv - RIDF|12060
+30|1|0|ia_llg|EQ|Loans - CBD|12501
+31|1|0|ia_llg|EQ|Loans - FIG|12509
+32|1|0|ia_llg|EQ|Loans - CFU - Staff|12512
+33|1|0|ia_llg|EQ|Loans - Retail Others|12515
+34|1|0|ia_llg|EQ|Loans - SE|12518
+35|1|0|ia_llg|EQ|Loans - ECG|12521
+36|1|0|ia_llg|EQ|Loans - EEG|12539
+37|1|0|ia_llg|EQ|Loans - BB - Others|12554
+38|1|0|ia_llg|EQ|Loan - GOLD|12569
+39|1|0|ia_llg|EQ|Bills - ECG|13015
+40|1|0|ia_llg|EQ|Bills - Others|13030
+41|1|0|ia_llg|EQ|Bills - BB|13035
+42|1|0|ia_llg|EQ|EMI Loans - AL|13501
+43|1|0|ia_llg|EQ|EMI Loans - UC|13503
+44|1|0|ia_llg|EQ|EMI Loans - PL|13506
+45|1|0|ia_llg|EQ|EMI Loans - Business|13509
+46|1|0|ia_llg|EQ|EMI Loans - SHG|13512
+47|1|0|ia_llg|EQ|EMI Loans - TW|13521
+48|1|0|ia_llg|EQ|EMI Loans - CV|13527
+49|1|0|ia_llg|EQ|EMI Loans - CE|13542
+50|1|0|ia_llg|EQ|Loans - Inventory - AL|13554
+51|1|0|ia_llg|EQ|EMI Loans - HCEQ|13557
+52|1|0|ia_llg|EQ|EMI Loans - KGC|13560
+53|1|0|ia_llg|EQ|OD - CBD|14001
+54|1|0|ia_llg|EQ|OD - FIG|14010
+55|1|0|ia_llg|EQ|OD - RL|14015
+56|1|0|ia_llg|EQ|OD - CV|14020
+57|1|0|ia_llg|EQ|OD - BB - WC|14025
+58|1|0|ia_llg|EQ|OD - LAS - Shares|14035
+59|1|0|ia_llg|EQ|OD - SE|14040
+60|1|0|ia_llg|EQ|OD - ECG|14045
+61|1|0|ia_llg|EQ|OD - MMI Banks|14050
+62|1|0|ia_llg|EQ|OD - CC|14065
+63|1|0|ia_llg|EQ|OD- Commodity|14080
+64|1|0|ia_llg|EQ|OD- KGC|14085
+65|1|0|ia_llg|EQ|OD-CFU|14090
+66|1|0|ia_llg|EQ|OA - Fixed Assets - Baharain|14505
+67|1|0|ia_llg|EQ|OA - Fixed Assets - HK|14510
+68|1|0|ia_llg|EQ|OA - Internal|14515
+69|1|0|ia_llg|EQ|OA - Internal - Baharain|14520
+70|1|0|ia_llg|EQ|OA - Internal - HK|14525

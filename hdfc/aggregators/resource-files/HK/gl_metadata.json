@@ -1,0 +1,85 @@
+{
+    "fields": [
+      {
+        "name": "seg1",
+        "typ": "String",
+        "position": 1
+      },
+      {
+        "name": "account_no",
+        "typ": "String",
+        "position": 2
+      },
+      {
+        "name": "seg5",
+        "typ": "String",
+        "position": 3
+      },
+      {
+        "name": "seg6",
+        "typ": "String",
+        "position": 4
+      },
+      {
+        "name": "seg3",
+        "typ": "String",
+        "position": 5
+      },
+      {
+        "name": "seg8",
+        "typ": "String",
+        "position": 6
+      },
+      {
+        "name": "seg4",
+        "typ": "String",
+        "position": 7
+      },
+      {
+        "name": "dr_bal",
+        "typ": "F64",
+        "position": 8
+      },
+      {
+        "name": "cr_bal",
+        "typ": "F64",
+        "position": 9
+      },
+      {
+        "name": "bal_total",
+        "typ": "F64",
+        "position": 10
+      },
+      {
+        "name": "concat",
+        "typ": "String",
+        "position": 11
+      },
+      {
+        "name": "alm_line",
+        "typ": "String",
+        "position": 12
+      },
+      {
+        "name": "int_rate",
+        "typ": "F64",
+        "position": 13
+      },
+      {
+        "name": "cf_type",
+        "typ": "String",
+        "position": 14
+      },
+      {
+        "name": "gl_prefix",
+        "typ": "String",
+        "position": 15
+      },
+      {
+        "name": "is_acct_gl",
+        "typ": "String",
+        "position": 16
+      }
+    ]
+  }
+  

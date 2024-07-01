@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+message Cashflow {
+    // message fields
+    double interest_amount=1;
+    double principal_amount=2;
+    int64 date=3;
+}
+message AccountWithCashflows{
+    // message fields
+String deal_ref=1;
+String intt_name=2;
+String cntpty_name=3;
+int64 deal_date=4;
+int64 value_date=5;
+int64 mat_date=6;
+double deal_amt_act=7;
+double deal_amt_plc=8;
+double roi=9;
+double int_amt_fx_deal=10;
+double mat_amt_fx_deal=11;
+String practice=12;
+String spread=13;
+String benchmark=14;
+String rate_sett_freq=15;
+String sett_freq=16;
+String sett_typ=17;
+String dealer=18;
+String cntpty_id=19;
+String inv_curcy=20;
+String gl_code=21;
+String int_type=22;
+String cgl=23;
+String group=24;
+String llg=25;
+String cf_type=26;
+String cf_currency=27;
+double cf_amount=28;
+int64 cf_date=29;
+int64 cf_date_2=30;
+repeated Cashflow cashflows=31;
+}

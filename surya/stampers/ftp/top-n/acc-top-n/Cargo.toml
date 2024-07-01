@@ -1,0 +1,23 @@
+[package]
+name = "ftp_acct_top_n"
+version = "1.0.4340"
+authors = ["sonali <sonali.s@surya-soft.com>"]
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = "2.31.2"
+rbdate = { path = "../../../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../../../hdfc/libraries/sdb_io" }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+sdb_dyn_proto_rdr = { path = "../../../../../hdfc/libraries/sdb_dyn_proto_rdr" }
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+chrono = "0.4.10"
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+health_report = { path = "../../../../../hdfc/libraries/health_report" }
+calamine = "0.18.0"
+libmath = "0.2.1"

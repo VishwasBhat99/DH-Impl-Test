@@ -1,0 +1,133 @@
+{
+	"streamName": "Murex Loader",
+	"streamId": "3016",
+	"flows": [
+		{
+			"name": "Bond Master Loader",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/Bond_Master_ADF_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport" : ""
+				},
+				{
+					"processName": "DB-Loader",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Murex-Bond-Master/BAH/Import/ImportData.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": ["1"],
+					"processReport" : "/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-Bond-Master-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Money Market",
+			"flowId": "2",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Master",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/master-mm.csv"
+					],
+					"processDependencies": [],
+					"processReport" : ""
+				},
+				{
+					"processName": "Pre-Flight-Check-DB-Cashflow",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/cashflows-mm.csv"
+					],
+					"processDependencies": ["1"],
+					"processReport" : ""
+				},
+				{
+					"processName": "DB-Loader",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Money-Market/BAH/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": ["2"],
+					"processReport" : "/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-Money-Market-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Security Closing Stock",
+			"flowId": "3",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check-DB-Cashflow",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/close_stock.csv"
+					],
+					"processDependencies": [],
+					"processReport" : ""
+				},
+				{
+					"processName": "DB-Loader",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Security-Closing-Stock/BAH/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": ["1"],
+					"processReport" : "/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-Sec-Close-Stock-health-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "Reciprocal Lending",
+			"flowId": "4",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/BAH/pfcBAH.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/reciprocal-lending.csv"
+					],
+					"processDependencies": [],
+					"processReport" : ""
+				},
+				{
+					"processName": "DB-Loader",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/DB-Loader-Reciprocal-Lending/BAH/ImpExp.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": ["1"],
+					"processReport" : "/UAT_SH_INPUTDATA/BAH/{ddmmyyyy}/DB-Loader-Rec-Lend-health-check-report.json"
+				}
+			]
+		}		
+	]
+}

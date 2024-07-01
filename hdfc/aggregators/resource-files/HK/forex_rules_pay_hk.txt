@@ -1,0 +1,35 @@
+1|1|0|usage|EQ|ODDCPEXPB|4445
+2|1|0|usage|EQ|Wash Rate|4445
+3|1|0|counterparty_long_name|EQ|HDFC BANK LTD HONGKONG|4445
+4|1|0|contract_typology|EQ|FX Swap|AND
+4|1|1|trading_banking|EQ|No|AND
+4|1|2|internal_external|EQ|N|AND
+4|1|3|cf_type|EQ|I|14660
+5|1|0|contract_typology|EQ|Outright|AND
+5|1|1|trading_banking|EQ|No|AND
+5|1|2|internal_external|EQ|N|AND
+5|1|3|cf_type|EQ|I|14662
+6|1|0|contract_typology|EQ|Spot|AND
+6|1|1|trading_banking|EQ|No|AND
+6|1|2|internal_external|EQ|N|AND
+6|1|3|cf_type|EQ|I|14664
+7|1|0|contract_typology|EQ|Tom|AND
+7|1|1|trading_banking|EQ|No|AND
+7|1|2|internal_external|EQ|N|AND
+7|1|3|cf_type|EQ|I|14664
+8|1|0|contract_typology|EQ|FX Swap|AND
+8|1|1|trading_banking|EQ|Yes|AND
+8|1|2|internal_external|EQ|N|AND
+8|1|3|cf_type|EQ|I|14760
+9|1|0|contract_typology|EQ|Outright|AND
+9|1|1|trading_banking|EQ|Yes|AND
+9|1|2|internal_external|EQ|N|AND
+9|1|3|cf_type|EQ|I|14762
+10|1|0|contract_typology|EQ|Spot|AND
+10|1|1|trading_banking|EQ|Yes|AND
+10|1|2|internal_external|EQ|N|AND
+10|1|3|cf_type|EQ|I|14764
+11|1|0|contract_typology|EQ|Tom|AND
+11|1|1|trading_banking|EQ|Yes|AND
+11|1|2|internal_external|EQ|N|AND
+11|1|3|cf_type|EQ|I|14764

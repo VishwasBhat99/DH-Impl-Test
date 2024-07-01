@@ -1,0 +1,34 @@
+syntax= "proto3";
+
+message Cashflow {
+    double int_amt= 1;
+    double prin_amt= 2;
+    int64 date= 3;
+}
+
+message AccountWithCashflows{
+    string card_no = 1;
+    string card_status = 2;
+    string prd_code = 3;
+    string acc_no = 4;
+    double outstanding_bal = 5;
+    double emi_amt = 6;
+    int64 in_date = 7;
+    double tenurs = 8;
+    string del_cnt = 9;
+    string cif_no = 10;
+    string pan_no = 11;
+    double intrate = 12;
+    int64 maturity_date = 13;
+    string bgl = 14;
+    string cgl = 15;
+    string branchcode = 16;
+    string intamount = 17;
+    string duedate = 18;
+    string group = 19;
+    string llg = 20;
+    string currency = 21;
+    double tot_int_amt = 22;
+    double tot_prin_amt = 23;
+    repeated Cashflow cashflows= 24;
+}

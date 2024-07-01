@@ -1,0 +1,86 @@
+{
+	"streamName": "BG",
+	"streamId": "1080",
+	"flows": [
+		{
+			"name": "BG",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "1",
+			"process": [
+				{
+					"processName": "Pre-Flight",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/BG_Invocation_Report_{ddmmyyyy}.CSV"
+					],
+					"processDependencies": [
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_invo_bg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/BG_Invocation_Report_{ddmmyyyy}.CSV",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/InvocBGCFOut",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocBGCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocBGCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/InvocBGCFOut-health-check-report.json"
+				},
+				{
+					"processName": "BA-Aggregator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/non_mat_ba_agg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/InvocBGCFOut.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/InvocBGBAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocBGBALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/InvocBGBADiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/invoc_bg_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/invoc_bg_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/invoc_bg_rules.txt",
+						"--threshold-file-path",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/BG_Threshold.txt",
+						"--is-consolidated",
+						"true",
+						"--is-amt-abs",
+						"true",
+						"--default-llg-code",
+						"5701"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/InvocBGCFOut-health-check-report.json"
+				}
+			]
+		}
+	]
+}

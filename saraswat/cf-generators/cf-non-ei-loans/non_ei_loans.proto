@@ -1,0 +1,55 @@
+syntax= "proto3";
+
+message Cashflow {
+    double interest_amount= 1;
+    double principal_amount= 2;
+    int64 date= 3;
+}
+
+message AccountWithCashFlows {
+    string acid= 1;
+    string foracid= 2;
+    string sol_id= 3;
+    int64 acct_opn_date= 4;
+    string gl_sub_head_code= 5;
+    string schm_code= 6;
+    string schm_type= 7;
+    string acct_crncy_code= 8;
+    int64 rep_shdl_num= 9;
+    int64 rep_shdl_date= 10;
+    int64 dis_shdl_num= 11;
+    int64 dis_shdl_date= 12;
+    double dis_amt= 13;
+    double clr_bal_amt= 14;
+    double sanct_lim= 15;
+    double rephasement_principal= 16;
+    int64 ei_perd_end_date= 17;
+    string cust_id= 18;
+    string cust_name= 19;
+    string ei_schm_flg= 20;
+    string int_basis= 21;
+    string ei_formula_flg= 22;
+    string ei_intcalc_freq= 23;
+    string ei_method= 24;
+    double int_rate= 25;
+    string int_type= 26;
+    int64 next_repricing_date= 27;
+    int64 last_repricing_date= 28;
+    string repricing_freq= 29;
+    string float_rate_benchmark= 30;
+    double spread= 31;
+    string npa_flg= 32;
+    string npa_classification= 33;
+    double npa_amt= 34;
+    string cust_country_id= 35;
+    string cust_credit_rating= 36;
+    string cust_sector_cd= 37;
+    string cust_industry_cd= 38;
+    double exchangert= 39;
+    int64 contractual_maturity_days= 40;
+    int64 residual_maturity_days= 41;
+    string custom1= 42;
+    string custom2= 43;
+    string custom3= 44;
+    repeated Cashflow cashflows= 45;
+}

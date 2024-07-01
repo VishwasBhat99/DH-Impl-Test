@@ -1,0 +1,13 @@
+[package]
+name = "scenario-generator"
+version = "1.0.1"
+authors = ["shashank676 <shashank.p@surya-soft.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde_json = "1.0.44"
+serde_derive = "1.0.104"
+serde = "1.0.104"
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+termion = "1.5.4"

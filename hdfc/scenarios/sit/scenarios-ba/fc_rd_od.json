@@ -1,0 +1,353 @@
+{
+	"streamName": "FC RD OD",
+	"streamId": "1028",
+	"flows": [
+		{
+			"name": "RD",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_RDCLIENT_EDW_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "RD-Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_rd",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_RDCLIENT_EDW_{ddmmyyyy}.csv",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/RD_GLMapping_Master.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/GL_ALM_Mapping.xlsx",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/RDOutput.txt",
+						"--alm-master-sheet-name",
+						"GL_ALM_Mapping",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/RDReconRpt.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/RDOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_rd",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/RDOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/RDCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/RDCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/RDCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/RDAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDBALMDiagLog.txt.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--is-consolidated",
+						"true",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/rd_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/rd_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/rd_rules.txt",
+						"--default-llg-code",
+						"05498"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/RDCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/RDAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_CFDATA/IND/{ddmmyyyy}/RDCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/RDCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/RDAvgBal.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/RDAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/rd_avg_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/rd_metadata.json"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/RDAvgBal-heath-check-report.json"
+				}
+			]
+		},
+		{
+			"name": "FinwareCASAOD",
+			"flowId": "2",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_CH378_OD_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/IND/pp_fin_casa_od",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/IND/{ddmmyyyy}/EDW_ALM_CH378_OD_{ddmmyyyy}.csv",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--ref-file-4",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/FWCostCenter_OD.xlsx",
+						"--ref-file-5",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/INP001_NPA.csv",
+						"--ref-file-6",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/UBS_Rate_Code_Master.xlsx",
+						"--ref-file-7",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/currency_master.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODPPOutput.txt",
+						"--concat-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODConcat.txt",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODReconRpt.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Generator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/IND/cf_fin_casa_od",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODPPOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/FWODGOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODGLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODGDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Balm-Aggregator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/FWODGOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FWODAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/fwod_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/fwod_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/fwod_rules.txt",
+						"--default-llg-code",
+						"12519"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FWODAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/GWODAggConvLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BA-Aggregator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/IND/non_mat_ba_agg",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/FWODGOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FWODBAAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODBALog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODBADiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--is-consolidated",
+						"true",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/IND/fwod_ba_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/fwod_metadata.json",
+						"--rules-file-path",
+						"/SIT_SH_RULES/IND/fwod_ba_rules.txt",
+						"--default-llg-code",
+						"12519",
+						"--is-amt-abs",
+						"true",
+						"threshold-file-path",
+						"/SIT_SH_INPUTDATA/IND/OPERATIONAL_FILES/FWOD_Threshold.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODPPOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Average Balance",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/IND/avg_bal",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/IND/{ddmmyyyy}/FWODGOutput.cf",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODAvgBal.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODAvgBalLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/IND/{ddmmyyyy}/FWODAvgBalDiagLog.txt",
+						"--known-fields-file",
+						"/SIT_SH_RULES/IND/fwod_avg_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/IND/fwod_metadata.json"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FWODAvgBal-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

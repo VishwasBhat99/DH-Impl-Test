@@ -1,0 +1,16 @@
+[package]
+name = "topn_sig_borr"
+version = "1.0.2226"
+authors = ["VishwasBhat99 <vishwas.b@surya-soft.com>"]
+edition = "2021"
+
+
+[dependencies]
+clap = "3.0.1"
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+health_report = { path = "../../../hdfc/libraries/health_report" }
+calamine = "0.18.0"

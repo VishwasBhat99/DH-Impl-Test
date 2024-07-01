@@ -1,0 +1,12 @@
+syntax= "proto3";
+
+message OutputAccount {
+    string as_on_date = 1;
+    double acc_no = 2;
+    int64 custid = 3;
+    int64 classid = 4;
+    string curr = 5
+    string mat_date = 6;
+    double tot_amt = 7;
+    double tot_nwd_amt = 8;
+}

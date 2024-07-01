@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows{
+    string account_number  = 1;
+    double accrued_interest  = 2;
+    string deposit_type  = 3;
+    int64 maturity_date  = 4;
+    double rat_acct_int  = 5;
+    double rat_acct_int_var  = 6;
+    int64 next_compound_date  = 7;
+    int64 next_payment_date  = 8;
+    int64 account_start_date  = 9;
+    int64 currency_code  = 10;
+    int64 customer_id  = 11;
+    double original_balance  = 12;
+    int64 origination_date  = 13;
+    int64 previous_roll_over_date  = 14;
+    string description  = 15;
+    string client_name  = 16;
+    string tname  = 17;
+    string as_on_date  = 18;
+    string bank_num  = 19;
+    string branch  = 20;
+    string rate_flag  = 21;
+    string cost_centre_ftp = 22;
+    int64 int_pay_freq = 23;
+    string institution  = 24;
+    string new_gl  = 25;
+    double int_rate  = 26;
+    string concat  = 27;
+    string ia_llg  = 28;
+    string balm_llg  = 29;
+    double current_book_balance  = 30;
+    string cost_center  = 31;
+    int64 comp_freq  = 32;
+    string fin_cost_ftp  = 33;
+    int64 date_last_withdraw = 34;
+    string prepayment_less_than_7_days = 35;
+    string two_point_concat = 36;
+    string four_point_concat = 37;
+    double total_principal_amount = 38;
+    double total_interest_amount = 39;
+    repeated Cashflow cashflows = 40;
+}

@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+message Cashflow {
+    double int_amt = 1;
+    double prin_amt = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows{
+    string acc_no  = 1;
+    string cntr_party  = 2;
+    string clients_name  = 3;
+    string ccy  = 4;
+    int64 gl_no  = 5;
+    double amt  = 6;
+    double int_rt  = 7;
+    int64 st_dt  = 8;
+    int64 mat_dt  = 9;
+    string alm_line  = 10;
+    string div  = 11;
+    int64 cust_id  = 12;
+    string prod_code  = 13;
+    string cod_mis_comp_1  = 14;
+    int64 dat_val = 15;
+    string alm_concat = 16;
+    double tot_int_amt  = 17;
+    double tot_prin_amt  = 18;
+    repeated Cashflow cashflows=19;
+}

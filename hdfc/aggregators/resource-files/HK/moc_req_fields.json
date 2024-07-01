@@ -1,0 +1,10 @@
+{
+    "account_number": "llg_id",
+    "concat": "llg_id",
+    "cashflows": "cashflows",
+    "institution": "currency",
+    "interest_rate": "int_rate",
+    "next_rep_date": "",
+    "exchange_rate": ""
+}
+

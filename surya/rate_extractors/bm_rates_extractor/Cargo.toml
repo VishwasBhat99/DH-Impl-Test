@@ -1,0 +1,16 @@
+[package]
+name = "bm_rates_extractor"
+version = "2.0.2613"
+authors = ["Tarun Jaiswal <tarun.j@surya-soft.com>, VishwasBhat99 <vishwas.b@surya-soft.com>"]
+edition = "2018"
+
+[dependencies]
+clap = "3.2.8"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+sdb_util = { path = "../../libraries/sdb_util"}
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.9.0"
+slog-async = "2.7.0"
+chrono = "0.4.19"
+itertools = "0.10.3"

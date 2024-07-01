@@ -1,0 +1,18 @@
+[package]
+name = "inc_exp_updater"
+version = "1.0.3371"
+authors = ["VishwasBhat99 <vishwas.b@surya-soft.com>"]
+
+
+[dependencies]
+slog = { version = "2.7.0", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.9.0"
+slog-async = "2.7.0"
+rbdate = { path = "../../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../../hdfc/libraries/sdb_io" }
+health_report = { path = "../../../../hdfc/libraries/health_report" }
+clap = "3.1.18"
+chrono = "0.4.23"
+csv = "1.2.0"
+serde = "1.0.152"
+serde_derive = "1.0.152"

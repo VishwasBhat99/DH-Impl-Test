@@ -1,0 +1,1 @@
+sqlldr balmusr/HdFcBank13\$\# control=./CASHFLOW_GENERIC.ctl LOG=/data/oracle18c/app/product/18c/dbhome/ImportLog/CASHFLOW_GENERIC.log BAD=/data/oracle18c/app/product/18c/dbhome/ImportLog/CASHFLOW_GENERIC.BAD

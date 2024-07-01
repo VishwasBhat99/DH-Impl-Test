@@ -1,0 +1,142 @@
+{
+   "streamName": "BulkInserter",
+   "streamId": "1084",
+   "flows": [
+      {
+         "name": "BulkInserter BA",
+         "flowId": "1",
+         "flowDependencies": [],
+         "executorID": "1",
+         "process": [
+            {
+               "processName": "Finone Run Status",
+               "processId": "1",
+               "processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "/SIT_SH_SUMMARYDATA/IND/$1/FinLoansAggregated-summary.txt"
+               ],
+               "processDependencies": [],
+               "processReport": ""
+            },
+            {
+               "processName": "Finone Structured Run Status",
+               "processId": "2",
+               "processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "/SIT_SH_SUMMARYDATA/IND/$1/FinStructLoansAggregated-summary.txt"
+               ],
+               "processDependencies": [
+                  "1"
+               ],
+               "processReport": ""
+            },
+            {
+               "processName": "Deposits Run Status",
+               "processId": "3",
+               "processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "/SIT_SH_SUMMARYDATA/IND/$1/TDAggregated-summary.txt"
+               ],
+               "processDependencies": [
+                  "2"
+               ],
+               "processReport": ""
+            },
+            {
+               "processName": "FC RD OD Run Status",
+               "processId": "4",
+               "processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "/SIT_SH_SUMMARYDATA/IND/$1/FWODAggregated-summary.txt"
+               ],
+               "processDependencies": [
+                  "3"
+               ],
+               "processReport": ""
+            },
+            {
+               "processName": "GL Bal MOC Run Status",
+               "processId": "5",
+               "processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "/SIT_SH_SUMMARYDATA/IND/$1/GLAggregated.txt"
+               ],
+               "processDependencies": [
+                  "4"
+               ],
+               "processReport": ""
+            },
+            {
+               "processName": "GL Diff Run Status",
+               "processId": "6",
+               "processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "/SIT_SH_SUMMARYDATA/IND/$1/GLReconAggregated.txt"
+               ],
+               "processDependencies": [
+                  "5"
+               ],
+               "processReport": ""
+            },
+            {
+               "processName": "Special Bucket MOC Run Status",
+               "processId": "7",
+               "processBinary": "/home/dbuser/programs/SIT/IND/pfc.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "/SIT_SH_SUMMARYDATA/IND/$1/MOCAggregated-summary.txt"
+               ],
+               "processDependencies": [
+                  "6"
+               ],
+               "processReport": ""
+            },
+            {
+               "processName": "GL BAH Run Status",
+               "processId": "8",
+               "processBinary": "/home/dbuser/programs/SIT/BAH/pfc.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "/SIT_SH_SUMMARYDATA/BAH/$1/GLAggregated.txt"
+               ],
+               "processDependencies": [
+                  "7"
+               ],
+               "processReport": ""
+            },
+            {
+               "processName": "GL HK Run Status",
+               "processId": "9",
+               "processBinary": "/home/dbuser/programs/SIT/HK/pfc.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "/SIT_SH_SUMMARYDATA/HK/$1/GLAggregated.txt"
+               ],
+               "processDependencies": [
+                  "8"
+               ],
+               "processReport": ""
+            },
+            {
+               "processName": "BulkInserter",
+               "processId": "10",
+               "processBinary": "/SIT_SH_SUMMARYDATA/BulkInserter/IND/BA/bulkInsertAll.sh",
+               "processArguments": [
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies": [
+                  "9"
+               ],
+               "processReport": ""
+            }
+         ]
+      }
+   ]
+}

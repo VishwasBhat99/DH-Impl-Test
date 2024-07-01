@@ -1,0 +1,224 @@
+{
+  "fields": [
+    {
+      "name": "account_number",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "accrual_basis",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "accrued_interest",
+      "typ": "F64",
+      "position": 3
+    },
+    {
+      "name": "branch",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "compounding_frequency",
+      "typ": "I32",
+      "position": 5
+    },
+    {
+      "name": "compounding_freq_incr",
+      "typ": "I32",
+      "position": 6
+    },
+    {
+      "name": "due_date",
+      "typ": "I64",
+      "position": 7
+    },
+    {
+      "name": "interest_pay_freq",
+      "typ": "I32",
+      "position": 8
+    },
+    {
+      "name": "costcentre_ftp",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "ttype",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "matdate",
+      "typ": "I64",
+      "position": 11
+    },
+    {
+      "name": "gross_org_balance",
+      "typ": "F64",
+      "position": 12
+    },
+    {
+      "name": "original_balance",
+      "typ": "F64",
+      "position": 13
+    },
+    {
+      "name": "org_term",
+      "typ": "I32",
+      "position": 14
+    },
+    {
+      "name": "org_date",
+      "typ": "I64",
+      "position": 15
+    },
+    {
+      "name": "emi",
+      "typ": "F64",
+      "position": 16
+    },
+    {
+      "name": "payment_freq",
+      "typ": "I32",
+      "position": 17
+    },
+    {
+      "name": "payment_type",
+      "typ": "I32",
+      "position": 18
+    },
+    {
+      "name": "pct_owned",
+      "typ": "I32",
+      "position": 19
+    },
+    {
+      "name": "rate_flag",
+      "typ": "String",
+      "position": 20
+    },
+    {
+      "name": "rate_index",
+      "typ": "String",
+      "position": 21
+    },
+    {
+      "name": "dpd",
+      "typ": "F64",
+      "position": 22
+    },
+    {
+      "name": "total_interest",
+      "typ": "F64",
+      "position": 23
+    },
+    {
+      "name": "name",
+      "typ": "String",
+      "position": 24
+    },
+    {
+      "name": "yyield",
+      "typ": "F64",
+      "position": 25
+    },
+    {
+      "name": "cost_centre_3",
+      "typ": "String",
+      "position": 26
+    },
+    {
+      "name": "profession_code",
+      "typ": "String",
+      "position": 27
+    },
+    {
+      "name": "bank_no",
+      "typ": "String",
+      "position": 28
+    },
+    {
+      "name": "scheme_id",
+      "typ": "String",
+      "position": 29
+    },
+    {
+      "name": "cost_centre_2",
+      "typ": "String",
+      "position": 30
+    },
+    {
+      "name": "tname",
+      "typ": "String",
+      "position": 31
+    },
+    {
+      "name": "as_of_date",
+      "typ": "I64",
+      "position": 32
+    },
+    {
+      "name": "average_balance",
+      "typ": "F64",
+      "position": 33
+    },
+    {
+      "name": "curency_ftp",
+      "typ": "I32",
+      "position": 34
+    },
+    {
+      "name": "foreclosure_status",
+      "typ": "String",
+      "position": 35
+    },
+    {
+      "name": "gl_type",
+      "typ": "I32",
+      "position": 36
+    },
+    {
+      "name": "institution",
+      "typ": "String",
+      "position": 37
+    },
+    {
+      "name": "current_balance",
+      "typ": "F64",
+      "position": 38
+    },
+    {
+      "name": "int_rate",
+      "typ": "F64",
+      "position": 39
+    },
+    {
+      "name": "concat",
+      "typ": "String",
+      "position": 40
+    },
+    {
+      "name": "weaker",
+      "typ": "String",
+      "position": 41
+    },
+    {
+      "name": "npa_status",
+      "typ": "String",
+      "position": 42
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 43
+    },
+    {
+      "name": "repricing_date",
+      "typ": "I64",
+      "position": 44
+    }
+  ]
+}

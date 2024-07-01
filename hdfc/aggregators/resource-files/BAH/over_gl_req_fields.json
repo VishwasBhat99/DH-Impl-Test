@@ -1,0 +1,8 @@
+{
+    "concat": "alm_line",
+    "amt": "bal_total",
+    "institution": "seg8",
+    "account_number": "account_no",
+    "pass_through": [""]
+}
+

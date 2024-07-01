@@ -1,0 +1,15 @@
+[package]
+name = "balm_upload_check"
+version = "1.0.0"
+authors = ["srinivas-644 <srinivas.r@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+odbc = "0.14.0"
+
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../../hdfc/libraries/sdb_io" }

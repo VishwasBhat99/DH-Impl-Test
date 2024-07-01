@@ -1,0 +1,156 @@
+{
+	"streamName": "FINNONE",
+	"streamId": "1004",
+	"flows": [
+		{
+			"name": "Finnone",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "3",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_EXTRACT_NONMOR_{ddmmyyyy}.txt"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "UTF-8-Converter",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/IND/converter.sh",
+					"processArguments": [
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_EXTRACT_NONMOR_{ddmmyyyy}.txt",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_{ddmmyyyy}_utf8.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/IND/pp_finnone_loan",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/FF_FN_ALM_LOAN_{ddmmyyyy}_utf8.txt",
+						"--ref-file-1",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Finnone_Master.xlsx",
+						"--ref-file-2",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/costcentre.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--ref-file-3",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/Finone_Rate_Code_Master.xlsx",
+						"--ref-file-4",
+						"/UAT_SH_INPUTDATA/IND/OPERATIONAL_FILES/INP001_NPA.csv",
+						"--output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput.txt",
+						"--concat-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneConcat.txt",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneReconRpt.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinnonePPLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinnonePPDiagLog.txt"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow generator",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/IND/cf_loan",
+					"processArguments": [
+						"--batch-size",
+						"500000",
+						"--input-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput.txt",
+						"--output-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/FinnoneCFOutput",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinnoneCFLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinnoneCFDiagLog.txt",
+						"--num-threads",
+						"8",
+						"--day-convention",
+						"30/360"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Aggregator",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/FinnoneCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FinLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinnoneBALMLog.txt",
+						"--is-consolidated",
+						"true",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinnoneBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/IND/fin_loans_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/fin_loans_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/IND/fin_loans_rules.txt",
+						"--default-llg-code",
+						"12705"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinLoansAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/FinLoansAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/FinLoansAggConvLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/FinnoneOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

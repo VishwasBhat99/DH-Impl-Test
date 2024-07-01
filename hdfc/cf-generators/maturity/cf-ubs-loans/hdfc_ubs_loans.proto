@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+message Cashflow {
+     double int_amt = 1;
+     double prin_amt = 2;
+     int64 date = 3;
+}
+
+message AccountWithCashflows{
+     string cust_no = 1;
+     string reference = 2;
+     string cust_name = 3;
+     string branch_cd = 4;
+     double norm_int_rt = 5;
+     string acurl_freq = 6;
+     int64 book_dt = 7;
+     int64 val_dt = 8;
+     int64 mat_dt = 9;
+     string user_def_stats = 10;
+     string prod_cd = 11;
+     string gl = 12;
+     string curr = 13;
+     double prin_ost_bal = 14;
+     double spread = 15;
+     int64 compmis2 = 16;
+     string rt_flag_new = 17;
+     string rt_cd_new = 18;
+     string division = 19;
+     string alm_line = 20;
+     string ia_llg = 21;
+     string balm_llg = 22;
+     string repricing_freq = 23;
+     int64 lst_repricing_dt = 24;
+     int64 nxt_repricing_dt = 25;
+     string int_basis = 26;
+     string cust_typ = 27;
+     string npa_typ = 28;
+     string bmid = 29;
+     int64 compmis1 = 30;
+     int64 compmis3 = 31;
+     int64 org_tenor = 32;
+     int64 resid_tenor = 33;
+     string def_ftp_flag = 34;
+     string concat = 35;
+     string cntr_party = 36;
+     double lcy_amount = 37;
+     string raw_benchmark = 38;
+     double der_int_rate = 39;
+     double bnchmrk_rate = 40;
+     double spread_val = 41;
+     string fully_floating_flg = 42;
+     int64 call_option_date = 43;
+     int64 put_option_date =44;
+     string is_acc_weaker = 45;
+     string ews_weaker_value = 46;
+     string frequency = 47;
+     string gl_desc = 48;
+     string ratecode = 49;
+     string ratespread = 50;
+     string bdp_div = 51;
+     string bdp_coa = 52;
+     string retail = 53;
+     string prod_desc = 54;
+     string yldgrp_al = 55;
+     string concat2_point = 56;
+     string psl_category = 57;
+     int64 lrd_udf = 58;
+     int64 nrd_udf = 59;
+     string old_rt_typ = 60;
+     string sma_flag=61;
+     double total_interest_amount = 62;
+     double total_principal_amount = 63;
+     repeated Cashflow cashflows = 64;
+}

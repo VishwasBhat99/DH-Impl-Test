@@ -1,0 +1,347 @@
+use clap::{App, Arg};
+use rbdate::{DateParser, NaiveDate};
+use slog::Logger;
+
+pub fn get_configuration_parameters(app_name: &str) -> ConfigurationParameters {
+    let matches = get_eligible_arguments_for_app(app_name);
+    ConfigurationParameters::new_from_matches(matches)
+}
+
+#[derive(Debug)]
+pub struct ConfigurationParameters {
+    pub input_file_path: String,
+    pub as_on_date: NaiveDate,
+    pub avg_bal_input_file: String,
+    pub output_file_path: String,
+    pub recon_file_path: String,
+    pub close_accs_file_path: String,
+    pub log_file_path: String,
+    pub diagnostics_file_path: String,
+    pub log_level: String,
+    pub is_perf_diagnostics_enabled: bool,
+    pub date_format: String,
+    pub avg_bal_pos: usize,
+    pub acr_int_amt_ccy_pos: usize,
+    pub acr_int_amt_hcy_pos: usize,
+    pub is_avgbal_absolute: bool,
+    pub source: String,
+}
+
+impl ConfigurationParameters {
+    pub fn log_parameters(&self, logger: &Logger) {
+        info!(logger, "log_file: {}", self.log_file_path());
+        info!(logger, "diagnostics_file: {}", self.diagnostics_file_path());
+        info!(logger, "input_file: {}", self.input_file_path());
+        info!(
+            logger,
+            "avg_bal_input_file: {}",
+            self.avg_bal_input_file_path()
+        );
+        info!(logger, "avg_bal_position: {}", self.avg_bal_pos());
+        info!(
+            logger,
+            "acr_int_amt_ccy_position: {}",
+            self.acr_int_amt_ccy_pos()
+        );
+        info!(
+            logger,
+            "acr_int_amt_hcy_position: {}",
+            self.acr_int_amt_hcy_pos()
+        );
+        info!(logger, "recon_file: {}", self.recon_file_path());
+        info!(logger, "as_on_date: {}", self.as_on_date());
+        info!(logger, "output_file: {}", self.output_file_path());
+        info!(
+            logger,
+            "close_accounts_file_path: {}",
+            self.close_accs_file_path()
+        );
+        info!(logger, "log_level: {}", self.log_level());
+        info!(logger, "date_format: {}", self.date_format());
+        info!(logger, "is_avgbal_absolute: {}", self.is_absolute());
+        info!(logger, "source: {}", self.source());
+    }
+}
+
+impl ConfigurationParameters {
+    fn new_from_matches(matches: clap::ArgMatches) -> ConfigurationParameters {
+        let input_file_path = matches
+            .value_of("input_file")
+            .expect("Error getting `input_file` value.")
+            .to_string();
+        let avg_bal_input_file = matches
+            .value_of("avg_bal_input_file")
+            .expect("Error getting `avg_bal_input_file` value.")
+            .to_string();
+        let avg_bal_pos = matches
+            .value_of("avg_bal_pos")
+            .expect("Error getting `avg_bal_pos` value.")
+            .parse::<usize>()
+            .expect("Errpr parsing `avg_bal_pos` value.");
+        let acr_int_amt_ccy_pos = matches
+            .value_of("acr_int_amt_ccy_pos")
+            .expect("Error getting `acr_int_amt_ccy_pos` value.")
+            .parse::<usize>()
+            .expect("Errpr parsing `acr_int_amt_ccy_pos` value.");
+        let acr_int_amt_hcy_pos = matches
+            .value_of("acr_int_amt_hcy_pos")
+            .expect("Error getting `acr_int_amt_hcy_pos` value.")
+            .parse::<usize>()
+            .expect("Errpr parsing `acr_int_amt_hcy_pos` value.");
+        let recon_file_path = matches
+            .value_of("recon_file")
+            .expect("Error getting `recon_file` value.")
+            .to_string();
+        let source = matches
+        .value_of("source")
+        .expect("Error getting `source` value.")
+        .to_string();
+
+        let date_parser = DateParser::new("%d-%m-%Y".to_string(), false);
+        let as_on_date = date_parser.parse(
+            matches
+                .value_of("as_on_date")
+                .expect("Error getting `as_on_date` value."),
+        );
+
+        let output_file_path = matches
+            .value_of("output_file")
+            .expect("Error getting `output_file` value.")
+            .to_string();
+        let close_accs_file_path = matches
+            .value_of("close_accs_file_path")
+            .expect("Error getting `close_accounts_file_path` value.")
+            .to_string();
+        let log_file_path = matches
+            .value_of("log_file")
+            .expect("Error getting `log_file` value.")
+            .to_string();
+        let diagnostics_file_path = matches
+            .value_of("diagnostics_log_file")
+            .expect("Error getting `diagnostics_log_file` value.")
+            .to_string();
+        let log_level = matches
+            .value_of("log_level")
+            .expect("Error getting `log_level` value.")
+            .to_string();
+        let is_perf_diagnostics_enabled = matches
+            .value_of("perf_diag_flag")
+            .expect("Error getting `perf_diag_flag` value.")
+            .parse::<bool>()
+            .expect("Cannot parse `perf_diag_flag` value as bool.");
+
+        let date_format = match matches
+            .value_of("date_format")
+            .expect("Error getting `date_format` value.")
+        {
+            "DD-MM-YYYY" => "%d-%m-%Y",
+            "DDMMYYYY" => "%d%m%Y",
+            _ => panic!("Unidentified date format"),
+        }
+        .to_string();
+
+        let is_avgbal_absolute = matches
+            .value_of("is_avgbal_absolute")
+            .expect("Error getting `is_avgbal_absolute` value.")
+            .parse::<bool>()
+            .expect("Cannot parse `is_avgbal_absolute` value as bool.");
+
+        ConfigurationParameters {
+            input_file_path,
+            recon_file_path,
+            as_on_date,
+            avg_bal_input_file,
+            avg_bal_pos,
+            acr_int_amt_ccy_pos,
+            acr_int_amt_hcy_pos,
+            output_file_path,
+            close_accs_file_path,
+            log_file_path,
+            diagnostics_file_path,
+            log_level,
+            is_perf_diagnostics_enabled,
+            date_format,
+            is_avgbal_absolute,
+            source,
+        }
+    }
+}
+
+// Public getters so an caller can't mutate properties (they're private).
+// Also, because users of these properties usually borrow.
+impl ConfigurationParameters {
+    pub fn input_file_path(&self) -> &str {
+        &self.input_file_path
+    }
+    pub fn avg_bal_input_file_path(&self) -> &str {
+        &self.avg_bal_input_file
+    }
+    pub fn source(&self) -> &str {
+        &self.source
+    }
+    pub fn avg_bal_pos(&self) -> &usize {
+        &self.avg_bal_pos
+    }
+    pub fn acr_int_amt_ccy_pos(&self) -> &usize {
+        &self.acr_int_amt_ccy_pos
+    }
+    pub fn acr_int_amt_hcy_pos(&self) -> &usize {
+        &self.acr_int_amt_hcy_pos
+    }
+    pub fn recon_file_path(&self) -> &str {
+        &self.recon_file_path
+    }
+    pub fn as_on_date(&self) -> NaiveDate {
+        self.as_on_date
+    }
+    pub fn output_file_path(&self) -> &str {
+        &self.output_file_path
+    }
+    pub fn close_accs_file_path(&self) -> &str {
+        &self.close_accs_file_path
+    }
+    pub fn log_file_path(&self) -> &str {
+        &self.log_file_path
+    }
+    pub fn diagnostics_file_path(&self) -> &str {
+        &self.diagnostics_file_path
+    }
+    pub fn log_level(&self) -> &str {
+        &self.log_level
+    }
+    pub fn is_perf_diagnostics_enabled(&self) -> bool {
+        self.is_perf_diagnostics_enabled
+    }
+    pub fn date_format(&self) -> &str {
+        &self.date_format
+    }
+    pub fn is_absolute(&self) -> bool {
+        self.is_avgbal_absolute
+    }
+}
+
+fn get_eligible_arguments_for_app(app_name: &str) -> clap::ArgMatches {
+    App::new(app_name)
+        .about("Average Balance Aggregator.")
+        .version("1.0.3302")
+        .arg(
+            Arg::with_name("input_file")
+                .long("input-file")
+                .value_name("Input File")
+                .help("Path to the input file.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("source")
+                .long("source")
+                .value_name("Input Source")
+                .help("Input file source.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("avg_bal_input_file")
+                .long("avg-bal-input-file")
+                .value_name("Avg Bal Input File")
+                .help("Path to the input file from which MonthlyAvgBal field is considered.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("avg_bal_pos")
+                .long("avg-bal-pos")
+                .value_name("Monthly Avg Bal field Position")
+                .help("MonthlyAvgBal field position.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("acr_int_amt_ccy_pos")
+                .long("acr-int-amt-ccy-pos")
+                .value_name("Acc_Int_Amt_CCY field Position")
+                .help("Acc_Int_Amt_CCY field position.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("acr_int_amt_hcy_pos")
+                .long("acr-int-amt-hcy-pos")
+                .value_name("Acc_Int_Amt_HCY field Position")
+                .help("Acc_Int_Amt_CCY field position.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("recon_file")
+                .long("recon-file")
+                .value_name("Recon File")
+                .help("Path to the recon file.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("output_file")
+                .long("output-file")
+                .value_name("Output File")
+                .help("Path to the output file.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("close_accs_file_path")
+                .long("close-accounts-file")
+                .value_name("Close Accounts File Path")
+                .help("Path to the close accounts file.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("log_file")
+                .long("log-file")
+                .value_name("Log File")
+                .help("Path to write logs.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("diagnostics_log_file")
+                .long("diagnostics-log-file")
+                .value_name("Diagnostic Log File")
+                .help("Path to write diagnostics logs.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("log_level")
+                .long("log-level")
+                .value_name("LOG LEVEL")
+                .possible_values(&["error", "warn", "info", "debug", "trace", "none"])
+                .help("Level of diagnostics written to the log file.")
+                .default_value("info")
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("perf_diag_flag")
+                .long("diagnostics-flag")
+                .value_name("DIAGNOSTICS FLAG")
+                .possible_values(&["true", "false"])
+                .help("This flag that decides whether performance diagnostics will be written to the diagnostics log file.")
+                .default_value("false")
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("as_on_date")
+                .long("as-on-date")
+                .value_name("As On date")
+                .help("The date for which the program has to run.")
+                .required(true)
+        )
+        .arg(
+            Arg::with_name("date_format")
+                .long("date-format")
+                .value_name("Date Format")
+                .help("Date Format")
+                .default_value("DDMMYYYY")
+                .required(false)
+        )
+        .arg(
+            Arg::with_name("is_avgbal_absolute")
+                .long("is-avgbal-absolute")
+                .value_name("AVGBAL ABSOLUTE FLAG")
+                .possible_values(&["true", "false"])
+                .help("This flag that decides whether avg balance written to be absolute or not.")
+                .default_value("false")
+                .required(false)
+        )
+        .get_matches()
+}

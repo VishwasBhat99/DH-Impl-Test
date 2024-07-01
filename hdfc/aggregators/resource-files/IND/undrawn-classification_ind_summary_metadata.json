@@ -1,0 +1,65 @@
+{
+    "fields": [
+      {
+        "name": "v_src_sys_id",
+        "typ": "String",
+        "position": 1
+      },
+      {
+        "name": "n_ccf_prcnt",
+        "typ": "F64",
+        "position": 2
+      },
+      {
+        "name": "v_basel_asset_class_desc",
+        "typ": "String",
+        "position": 3
+      },
+      {
+        "name": "v_party_type_desc",
+        "typ": "String",
+        "position": 4
+      },
+      {
+        "name": "v_ccy_code",
+        "typ": "String",
+        "position": 5
+      },
+      {
+        "name": "v_exp_amt",
+        "typ": "F64",
+        "position": 6
+      },
+      {
+        "name": "n_undrawn_amt",
+        "typ": "F64",
+        "position": 7
+      },
+      {
+        "name": "lcr_category",
+        "typ": "String",
+        "position": 8
+      },
+      {
+        "name": "asset_class_desc",
+        "typ": "String",
+        "position": 9
+      },
+      {
+        "name": "final_mapping",
+        "typ": "String",
+        "position": 10
+      },
+      {
+        "name": "slr",
+        "typ": "F64",
+        "position": 11
+      },
+      {
+        "name": "lcr",
+        "typ": "F64",
+        "position": 12
+      }
+    ]
+  }
+  

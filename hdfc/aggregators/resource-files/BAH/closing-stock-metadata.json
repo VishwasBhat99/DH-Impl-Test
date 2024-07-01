@@ -1,0 +1,299 @@
+{
+  "fields": [
+    {
+      "name": "deal_no",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "bond_issuance",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "isin",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "issuance_dt",
+      "typ": "I64",
+      "position": 4
+    },
+    {
+      "name": "branch_entity",
+      "typ": "String",
+      "position": 5
+    },
+    {
+      "name": "desk",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "portfolio_type",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "category",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "security_type",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "slrnon_slr",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "short_name",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "secured_unsecured",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "rt",
+      "typ": "F64",
+      "position": 13
+    },
+    {
+      "name": "nxt_call_dt",
+      "typ": "I64",
+      "position": 14
+    },
+    {
+      "name": "nxt_put_dt",
+      "typ": "I64",
+      "position": 15
+    },
+    {
+      "name": "agency",
+      "typ": "String",
+      "position": 16
+    },
+    {
+      "name": "rating",
+      "typ": "String",
+      "position": 17
+    },
+    {
+      "name": "agency_of_current_rating",
+      "typ": "String",
+      "position": 18
+    },
+    {
+      "name": "listed_unlisted",
+      "typ": "String",
+      "position": 19
+    },
+    {
+      "name": "mat_dt",
+      "typ": "I64",
+      "position": 20
+    },
+    {
+      "name": "conversion_rt_lcy",
+      "typ": "F64",
+      "position": 21
+    },
+    {
+      "name": "ccy",
+      "typ": "String",
+      "position": 22
+    },
+    
+    {
+      "name": "bv_after_amortisation",
+      "typ": "F64",
+      "position": 23
+    },
+    {
+      "name": "wap",
+      "typ": "F64",
+      "position": 24
+    },
+    {
+      "name": "laf_and_msf_ost_fv",
+      "typ": "F64",
+      "position": 25
+    },
+    {
+      "name": "laf_and_msf_ost_bv",
+      "typ": "F64",
+      "position": 26
+    },
+    {
+      "name": "reverse_laf_ost_fv",
+      "typ": "F64",
+      "position": 27
+    },
+    {
+      "name": "reverse_repo_ost_fv",
+      "typ": "F64",
+      "position": 28
+    },
+    {
+      "name": "collateral_placed_fv",
+      "typ": "F64",
+      "position": 29
+    },
+    {
+      "name": "encumbered_fv",
+      "typ": "F64",
+      "position": 30
+    },
+    {
+      "name": "encumbered_bv",
+      "typ": "F64",
+      "position": 31
+    },
+    {
+      "name": "ytm",
+      "typ": "F64",
+      "position": 32
+    },
+    {
+      "name": "basis",
+      "typ": "String",
+      "position": 33
+    },
+    {
+      "name": "issue_country",
+      "typ": "String",
+      "position": 34
+    },
+    {
+      "name": "domicile_country",
+      "typ": "String",
+      "position": 35
+    },
+    {
+      "name": "category1",
+      "typ": "String",
+      "position": 36
+    },
+    {
+      "name": "category2",
+      "typ": "String",
+      "position": 37
+    },
+    {
+      "name": "category3",
+      "typ": "String",
+      "position": 38
+    },
+    {
+      "name": "category4",
+      "typ": "String",
+      "position": 39
+    },
+    {
+      "name": "industry_code",
+      "typ": "String",
+      "position": 40
+    },
+    {
+      "name": "taxability",
+      "typ": "String",
+      "position": 41
+    },
+    {
+      "name": "air_till_dt",
+      "typ": "F64",
+      "position": 42
+    },
+    {
+      "name": "modified_duration",
+      "typ": "F64",
+      "position": 43
+    },
+    {
+      "name": "int_coupontype",
+      "typ": "String",
+      "position": 44
+    },
+    {
+      "name": "nxt_rep_dt",
+      "typ": "I64",
+      "position": 45
+    },
+    {
+      "name": "sec_grp",
+      "typ": "String",
+      "position": 46
+    },
+    {
+      "name": "sec_typ",
+      "typ": "String",
+      "position": 47
+    },
+    {
+      "name": "sec_issuer",
+      "typ": "String",
+      "position": 48
+    },
+    {
+      "name": "sec_guaranteed",
+      "typ": "String",
+      "position": 49
+    },
+    {
+      "name": "mrkt",
+      "typ": "String",
+      "position": 50
+    },
+    {
+      "name": "idx_label",
+      "typ": "String",
+      "position": 51
+    },
+    {
+      "name": "bd_cat",
+      "typ": "String",
+      "position": 52
+    },
+    {
+      "name": "bd_typ",
+      "typ": "String",
+      "position": 53
+    },{
+      "name": "lstd",
+      "typ": "String",
+      "position": 54
+    },
+    {
+      "name": "npa",
+      "typ": "String",
+      "position": 55
+    },
+    {
+      "name": "cf_dt",
+      "typ": "I64",
+      "position": 56
+    },
+    {
+      "name": "cf_int_amt",
+      "typ": "F64",
+      "position": 57
+    },
+    {
+      "name": "cf_prin_amt",
+      "typ": "F64",
+      "position": 58
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 59
+    }
+  ]
+}

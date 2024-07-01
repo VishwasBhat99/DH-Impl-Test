@@ -1,0 +1,19 @@
+[package]
+name = "cust_bal_bkt_aggr"
+version = "1.0.4194"
+edition = "2021"
+authors = ["VishwasBhat99 <vishwas.b@surya-soft.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+chrono="0.4.24"
+
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+health_report = { path = "../../../hdfc/libraries/health_report" }

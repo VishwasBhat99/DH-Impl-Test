@@ -1,0 +1,4 @@
+168|1|0|alm_line|EQ|LC|AND
+168|1|1|is_acct_gl|EQ|N|14351
+169|1|0|alm_line|EQ|BG|AND
+169|1|1|is_acct_gl|EQ|N|14350

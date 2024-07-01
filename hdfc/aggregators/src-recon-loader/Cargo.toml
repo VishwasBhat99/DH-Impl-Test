@@ -1,0 +1,19 @@
+[package]
+name = "src_recon_loader"
+version = "1.0.2860"
+authors = ["Rahul gangwar <rahul.gangwar@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+calamine = "0.16.1"
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../libraries/RBDate" }
+sdb_io = { path = "../../libraries/sdb_io" }
+health_report = { path = "../../libraries/health_report" }

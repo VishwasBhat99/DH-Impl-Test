@@ -1,0 +1,59 @@
+{
+  "fields": [
+    {
+      "name": "cf_sub_type",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "c_party",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "ccy",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "typ",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "sanc_amt",
+      "typ": "F64",
+      "position": 5
+    },
+    {
+      "name": "st_dt",
+      "typ": "I64",
+      "position": 6
+    },
+    {
+      "name": "ed_dt",
+      "typ": "I64",
+      "position": 7
+    },
+    {
+      "name": "country",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "util_amt",
+      "typ": "F64",
+      "position": 9
+    },
+    {
+      "name": "cf_type",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 11
+    }
+  ]
+}

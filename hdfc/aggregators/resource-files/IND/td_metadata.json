@@ -1,0 +1,179 @@
+{
+    "fields": [
+        {
+            "name": "account_number",
+            "typ": "String",
+            "position": 1
+        },
+        {
+            "name": "accrued_interest",
+            "typ": "F64",
+            "position": 2
+        },
+        {
+            "name": "deposit_type",
+            "typ": "String",
+            "position": 3
+        },
+        {
+            "name": "maturity_date",
+            "typ": "I64",
+            "position": 4
+        },
+        {
+            "name": "rat_acct_int",
+            "typ": "F64",
+            "position": 5
+        },
+        {
+            "name": "rat_acct_int_var",
+            "typ": "F64",
+            "position": 6
+        },
+        {
+            "name": "next_compound_date",
+            "typ": "I64",
+            "position": 7
+        },
+        {
+            "name": "next_payment_date",
+            "typ": "I64",
+            "position": 8
+        },
+        {
+            "name": "account_start_date",
+            "typ": "I64",
+            "position": 9
+        },
+        {
+            "name": "currency_code",
+            "typ": "I64",
+            "position": 10
+        },
+        {
+            "name": "customer_id",
+            "typ": "I64",
+            "position": 11
+        },
+        {
+            "name": "original_balance",
+            "typ": "F64",
+            "position": 12
+        },
+        {
+            "name": "origination_date",
+            "typ": "I64",
+            "position": 13
+        },
+        {
+            "name": "previous_roll_over_date",
+            "typ": "I64",
+            "position": 14
+        },
+        {
+            "name": "description",
+            "typ": "String",
+            "position": 15
+        },
+        {
+            "name": "client_name",
+            "typ": "String",
+            "position": 16
+        },
+        {
+            "name": "tname",
+            "typ": "String",
+            "position": 17
+        },
+        {
+            "name": "as_on_date",
+            "typ": "String",
+            "position": 18
+        },
+        {
+            "name": "bank_num",
+            "typ": "String",
+            "position": 19
+        },
+        {
+            "name": "branch",
+            "typ": "String",
+            "position": 20
+        },
+        {
+            "name": "rate_flag",
+            "typ": "String",
+            "position": 21
+        },
+        {
+            "name": "cost_centre_ftp",
+            "typ": "String",
+            "position": 22
+        },
+        {
+            "name": "int_pay_freq",
+            "typ": "I64",
+            "position": 23
+        },
+        {
+            "name": "institution",
+            "typ": "String",
+            "position": 24
+        },
+        {
+            "name": "new_gl",
+            "typ": "String",
+            "position": 25
+        },
+        {
+            "name": "int_rate",
+            "typ": "F64",
+            "position": 26
+        },
+        {
+            "name": "concat",
+            "typ": "String",
+            "position": 27
+        },
+        {
+            "name": "ia_llg",
+            "typ": "String",
+            "position": 28
+        },
+        {
+            "name": "balm_llg",
+            "typ": "String",
+            "position": 29
+        },
+        {
+            "name": "current_book_balance",
+            "typ": "F64",
+            "position": 30
+        },
+        {
+            "name": "cost_center",
+            "typ": "String",
+            "position": 31
+        },
+        {
+            "name": "comp_freq",
+            "typ": "I64",
+            "position": 32
+        },
+        {
+            "name": "total_principal_amount",
+            "typ": "F64",
+            "position": 33
+        },
+        {
+            "name": "total_interest_amount",
+            "typ": "F64",
+            "position": 34
+        },
+        {
+            "name": "cashflows",
+            "typ": "Cashflows",
+            "position": 35
+        }
+    ]
+}

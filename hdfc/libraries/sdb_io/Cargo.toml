@@ -1,0 +1,12 @@
+[package]
+name = "sdb_io"
+version = "0.1.0"
+authors = ["mayurdhaka-suryasoftware <mayur.d@surya-soft.com>"]
+
+[dependencies]
+
+
+[features]
+# This feature treats warnings as a build error.
+# Our CI server runs the build with this feature on, to fail builds if warnings occur.
+strict-build = []

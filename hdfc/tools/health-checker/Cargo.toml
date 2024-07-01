@@ -1,0 +1,8 @@
+[package]
+name = "health_checker"
+version = "1.0.4758"
+authors = ["Tarun Jaiswal <tarun.j@surya-soft.com>"]
+
+[dependencies]
+health_report = { path = "../../libraries/health_report" }
+clap = "2.33.0"

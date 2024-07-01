@@ -1,0 +1,8 @@
+{
+    "concat": "asset_class",
+    "amt": "amt",
+    "institution": "ccy",
+    "account_number": "src_system",
+    "pass_through": [""]
+}
+  

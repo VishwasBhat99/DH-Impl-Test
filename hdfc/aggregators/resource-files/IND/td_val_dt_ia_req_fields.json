@@ -1,0 +1,15 @@
+{
+    "llg_id":"llg_id",
+    "curr_code": "institution",
+    "rep_freq": "rep_freq",
+    "intt_rate": "int_rate",
+    "cashflows": "cashflows",
+    "mat_date":"mat_dt",
+    "acc_open_date":"origination_date",
+    "bm_id":"benchmark_id",
+    "acc_no":"account_number",
+    "next_repr_date":"nxt_rep_dt",
+    "spread":"spread",
+    "npa_flag":""
+}
+

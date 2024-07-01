@@ -1,0 +1,149 @@
+{
+  "fields": [
+    {
+      "name": "entity",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "trade_id",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "struct_id",
+      "typ": "I64",
+      "position": 3
+    },
+    {
+      "name": "comp_typology",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "cntrct_typology",
+      "typ": "String",
+      "position": 5
+    },
+    {
+      "name": "desk",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "book",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "folder",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "trading_banking",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "cntr_prty_grp_cd",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "cntr_prty_prnt_cd",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "intrnl_extrnl",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "trade_dt",
+      "typ": "I64",
+      "position": 13
+    },
+    {
+      "name": "del_dt",
+      "typ": "I64",
+      "position": 14
+    },
+    {
+      "name": "buy_sell",
+      "typ": "String",
+      "position": 15
+    },
+    {
+      "name": "put_call",
+      "typ": "String",
+      "position": 16
+    },
+    {
+      "name": "call_ccy",
+      "typ": "String",
+      "position": 17
+    },
+    {
+      "name": "put_ccy",
+      "typ": "String",
+      "position": 18
+    },
+    {
+      "name": "put_amt",
+      "typ": "F64",
+      "position": 19
+    },
+    {
+      "name": "mtm_excld_prem_inr",
+      "typ": "F64",
+      "position": 20
+    },
+    {
+      "name": "position_ccy",
+      "typ": "String",
+      "position": 21
+    },
+    {
+      "name": "forward_delta_ccy_1_amt",
+      "typ": "F64",
+      "position": 22
+    },
+    {
+      "name": "pl_ccy",
+      "typ": "String",
+      "position": 23
+    },
+    {
+      "name": "forward_delta_ccy_2_amt",
+      "typ": "F64",
+      "position": 24
+    },
+    {
+      "name": "inst",
+      "typ": "String",
+      "position": 25
+    },
+    {
+      "name": "cf_type",
+      "typ": "String",
+      "position": 26
+    },
+    {
+      "name": "tot_int_amt",
+      "typ": "F64",
+      "position": 27
+    },
+    {
+      "name": "tot_prin_amt",
+      "typ": "F64",
+      "position": 28
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 29
+    }
+  ]
+}

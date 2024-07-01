@@ -1,0 +1,28 @@
+[package]
+name = "balm_upload_check"
+version = "1.0.0"
+authors = ["srinivas-644 <srinivas.r@surya-soft.com>"]
+
+[dependencies]
+clap = "2.31.2"
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+odbc = "0.14.0"
+actix-web = { version="1.0.0" }
+actix-rt = "0.2"
+env_logger = "0.6.1"
+log = "0.4.6"
+serde = "1.0.92"
+dbpool = { path = "../../../libraries/dbpool" }
+r2d2 = { path = "../../../libraries/r2d2" }
+rustc-serialize = "0.3.24"
+chrono = "0.4.6"
+oracle = { version = "0.2.1", features = ["chrono"] }
+serde_bytes = "0.11.1"
+serde_json = "1.0.39"
+curl = "0.4.22"
+
+# This rbdate library path is relative so this might be needed to change as per config
+rbdate = { path = "../../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../../hdfc/libraries/sdb_io" }

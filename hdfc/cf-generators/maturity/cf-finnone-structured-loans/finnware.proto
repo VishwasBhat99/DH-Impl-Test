@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+message Cashflow {
+     double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows {
+    string account_number = 1;
+    string curr_code = 2;
+    double intt_rate = 3;
+    string product_code = 4;
+    int64 mat_date = 5;
+    string rate_flag = 6;
+    string repricing_index = 7;
+    string psl = 8;
+    string npa = 9;
+    string indv_corp_flag = 10;
+    string customer_type = 11;
+    string asset_class_id = 12;
+    string customer_id = 13;
+    string prod_type = 14;
+    double final_int_rate = 15;
+    int64 cost_centre = 16;
+    string alm_line = 17;
+    string coa = 18;
+    string division = 19;
+    string rep_freq = 20;
+    int64 next_repricing_date = 21;
+    int64 last_repricing_date = 22;
+    string asset_class = 23;
+    int64 org_date = 24;
+    string branch = 25;
+    string al_line = 26;
+    string balm_l2 = 27;
+    string bmid = 28;
+    string ia_line = 29;
+    string scheme_id = 30;
+    int64 org_tenor = 31;
+    string weaker_code = 32;
+    double der_int_rate = 33;
+    double bnchmrk_rate = 34;
+    double spread = 35;
+    string fully_floating_flg = 36;
+    string gr_ofs_gl = 37;
+    double total_interest_amount = 38;
+    double total_principal_amount = 39;
+    string sma_flag = 40
+    repeated Cashflow cashflows = 41;
+}

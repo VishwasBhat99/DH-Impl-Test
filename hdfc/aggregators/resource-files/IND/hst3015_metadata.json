@@ -1,0 +1,90 @@
+{
+  "fields": [
+    {
+      "name": "deal_no",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "bank_oper_typ",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "deal_dt",
+      "typ": "I64",
+      "position": 3
+    },
+    {
+      "name": "value_dt",
+      "typ": "I64",
+      "position": 4
+    },
+    {
+      "name": "deal_type",
+      "typ": "String",
+      "position": 5
+    },
+    {
+      "name": "slr_type",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "category",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "portfolio",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "counter_party",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name":"settle_amt",
+      "typ":"F64",
+      "position":10
+
+    },
+    {
+      "name":"accr_int",
+      "typ":"F64",
+      "position":11
+
+    },
+    {
+      "name":"sec_setdate",
+      "typ":"I64",
+      "position":12
+
+    },
+    {
+      "name":"as_on_dt",
+      "typ":"I64",
+      "position":13
+
+    },
+    {
+      "name":"ccy",
+      "typ":"String",
+      "position":14
+
+    },
+    {
+      "name":"nxt_rep_dt",
+      "typ":"I64",
+      "position":15
+
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 16
+    }
+  ]
+}

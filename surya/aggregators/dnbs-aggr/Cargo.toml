@@ -1,0 +1,21 @@
+[package]
+name = "dnbs_aggr"
+version = "1.0.3926"
+authors = ["ravindar-01 <ravindar.sr@surya-soft.com>"]
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+clap = "2.31.2"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+serde = "1.0"
+serde_json = "1.0"
+serde_derive = "1.0"
+sdb_dyn_proto_rdr = { path = "../../../hdfc/libraries/sdb_dyn_proto_rdr" }
+sdb_agg_rules = { path = "../../../hdfc/libraries/sdb_agg_rules" }
+health_report = { path = "../../../hdfc/libraries/health_report" }
+chrono = "0.4.26"

@@ -1,0 +1,8 @@
+{
+    "concat": "balm_llg",
+    "amt": "gl_diff_amt",
+    "institution": "ora_ccy",
+    "account_number": "src_file_name",
+    "pass_through": [""]
+}
+

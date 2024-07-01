@@ -1,0 +1,28 @@
+{  
+   "streamName":"Scenario",
+   "streamId":"1078",
+   "flows":[  
+      {  
+         "name":"Scenarios",
+         "flowId":"1",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"6",
+         "process":[  
+            {  
+               "processName":"Scenarios",
+               "processId":"1",
+               "processBinary":"D:/Batches/BALM/BALM_IND/BALM_IND_Run.bat",
+               "processArguments":[  
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      }
+   ]
+}

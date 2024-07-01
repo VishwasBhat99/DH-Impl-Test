@@ -1,0 +1,13 @@
+[package]
+name = "pp_opt_reg_merger"
+version = "1.0.3138"
+authors = ["Saurabh Singh <saurabh.s@surya-soft.com>"]
+
+[dependencies]
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"
+rbdate = { path = "../../../libraries/RBDate" }
+sdb_io = { path = "../../../libraries/sdb_io" }
+clap = "2.31.2"
+libmath = "0.2.1"

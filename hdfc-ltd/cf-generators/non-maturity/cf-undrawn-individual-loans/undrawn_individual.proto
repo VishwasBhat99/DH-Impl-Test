@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+message Cashflow {
+    double interest_amount = 1;
+    double principal_amount = 2;
+    int64 date = 3;
+}
+
+message AccountWithCashflows {
+string lac_no = 1 ;
+double sanc_amt = 2 ;
+double amt_14per = 3 ;
+double amt_2per = 4 ;
+int64 approval_dt = 5 ;
+int64 first_cf_dt = 6 ;
+string currency = 7;
+repeated Cashflow cashflows= 8;
+}

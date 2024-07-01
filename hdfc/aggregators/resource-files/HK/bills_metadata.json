@@ -1,0 +1,124 @@
+{
+  "fields": [
+    {
+      "name": "reference",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "cust",
+      "typ": "String",
+      "position": 2
+    },
+    {
+      "name": "curr",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "val_dt",
+      "typ": "I64",
+      "position": 4
+    },
+    {
+      "name": "mat_dt",
+      "typ": "I64",
+      "position": 5
+    },
+    {
+      "name": "npa_stats",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "gl",
+      "typ": "I64",
+      "position": 7
+    },
+    {
+      "name": "int_rt",
+      "typ": "F64",
+      "position": 8
+    },
+    {
+      "name": "cust_name",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "comp_mis1",
+      "typ": "I64",
+      "position": 10
+    },
+    {
+      "name": "comp_mis2",
+      "typ": "I64",
+      "position": 11
+    },
+    {
+      "name": "loan_type",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "acurl_basis",
+      "typ": "String",
+      "position": 13
+    },
+    {
+      "name": "div",
+      "typ": "String",
+      "position": 14
+    },
+    {
+      "name": "alm_line",
+      "typ": "String",
+      "position": 15
+    },
+    {
+      "name": "ia_llg",
+      "typ": "String",
+      "position": 16
+    },
+    {
+      "name": "balm_llg",
+      "typ": "String",
+      "position": 17
+    },
+    {
+      "name": "as_on_dt",
+      "typ": "I64",
+      "position": 18
+    },
+    {
+      "name": "nxt_rep_dt",
+      "typ": "I64",
+      "position": 19
+    },
+    {
+      "name": "exchange_rt",
+      "typ": "F64",
+      "position": 20
+    },
+    {
+      "name": "asset_class",
+      "typ": "String",
+      "position": 21
+    },
+    {
+      "name": "tot_int_amt",
+      "typ": "F64",
+      "position": 22
+    },
+    {
+      "name": "tot_prin_amt",
+      "typ": "F64",
+      "position": 23
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 24
+    }
+  ]
+}

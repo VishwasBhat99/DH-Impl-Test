@@ -1,0 +1,68 @@
+1|1|0|src_system|EQ|Investments|AND
+1|1|1|amt|LT|0|13301
+2|1|0|src_system|EQ|Investments|AND
+2|1|1|amt|GT|0|AND
+2|1|2|asset_class|EQ|Substandard|13305
+3|1|0|src_system|EQ|Investments|AND
+3|1|1|amt|GT|0|AND
+3|1|2|asset_class|EQ|Loss|13306
+4|1|0|src_system|EQ|Investments|AND
+4|1|1|amt|GT|0|AND
+4|1|2|asset_class|EQ|Doubtful III|13307
+5|1|0|src_system|EQ|Investments|AND
+5|1|1|amt|GT|0|AND
+5|1|2|asset_class|EQ|Doubtful II|13307
+6|1|0|src_system|EQ|Investments|AND
+6|1|1|amt|GT|0|AND
+6|1|2|asset_class|EQ|Doubtful I|13307
+7|1|0|src_system|EQ|CCOD|AND
+7|1|1|amt|LT|0|13310
+8|1|0|src_system|EQ|CCOD|AND
+8|1|1|amt|GT|0|AND
+8|1|2|asset_class|EQ|Substandard|13315
+9|1|0|src_system|EQ|CCOD|AND
+9|1|1|amt|GT|0|AND
+9|1|2|asset_class|EQ|Loss|13316
+10|1|0|src_system|EQ|CCOD|AND
+10|1|1|amt|GT|0|AND
+10|1|2|asset_class|EQ|Doubtful III|13317
+11|1|0|src_system|EQ|CCOD|AND
+11|1|1|amt|GT|0|AND
+11|1|2|asset_class|EQ|Doubtful II|13317
+12|1|0|src_system|EQ|CCOD|AND
+12|1|1|amt|GT|0|AND
+12|1|2|asset_class|EQ|Doubtful I|13317
+13|1|0|src_system|EQ|LOAN|AND
+13|1|1|amt|LT|0|13320
+14|1|0|src_system|EQ|LOAN|AND
+14|1|1|amt|GT|0|AND
+14|1|2|asset_class|EQ|Substandard|13326
+15|1|0|src_system|EQ|LOAN|AND
+15|1|1|amt|GT|0|AND
+15|1|2|asset_class|EQ|Loss|13327
+16|1|0|src_system|EQ|LOAN|AND
+16|1|1|amt|GT|0|AND
+16|1|2|asset_class|EQ|Doubtful III|13328
+17|1|0|src_system|EQ|LOAN|AND
+17|1|1|amt|GT|0|AND
+17|1|2|asset_class|EQ|Doubtful II|13328
+18|1|0|src_system|EQ|LOAN|AND
+18|1|1|amt|GT|0|AND
+18|1|2|asset_class|EQ|Doubtful I|13328
+19|1|0|src_system|EQ|BILL|AND
+19|1|1|amt|LT|0|13330
+20|1|0|src_system|EQ|BILL|AND
+20|1|1|amt|GT|0|AND
+20|1|2|asset_class|EQ|Substandard|13336
+21|1|0|src_system|EQ|BILL|AND
+21|1|1|amt|GT|0|AND
+21|1|2|asset_class|EQ|Loss|13337
+22|1|0|src_system|EQ|BILL|AND
+22|1|1|amt|GT|0|AND
+22|1|2|asset_class|EQ|Doubtful III|13338
+23|1|0|src_system|EQ|BILL|AND
+23|1|1|amt|GT|0|AND
+23|1|2|asset_class|EQ|Doubtful II|13338
+24|1|0|src_system|EQ|BILL|AND
+24|1|1|amt|GT|0|AND
+24|1|2|asset_class|EQ|Doubtful I|13338

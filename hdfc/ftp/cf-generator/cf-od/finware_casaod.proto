@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+message Cashflow{
+   double interest_amount = 1;
+   double principal_amount = 2;
+   int64 date = 3;
+}
+
+message OutputAccount {
+    string cod_acc_no = 1;
+    string cod_cc_brn = 2;
+    string cod_prod = 3;
+    double bal_book = 4;
+    double bal_book_lcy = 5;
+    double amt_od_lmt = 6;
+    double amt_od_lmt_lcy = 7;
+    int64 cod_cust = 8;
+    string cod_acc_title = 9;
+    int64 dt_open_acc = 10;
+    string cod_int_accr_bas = 11;
+    string freq_int_accr = 12;
+    int64 dt_acc_close = 13;
+    string cod_collat_id = 14;
+    string collat_desc = 15;
+    int64 as_of_dt = 16;
+    string cost_cntr = 17;
+    string gl_acc_no = 18;
+    string rt_flg = 19;
+    string inst = 20;
+    double crnt_book_bal = 21;
+    string acrl_basis = 22;
+    double int_rt = 23;
+    string div = 24;
+    string alm_line = 25;
+    string ia_llg = 26;
+    string balm_llg = 27;
+    int64 mis1 = 28;
+    string npa_flg = 29;
+    string benchmark = 30;
+    string rep_freq = 31;
+    int64 nxt_rep_dt = 32;
+    int64 lst_rep_dt = 33;
+    string cust_typ = 34;
+    string country = 35;
+    string bm_id_lookup = 36;
+    int64 mis2 = 37;
+    double avg_bal = 38;
+    string is_acc_weaker = 39;
+    string ews_weaker_value = 40;
+    string alm_concat = 41;
+    string two_point_concat = 42;
+    string weaker_desc=43;
+    string bdp_division=44;
+    string bdp_coa=45;
+    repeated Cashflow cashflows = 46;
+}

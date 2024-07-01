@@ -1,0 +1,14 @@
+[package]
+name = "adj_rates_extractor"
+version = "2.0.4426"
+authors = ["Tarun Jaiswal <tarun.j@surya-soft.com>"]
+edition = "2018"
+
+[dependencies]
+clap = "2.32.0"
+rbdate = { path = "../../../hdfc/libraries/RBDate" }
+sdb_io = { path = "../../../hdfc/libraries/sdb_io" }
+sdb_util = { path = "../../libraries/sdb_util"}
+slog = { version = "2.2.3", features = ["max_level_trace", "release_max_level_trace"] }
+slog-term = "2.4.0"
+slog-async = "2.3.0"

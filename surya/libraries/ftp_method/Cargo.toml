@@ -1,0 +1,8 @@
+[package]
+name = "ftp_method"
+version = "1.0.5101"
+authors = ["Tarun Jaiswal <tarun.j@surya-soft.com>"]
+edition = "2018"
+
+[dependencies]
+chrono = "0.4.19"

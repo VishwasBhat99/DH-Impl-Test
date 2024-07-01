@@ -1,0 +1,9 @@
+{
+    "acc_no": "account_number",
+    "curr": "institution",
+    "int_rt": "int_rate",
+    "prin_amt": "current_book_balance",
+    "concat": "balm_llg",
+    "country": ""
+  }
+  

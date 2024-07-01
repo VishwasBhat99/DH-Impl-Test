@@ -1,0 +1,30 @@
+syntax= "proto3";
+
+message Account {
+    string as_on= 1;
+    string source= 2;
+    string acc_no= 3 ;
+    string prod_code= 4;
+    string mis1= 5;
+    string gl_liab= 6;
+    string gl_int_comp= 7;
+    string concat= 8;
+    string div= 9;
+    string alm_line= 10;
+    string ia_line= 11;
+    string alco= 12;
+    string org_tenor= 13;
+    string res_tenor= 14; 
+    string ia_tenor= 15;
+    string bucket_val= 16;
+    string cat_val= 17;
+    string cust_id= 18;
+    string wd_nwd_val= 19;
+    string bal_lcy= 20;
+    string int_comp= 21;
+    string rate= 22; 
+    string rate_var= 23;
+    string rate_var2= 24;
+    string amt= 25;
+    string yld= 26;
+}

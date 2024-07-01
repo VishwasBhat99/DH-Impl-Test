@@ -1,0 +1,60 @@
+syntax= "proto3";
+
+message Cashflow {
+    double int_amt= 1;
+    double prin_amt= 2;
+    int64 date= 3;
+}
+
+message AccountWithCashflows{
+    string entity= 1;
+    string trade_id= 2;
+    string contract_typology= 3;
+    string trade_typology= 4;
+    string usage= 5;
+    string desk= 6;
+    string book= 7;
+    string folder= 8;
+    string trading_banking= 9;
+    string internal_external= 10;
+    string inter_entity= 11;
+    string counterparty_long_name= 12;
+    string cp_category_level_1= 13;
+    string cp_category_level_2= 14;
+    string cp_category_level_3= 15;
+    string near_leg_far_leg= 16;
+    int64 option_start_date= 17;
+    int64 option_end_date= 18;
+    int64 effective_date= 19;
+    int64 mat_date_of_contract= 20;
+    string ccil_guranteed= 21;
+    string buy_currency= 22;
+    double buy_current_notional= 23;
+    string sell_currency= 24;
+    double sell_current_notional= 25;
+    double forward_rate= 26;
+    double forward_mtm= 27;
+    double mtm_in_inr_forward= 28;
+    double mtm_in_usd_forward= 29;
+    double pv_mtm_in_inr= 30;
+    double pv_mtm_in_usd= 31;
+    double pv01_in_inr= 32;
+    double mduriation_ccy1_inr= 33;
+    double mduriation_ccy2_inr= 34;
+    double contingent_notional_in_inr= 35;
+    string npa= 36;
+    string bank_nonbank= 37;
+    int64 original_tenor= 38;
+    int64 residual_tenor= 39;
+    string currency= 40;
+    string cf_type= 41;
+    string cntry_resid= 42;
+    string cntry_ultim_risk= 43;
+    double tot_int_amt= 44;
+    double tot_prin_amt= 45;
+    string counterparty_child_code= 46;
+    int64 trade_date= 47;
+    string ndf_settlementcurrency= 48;
+    int64 mat_date_of_trade= 49;
+    repeated Cashflow cashflows= 50;
+}

@@ -1,0 +1,51 @@
+OPTIONS (SKIP=1)
+LOAD DATA
+INFILE '*' "STR '\r\n'"
+TRUNCATE
+INTO TABLE Repo_Rev_Repo FIELDS TERMINATED BY '~' optionally enclosed by '"'
+ TRAILING NULLCOLS 
+(
+dealno "REPLACE(:dealno,',','')",
+deal_date date "DD MON YYYY",
+value_dt_1st_leg	date "DD MON YYYY",
+deal_time,
+nature,
+deal_stat,
+dealtype,
+slr_typ,
+security,
+category,
+sub_category,
+desk,
+portfolio,
+accounting_section,
+counterparty,
+counterparty_full_name,
+currency,
+face_val "REPLACE(:face_val,',','')",
+haircut_margin "REPLACE(:haircut_margin,',','')",
+book_val "REPLACE(:book_val,',','')",
+repo_rate "REPLACE(:repo_rate,',','')",
+ytm "REPLACE(:ytm,',','')",
+valuedt	date "DD MON YYYY",
+price "REPLACE(:price,',','')",
+hold_rate "REPLACE(:hold_rate,',','')",
+holding_book_value "REPLACE(:holding_book_value,',','')",
+settle_amt_1st_leg "REPLACE(:settle_amt_1st_leg,',','')",
+accrued_interest "REPLACE(:accrued_interest,',','')",
+repointerest "REPLACE(:repointerest,',','')",
+settle_amt_2nd_leg "REPLACE(:settle_amt_2nd_leg,',','')",
+brokerage "REPLACE(:brokerage,',','')",
+broker,
+dealer_id,
+dealer_name,
+authoriser,
+auth_dt	date "DD MON YYYY",
+auth_time,
+remarks,
+nds_entry_time,
+dvpiii	 "REPLACE(:dvpiii,',','')",
+entity,
+bank_non_bank,
+air_aip	 "REPLACE(:air_aip,',','')"		
+)

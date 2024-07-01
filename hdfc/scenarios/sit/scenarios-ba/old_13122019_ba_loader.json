@@ -1,0 +1,29 @@
+{  
+   "streamName":"BulkInserter",
+   "streamId":"1084",
+   "flows":[  
+	{  
+         "name":"BulkInserter BA",
+         "flowId":"1",
+         "flowDependencies":[  
+
+         ],
+         "executorID":"1",
+         "process":[  
+            {  
+               "processName":"BulkInserter",
+               "processId":"1",
+               "processBinary":"/SIT_SH_SUMMARYDATA/BulkInserter/IND/BA/bulkInsertAll.sh",
+               "processArguments":[  
+                  "{ddmmyyyy}",
+                  "{AsOnDate}"
+               ],
+               "processDependencies":[  
+
+               ],
+               "processReport":""
+            }
+         ]
+      }
+   ]
+}

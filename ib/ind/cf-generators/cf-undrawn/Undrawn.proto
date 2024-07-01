@@ -1,0 +1,32 @@
+syntax= "proto3";
+
+message OutputAccount{
+    string key_1 =  1;
+    string gl_class_code = 2;
+    string status = 3;
+    double balance = 4;
+    int64 old_bad_debt_ind = 5;
+    string i_or_b = 6;
+    string crm_flag = 7;
+    double app_amt = 8;
+    double lmt1 = 9;
+    double lmt2 = 10;
+    double lmt3 = 11;
+    double lmt4 = 12;
+    double od_lmt = 13;
+    double adv_val = 14;
+    string basel_class = 15;
+    int64 limit_exp_date = 16;
+    int64 lending_status = 17;
+    string dp = 18;
+    double drawing_amt = 19;
+    int64 od_multi_lim_allow = 20;
+    string ccy = 21;
+    string group = 22;
+    string llg = 23;
+    double limit_amt = 24;
+    double dp_amt = 25;
+    double undrawn_sls_amt = 26;
+    double undrawn_lcr_amt = 27;
+    double undrawn_nsfr_amt = 28;
+}

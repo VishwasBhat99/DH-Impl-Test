@@ -1,0 +1,206 @@
+{
+	"streamName": "UBS LOANS",
+	"streamId": "7008",
+	"flows": [
+		{
+			"name": "UBS Loans",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Mater-Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/master.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Pre-Flight-Check",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/cashflows.csv"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "DB-Loader",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/SIT/DB-Loader-Over-Loans/HK/ImpExpOverLoans.sh",
+					"processArguments": [
+						"{ddmmyyyy}"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/DB-Loader-Over-Loans-health-check-report.json"
+				},
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/SIT/HK/pfcHK.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/over-loans-hk.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "5",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./pp_over_loans",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/HK/{ddmmyyyy}/over-loans-hk.txt",
+						"--ref-file-1",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/ORA_PROD.xlsx",
+						"--ref-file-2",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/ORA_GL.xlsx",
+						"--ref-file-3",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/Master_LLG_Updated.xlsx",
+						"--ref-file-4",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/ALM_COA_Master.xlsx",
+						"--ref-file-5",
+						"/SIT_SH_INPUTDATA/HK/OPERATIONAL_FILES/MIS1_Desc.xlsx",
+						"--alm-master-sheet-name",
+						"Sheet1",
+						"--gl-type",
+						"HK-Over-Loans",
+						"--input-file-name",
+						"HK_Outstanding_Loans",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/UBSOutput.txt",
+						"--rec-output-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/UBSReconRpt.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"4"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/UBSOutput-health-check-report.json"
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "6",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./cf_ubs_loans",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/UBSOutput.txt",
+						"--output-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/UBSCFOutput",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSCFLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSCFDiagLog.txt"
+					],
+					"processDependencies": [
+						"5"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "7",
+					"processBinary": "/home/dbuser/programs/SIT/HK/./balm",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_CFDATA/HK/{ddmmyyyy}/UBSCFOutput.cf",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/UBSLoansAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSBALMLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSBALMDiagLog.txt",
+						"--currency",
+						"USD",
+						"--is-consolidated",
+						"false",
+						"--local-consolidation-currency",
+						"USL",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/SIT_SH_RULES/HK/ubs_loans_req_fields.json",
+						"--account-metadata-file",
+						"/SIT_SH_RULES/HK/ubs_loans_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/SIT_SH_RULES/HK/over_loans_hk_rules.txt",
+						"--default-llg-code",
+						"12799",
+						"--default-overdue-llg-code",
+						"2790"
+					],
+					"processDependencies": [
+						"6"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "8",
+					"processBinary": "/home/dbuser/programs/SIT/HK/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSLoansConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/UBSLoansAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSLoansAggConvLog.txt"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				},
+				{
+					"processName": "BALM Consolidator",
+					"processId": "9",
+					"processBinary": "/home/dbuser/programs/SIT/HK/consolidator",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/UBSLoansAggregated",
+						"--output-file",
+						"/SIT_SH_SUMMARYDATA/HK/{ddmmyyyy}/UBSLoansAggregated",
+						"--log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSLoansBALMConsolLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/HK/{ddmmyyyy}/UBSLoansBALMConsolDiagLog.txt",
+						"--exchange-rate-file",
+						"/SIT_SH_PREPROCESSDATA/HK/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--consol-config-file",
+						"/SIT_SH_RULES/HK/consol-config.txt",
+						"--is-maturity",
+						"true"
+					],
+					"processDependencies": [
+						"7"
+					],
+					"processReport": "/SIT_SH_CFDATA/HK/{ddmmyyyy}/UBSCFOutput-health-check-report.json"
+				}
+			]
+		}
+	]
+}

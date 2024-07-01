@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+message Cashflow {
+     double int_amt = 1;
+     double prin_amt = 2;
+     int64 date = 3;
+}
+
+message AccountWithCashflows{
+     int64 as_on_date = 1;
+     string deal_number = 2;
+     string instrument_type = 3;
+     int64 branch = 4;
+     double outstanding_amount = 5;
+     string currency = 6;
+     string instrument_classification = 7;
+     int64 counter_party_id = 8;
+     string counter_party_name = 9;
+     string counter_party_type = 10;
+     int64 borrowing_date = 11;
+     int64 borrowing_maturity_date = 12;
+     double interest_rate = 13;
+     string interest_rate_classification = 14;
+     double frequency = 15;
+     double basis = 16;
+     int64 next_repricing_date = 17;
+     int64 last_repricing_date = 18;
+     string repricing_frequency = 19;
+     int64 coupon_payment_start_date = 20;
+     string coupon_payment_frequency = 21;
+     string benchmark = 22;
+     string spread = 23;
+     string isin_code = 24;
+     string mduration =25;
+     string treasury_gl_code = 26;
+     double accrued_interest = 27;
+     string accrued_gl = 28;
+     int64 deal_date = 29;
+     int64 value_date = 30;
+     double avg_mon_balance = 31;
+     string cdr_flg = 32;
+     string cf_type = 33;
+     string cf_sub_type = 34;
+     double cf_amount = 35;
+     int64 cf_date = 36;
+     string currency = 37;
+     double outstanding_diff_amount = 38;
+     string group = 39;
+     string llg = 40;
+     string other_llg_classification = 41;
+     repeated Cashflow cashflows =42;
+}

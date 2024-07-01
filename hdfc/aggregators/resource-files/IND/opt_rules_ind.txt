@@ -1,0 +1,4 @@
+1|1|0|intrnl_extrnl|EQ|E|AND
+1|1|1|cf_type|EQ|A|14650
+2|1|0|intrnl_extrnl|EQ|E|AND
+2|1|1|cf_type|EQ|L|9650

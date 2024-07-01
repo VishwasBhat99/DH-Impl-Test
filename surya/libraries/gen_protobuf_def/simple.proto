@@ -1,0 +1,24 @@
+syntax = "proto3"; 
+message Person{
+	string acc_id = 1;
+	string cust_id = 2;
+	string cust_type = 3;
+	string prod_code = 4;
+	float int_rate = 5;
+	string currency = 6;
+	string class_id = 7;
+	float rw = 8;
+	string pt_str_1 = 9;
+	string pt_str_2 = 10;
+	string pt_str_3 = 11;
+	int32 pt_int_1 = 12;
+	int32 pt_int_2 = 13;
+	int32 pt_int_3 = 14;
+	float pt_float_1 = 15;
+	float pt_float_2 = 16;
+	float pt_float_3 = 17;
+	float b1 = 18;
+	float b2 = 19;
+	float b3 = 20;
+	float b4 = 21;
+}

@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+message Cashflow {
+     double int_amt = 1;
+     double prin_amt = 2;
+     int64 date = 3;
+}
+
+message AccountWithCashflows{
+     string product_id = 1;
+     string account_number = 2;
+     int64 bill_due_day = 3;
+     double outstanding_balance_inr = 4;
+     string currency_loan = 5;
+     double rate_of_int = 6;
+     int64 total_tenure = 7;
+     int64 completed_tenure = 8;
+     string customer_id = 9;
+     double emi_amount = 10;
+     int64 int_day_count = 11;
+     int64 data_process_date = 12;
+     int64 report_date = 13;
+     string gl_code = 14;
+     double frequency = 15;
+     string installment_frequency = 16;
+     string npa_classification = 17;
+     int64 last_repricing_date = 18;
+     double npa_amount = 19;
+     string cust_hlth_code = 20;
+     string cust_npa_class = 21;
+     string final_npa_class = 22;
+     repeated Cashflow cashflows =23;
+}

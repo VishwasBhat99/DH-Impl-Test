@@ -1,0 +1,108 @@
+{
+	"streamName": "CC",
+	"streamId": "1036",
+	"flows": [
+		{
+			"name": "CreditCard",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "5",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/IND/pfc.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/CC_MAT_EXT1"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Cashflow-Generator",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/IND/cf_cc",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_INPUTDATA/IND/{ddmmyyyy}/CC_MAT_EXT1",
+						"--output-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/CCCFOutput",
+						"--rec-output-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/CreditCardReconRpt.txt",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/CCCGLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/CCCGDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/CCCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "BALM-Aggregator",
+					"processId": "3",
+					"processBinary": "/home/dbuser/programs/IND/balm",
+					"processArguments": [
+						"--input-file",
+						"/UAT_SH_CFDATA/IND/{ddmmyyyy}/CCCFOutput.cf",
+						"--output-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CCAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/CCBALMLog.txt",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/CCBALMDiagLog.txt",
+						"--currency",
+						"INR",
+						"--is-consolidated",
+						"true",
+						"--local-consolidation-currency",
+						"RUP",
+						"--foreign-consolidation-currency",
+						"FCY",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--req-fields-file",
+						"/UAT_SH_RULES/IND/cc_req_fields.json",
+						"--account-metadata-file",
+						"/UAT_SH_RULES/IND/cc_metadata.json",
+						"--account-level-exchange-rate",
+						"false",
+						"--rules-file-path",
+						"/UAT_SH_RULES/IND/cc_rules.txt",
+						"--default-llg-code",
+						"14280",
+						"--default-overdue-llg-code",
+						"4281"
+					],
+					"processDependencies": [
+						"2"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/CCCFOutput-heath-check-report.json"
+				},
+				{
+					"processName": "Aggregated Conversion",
+					"processId": "4",
+					"processBinary": "/home/dbuser/programs/IND/agg_conv",
+					"processArguments": [
+						"--base-currency",
+						"INR",
+						"--diagnostics-log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/CCAggConvDiagLog.txt",
+						"--exchange-rate-file",
+						"/UAT_SH_PREPROCESSDATA/IND/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--input-file",
+						"/UAT_SH_SUMMARYDATA/IND/{ddmmyyyy}/CCAggregated",
+						"--log-file",
+						"/UAT_SH_LOGS/IND/{ddmmyyyy}/CCAggConvLog.txt"
+					],
+					"processDependencies": [
+						"3"
+					],
+					"processReport": "/UAT_SH_CFDATA/IND/{ddmmyyyy}/CCCFOutput-heath-check-report.json"
+				}
+			]
+		}
+	]
+}

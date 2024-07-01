@@ -1,0 +1,25 @@
+{
+    "fields": [
+      {
+        "name": "src_system",
+        "typ": "String",
+        "position": 1
+      },
+      {
+        "name": "amt",
+        "typ": "F64",
+        "position": 2
+      },
+      {
+        "name": "asset_class",
+        "typ": "String",
+        "position": 3
+      },
+      {
+        "name": "ccy",
+        "typ": "String",
+        "position": 4
+      }
+    ]
+  }
+  

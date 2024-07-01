@@ -1,0 +1,17 @@
+[package]
+name = "cf_inr_irs_reg_nd"
+version = "0.1.2335"
+authors = ["Ravindar Singh <ravindar.sr@surya-soft.com>"]
+
+[dependencies]
+clap = "3.1.0"
+sdb_io = {path = "../../../libraries/sdb_io"}
+slog = "2.7.0"
+slog-term = "2.8.1"
+slog-async = "2.7.0"
+protobuf = "2.27.1"
+rbdate = { path = "../../../libraries/RBDate" }
+health_report = { path = "../../../libraries/health_report" }
+serde = "1.0.136"
+serde_json = "1.0.79"
+serde_derive = "1.0.136"

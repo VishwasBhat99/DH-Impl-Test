@@ -1,0 +1,229 @@
+{
+  "fields": [
+    {
+      "name": "entity",
+      "position": 1,
+      "typ": "String"
+    },
+    {
+      "name": "trade_id",
+      "position": 2,
+      "typ": "String"
+    },
+    {
+      "name": "contract_id",
+      "position": 3,
+      "typ": "F64"
+    },
+    {
+      "name": "folder",
+      "position": 4,
+      "typ": "String"
+    },
+    {
+      "name": "trading_banking",
+      "position": 5,
+      "typ": "String"
+    },
+    {
+      "name": "intrnl_extrnl",
+      "position": 6,
+      "typ": "String"
+    },
+    {
+      "name": "cntr_prty_name",
+      "position": 7,
+      "typ": "String"
+    },
+    {
+      "name": "trade_dt",
+      "position": 8,
+      "typ": "I64"
+    },
+    {
+      "name": "st_dt",
+      "position": 9,
+      "typ": "I64"
+    },
+    {
+      "name": "deal_ccy",
+      "position": 10,
+      "typ": "String"
+    },
+    {
+      "name": "org_notional",
+      "position": 11,
+      "typ": "F64"
+    },
+    {
+      "name": "pay_int_rt",
+      "position": 12,
+      "typ": "F64"
+    },
+    {
+      "name": "rec_int_rt",
+      "position": 13,
+      "typ": "F64"
+    },
+    {
+      "name": "exchng_rt",
+      "position": 14,
+      "typ": "F64"
+    },
+    {
+      "name": "pay_reset_dt",
+      "position": 15,
+      "typ": "I64"
+    },
+    {
+      "name": "rec_reset_dt",
+      "position": 16,
+      "typ": "I64"
+    },
+    {
+      "name": "pay_payment_dt",
+      "position": 17,
+      "typ": "I64"
+    },
+    {
+      "name": "rec_payment_dt",
+      "position": 18,
+      "typ": "I64"
+    },
+    {
+      "name": "pay_payment_freq",
+      "position": 19,
+      "typ": "String"
+    },
+    {
+      "name": "rec_payment_freq",
+      "position": 20,
+      "typ": "String"
+    },
+    {
+      "name": "deal_stats",
+      "position": 21,
+      "typ": "String"
+    },
+    {
+      "name": "inp_id",
+      "position": 22,
+      "typ": "String"
+    },
+    {
+      "name": "trade_bank",
+      "position": 23,
+      "typ": "String"
+    },
+    {
+      "name": "m_bank",
+      "position": 24,
+      "typ": "String"
+    },
+    {
+      "name": "flow_typ",
+      "position": 25,
+      "typ": "String"
+    },
+    {
+      "name": "flow_typ1",
+      "position": 26,
+      "typ": "String"
+    },
+    {
+      "name": "flow_typ2",
+      "position": 27,
+      "typ": "String"
+    },
+    {
+      "name": "flow_typ3",
+      "position": 28,
+      "typ": "String"
+    },
+    {
+      "name": "flow_typ4",
+      "position": 29,
+      "typ": "String"
+    },
+    {
+      "name": "flow_amt",
+      "position": 30,
+      "typ": "F64"
+    },
+    {
+      "name": "cf_dt",
+      "position": 31,
+      "typ": "I64"
+    },
+    {
+      "name": "flow_ccy",
+      "position": 32,
+      "typ": "String"
+    },
+    {
+      "name": "hkd_rt",
+      "position": 33,
+      "typ": "F64"
+    },
+    {
+      "name": "hkd_amt",
+      "position": 34,
+      "typ": "F64"
+    },
+    {
+      "name": "m_h_rep_dt2",
+      "position": 35,
+      "typ": "I64"
+    },
+    {
+      "name": "inr_amt",
+      "position": 36,
+      "typ": "F64"
+    },
+    {
+      "name": "inr_rt",
+      "position": 37,
+      "typ": "F64"
+    },
+    {
+      "name": "int_rt",
+      "position": 38,
+      "typ": "F64"
+    },
+    {
+      "name": "tot_int_amt",
+      "position": 39,
+      "typ": "F64"
+    },
+    {
+      "name": "tot_prin_amt",
+      "position": 40,
+      "typ": "F64"
+    },
+    {
+      "name": "cont_usage",
+      "position": 41,
+      "typ": "String"
+    },
+    {
+      "name": "non_idx_fwcurcy",
+      "position": 42,
+      "typ": "String"
+    },
+    {
+      "name": "non_idx_fwamt",
+      "position": 43,
+      "typ": "F64"
+    },
+    {
+      "name": "indxn_dt",
+      "position": 44,
+      "typ": "I64"
+    },
+    {
+      "name": "cashflows",
+      "position": 45,
+      "typ": "Cashflows"
+    }
+  ]
+}

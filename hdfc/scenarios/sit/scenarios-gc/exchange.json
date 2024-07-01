@@ -1,0 +1,52 @@
+{
+	"streamName": "Exchange Rate",
+	"streamId": "5000",
+	"flows": [
+		{
+			"name": "ExchangeRate",
+			"flowId": "1",
+			"flowDependencies": [],
+			"executorID": "1",
+			"process": [
+				{
+					"processName": "Pre-Flight-Check",
+					"processId": "1",
+					"processBinary": "/home/dbuser/programs/SIT/GC/pfcGC.sh",
+					"processArguments": [
+						"{ddmmyyyy}",
+						"/SIT_SH_INPUTDATA/GC/{ddmmyyyy}/EDW_ALM_EXCHANGE_RATES_{ddmmyyyy}.csv"
+					],
+					"processDependencies": [],
+					"processReport": ""
+				},
+				{
+					"processName": "Pre-Processor",
+					"processId": "2",
+					"processBinary": "/home/dbuser/programs/SIT/GC/./pp_over_ex_rt",
+					"processArguments": [
+						"--input-file",
+						"/SIT_SH_INPUTDATA/GC/{ddmmyyyy}/EDW_ALM_EXCHANGE_RATES_{ddmmyyyy}.csv",
+						"--ex-rt-file",
+						"/SIT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/1000ExchangeRate.txt",
+						"--ccy",
+						"USD",
+						"--lcy",
+						"USL",
+						"--fcy",
+						"FCY",
+						"--output-file",
+						"/SIT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/ExchangeRates.txt",
+						"--log-file",
+						"/SIT_SH_LOGS/GC/{ddmmyyyy}/ExchangeRatesPPLog.txt",
+						"--diagnostics-log-file",
+						"/SIT_SH_LOGS/GC/{ddmmyyyy}/ExchangeRatesPPDiagLog.txt"
+					],
+					"processDependencies": [
+						"1"
+					],
+					"processReport": "/SIT_SH_PREPROCESSDATA/GC/{ddmmyyyy}/ExchangeRates-health-check-report.json"
+				}
+			]
+		}
+	]
+}

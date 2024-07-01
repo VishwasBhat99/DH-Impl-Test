@@ -1,0 +1,140 @@
+{
+  "fields": [
+    {
+      "name": "deal_no",
+      "typ": "String",
+      "position": 1
+    },
+    {
+      "name": "acc_open_dt",
+      "typ": "I64",
+      "position": 2
+    },
+    {
+      "name": "nature",
+      "typ": "String",
+      "position": 3
+    },
+    {
+      "name": "deal_stat",
+      "typ": "String",
+      "position": 4
+    },
+    {
+      "name": "deal_type",
+      "typ": "String",
+      "position": 5
+    },
+    {
+      "name": "slr_typ",
+      "typ": "String",
+      "position": 6
+    },
+    {
+      "name": "security",
+      "typ": "String",
+      "position": 7
+    },
+    {
+      "name": "category",
+      "typ": "String",
+      "position": 8
+    },
+    {
+      "name": "sub_category",
+      "typ": "String",
+      "position": 9
+    },
+    {
+      "name": "desk",
+      "typ": "String",
+      "position": 10
+    },
+    {
+      "name": "portfolio",
+      "typ": "String",
+      "position": 11
+    },
+    {
+      "name": "accounting_section",
+      "typ": "String",
+      "position": 12
+    },
+    {
+      "name": "counterparty",
+      "typ": "String",
+      "position": 13
+    },
+    {
+      "name": "counterparty_full_name",
+      "typ": "String",
+      "position": 14
+    },
+    {
+      "name": "currency",
+      "typ": "String",
+      "position": 15
+    },
+    {
+      "name": "repo_rate",
+      "typ": "F64",
+      "position": 16
+    },
+    {
+      "name": "ytm",
+      "typ": "F64",
+      "position": 17
+    },
+    {
+      "name": "value_dt",
+      "typ": "I64",
+      "position": 18
+    },
+    {
+      "name": "price",
+      "typ": "F64",
+      "position": 19
+    },
+    {
+      "name": "settle_amt_1st_leg",
+      "typ": "F64",
+      "position": 20
+    },
+    {
+      "name": "accrued_interest",
+      "typ": "F64",
+      "position": 21
+    },
+    {
+      "name": "repo_int",
+      "typ": "F64",
+      "position": 22
+    },
+    
+    {
+      "name": "settle_amt_2nd_leg",
+      "typ": "F64",
+      "position": 23
+    },
+    {
+      "name": "entity",
+      "typ": "String",
+      "position": 24
+    },
+    {
+      "name": "bank_non_bank",
+      "typ": "String",
+      "position": 25
+    },
+    {
+      "name": "air_aip",
+      "typ": "F64",
+      "position": 26
+    },
+    {
+      "name": "cashflows",
+      "typ": "Cashflows",
+      "position": 27
+    }
+  ]
+}
